@@ -22,17 +22,17 @@
     <h3>Characters</h3>
     <div class="row text-center"> <!-- Added text-center class -->
         <div class="col-md-4" style="border: 1px solid black;">
-            <a href="characters.html" target="_blank">
+            <a href="characters.html" target="_blank" onclick="changeComposition('characters')">
                 <img src="Characters Image.png" class="img-fluid">
             </a>
         </div>
         <div class="col-md-4" style="border: 1px solid black;">
-            <a href="animations.html" target="_blank">
+            <a href="animations.html" target="_blank" onclick="changeComposition('animations')">
                 <img src="Animations Image.png" class="img-fluid">
             </a>
         </div>
         <div class="col-md-4" style="border: 1px solid black;">
-            <a href="class-assignments.html" target="_blank">
+            <a href="class-assignments.html" target="_blank" onclick="changeComposition('class-assignments')">
                 <img src="individual-assignments.png" class="img-fluid">
             </a>
         </div>
@@ -81,4 +81,22 @@
 <footer>
 </footer>
 </body>
+<!-- javaScript -->
+<script>
+    function changeComposition(type) {
+        if (type === 'animations') {
+            document.querySelector('.characters').innerHTML = `
+                <h2>Animation Reel</h2>
+                <video src="Animation Reel.mp4" class="img-fluid" controls></video>
+                <div class="unsubstantial-animation">
+                    <h2>Unsubstantial Animation</h2>
+                </div>
+                <div class="fixer-upper-storyboard">
+                    <h2>The FixerUpper Storyboard</h2>
+                </div>
+            `;
+        }
+    }
+</script>
+
 </html>
