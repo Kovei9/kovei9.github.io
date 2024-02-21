@@ -64,7 +64,7 @@
             </p>
         </div>
 
-        <div class="characters" id="characters">
+        <!-- <div class="characters" id="characters">
             <h2>My Characters</h2>
             <div class="row">
                 <div class="col-md-6">
@@ -80,18 +80,20 @@
                     <img src="Animations Image.png" class="img-fluid">
                 </div>
             </div>
-        </div>
-        <div class="animation reel">
-            <h2>Animation Reel</h2>
-            <video src="Animation Reel.mp4" class="img-fluid" controls></video>
-        </div>
-
-        <div class="unsubstantial-animation">
-            <h2>Unsubstantial Animation</h2>
-        </div>
-
-        <div class="fixer-upper-storyboard">
-            <h2>The FixerUpper Storyboard</h2>
+        </div> -->
+        <div class="nav-section" id="animations">
+            <div class="animation reel">
+                <h2>Animation Reel</h2>
+                <video src="Animation Reel.mp4" class="img-fluid" controls></video>
+            </div>
+        
+            <div class="unsubstantial-animation">
+                <h2>Unsubstantial Animation</h2>
+            </div>
+        
+            <div class="fixer-upper-storyboard">
+                <h2>The FixerUpper Storyboard</h2>
+            </div>
         </div>
 <hr>
         <div class="class-assignments">
@@ -151,7 +153,7 @@
     </div>
 <hr>
 <script>
-    document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
     link.addEventListener('click', event => {
         // Prevent the default link click behavior
         event.preventDefault();
