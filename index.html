@@ -84,13 +84,19 @@
 
         
 <script>
-document.querySelectorAll('.nav-section').forEach(section => {
-    section.style.display = 'none';
-});
-
 document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
     link.addEventListener('click', event => {
-        // Rest of your JavaScript code
+        // Prevent the default link click behavior
+        event.preventDefault();
+
+        // Hide all sections
+        document.querySelectorAll('.nav-section').forEach(section => {
+            section.style.display = 'none';
+        });
+
+        // Show the section that corresponds to the clicked link
+        const sectionId = link.getAttribute('href').substring(1); // Remove the '#' from the href
+        document.getElementById(sectionId).style.display = 'block';
     });
 });
 </script>
