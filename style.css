@@ -25,3 +25,6 @@
     max-width: 100%;
     height: auto;
 }
+.nav-item {
+    list-style: none;
+}
