@@ -1,4 +1,3 @@
-/* Banner(s) */
 .banner {
     position: relative;
     text-align: center;
@@ -16,11 +15,6 @@
     transform: translate(-50%, -50%);
     color: white;
 }
-.banner-img {
-    width: 100%;
-    height: auto;
-}
-/* Images */
 .img-fluid {
     max-width: 100%;
     height: auto;

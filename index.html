@@ -2,105 +2,95 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
 <head>
-    <title>Mackenzie Burt's Portfolio</title>
+    <!-- CSS link -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 
 <body>
+    <!-- top image + text -->
+    <div class="banner">
+        <a href="index.html">
+            <h1 class="banner-title">Mackenzie Burt's Portfolio</h1>
+        </a>
+        <img class="banner" id="img-fluid" src="Images and Videos\KOVE LOGO.jpg" alt="Banner">
    
+
+        <!-- images row one -->
     <div class="container">
-
-        <div class="header">
-            <h1>Mackenzie Burt's Portfolio</h1>
+        <div class="row">
+        <div class="image-container">
+            <li class="nav-item">
+                <a class="nav-link" href="about.html" target="_blank">
+                    <img id="img-fluid" src="about.png" alt="About Me">
+                </a>
+            </li>
         </div>
-
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About Me</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#characters">My Characters</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#animations">Animations (2D)</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#assignments">Personal Assignments</a>
-                        </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="groupAssignments">Group Assignments</a>
-                        </li>
-                        <li class="nav-item">
-                        <a class="nav-link" href="#graphicDesign">Graphic Design</a>
-                        </li>
-                </ul>
+        <div class="image-container">
+            <li class="nav-item">
+                <a class="nav-link" href="characters.html" target="_blank">
+                    <img id="img-fluid" src="Images and Videos\Characters.jpg" alt="Characters">
+                </a>
+            </li>
+        </div>
+        <div class="image-container">
+            <li class="nav-item">
+                <a class="nav-link" href="animations.html" target="_blank">
+                    <img id="img-fluid" src="animations.jpg" alt="Animations">
+                </a>
+            </li>
             </div>
-        </nav>
+    </div>
+    </div>
 
-        <div class="nav-section" id="about">
-            <h2>About Me</h2>
-            <p> 
-                Hello! My name is Mackenzie Burt, I typically go by Kenzie or Kove. I'm a diversified 2D concept artist and
-                animator that's pursuing a unique degree called GIMM that focuses on game design! I specialize in making
-                characters and stories that people can relate to. My most apparent interest is that of the player community
-                itself. I strive to provide and help build projects and interactive content that allows others to not only
-                enjoy themselves, but perhaps even learn from the experience they are provided and influence. I think that
-                a lot of people these days struggle with mental health, and I truly believe that interactive media and video
-                games in general are an incredible way to help people connect with each other and escape the things that
-                negatively impact them.
-                I'm a very bubbly and positive individual and I particularly enjoy making others laugh. I learn very quickly,
-                but the best way for me to learn is getting thrown into the chaos. I thrive with or without structure, and
-                tend to work harder when I'm overwhelmed. I've always worked two jobs while going to University full time,
-                I can handle a lot of pressure and a lot of tasks. I've typically worked in service my entire life, so socializing
-                is something that I enjoy and this is quite helpful in relation to working on projects that require multiple
-                people.
-                In summary, if you want a social artist with a unique experience and perspective, I'm your girl!
-            </p>
-        </div>
+    <hr>
+            <!--  Images row 2 -->
+            <li class="nav-item">
+                <a class="nav-link" href="individualprojects.html" target="_blank">
+                    <img id="img-fluid" src="individualprojects.png" alt="Individual_Projects">
+                </a>
+            </li>
 
-        <div class="nav-section" id="characters">
-            <h2>Characters</h2>
-            <div class="row">
-                <div class="col-md-6">
-                    <img src="Characters.jpg" class="img-fluid">
-                </div>
-            </div>
+            <li class="nav-item">
+                <a class="nav-link" href="groupprojects.html" target="_blank">
+                    <img id="img-fluid" src="groupprojects.jpg" alt="Group_Projects">
+                </a>
+            </li>
 
-              
+            <li class="nav-item">
+                <a class="nav-link" href="graphicdesign.html" target="_blank">
+                    <img id="img-fluid" src="graphicdesign.jpg" alt="Graphic_Design">
+                </a>
+            </li>
 
+        </ul>
+        <hr>
 
-        </div>
+        <footer>
+            <p>© 2024 Mackenzie Burt</p>
+        </footer>
 
+        <script>
+            document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+                link.addEventListener('click', event => {
+                    // Prevent the default link click behavior
+                    event.preventDefault();
 
+                    // Hide all sections
+                    document.querySelectorAll('.nav-section').forEach(section => {
+                        section.style.display = 'none';
+                    });
 
-        
-<script>
-document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
-    link.addEventListener('click', event => {
-        // Prevent the default link click behavior
-        event.preventDefault();
-
-        // Hide all sections
-        document.querySelectorAll('.nav-section').forEach(section => {
-            section.style.display = 'none';
-        });
-
-        // Show the section that corresponds to the clicked link
-        const sectionId = link.getAttribute('href').substring(1); // Remove the '#' from the href
-        document.getElementById(sectionId).style.display = 'block';
-    });
-});
-</script>
-    
+                    // Show the section that corresponds to the clicked link
+                    const sectionId = link.getAttribute('href').substring(1); // Remove the '#' from the href
+                    document.getElementById(sectionId).style.display = 'block';
+                });
+            });
+        </script>
+    </div>
 </body>
-
 </html>
