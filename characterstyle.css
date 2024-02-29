@@ -1,7 +1,10 @@
 .body {
-    font-family: 'corrier new', Courier, monospace;
     background-color:rgb(117, 85, 147);
+    color: rgb(184, 221, 210);
+    font-family: 'corrier new', Courier, monospace;
+    text-align: center;
 }
+
 .banner {
     position: relative;
     text-align: center;
@@ -29,6 +32,4 @@
     margin: 10px;
     display: flex;
 }
-.text-center {
-    text-align: center;
-}
+

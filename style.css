@@ -1,8 +1,11 @@
 /* Banner(s) */
 .body {
+    background-color: rgb(58, 80, 58);
+    color: rgb(185, 221, 191);
     font-family: 'corrier new', Courier, monospace;
-    background-color: rgb(58, 80, 58)
+    text-align: center;
 }
+
 .banner {
     position: relative;
     text-align: center;
@@ -32,7 +35,5 @@
 .nav-item {
     list-style: none;
 }
-.text-center {
-    text-align: center;
-}
+
 
