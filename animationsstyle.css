@@ -25,3 +25,9 @@
     margin: 10px;
     display: flex;
 }
+.text-center {
+    text-align: center;
+}
+.font-style {
+    font-family: 'corrier new', Courier, monospace;
+}

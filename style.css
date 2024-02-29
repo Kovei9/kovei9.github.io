@@ -28,3 +28,9 @@
 .nav-item {
     list-style: none;
 }
+.text-center {
+    text-align: center;
+}
+.font-style {
+    font-family: 'corrier new', Courier, monospace;
+}
