@@ -1,8 +1,8 @@
 /* Banner(s) */
-.body {
+body {
     background-color: rgb(58, 80, 58);
     color: rgb(185, 221, 191);
-    font-family: 'corrier new', Courier, monospace;
+    font-family: 'Courier New', Courier, monospace;
     text-align: center;
 }
 
@@ -23,17 +23,18 @@
     transform: translate(-50%, -50%);
     color: white;
 }
+
 .banner-img {
     width: 100%;
     height: auto;
 }
+
 /* Images */
 .img-fluid {
     max-width: 100%;
     height: auto;
 }
+
 .nav-item {
     list-style: none;
 }
-
-
