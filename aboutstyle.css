@@ -34,9 +34,9 @@ body {
 }
 
 .navbar .nav-link {
-    color: white;
+    color: rgb(44, 47, 57);
 }
 
 .navbar .nav-link:hover {
-    color: #add8e6;
+    color: #275254;
 }
