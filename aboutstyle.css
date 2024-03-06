@@ -29,3 +29,14 @@ body {
     justify-content: center;
     align-items: center;
 }
+.navbar {
+    background-color: rgb(58, 80, 58);
+}
+
+.navbar .nav-link {
+    color: white;
+}
+
+.navbar .nav-link:hover {
+    color: #add8e6;
+}
