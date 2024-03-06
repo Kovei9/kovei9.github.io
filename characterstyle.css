@@ -1,7 +1,7 @@
-.body {
-    background-color:rgb(117, 85, 147);
-    color: rgb(184, 221, 210);
-    font-family: 'corrier new', Courier, monospace;
+body {
+    background-color: #44583e; 
+    color: #ddceb1; 
+    font-family: 'Courier New', Courier, monospace;
     text-align: center;
 }
 
