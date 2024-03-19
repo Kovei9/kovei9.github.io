@@ -12,8 +12,8 @@
 
 <body>
 
+    <h1>Kenzie Burt</h1>
     <div class="banner">
-        <h1 class="banner-title">Kenzie Burt</h1>
         <a href="index.html">
             <h2>Portfolio Home</h2>
         </a>
@@ -75,21 +75,33 @@
         </div>
     </div>
 
-    <div class="arrow" id="left-arrow">Left</div>
-    <div class="arrow" id="right-arrow">Right</div>
-    <div id="image-reel">
-        <div class="mid-col-12">
-        <img class="reel-image img-fluid" src="Images and Videos\akali spider.png" alt="sketch1">
-        <img class="reel-image img-fluid" src="Images and Videos\ireliaspider.jpg" alt="sketch2">
-        <img class="reel-image img-fluid" src="Images and Videos\icon1.jpg" alt="sketch3">
-        <img class="reel-image img-fluid" src="Images and Videos\blueeyesamurai.png" alt="sketch4">
-        <img class="reel-image img-fluid" src="Images and Videos\thecrew.jpg" alt="sketch5">
-        <img class="reel-image img-fluid" src="Images and Videos\villainredraw.jpg" alt="sketch6">
-        <img class="reel-image img-fluid" src="Images and Videos\Art Rendering.png" alt="sketch8">
-        <img class="reel-image img-fluid" src="Images and Videos\poses.jpg" alt="sketch9">
-        <img class="reel-image img-fluid" src="Images and Videos\octaviaandlillith.jpg" alt="sketch10">
+    <div id="imageCarousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="row">
+                    <img class="reel-image img-fluid col" src="Images and Videos\akali spider.png" alt="sketch1">
+                    <img class="reel-image img-fluid col" src="Images and Videos\ireliaspider.jpg" alt="sketch2">
+                    <img class="reel-image img-fluid col" src="Images and Videos\icon1.jpg" alt="sketch3">
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row">
+                    <img class="reel-image img-fluid col" src="Images and Videos\blueeyesamurai.png" alt="sketch4">
+                    <img class="reel-image img-fluid col" src="Images and Videos\thecrew.jpg" alt="sketch5">
+                    <img class="reel-image img-fluid col" src="Images and Videos\villainredraw.jpg" alt="sketch6">
+                </div>
+            </div>
+            <!-- Add more carousel-items as needed -->
+        </div>
+        <a class="carousel-control-prev" href="#imageCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#imageCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
-</div>
 
     <div class="row">
         <h2>GIMM. What is it?</h2>
@@ -118,21 +130,4 @@
     </div>
 
 </body>
-
-<script>
-    $(document).ready(function() {
-    $('#right-arrow').click(function() {
-        $('#image-reel').animate({
-            scrollLeft: "+=200px"
-        }, "slow");
-    });
-
-    $('#left-arrow').click(function() {
-        $('#image-reel').animate({
-            scrollLeft: "-=200px"
-        }, "slow");
-    });
-});
-</script>
-
 </html>
