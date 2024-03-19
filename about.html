@@ -1,10 +1,10 @@
 <html>
-
-<head>
-    <meta charset="utf-8">
+   
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="aboutstyle.css">
@@ -73,45 +73,21 @@
             </div>
         </div>
     </div>
-   
-    <div class="container row">
-        <div class="col-md-3">
-            <img class="img-fluid" src="Images and Videos\akali spider.png" alt="sketch1">
-        </div>
-        <div class="col-md-3">
-            <img class="img-fluid" src="Images and Videos\ireliaspider.jpg" alt="sketch2">
-        </div>
-        <div class="col-md-3">
-            <img class="img-fluid" src="Images and Videos\icon1.jpg" alt="sketch3">
-        </div>
-        <div class="col-md-3">
-            <img class="img-fluid" src="Images and Videos\blueeyesamurai.png" alt="sketch4">
-        </div>
-   
-</div>
-    <hr>
-    <div class="container row">
-        <div class="col-md-4">
-            <img class="img-fluid" src="Images and Videos\thecrew.jpg" alt="sketch5">
-        </div>
-        <div class="col-md-4">
-            <img class="img-fluid" src="Images and Videos\villainredraw.jpg" alt="sketch6">
-        </div>
-        <div class="col-md-4">
-            <img class="img-fluid" src="Images and Videos\Art Rendering.png" alt="sketch8">
-        </div>
+
+   <div id="left arrow">Left</div>
+   <div id="right arrow">Right</div>
+    <div id="image-reel">
+        <img class="reel-image img-fluid" src="Images and Videos\akali spider.png" alt="sketch1">
+        <img class="reel-image img-fluid" src="Images and Videos\ireliaspider.jpg" alt="sketch2">
+        <img class="reel-image img-fluid" src="Images and Videos\icon1.jpg" alt="sketch3">
+        <img class="reel-image img-fluid" src="Images and Videos\blueeyesamurai.png" alt="sketch4">
+        <img class="reel-image img-fluid" src="Images and Videos\thecrew.jpg" alt="sketch5">
+        <img class="reel-image img-fluid" src="Images and Videos\villainredraw.jpg" alt="sketch6">
+        <img class="reel-image img-fluid" src="Images and Videos\Art Rendering.png" alt="sketch8">
+        <img class="reel-image img-fluid" src="Images and Videos\poses.jpg" alt="sketch9">
+        <img class="reel-image img-fluid" src="Images and Videos\octaviaandlillith.jpg" alt="sketch10">
     </div>
-    <div class="container">
-        <div class="col-md-12">
-            <img class="img-fluid" src="Images and Videos\poses.jpg" alt="sketch9">
-        </div>
-    </div>
-    <div class="container">
-        <div class="col-md-12">
-            <img class="img-fluid" src="Images and Videos\octaviaandlillith.jpg" alt="sketch10">
-        </div>
-    </div>
-    </div>
+
     <div class="row">
         <h2>GIMM. What is it?</h2>
         <p>GIMM stands for Games, Interactive Media, and Mobile. It was founded by Anthony Ellertson in 2016, and its first class graduated in 2019.
@@ -122,12 +98,13 @@
             Each course typically has a minimum of one group project. The degree is structured to teach students how to work in the industry before you graduate. We are molded into game designers from the minute we walk in the doors.
             I have never learned anything so quickly than I have within this program. So far, after three semesters, I have basic knowledge of over five coding languages with no prior experience. I created functioning projects with each language and frequently a combination of them.
             This program has tuaght me so much within a small three semesters. I'm not your typical game designer, I'm an incredibly diversified individual with the ability to work in multiple fields thanks to my education. Frequently, I will question whether or not I will enjoy a course based upon my skill set and my intentions for my future. I have yet to be disappointed by a course, and I have yet to be disappointed by the knowledge I have gained from this program.
-            Every course, I discover new interests. I never thought that I would ever enjoy coding or web design, but here I am designing this website and enjoying every second of it. I can't wait to see where I am in two years, I'm so thankful for my incredible Professors and the opportunities that this program has given me.</p>
-
+            Every course, I discover new interests. I never thought that I would ever enjoy coding or web design, but here I am designing this website and enjoying every second of it. I can't wait to see where I am in two years, I'm so thankful for my incredible Professors and the opportunities that this program has given me.
         </p>
     </div>
     <div>
+
         <hr>
+
         <h2>Contact Information</h2>
         <div class="col-md-12">
             <p>dawniemacart@gmail.com</p>
@@ -136,6 +113,23 @@
             <p>Linkedin</p>
         </div>
     </div>
+
 </body>
+
+<script>
+    $(document).ready(function() {
+    $('#right-arrow').click(function() {
+        $('#image-reel').animate({
+            scrollLeft: "+=200px"
+        }, "slow");
+    });
+
+    $('#left-arrow').click(function() {
+        $('#image-reel').animate({
+            scrollLeft: "-=200px"
+        }, "slow");
+    });
+});
+</script>
 
 </html>

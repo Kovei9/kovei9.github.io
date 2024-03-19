@@ -40,3 +40,14 @@ body {
 .navbar .nav-link:hover {
     color: #275254;
 }
+#image-reel {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.reel-image {
+    width: 100%;
+    height: auto;
+    margin-right: 10px;
+}
