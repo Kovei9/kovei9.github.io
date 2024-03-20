@@ -41,7 +41,8 @@ body {
     color: #275254;
 }
 .carousel-item {
-    height: 600px; /* Adjust this value as needed */
+    height: 900px;
+    width: 80%;
 }
 
 .reel-image {
