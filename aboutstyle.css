@@ -47,4 +47,6 @@ body {
 
 .reel-image {
     object-fit: cover;
+    height: auto;
+    width: auto;
 }
