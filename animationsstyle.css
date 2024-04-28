@@ -33,3 +33,6 @@ body {
     margin: 10px;
     display: flex;
 }
+body, html {
+    overflow-x: hidden;
+}
