@@ -50,3 +50,6 @@ body {
     height: auto;
     width: auto;
 }
+body, html {
+    overflow-x: hidden;
+}
