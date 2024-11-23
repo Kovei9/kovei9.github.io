@@ -5,20 +5,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Mackenzie Burt Portfolio</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <style>
+        /* Make the header banner stretch across the page */
+        .header-banner {
+            position: relative;
+            width: 100%;
+            background-color: #333;  /* Dark background color for the header */
+        }
+
+        .header-banner img {
+            width: 100%;
+            height: auto;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .overlay h1, .overlay p {
+            margin: 0;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .footer {
+            background-color: #333;  /* Same grey color for the footer */
+            color: white;
+        }
+
+        /* Styling for the navigation bar */
+        .navbar-light .navbar-nav .nav-link {
+            color: #333;  /* Adjust color to stand out against background */
+        }
+
+        .navbar-light .navbar-nav .nav-link:hover {
+            color: #0056b3;
+        }
+
+        /* Make the page content more engaging */
+        .container {
+            max-width: 1140px;
+        }
+
+        .main-content img {
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h3 {
+            text-align: center;
+            margin-top: 10px;
+            color: #333;
+        }
+
+        /* Ensure images in the gallery are responsive */
+        .img-fluid {
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
 <body>
-    <header class="bg-dark text-white text-center py-5">
-        <div class="container">
-            <img class="img-fluid mb-4" src="Images and Videos/ODDS BANNER.png" alt="Banner">
+    <!-- Header with full width banner -->
+    <header class="header-banner bg-dark text-white text-center py-5">
+        <img class="img-fluid w-100" src="Images and Videos/ODDS BANNER.png" alt="Banner">
+        <div class="overlay">
             <h1>Mackenzie Burt</h1>
             <p>2D Concept Artist & Animator</p>
         </div>
     </header>
 
+    <!-- Navigation bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,26 +91,17 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.html">About Me</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="characters.html">Characters</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="animations.html">Animations</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="groupprojects.html">Group Projects</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="individualprojects.html">Individual Projects</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Me</a></li>
+                    <li class="nav-item"><a class="nav-link" href="characters.html">Characters</a></li>
+                    <li class="nav-item"><a class="nav-link" href="animations.html">Animations</a></li>
+                    <li class="nav-item"><a class="nav-link" href="groupprojects.html">Group Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="individualprojects.html">Individual Projects</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
+    <!-- Main content area -->
     <main class="container my-5">
         <div class="row">
             <div class="col-md-4 mb-4">
@@ -89,7 +145,8 @@
         </div>
     </main>
 
-    <footer class="bg-dark text-white text-center py-3">
+    <!-- Footer -->
+    <footer class="footer bg-dark text-white text-center py-3">
         <p>© 2024 Mackenzie Burt</p>
     </footer>
 
