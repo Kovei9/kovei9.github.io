@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Modeling & Sculpting | Mackenzie Burt</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #121212;
+      color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      padding: 1.5rem 2rem;
+      background-color: #000;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      color: #00d4ff;
+    }
+    .content {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .gallery-item {
+      background-color: #1f1f1f;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+    .gallery-item img {
+      width: 100%;
+      border-radius: 5px;
+    }
+    .gallery-item h3 {
+      margin-top: 0.75rem;
+      color: #00d4ff;
+    }
+    a.back {
+      display: inline-block;
+      margin-top: 2rem;
+      color: #00d4ff;
+      text-decoration: none;
+    }
+    a.back:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>3D Modeling & Sculpting</h1>
+  </header>
+
+  <div class="content">
+    <p>Here’s a selection of 3D projects featuring models, environments, props, and sculpted assets for games and animation pipelines.</p>
+
+    <div class="gallery">
+      <div class="gallery-item">
+        <img src="https://via.placeholder.com/400x250" alt="3D Work 1">
+        <h3>Fantasy Warrior Character</h3>
+        <p>Modeled in ZBrush and retopologized for game engines.</p>
+      </div>
+      <div class="gallery-item">
+        <img src="https://via.placeholder.com/400x250" alt="3D Work 2">
+        <h3>Sci-Fi Gun Prop</h3>
+        <p>Hard surface modeling using Blender. Baked in Marmoset.</p>
+      </div>
+      <!-- Add more portfolio items as needed -->
+    </div>
+
+    <a class="back" href="index.html">← Back to Portfolio</a>
+  </div>
+</body>
+</html>
