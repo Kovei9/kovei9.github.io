@@ -3,225 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Mackenzie Burt | 3D Modeler & Digital Artist</title>
+    <title>Mackenzie Burt | Generalist With a Focus of 3D & 2D Art </title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <style>
+        :root {
+          --accent-color: #00d4ff;
+          --bg-dark: #121212;
+          --bg-light: #1f1f1f;
+          --text-color: #f0f0f0;
+          --hover-bg: #2a2a2a;
+        }
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f5f5f5;
-            color: #333;
+          font-family: 'Montserrat', sans-serif;
+          background-color: var(--bg-dark);
+          color: var(--text-color);
+          line-height: 1.6;
+        }
+        nav {
+          background: #000;
+          padding: 1rem 2rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        nav a {
+          color: var(--text-color);
+          text-decoration: none;
+          margin-left: 1rem;
+          font-weight: 500;
+        }
+        nav a:hover {
+          color: var(--accent-color);
         }
         .hero {
-            background: url('https://via.placeholder.com/1920x1080') no-repeat center center/cover;
-            color: white;
-            text-align: center;
-            padding: 150px 20px;
-            position: relative;
-            background-color: rgba(255, 165, 0, 0.8);
-            animation: fadeIn 2s ease-in-out;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          height: 100vh;
+          background: linear-gradient(to right, #111, #1a1a1a);
+          padding: 2rem;
         }
         .hero h1 {
-            font-size: 4rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-            animation: slideInDown 1s ease-in-out;
+          font-size: 3.5rem;
+          margin-bottom: 0.5rem;
+          font-weight: 700;
         }
         .hero p {
-            font-size: 1.5rem;
-            margin-bottom: 30px;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
-            animation: slideInUp 1s ease-in-out;
+          font-size: 1.2rem;
+          margin-bottom: 1rem;
         }
-        .hero button {
-            font-size: 1.2rem;
-            padding: 15px 30px;
-            background-color: #d2691e;
-            border: none;
-            color: white;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
+        .hero .subtitle {
+          color: var(--accent-color);
+          font-size: 1.1rem;
+          margin-bottom: 1.5rem;
         }
-        .hero button:hover {
-            background-color: #a0522d;
+        .cta-btn {
+          padding: 0.8rem 1.8rem;
+          background-color: var(--accent-color);
+          color: #000;
+          border: none;
+          border-radius: 5px;
+          font-weight: bold;
+          text-decoration: none;
+          transition: background 0.3s ease;
         }
-        .section {
-            padding: 60px 20px;
-            text-align: center;
-            background-color: white;
-            animation: fadeIn 2s ease-in-out;
+        .cta-btn:hover {
+          background-color: #00b4cc;
         }
-        .section h2 {
-            margin-bottom: 40px;
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #8b4513;
-            animation: slideInLeft 1s ease-in-out;
+        section {
+          padding: 4rem 2rem;
+          max-width: 1200px;
+          margin: auto;
         }
-        .portfolio-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
+        h2 {
+          font-size: 2.2rem;
+          color: var(--accent-color);
+          text-align: center;
+          margin-bottom: 2rem;
         }
-        .portfolio-item {
-            border: 1px solid #ddd;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            width: 300px;
-            background-color: #f9f9f9;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            animation: fadeInUp 1s ease-in-out;
+        .about p, .contact p {
+          max-width: 800px;
+          margin: auto;
+          text-align: center;
+          font-size: 1.1rem;
         }
-        .portfolio-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        .grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+          gap: 1.5rem;
+          margin-top: 2rem;
         }
-        .portfolio-item img {
-            max-width: 100%;
-            border-radius: 5px;
-            margin-bottom: 15px;
+        .card {
+          background: var(--bg-light);
+          padding: 2rem;
+          border-radius: 10px;
+          text-align: center;
+          transition: transform 0.3s ease, background 0.3s ease;
+          box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
-        .bordered {
-            border: 2px solid #333;
-            padding: 10px;
-            border-radius: 5px;
+        .card:hover {
+          transform: scale(1.05);
+          background: var(--hover-bg);
         }
         footer {
-            background: #8b4513;
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-            animation: fadeIn 2s ease-in-out;
+          background: #000;
+          color: #999;
+          padding: 1.5rem;
+          text-align: center;
+          font-size: 0.9rem;
         }
         footer a {
-            color: #ffd700;
-            text-decoration: none;
+          color: var(--accent-color);
+          text-decoration: none;
         }
         footer a:hover {
-            text-decoration: underline;
+          text-decoration: underline;
         }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes slideInDown {
-            from { transform: translateY(-100%); }
-            to { transform: translateY(0); }
-        }
-
-        @keyframes slideInUp {
-            from { transform: translateY(100%); }
-            to { transform: translateY(0); }
-        }
-
-        @keyframes slideInLeft {
-            from { transform: translateX(-100%); }
-            to { transform: translateX(0); }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
-</head>
-<body>
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Mackenzie Burt</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
-                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-            </ul>
+      </style>
+    </head>
+    <body>
+    
+      <nav>
+        <div><strong>Mackenzie Burt</strong></div>
+        <div>
+          <a href="#about">About</a>
+          <a href="#portfolio">Portfolio</a>
+          <a href="#contact">Contact</a>
         </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <div class="hero">
-        <h1>Mackenzie Burt's Portfolio</h1>
-        <p>The 3D/2D Artist with Perseverance and Adaptability</p>
-        <button class="btn btn-primary">Explore My Work</button>
-    </div>
-
-    <!-- About Section -->
-    <div id="about" class="section bordered">
+      </nav>
+    
+      <section class="hero">
+        <h1>Mackenzie Burt</h1>
+        <p>3D Generalist & Creative Designer</p>
+        <p class="subtitle">Modeling • Texturing • Rigging • Animation • UI/UX • Concept Art • Editing</p>
+        <a href="#portfolio" class="cta-btn">View My Work</a>
+      </section>
+    
+      <section id="about" class="about">
         <h2>About Me</h2>
-        <p>Hello! I'm Mackenzie Burt, a passionate 3D modeler, animator, and digital artist. I specialize
-            in character design, concept art, and interactive experiences. My mission is to craft visually stunning
-            and impactful projects that inspire and captivate audiences.
-            What I strive towards most is allowing players and audiences in general to truly feel immersed.
-            I want them to feel
-            the pain of loss that the characters experience. The joys of successfully solving the equation that allows
-            multi-dimensional travel. The numbness of the loss of hope during dark times.
-            If they don't feel it, they won't relate to it, and they won't remember the light at the end, or the need
-            for both the light and the dark.
+        <p>
+          I'm a multidisciplinary digital artist with a passion for visual storytelling. With a foundation in 3D modeling, rigging, animation, and texturing, I bring characters and worlds to life. My 2D specialties include UI/UX design, concept art, graphic design, and motion editing. I thrive on crafting immersive, high-quality visuals for interactive experiences, games, and digital platforms.
         </p>
-    </div>
-
-    <!-- Portfolio Section -->
-    <div id="portfolio" class="section">
-        <h2>My Portfolio</h2>
-        <div class="portfolio-grid">
-            <div class="portfolio-item">
-                <img src="https://via.placeholder.com/300" alt="Sketch Book">
-                <h3>Sketch Book</h3>
-            </div>
-            <div class="portfolio-item">
-                <img src="https://via.placeholder.com/300" alt="Character Designs">
-                <h3>Character Designs</h3>
-            </div>
-            <div class="portfolio-item">
-                <img src="https://via.placeholder.com/300" alt="Animations">
-                <h3>Animations</h3>
-            </div>
-            <div class="portfolio-item">
-                <img src="https://via.placeholder.com/300" alt="Professional Projects">
-                <h3>Professional Projects</h3>
-            </div>
-            <div class="portfolio-item">
-                <img src="https://via.placeholder.com/300" alt="3D Projects">
-                <h3>3D Projects</h3>
-            </div>
-            <div class="portfolio-item">
-                <img src="https://via.placeholder.com/300" alt="Game Projects">
-                <h3>Game Projects</h3>
-            </div>
-            <div class="portfolio-item">
-                <img src="https://via.placeholder.com/300" alt="School Projects">
-                <h3>School Projects</h3>
-            </div>
-            <div class="portfolio-item">
-                <img src="https://via.placeholder.com/300" alt="Web Development">
-                <h3>Web Development Projects</h3>
-            </div>
+      </section>
+    
+      <section id="portfolio">
+        <h2>Portfolio Highlights</h2>
+        <div class="grid">
+          <div class="card">3D Modeling & Sculpting</div>
+          <div class="card">Texturing & Materials</div>
+          <div class="card">Rigging & Animation</div>
+          <div class="card">UI/UX Design</div>
+          <div class="card">Character Design</div>
+          <div class="card">Graphic Design</div>
+          <div class="card">Concept Art</div>
+          <div class="card">Editing & Motion Design</div>
         </div>
-    </div>
-
-    <!-- Contact Section -->
-    <div id="contact" class="section">
-        <h2>Contact Me</h2>
-        <p>If you're interested in working with me, feel free to reach out!</p>
-        <p>Email: <a href="mailto:dawniemacart@gmail.com">dawniemacart@gmail.com</a></p>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Mackenzie Burt. All rights reserved. | <a href="#">Privacy Policy</a></p>
-    </footer>
-</body>
-</html>
+      </section>
+    
+      <section id="contact" class="contact">
+        <h2>Let's Collaborate</h2>
+        <p>Interested in working together? Reach out and let's build something amazing.</p>
+        <p><a href="mailto:dawniemacart@gmail.com" class="cta-btn">Email Me</a></p>
+      </section>
+    
+      <footer>
+        &copy; 2025 Mackenzie Burt. All rights reserved. | <a href="#">Privacy Policy</a>
+      </footer>
+    
+    </body>
+    </html>
