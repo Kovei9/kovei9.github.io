@@ -1,434 +1,256 @@
-</body>
-</html>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MB | Mackenzie Burt - 2D & 3D Artist</title>
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='grad1' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23ff6f61;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23e65a4c;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='20' fill='%23121212'/%3E%3Ctext x='50' y='70' font-family='serif' font-size='45' font-weight='700' text-anchor='middle' fill='url(%23grad1)'%3EMB%3C/text%3E%3C/svg%3E">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MB | Mackenzie Burt — 2D/3D Artist</title>
+  <meta name="description" content="Portfolio of Mackenzie Burt — concept art, 3D models, animation, and art leadership." />
+  <meta property="og:title" content="Mackenzie Burt — 2D/3D Artist" />
+  <meta property="og:description" content="Concept → Model → Texture → Rig → Animate. Case studies and art leadership." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23121212'/%3E%3Ctext x='50' y='70' font-family='serif' font-size='45' font-weight='700' text-anchor='middle' fill='%23ff6f61'%3EMB%3C/text%3E%3C/svg%3E" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet" />
   <style>
-    /* Variables */
-    :root {
-      --color-bg: #121212;
-      --color-light: #f5f5f5;
-      --color-accent: #ff6f61;
-      --font-title: 'Playfair Display', serif;
-      --font-body: 'Montserrat', sans-serif;
-    }
-    /* Global Reset */n    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    html {
-      scroll-behavior: smooth;
-    }
-    body {
-      font-family: var(--font-body);
-      background: var(--color-bg);
-      color: var(--color-light);
-      line-height: 1.6;
-    }
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-    /* Navigation */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      width: 100%;
-      padding: 1rem 2rem;
-      background: rgba(18,18,18,0.9);
-      backdrop-filter: blur(15px);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 1000;
-      box-sizing: border-box;
-    }
-    
-    /* Animated MB Logo */
-    nav .logo {
-      font-family: var(--font-title);
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--color-light);
-      position: relative;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    
-    nav .logo:hover {
-      color: var(--color-accent);
-      transform: scale(1.05);
-    }
-    
-    /* Subtle glow animation */
-    nav .logo::before {
-      content: '';
-      position: absolute;
-      top: -2px;
-      left: -2px;
-      right: -2px;
-      bottom: -2px;
-      background: linear-gradient(45deg, transparent, var(--color-accent), transparent);
-      border-radius: 8px;
-      z-index: -1;
-      opacity: 0;
-      animation: logoGlow 3s ease-in-out infinite;
-    }
-    
-    @keyframes logoGlow {
-      0%, 100% { opacity: 0; transform: rotate(0deg); }
-      50% { opacity: 0.3; transform: rotate(180deg); }
-    }
-    
-    /* Letter styling for MB */
-    .logo .letter-m {
-      display: inline-block;
-      animation: letterFloat 4s ease-in-out infinite;
-    }
-    
-    .logo .letter-b {
-      display: inline-block;
-      animation: letterFloat 4s ease-in-out infinite 0.5s;
-    }
-    
-    @keyframes letterFloat {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-2px); }
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-    }
-    nav ul li {
-      margin-left: 2rem;
-      font-weight: 500;
-    }
-    nav ul li a:hover {
-      color: var(--color-accent);
-      transition: color 0.3s;
-    }
+    :root { --bg:#121212; --ink:#f5f5f5; --ink-d:#cfcfcf; --accent:#ff6f61; }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0; font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,sans-serif; background:var(--bg); color:var(--ink); line-height:1.6}
+    a{color:inherit; text-decoration:none}
+    header{position:sticky; top:0; z-index:10; backdrop-filter: blur(10px); background:rgba(18,18,18,.9); border-bottom:1px solid #222}
+    .wrap{max-width:1160px; margin:0 auto; padding:1rem 1.25rem}
+    .nav{display:flex; align-items:center; justify-content:space-between}
+    .logo{font-family:'Playfair Display',serif; font-weight:700; font-size:1.5rem; letter-spacing:.5px}
+    .nav ul{display:flex; list-style:none; gap:1rem; padding:0; margin:0}
+    .nav a:hover,.nav a:focus{color:var(--accent)}
 
-    /* Hero Section */
-    .hero {
-      height: 100vh;
-      background: linear-gradient(135deg, #1e1e1e, #2b2b2b);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 0 1rem;
-    }
-    .hero h1 {
-      font-family: var(--font-title);
-      font-size: 4rem;
-      margin-bottom: 0.5rem;
-      color: var(--color-light);
-    }
-    .hero p.subtitle {
-      font-size: 1.2rem;
-      color: var(--color-accent);
-      margin-bottom: 1.5rem;
-    }
-    .hero .btn {
-      background: var(--color-accent);
-      color: #fff;
-      padding: 0.8rem 2rem;
-      border: none;
-      border-radius: 50px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    .hero .btn:hover {
-      background: #e65a4c;
-    }
+    .hero{min-height:70vh; display:grid; place-items:center; text-align:center; padding:5rem 1.25rem; background:linear-gradient(135deg,#1e1e1e,#2b2b2b)}
+    .hero h1{font-family:'Playfair Display',serif; font-size:clamp(2.2rem,6vw,4rem); margin:.25rem 0}
+    .hero .subtitle{color:var(--accent); opacity:.95}
+    .btn{display:inline-block; margin-top:1.25rem; padding:.8rem 1.4rem; border-radius:999px; background:var(--accent); color:#000; font-weight:700}
+    .btn:focus-visible{outline:3px solid #fff; outline-offset:3px}
 
-    /* Sections */n    section {
-      padding: 5rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    section h2 {
-      font-family: var(--font-title);
-      font-size: 2.5rem;
-      color: var(--color-accent);
-      text-align: center;
-      margin-bottom: 2rem;
-      position: relative;
-    }
-    section h2::after {
-      content: '';
-      display: block;
-      width: 80px;
-      height: 4px;
-      background: var(--color-accent);
-      margin: 0.5rem auto 0;
-    }
+    section{padding:4rem 1.25rem}
+    h2{font-family:'Playfair Display',serif; font-size:clamp(1.6rem,3.5vw,2.4rem); margin:0 0 1.25rem; color:var(--accent); text-align:center}
 
-    /* About */
-    .about p {
-      font-size: 1.1rem;
-      max-width: 800px;
-      margin: 0 auto;
-      text-align: center;
-    }
+    /* FILTERS */
+    .filters{display:flex; gap:.5rem; flex-wrap:wrap; justify-content:center; margin:1rem 0 2rem}
+    .chip{border:1px solid #2a2a2a; padding:.35rem .75rem; border-radius:999px; font-size:.9rem; cursor:pointer; user-select:none}
+    .chip[aria-pressed="true"], .chip:hover{background:#1f1f1f; border-color:#3a3a3a}
 
-    /* Portfolio Grid */
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
-    .card {
-      background: #1e1e1e;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.5);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .card img {
-      width: 100%;
-      display: block;
-    }
-    .card .info {
-      padding: 1.5rem;
-      text-align: center;
-    }
-    .card .info h3 {
-      margin-bottom: 0.5rem;
-      font-family: var(--font-title);
-      font-size: 1.5rem;
-      color: var(--color-light);
-    }
-    .card .info p {
-      font-size: 0.95rem;
-      color: #ccc;
-    }
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 24px rgba(0,0,0,0.6);
-    }
+    /* GRID */
+    .grid{display:grid; gap:1.5rem; grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+    .card{display:block; background:#1a1a1a; border:1px solid #232323; border-radius:14px; overflow:hidden; transition:transform .2s ease, box-shadow .2s ease}
+    .card:hover, .card:focus-visible{transform:translateY(-4px); box-shadow:0 12px 28px rgba(0,0,0,.45)}
+    .thumb{aspect-ratio:16/10; width:100%; object-fit:cover; background:#0c0c0c}
+    .meta{padding:1rem}
+    .meta h3{margin:.25rem 0 .5rem; font-family:'Playfair Display',serif; font-size:1.2rem}
+    .tags{display:flex; flex-wrap:wrap; gap:.4rem; margin-top:.5rem}
+    .tag{font-size:.75rem; padding:.25rem .5rem; border-radius:6px; background:#202020; color:var(--ink-d); border:1px solid #2a2a2a}
 
-    /* Contact */
-    .contact {
-      text-align: center;
-    }
-    .contact p {
-      font-size: 1.1rem;
-    }
-    .contact h3 {
-      margin-top: 1rem;
-      margin-bottom: 1rem;
-    }
-    
-    /* Contact Buttons Container */
-    .contact-buttons {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-    
-    /* Base Button Styles */
-    .contact a[class^="btn-"] {
-      display: block;
-      width: 200px;
-      padding: 0.8rem 1.8rem;
-      border-radius: 50px;
-      font-weight: 600;
-      text-align: center;
-      transition: all 0.3s ease;
-      border: 2px solid rgba(245, 245, 245, 0.3);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .contact a[class^="btn-"]:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-      border-color: rgba(245, 245, 245, 0.8);
-    }
-    
-    /* Artistic sketchy outline effect */
-    .contact a[class^="btn-"]::before {
-      content: '';
-      position: absolute;
-      top: -6px;
-      left: -6px;
-      right: -6px;
-      bottom: -6px;
-      border: 2px solid transparent;
-      border-top: 2px solid #f5f5f5;
-      border-right: 2px solid rgba(245, 245, 245, 0.6);
-      border-radius: 50px;
-      z-index: -1;
-      animation: rotate 3s linear infinite;
-    }
-    
-    /* Secondary spinning line for depth */
-    .contact a[class^="btn-"]::after {
-      content: '';
-      position: absolute;
-      top: -8px;
-      left: -8px;
-      right: -8px;
-      bottom: -8px;
-      border: 1px solid transparent;
-      border-bottom: 1px solid var(--color-accent);
-      border-left: 1px solid rgba(255, 111, 97, 0.5);
-      border-radius: 50px;
-      z-index: -1;
-      animation: rotate 4s linear infinite reverse;
-    }
-    
-    @keyframes rotate {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-    
-    /* Individual Button Colors */
-    .contact .btn-email {
-      background: var(--color-accent);
-      color: #fff;
-    }
-    .contact .btn-email:hover {
-      background: #8a2828;
-    }
-    
-    .contact .btn-LinkedIn {
-      background: #279bda;
-      color: #fff;
-    }
-    .contact .btn-LinkedIn:hover {
-      background: #223b61;
-    }
-    
-    .contact .btn-Youtube {
-      background: #da2727;
-      color: #fff;
-    }
-    .contact .btn-Youtube:hover {
-      background: #4f1d1d;
-    }
-    
-    .contact .btn-Instagram {
-      background: #9720ae;
-      color: #fff;
-    }
-    .contact .btn-Instagram:hover {
-      background: #7c1a8c;
-    }
-    
-    .contact .btn-X {
-      background: #1f1f1f;
-      color: #fff;
-    }
-    .contact .btn-X:hover {
-      background: #626262;
-    }
+    /* QUICK-VIEW MODAL */
+    dialog{border:none; border-radius:16px; padding:0; width:min(920px,96vw); color:var(--ink); background:#141414}
+    .modal-head{display:flex; justify-content:space-between; align-items:center; padding:1rem 1.25rem; border-bottom:1px solid #242424}
+    .modal-grid{display:grid; grid-template-columns:1.2fr .9fr; gap:1rem; padding:1rem 1.25rem}
+    .modal-grid img{width:100%; height:auto; border-radius:12px}
+    .kv{display:grid; gap:.4rem; font-size:.95rem}
+    .kv strong{color:var(--ink)}
+    .modal-actions{display:flex; gap:.6rem; padding:0 1.25rem 1.25rem}
+    .ghost{border:1px solid #2c2c2c; border-radius:999px; padding:.65rem 1rem}
 
+    @media (max-width: 800px){ .modal-grid{grid-template-columns:1fr} }
 
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      font-size: 0.9rem;
-      color: #777;
-      background: #0f0f0f;
-    }
-    footer a:hover {
-      color: var(--color-accent);
-    }
+    /* CONTACT */
+    .contact-grid{display:grid; gap:1rem; justify-content:center; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); max-width:760px; margin:0 auto}
+    .contact-btn{display:block; text-align:center; border:1px solid #2a2a2a; padding:.9rem 1rem; border-radius:999px}
 
+    footer{padding:2rem 1rem; text-align:center; color:#9a9a9a; border-top:1px solid #202020}
+
+    /* a11y / motion */
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none!important; transition:none!important}
+    }
   </style>
 </head>
 <body>
-
-  <nav>
-    <div class="logo">
-      <span class="letter-m">M</span><span class="letter-b">B</span>
+  <header>
+    <div class="wrap nav" role="navigation" aria-label="Primary">
+      <a class="logo" href="#top" aria-label="Home">MB</a>
+      <ul>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </div>
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#portfolio">Portfolio</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+  </header>
 
-  <section class="hero" id="hero">
-    <h1>Mackenzie Burt</h1>
-    <p class="subtitle">2D & 3D Generalist • 2D/3D Characters • Concept • Modeling • Animation • UI/UX • Director</p>
-    <button class="btn" onclick="document.getElementById('portfolio').scrollIntoView()">View My Work</button>
-  </section>
+  <main id="top">
+    <section class="hero">
+      <div>
+        <h1>Mackenzie Burt</h1>
+        <p class="subtitle">2D/3D Generalist • Characters • Concept → Model → Texture → Rig → Animate • Art Lead</p>
+        <a href="#work" class="btn">View My Work</a>
+      </div>
+    </section>
 
-  <section id="about" class="about">
-    <h2>About Me</h2>
-    <p>I'm a multidisciplinary artist, blending 2D and 3D techniques to craft immersive visual narratives. From concept sketches to polished assets, I strive to bridge players into immersive realities.</p>
-  </section>
-
-  <section id="portfolio">
-    <h2>Portfolio</h2>
-    <div class="portfolio-grid">
-
-      <div class="card">
-        <img src="Images and Videos\2D Art Card Thumbnail.png" alt="2D Art + Animation">
-        <div class="info">
-          <h3>2D Art & Animation</h3>
-          <p>Concept to fully rendered Illustrations and Animations.</p>
-        </div>
+    <section id="work" class="wrap">
+      <h2>Selected Projects</h2>
+      <div class="filters" role="toolbar" aria-label="Filter projects">
+        <button class="chip" aria-pressed="true" data-filter="all">All</button>
+        <button class="chip" aria-pressed="false" data-filter="2d">2D</button>
+        <button class="chip" aria-pressed="false" data-filter="3d">3D</button>
+        <button class="chip" aria-pressed="false" data-filter="animation">Animation</button>
+        <button class="chip" aria-pressed="false" data-filter="lead">Art Lead</button>
       </div>
 
-      <div class="card">
-        <img src="/assets/3d-model.jpg" alt="Sketchbook">
-        <div class="info">
-          <h3>SketchBook</h3>
-          <p>A look into my entire sketchbook(s).</p>
-        </div>
+      <div class="grid" id="grid">
+        <!-- CARD EXAMPLE 1: Character Pipeline -->
+        <a class="card" href="/projects/kove-character.html" data-tags="3d,animation,lead" data-modal
+           data-title="Kove — Character Pipeline"
+           data-role="Generalist (solo)"
+           data-tools="Blender 4.2, Substance 3D, Unity"
+           data-scope="Concept → Model → Texture → Rig → Animate"
+           data-summary="End-to-end pipeline for the antagonist Kove, including stylized outline shader and state-driven audio hooks."
+           data-hero="/assets/kove-thumb.webp">
+          <img class="thumb" src="/assets/kove-thumb.webp" alt="Kove character turnaround render" loading="lazy" />
+          <div class="meta">
+            <h3>Kove — Character Pipeline</h3>
+            <p>Concept → Model → Texture → Rig → Animate</p>
+            <div class="tags">
+              <span class="tag">3D</span><span class="tag">Animation</span><span class="tag">Case Study</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- CARD EXAMPLE 2: 2D Concept/Illustration -->
+        <a class="card" href="/projects/concepts.html" data-tags="2d"
+           data-modal
+           data-title="Character Concepts — Assorted"
+           data-role="Concept Artist"
+           data-tools="Photoshop, Procreate"
+           data-scope="Exploration → Sheets → Splash"
+           data-summary="Iterative ideation from thumbnails to polished sheets and a splash-key image."
+           data-hero="/assets/2d-concepts.webp">
+          <img class="thumb" src="/assets/2d-concepts.webp" alt="Assorted character concept sheets" loading="lazy" />
+          <div class="meta">
+            <h3>Character Concepts — Assorted</h3>
+            <p>Thumbnails → Sheets → Splash</p>
+            <div class="tags"><span class="tag">2D</span><span class="tag">Concept</span></div>
+          </div>
+        </a>
+
+        <!-- CARD EXAMPLE 3: Art Lead -->
+        <a class="card" href="/projects/art-lead.html" data-tags="lead"
+           data-modal
+           data-title="Art Lead — GIMM Works"
+           data-role="Art Lead"
+           data-tools="Jira, Trello, Figma, Unity"
+           data-scope="Team Management • Reviews • Pipelines"
+           data-summary="Led multi-project art delivery; built checklists, crit cycles, and asset QA gates."
+           data-hero="/assets/lead.webp">
+          <img class="thumb" src="/assets/lead.webp" alt="Team board and asset reviews montage" loading="lazy" />
+          <div class="meta">
+            <h3>Art Lead — GIMM Works</h3>
+            <p>Pipelines • Crit • Delivery</p>
+            <div class="tags"><span class="tag">Leadership</span><span class="tag">Process</span></div>
+          </div>
+        </a>
       </div>
-          
-      <div class="card">
-        <img src="" alt="Art Lead - GIMM Works">
-        <div class="info">
-          <h3>Art Lead - GIMM Works</h3>
-          <p>What I did as the Art Lead for the studio GIMM Works</p>
-        </div>
+    </section>
+
+    <section id="about" class="wrap">
+      <h2>About</h2>
+      <p style="max-width:760px; margin:0 auto; color:var(--ink-d)">
+        I’m a multidisciplinary artist who enjoys taking characters from napkin sketch to in‑engine. My sweet spot is
+        stylized characters and the whole pipeline: concepting, modeling, texturing, rigging and animation — with a focus on
+        clean topology and game‑ready assets. Recently, I’ve also led teams as an Art Lead, creating pipelines and reviews that keep quality high and delivery predictable.
+      </p>
+    </section>
+
+    <section id="contact" class="wrap">
+      <h2>Contact</h2>
+      <div class="contact-grid">
+        <a class="contact-btn" href="mailto:dawniemacart@gmail.com">Email</a>
+        <a class="contact-btn" href="https://www.linkedin.com/in/mackenzieburt/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="contact-btn" href="https://www.youtube.com/channel/UCrYfWHWdTGSg1qRS6irV3Tg" target="_blank" rel="noopener">YouTube</a>
+        <a class="contact-btn" href="https://x.com/Kovarina23" target="_blank" rel="noopener">X / Twitter</a>
       </div>
+    </section>
+  </main>
 
+  <footer>© <span id="y"></span> Mackenzie Burt</footer>
+
+  <!-- QUICK VIEW MODAL (populates from data- attrs) -->
+  <dialog id="quick">
+    <div class="modal-head">
+      <h3 id="m-title" style="font-family:'Playfair Display',serif; margin:0"></h3>
+      <button id="m-close" class="ghost" aria-label="Close">Close</button>
     </div>
-  </section>
-
-  <section id="contact" class="contact">
-    <h2>Get in Touch</h2>
-    <p>If you'd like to collaborate or commission work, let's connect!</p>
-    <h3>dawniemacart@gmail.com</h3>
-    <div class="contact-buttons">
-      <a href="mailto:dawniemacart@gmail.com" class="btn-email">Email Me</a>
-      <a href="https://www.linkedin.com/in/mackenzieburt/" class="btn-LinkedIn" target="_blank">LinkedIn</a>
-      <a href="https://www.youtube.com/channel/UCrYfWHWdTGSg1qRS6irV3Tg" class="btn-Youtube" target="_blank">Youtube</a>
-      <a href="https://x.com/Kovarina23" class="btn-X" target="_blank">X</a>
+    <div class="modal-grid">
+      <img id="m-hero" alt="Project preview" />
+      <div>
+        <div class="kv"><div><strong>Role:</strong> <span id="m-role"></span></div>
+          <div><strong>Tools:</strong> <span id="m-tools"></span></div>
+          <div><strong>Scope:</strong> <span id="m-scope"></span></div>
+        </div>
+        <p id="m-summary" style="margin-top:1rem; color:var(--ink-d)"></p>
+      </div>
     </div>
-  </section>
+    <div class="modal-actions">
+      <a id="m-case" class="btn" href="#">View full case study</a>
+      <button id="m-dismiss" class="ghost">Keep browsing</button>
+    </div>
+  </dialog>
 
-  <footer>
-    &copy; 2025 Mackenzie Burt. All rights reserved.
-  </footer>
+  <script>
+    // footer year
+    document.getElementById('y').textContent = new Date().getFullYear();
 
+    // filters
+    const chips = document.querySelectorAll('.chip');
+    const grid = document.getElementById('grid');
+    chips.forEach(ch => ch.addEventListener('click', () => {
+      chips.forEach(c=>c.setAttribute('aria-pressed','false'));
+      ch.setAttribute('aria-pressed','true');
+      const f = ch.dataset.filter;
+      [...grid.children].forEach(card => {
+        const tags = card.dataset.tags || '';
+        card.style.display = (f==='all' || tags.includes(f)) ? '' : 'none';
+      });
+    }));
+
+    // quick-view modal
+    const dlg = document.getElementById('quick');
+    const m = {
+      title: document.getElementById('m-title'),
+      role: document.getElementById('m-role'),
+      tools: document.getElementById('m-tools'),
+      scope: document.getElementById('m-scope'),
+      summary: document.getElementById('m-summary'),
+      hero: document.getElementById('m-hero'),
+      case: document.getElementById('m-case')
+    };
+
+    grid.addEventListener('click', (e) => {
+      const a = e.target.closest('a.card');
+      if(!a) return;
+      // Populate from data-* attributes
+      m.title.textContent = a.dataset.title || a.querySelector('h3')?.textContent || '';
+      m.role.textContent = a.dataset.role || '';
+      m.tools.textContent = a.dataset.tools || '';
+      m.scope.textContent = a.dataset.scope || '';
+      m.summary.textContent = a.dataset.summary || '';
+      m.hero.src = a.dataset.hero || a.querySelector('img.thumb')?.src || '';
+      m.case.href = a.href;
+      // Open as quick view (prevent immediate nav)
+      e.preventDefault();
+      dlg.showModal();
+    });
+
+    document.getElementById('m-close').onclick = () => dlg.close();
+    document.getElementById('m-dismiss').onclick = () => dlg.close();
+
+    // ESC to close
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && dlg.open) dlg.close(); });
+  </script>
 </body>
 </html>
