@@ -173,39 +173,66 @@
     .hero::before{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(18,18,18,.55), rgba(18,18,18,.65)); pointer-events:none; z-index:0 }
     .hero > div{ position:relative; z-index:1; }
 
-    /* Button/Control FX (clean, single source) */
+    /* Button/Control FX (enhanced) */
     .btn, .contact-btn, .ghost, .chip{
-      position:relative; overflow:hidden;
-      transition:transform .15s ease, box-shadow .25s ease, border-color .2s ease, background .2s ease, color .2s ease;
+      position:relative; overflow:hidden; display:inline-flex; align-items:center; justify-content:center;
+      transition:transform .18s cubic-bezier(.2,.9,.2,1), box-shadow .35s ease, border-color .25s ease, background .25s ease, color .2s ease;
       will-change:transform;
     }
-    .btn:hover, .contact-btn:hover, .ghost:hover{ transform:translateY(-2px); box-shadow:0 12px 28px rgba(0,0,0,.35), 0 0 0 1px rgba(255,255,255,.06) inset; }
-    .btn:active, .contact-btn:active, .ghost:active, .chip:active{ transform:translateY(0) scale(.98); }
+    .btn{ transform:translateZ(0); }
+    .btn:hover, .contact-btn:hover, .ghost:hover{ transform:translateY(-4px) scale(1.02); box-shadow:0 18px 40px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.04) inset; }
+    .btn:active, .contact-btn:active, .ghost:active, .chip:active{ transform:translateY(0) scale(.99); }
 
-    /* Sheen sweep on solid .btn */
+    /* Soft glow behind primary buttons */
+    .btn::before{
+      content:""; position:absolute; inset:-6px; border-radius:999px; z-index:-2;
+      background:radial-gradient(120% 60% at 10% 10%, rgba(255,111,97,.14), transparent 25%), radial-gradient(80% 40% at 90% 80%, rgba(255,200,160,.06), transparent 30%);
+      filter:blur(10px); opacity:0; transition:opacity .35s ease, transform .35s ease;
+      transform:scale(.96);
+    }
+    .btn:hover::before{ opacity:1; transform:scale(1); }
+
+    /* Dynamic rotating halo for important buttons (subtle) */
     .btn::after{
-      content:""; position:absolute; inset:auto -160% -160% auto;
-      width:60%; height:320%;
-      background:linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.18) 35%, rgba(255,255,255,0) 70%);
-      transform:translateX(-120%) rotate(20deg); transition:transform .55s ease; pointer-events:none;
+      content:""; position:absolute; inset:-3px; border-radius:999px; z-index:-1; pointer-events:none;
+      background:conic-gradient(from 120deg, rgba(255,111,97,.12), rgba(255,200,160,.06), rgba(255,111,97,.12));
+      filter:blur(10px) saturate(.9);
+      opacity:0; transform:rotate(0deg);
+      transition:opacity .35s ease, transform 6s linear;
     }
-    .btn:hover::after{ transform:translateX(150%) rotate(20deg); }
+    .btn:hover::after{ opacity:.6; transform:rotate(30deg); }
 
-    /* Contact buttons: soft neon border shimmer */
-    .contact-btn{ background:#161616; border:1px solid #2a2a2a; color:var(--ink); }
-    .contact-btn::before{
-      content:""; position:absolute; inset:-2px; border-radius:999px; z-index:-1;
-      background:conic-gradient(from 0deg, rgba(255,111,97,.75), rgba(255,111,97,.15), rgba(255,111,97,.75));
-      filter:blur(8px); opacity:0; transition:opacity .25s ease;
+  /* Sheen sweep (keep, but more contrast and eased) */
+  .btn .sheen, .btn > .sheen{ display:none; }
+  .btn::marker{ display:none }
+  /* Keep previous sheen for compatibility (uses translateX) */
+  .btn ._sheen_helper{ display:none }
+  /* Legacy sheen preserved using a pseudo element on the inner content for consistent movement (no-op placeholder removed) */
+
+    /* Contact buttons: animated rotating border on hover */
+    .contact-btn{ background:#161616; border:1px solid #2a2a2a; color:var(--ink); border-radius:999px; }
+    .contact-btn::after{
+      content:""; position:absolute; inset:-3px; border-radius:999px; z-index:-1;
+      background:conic-gradient(from 0deg, rgba(255,111,97,.55), rgba(255,111,97,.08), rgba(255,111,97,.55));
+      filter:blur(10px);
+      opacity:0; transform:rotate(0deg);
+      transition:opacity .3s ease, transform 8s linear;
     }
-    .contact-btn:hover::before{ opacity:.55; }
+    .contact-btn:hover::after{ opacity:.55; transform:rotate(70deg); }
 
     /* Chips: stronger active look */
-    .chip[aria-pressed="true"]{ background:#202020; border-color:#454545; box-shadow:0 0 0 2px rgba(255,111,97,.25) inset; color:var(--ink); }
+    .chip{ transition: transform .18s cubic-bezier(.2,.9,.3,1), background .18s ease, border-color .18s ease; }
+    .chip[aria-pressed="true"]{ background:#202020; border-color:#454545; box-shadow:0 0 0 2px rgba(255,111,97,.25) inset; color:var(--ink); transform:translateY(-2px) scale(1.02); }
 
-    /* Click ripple (optional, triggered via JS if desired) */
-    .ripple{ position:absolute; border-radius:50%; transform:scale(0); background:rgba(255,255,255,.25); animation:ripple .6s ease-out; pointer-events:none; }
+    /* Click ripple (created with JS) */
+    .ripple{ position:absolute; border-radius:50%; transform:scale(0); background:rgba(255,255,255,.16); animation:ripple .6s ease-out; pointer-events:none; }
     @keyframes ripple{ to{ transform:scale(2.6); opacity:0; } }
+
+    /* Reduce motion override */
+    @media (prefers-reduced-motion: reduce){
+      .btn:hover, .contact-btn:hover, .ghost:hover{ transform:none; box-shadow:none; }
+      .btn::before, .btn::after, .contact-btn::after{ transition:none; animation:none; }
+    }
   </style>
 </head>
 <body>
@@ -436,6 +463,24 @@
 
     // ESC to close
     document.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && dlg.open) dlg.close(); });
+
+    /* Ripple effect: create ripple span on click for .btn and .contact-btn */
+    function createRipple(e){
+      const btn = e.currentTarget;
+      const rect = btn.getBoundingClientRect();
+      const r = document.createElement('span');
+      r.className = 'ripple';
+      const size = Math.max(rect.width, rect.height) * 1.2;
+      r.style.width = r.style.height = size + 'px';
+      r.style.left = (e.clientX - rect.left - size/2) + 'px';
+      r.style.top = (e.clientY - rect.top - size/2) + 'px';
+      btn.appendChild(r);
+      r.addEventListener('animationend', ()=> r.remove());
+    }
+
+    document.querySelectorAll('.btn, .contact-btn').forEach(b=>{
+      b.addEventListener('click', createRipple);
+    });
   </script>
 </body>
 </html>
