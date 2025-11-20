@@ -16,39 +16,55 @@
     html{scroll-behavior:smooth}
     body{margin:0; font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,sans-serif; background:var(--bg); color:var(--ink); line-height:1.6}
     a{color:inherit; text-decoration:none}
-    header{position:sticky; top:0; z-index:10; backdrop-filter: blur(10px); background:rgba(18,18,18,.9); border-bottom:1px solid #222}
+    
+    /* Header animations */
+    header{position:sticky; top:0; z-index:10; backdrop-filter: blur(10px); background:rgba(18,18,18,.9); border-bottom:1px solid #222; animation: slideDown 0.8s ease-out;}
     .wrap{max-width:1160px; margin:0 auto; padding:1rem 1.25rem}
     .nav{display:flex; align-items:center; justify-content:space-between}
-    .logo{font-family:'Playfair Display',serif; font-weight:700; font-size:1.5rem; letter-spacing:.5px}
+    .logo{font-family:'Playfair Display',serif; font-weight:700; font-size:1.5rem; letter-spacing:.5px; animation: fadeIn 1s ease-out 0.2s both;}
     .nav ul{display:flex; list-style:none; gap:1rem; padding:0; margin:0}
-    .nav a:hover,.nav a:focus{color:var(--accent)}
+    .nav li{animation: fadeIn 0.8s ease-out calc(0.4s + var(--delay, 0s)) both;}
+    .nav a{transition: all 0.3s ease; position: relative;}
+    .nav a:hover,.nav a:focus{color:var(--accent); transform: translateY(-2px);}
+    .nav a::after{content:''; position:absolute; bottom:-5px; left:0; width:0; height:2px; background:var(--accent); transition:width 0.3s ease;}
+    .nav a:hover::after{width:100%;}
 
-    .hero{min-height:70vh; display:grid; place-items:center; text-align:center; padding:5rem 1.25rem; background:linear-gradient(135deg,#1e1e1e,#2b2b2b)}
-    .hero h1{font-family:'Playfair Display',serif; font-size:clamp(2.2rem,6vw,4rem); margin:.25rem 0}
-    .hero .subtitle{color:var(--accent); opacity:.95}
-    .btn{display:inline-block; margin-top:1.25rem; padding:.8rem 1.4rem; border-radius:999px; background:var(--accent); color:#000; font-weight:700}
+    /* Hero animations */
+    .hero{min-height:70vh; display:grid; place-items:center; text-align:center; padding:5rem 1.25rem; background:linear-gradient(135deg,#1e1e1e,#2b2b2b); position:relative; overflow:hidden;}
+    .hero h1{font-family:'Playfair Display',serif; font-size:clamp(2.2rem,6vw,4rem); margin:.25rem 0; animation: slideUp 1s ease-out 0.5s both;}
+    .hero .subtitle{color:var(--accent); opacity:.95; animation: slideUp 1s ease-out 0.7s both;}
+    .btn{display:inline-block; margin-top:1.25rem; padding:.8rem 1.4rem; border-radius:999px; background:var(--accent); color:#000; font-weight:700; animation: slideUp 1s ease-out 0.9s both;}
     .btn:focus-visible{outline:3px solid #fff; outline-offset:3px}
 
-    section{padding:4rem 1.25rem}
-    h2{font-family:'Playfair Display',serif; font-size:clamp(1.6rem,3.5vw,2.4rem); margin:0 0 1.25rem; color:var(--accent); text-align:center}
+    /* Section animations */
+    section{padding:4rem 1.25rem; opacity:0; animation: fadeInUp 0.8s ease-out forwards;}
+    section:nth-child(2){animation-delay: 0.2s;}
+    section:nth-child(3){animation-delay: 0.4s;}
+    section:nth-child(4){animation-delay: 0.6s;}
+    
+    h2{font-family:'Playfair Display',serif; font-size:clamp(1.6rem,3.5vw,2.4rem); margin:0 0 1.25rem; color:var(--accent); text-align:center; animation: slideIn 0.8s ease-out 0.3s both;}
 
     /* FILTERS */
     .filters{display:flex; gap:.5rem; flex-wrap:wrap; justify-content:center; margin:1rem 0 2rem}
-    .chip{border:1px solid #2a2a2a; padding:.35rem .75rem; border-radius:999px; font-size:.9rem; cursor:pointer; user-select:none}
-    .chip[aria-pressed="true"], .chip:hover{background:#1f1f1f; border-color:#3a3a3a}
+    .chip{border:1px solid #2a2a2a; padding:.35rem .75rem; border-radius:999px; font-size:.9rem; cursor:pointer; user-select:none; opacity:0; animation: fadeIn 0.6s ease-out calc(0.8s + var(--delay, 0s)) both;}
+    .chip[aria-pressed="true"], .chip:hover{background:#1f1f1f; border-color:#3a3a3a; transform:scale(1.05);}
 
     /* GRID */
     .grid{display:grid; gap:1.5rem; grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-    .card{display:block; background:#1a1a1a; border:1px solid #232323; border-radius:14px; overflow:hidden; transition:transform .2s ease, box-shadow .2s ease}
-    .card:hover, .card:focus-visible{transform:translateY(-4px); box-shadow:0 12px 28px rgba(0,0,0,.45)}
-    .thumb{aspect-ratio:16/10; width:100%; object-fit:cover; background:#0c0c0c}
+    .card{display:block; background:#1a1a1a; border:1px solid #232323; border-radius:14px; overflow:hidden; transition:transform .3s ease, box-shadow .3s ease; opacity:0; animation: cardSlideUp 0.8s ease-out calc(1s + var(--delay, 0s)) both;}
+    .card:hover, .card:focus-visible{transform:translateY(-8px) scale(1.02); box-shadow:0 20px 40px rgba(0,0,0,.6);}
+    .thumb{aspect-ratio:16/10; width:100%; object-fit:cover; background:#0c0c0c; transition: transform 0.3s ease;}
+    .card:hover .thumb{transform: scale(1.05);}
     .meta{padding:1rem}
-    .meta h3{margin:.25rem 0 .5rem; font-family:'Playfair Display',serif; font-size:1.2rem}
+    .meta h3{margin:.25rem 0 .5rem; font-family:'Playfair Display',serif; font-size:1.2rem; transition: color 0.3s ease;}
+    .card:hover .meta h3{color: var(--accent);}
     .tags{display:flex; flex-wrap:wrap; gap:.4rem; margin-top:.5rem}
-    .tag{font-size:.75rem; padding:.25rem .5rem; border-radius:6px; background:#202020; color:var(--ink-d); border:1px solid #2a2a2a}
+    .tag{font-size:.75rem; padding:.25rem .5rem; border-radius:6px; background:#202020; color:var(--ink-d); border:1px solid #2a2a2a; transition: all 0.3s ease;}
+    .card:hover .tag{background: #2a2a2a; border-color: #3a3a3a;}
 
     /* QUICK-VIEW MODAL */
-    dialog{border:none; border-radius:16px; padding:0; width:min(920px,96vw); color:var(--ink); background:#141414}
+    dialog{border:none; border-radius:16px; padding:0; width:min(920px,96vw); color:var(--ink); background:#141414; animation: modalSlideIn 0.3s ease-out;}
+    
     .modal-head{display:flex; justify-content:space-between; align-items:center; padding:1rem 1.25rem; border-bottom:1px solid #242424}
     .modal-grid{display:grid; grid-template-columns:1.2fr .9fr; gap:1rem; padding:1rem 1.25rem}
     .modal-grid img{width:100%; height:auto; border-radius:12px}
@@ -61,13 +77,151 @@
 
     /* CONTACT */
     .contact-grid{display:grid; gap:1rem; justify-content:center; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); max-width:760px; margin:0 auto}
-    .contact-btn{display:block; text-align:center; border:1px solid #2a2a2a; padding:.9rem 1rem; border-radius:999px}
+    .contact-btn{display:block; text-align:center; border:1px solid #2a2a2a; padding:.9rem 1rem; border-radius:999px; opacity:0; animation: fadeIn 0.6s ease-out calc(1.2s + var(--delay, 0s)) both;}
 
-    footer{padding:2rem 1rem; text-align:center; color:#9a9a9a; border-top:1px solid #202020}
+    footer{padding:2rem 1rem; text-align:center; color:#9a9a9a; border-top:1px solid #202020; animation: fadeIn 1s ease-out 1.5s both;}
+
+    /* === KEYFRAME ANIMATIONS === */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes cardSlideUp {
+      from { opacity: 0; transform: translateY(40px) scale(0.95); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes modalSlideIn {
+      from { opacity: 0; transform: scale(0.9) translateY(-20px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
 
     /* a11y / motion */
     @media (prefers-reduced-motion: reduce){
       *{animation:none!important; transition:none!important}
+      /* === Project badge colors === */
+:root{
+  --badge-personal:#a855f7;   /* violet */
+  --badge-university:#38bdf8; /* sky */
+  --badge-studio:#f59e0b;     /* amber */
+}
+
+/* Corner badge in modal header */
+.badge{
+  display:inline-flex; align-items:center; gap:.4rem;
+  padding:.35rem .6rem; border-radius:999px;
+  font-weight:700; font-size:.72rem; letter-spacing:.02em; text-transform:uppercase;
+  border:1px solid transparent; position:relative; isolation:isolate;
+}
+.badge-personal{ color:var(--badge-personal); background:color-mix(in oklab, var(--badge-personal) 18%, #141414); border-color:color-mix(in oklab, var(--badge-personal) 45%, #141414); }
+.badge-university{ color:var(--badge-university); background:color-mix(in oklab, var(--badge-university) 18%, #141414); border-color:color-mix(in oklab, var(--badge-university) 45%, #141414); }
+.badge-studio{ color:var(--badge-studio); background:color-mix(in oklab, var(--badge-studio) 18%, #141414); border-color:color-mix(in oklab, var(--badge-studio) 45%, #141414); }
+.badge::after{
+  content:""; position:absolute; inset:-2px; border-radius:inherit; z-index:-1;
+  background:conic-gradient(from 0deg, transparent, currentColor 40%, transparent 80%);
+  filter:blur(8px); opacity:.25; transition:opacity .25s ease;
+}
+.badge:hover::after{ opacity:.45; }
+
+/* Put room for badge + close button */
+.modal-head{ gap:.75rem; }
+
+/* === Hero video banner === */
+.hero{ position:relative; overflow:hidden; }
+.hero-video{
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; opacity:.5; filter:saturate(.95) contrast(1.05);
+}
+.hero::before{ /* subtle dark overlay for text legibility */
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(18,18,18,.55), rgba(18,18,18,.65));
+}
+.hero > div{ position:relative; z-index:1; }
+
+/* Disable motion-heavy media for reduced motion users */
+@media (prefers-reduced-motion: reduce){
+  .hero-video{ display:none !important; }
+}
+
+/* === Button FX (works on .btn, .contact-btn, .ghost, .chip) === */
+.btn, .contact-btn, .ghost, .chip{
+  position:relative; overflow:hidden;
+  transition:transform .15s ease, box-shadow .25s ease, border-color .2s ease,
+             background .2s ease, color .2s ease;
+  will-change:transform;
+}
+.btn:hover, .contact-btn:hover, .ghost:hover{ transform:translateY(-2px);
+  box-shadow:0 12px 28px rgba(0,0,0,.35), 0 0 0 1px rgba(255,255,255,.06) inset;
+}
+.btn:active, .contact-btn:active, .ghost:active, .chip:active{ transform:translateY(0) scale(.98); }
+
+/* Sheen sweep on solid .btn */
+.btn::after{
+  content:""; position:absolute; inset:auto -160% -160% auto;
+  width:60%; height:320%;
+  background:linear-gradient(120deg, rgba(255,255,255,0) 0%,
+    rgba(255,255,255,.18) 35%, rgba(255,255,255,0) 70%);
+  transform:translateX(-120%) rotate(20deg); transition:transform .55s ease; pointer-events:none;
+}
+.btn:hover::after{ transform:translateX(150%) rotate(20deg); }
+
+/* Contact buttons: soft neon border shimmer */
+.contact-btn{ background:#161616; border:1px solid #2a2a2a; color:var(--ink); }
+.contact-btn::before{
+  content:""; position:absolute; inset:-2px; border-radius:999px; z-index:-1;
+  background:conic-gradient(from 0deg, rgba(255,111,97,.75), rgba(255,111,97,.15), rgba(255,111,97,.75));
+  filter:blur(8px); opacity:0; transition:opacity .25s ease;
+}
+.contact-btn:hover::before{ opacity:.55; }
+
+/* Chips: stronger active look */
+.chip[aria-pressed="true"]{
+  background:#202020; border-color:#454545;
+  box-shadow:0 0 0 2px rgba(255,111,97,.25) inset; color:var(--ink);
+}
+
+/* Click ripple */
+.ripple{
+  position:absolute; border-radius:50%; transform:scale(0);
+  background:rgba(255,255,255,.25); animation:ripple .6s ease-out; pointer-events:none;
+}
+@keyframes ripple{ to{ transform:scale(2.6); opacity:0; } }
+
+@media (prefers-reduced-motion: reduce){
+  .btn::after, .ripple{ display:none !important; }
+}
+.hero{ position:relative; overflow:hidden; }
+.hero-video{
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; opacity:.5; filter:saturate(.95) contrast(1.05);
+}
+.hero::before{ /* subtle dark overlay for text legibility */
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(18,18,18,.55), rgba(18,18,18,.65));
+}
+.hero > div{ position:relative; z-index:1; }
+
     }
   </style>
 </head>
@@ -76,9 +230,9 @@
     <div class="wrap nav" role="navigation" aria-label="Primary">
       <a class="logo" href="#top" aria-label="Home">MB</a>
       <ul>
-        <li><a href="#work">Work</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li style="--delay: 0s;"><a href="#work">Work</a></li>
+        <li style="--delay: 0.1s;"><a href="#about">About</a></li>
+        <li style="--delay: 0.2s;"><a href="#contact">Contact</a></li>
       </ul>
     </div>
   </header>
@@ -86,6 +240,10 @@
   <main id="top">
     <section class="hero">
       <div>
+    <img class="hero-video"
+     src="Images and Videos/Portfolio_Ready/PortBanner2025.png"
+     alt="Portfolio banner">
+
         <h1>Mackenzie Burt</h1>
         <p class="subtitle">2D/3D Generalist • Characters • Concept → Model → Texture → Rig → Animate • Art Lead</p>
         <a href="#work" class="btn">View My Work</a>
@@ -95,28 +253,33 @@
     <section id="work" class="wrap">
       <h2>Selected Projects</h2>
       <div class="filters" role="toolbar" aria-label="Filter projects">
-        <button class="chip" aria-pressed="true" data-filter="all">All</button>
-        <button class="chip" aria-pressed="false" data-filter="2d">2D</button>
-        <button class="chip" aria-pressed="false" data-filter="3d">3D</button>
-        <button class="chip" aria-pressed="false" data-filter="animation">Animation</button>
-        <button class="chip" aria-pressed="false" data-filter="lead">Art Lead</button>
+        <button class="chip" aria-pressed="true" data-filter="all" style="--delay: 0s;">All</button>
+        <button class="chip" aria-pressed="false" data-filter="2d" style="--delay: 0.1s;">2D</button>
+        <button class="chip" aria-pressed="false" data-filter="3d" style="--delay: 0.2s;">3D</button>
+        <button class="chip" aria-pressed="false" data-filter="lead" style="--delay: 0.3s;">Art Lead</button>
+        <button class="chip" aria-pressed="false" data-filter="animation" style="--delay: 0.4s;">Animation</button>
+        <button class="chip" aria-pressed="false" data-filter="ui" style="--delay: 0.5s;">UI/VFX</button>
+        <button class="chip" aria-pressed="false" data-filter="technical-artist" style="--delay: 0.6s;">Technical Artist/ Dev</button>
       </div>
+      
 
       <div class="grid" id="grid">
-        <!-- CARD EXAMPLE 1: Character Pipeline -->
-        <a class="card" href="/projects/kove-character.html" data-tags="3d,animation,lead" data-modal
-           data-title="Kove — Character Pipeline"
-           data-role="Generalist (solo)"
-           data-tools="Blender 4.2, Substance 3D, Unity"
-           data-scope="Concept → Model → Texture → Rig → Animate"
-           data-summary="End-to-end pipeline for the antagonist Kove, including stylized outline shader and state-driven audio hooks."
-           data-hero="/assets/kove-thumb.webp">
-          <img class="thumb" src="/assets/kove-thumb.webp" alt="Kove character turnaround render" loading="lazy" />
+        <!-- CARD 1: Character Pipeline -->
+        <a class="card" href="/projects/characterpipeline.html" data-tags="3d,animation,lead" data-modal
+           data-title="Character Pipeline"
+           data-role="Generalist Artist"
+           data-tools="Adobe Photoshop, CSP,Blender, Substance 3D, Unreal Engine"
+           data-scope="Concept → Ref Sheet → Model → Texture → Rig → Animations → Splash Art → In-Engine"
+           data-summary="End-to-end pipeline for 4 characters, including implementation into Multiplayer Unreal Engine Game."
+            data-project="University"
+           data-hero="/assets/character-pipeline.webp"
+           style="--delay: 0s;">
+          <img class="thumb" src="/Images and Videos/" alt="CharacterPipeline" loading="lazy" />
           <div class="meta">
-            <h3>Kove — Character Pipeline</h3>
-            <p>Concept → Model → Texture → Rig → Animate</p>
+            <h3>Character Pipeline</h3>
+            <p>Concept → Ref Sheet →Model → Texture → Rig → Animate → Splash Art → In-Engine</p>
             <div class="tags">
-              <span class="tag">3D</span><span class="tag">Animation</span><span class="tag">Case Study</span>
+              <span class="tag">3D</span><span class="tag">2D</span><span class="tag">Animation</span><span class="tag">Case Study</span>
             </div>
           </div>
         </a>
@@ -124,13 +287,33 @@
         <!-- CARD EXAMPLE 2: 2D Concept/Illustration -->
         <a class="card" href="/projects/concepts.html" data-tags="2d"
            data-modal
-           data-title="Character Concepts — Assorted"
+           data-title="Environmental/World Concepts — Assorted"
            data-role="Concept Artist"
-           data-tools="Photoshop, Procreate"
+           data-tools="Photoshop, Clip Studio Paint, After Effects, Blender"
+           data-scope="Exploration → Sheets → Splash"
+           data-summary="Iterative ideation from thumbnails"
+            data-project="Personal, University"
+           data-hero="/assets/2d-environmentconcepts.webp"
+           style="--delay: 0.2s;">
+          <img class="thumb" src="Images and Videos/2D Art Card Thumbnail.png" alt="Assorted character concept sheets" loading="lazy" />
+          <div class="meta">
+            <h3>Environmental Concepts — Assorted</h3>
+            <p>Thumbnails → Sheets → Cleanup</p>
+            <div class="tags"><span class="tag">2D</span><span class="tag">Concept</span></div>
+          </div>
+        </a>
+
+            <a class="card" href="/projects/concepts.html" data-tags="2d"
+           data-modal
+           data-title="Environmental Concepts — Assorted"
+           data-role="Concept Artist"
+           data-tools="Photoshop, Clip Studio Paint, After Effects"
            data-scope="Exploration → Sheets → Splash"
            data-summary="Iterative ideation from thumbnails to polished sheets and a splash-key image."
-           data-hero="/assets/2d-concepts.webp">
-          <img class="thumb" src="/assets/2d-concepts.webp" alt="Assorted character concept sheets" loading="lazy" />
+            data-project="Personal"
+           data-hero="/assets/2d-concepts.webp"
+           style="--delay: 0.4s;">
+          <img class="thumb" src="/Images and Videos/" alt="Assorted character concept sheets" loading="lazy" />
           <div class="meta">
             <h3>Character Concepts — Assorted</h3>
             <p>Thumbnails → Sheets → Splash</p>
@@ -141,17 +324,37 @@
         <!-- CARD EXAMPLE 3: Art Lead -->
         <a class="card" href="/projects/art-lead.html" data-tags="lead"
            data-modal
-           data-title="Art Lead — GIMM Works"
+           data-title="Art Lead/Director — GIMM Works"
            data-role="Art Lead"
-           data-tools="Jira, Trello, Figma, Unity"
+           data-tools="Figma, Unity, Github Boards, Trello"
            data-scope="Team Management • Reviews • Pipelines"
-           data-summary="Led multi-project art delivery; built checklists, crit cycles, and asset QA gates."
-           data-hero="/assets/lead.webp">
-          <img class="thumb" src="/assets/lead.webp" alt="Team board and asset reviews montage" loading="lazy" />
+           data-summary="Led multi-project art delivery;"
+            data-project="GIMM Works"
+           data-hero="/assets/lead.webp"
+           style="--delay: 0.6s;">
+          <img class="thumb" src="/Images and Videos/" alt="Team board and asset reviews montage" loading="lazy" />
           <div class="meta">
             <h3>Art Lead — GIMM Works</h3>
-            <p>Pipelines • Crit • Delivery</p>
+            <p>Pipelines • Delivery • Management</p>
             <div class="tags"><span class="tag">Leadership</span><span class="tag">Process</span></div>
+          </div>
+          
+        </a>
+                 <a class="card" href=".html" data-tags=".."
+           data-modal
+           data-title=".."
+           data-role=".."
+           data-tools=".."
+           data-scope=".."
+           data-summary=".."
+          data-project="" 
+           data-hero="/assets/2d-concepts.webp"
+           style="--delay: 0.8s;">
+          <img class="thumb" src="/Images and Videos/" alt=".." loading="lazy" />
+          <div class="meta">
+            <h3>...</h3>
+            <p>...</p>
+            <div class="tags"><span class="tag">..</span><span class="tag">..</span></div>
           </div>
         </a>
       </div>
@@ -160,19 +363,19 @@
     <section id="about" class="wrap">
       <h2>About</h2>
       <p style="max-width:760px; margin:0 auto; color:var(--ink-d)">
-        I’m a multidisciplinary artist who enjoys taking characters from napkin sketch to in‑engine. My sweet spot is
+        I'm a multidisciplinary artist who enjoys taking characters from napkin sketch to in‑engine. My sweet spot is
         stylized characters and the whole pipeline: concepting, modeling, texturing, rigging and animation — with a focus on
-        clean topology and game‑ready assets. Recently, I’ve also led teams as an Art Lead, creating pipelines and reviews that keep quality high and delivery predictable.
+        clean topology and game‑ready assets. Recently, I've also led teams as an Art Lead, creating pipelines and reviews that keep quality high and delivery predictable.
       </p>
     </section>
 
     <section id="contact" class="wrap">
       <h2>Contact</h2>
       <div class="contact-grid">
-        <a class="contact-btn" href="mailto:dawniemacart@gmail.com">Email</a>
-        <a class="contact-btn" href="https://www.linkedin.com/in/mackenzieburt/" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="contact-btn" href="https://www.youtube.com/channel/UCrYfWHWdTGSg1qRS6irV3Tg" target="_blank" rel="noopener">YouTube</a>
-        <a class="contact-btn" href="https://x.com/Kovarina23" target="_blank" rel="noopener">X / Twitter</a>
+        <a class="contact-btn" href="mailto:dawniemacart@gmail.com" style="--delay: 0s;">Email</a>
+        <a class="contact-btn" href="https://www.linkedin.com/in/mackenzieburt/" target="_blank" rel="noopener" style="--delay: 0.1s;">LinkedIn</a>
+        <a class="contact-btn" href="https://www.youtube.com/channel/UCrYfWHWdTGSg1qRS6irV3Tg" target="_blank" rel="noopener" style="--delay: 0.2s;">YouTube</a>
+        <a class="contact-btn" href="https://x.com/Kovarina23" target="_blank" rel="noopener" style="--delay: 0.3s;">X / Twitter</a>
       </div>
     </section>
   </main>
@@ -189,6 +392,7 @@
       <img id="m-hero" alt="Project preview" />
       <div>
         <div class="kv"><div><strong>Role:</strong> <span id="m-role"></span></div>
+        <span id="m-badge" class="badge" aria-label="Project type" hidden></span>
           <div><strong>Tools:</strong> <span id="m-tools"></span></div>
           <div><strong>Scope:</strong> <span id="m-scope"></span></div>
         </div>
@@ -206,6 +410,7 @@
     document.getElementById('y').textContent = new Date().getFullYear();
 
     // filters
+    
     const chips = document.querySelectorAll('.chip');
     const grid = document.getElementById('grid');
     chips.forEach(ch => ch.addEventListener('click', () => {
