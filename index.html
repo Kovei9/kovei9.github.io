@@ -140,112 +140,72 @@
       to { opacity: 1; transform: scale(1) translateY(0); }
     }
 
-    /* a11y / motion */
+    /* a11y / motion and final UI flourishes */
     @media (prefers-reduced-motion: reduce){
+      /* Respect users who opt out of animation */
       *{animation:none!important; transition:none!important}
-      /* === Project badge colors === */
-:root{
-  --badge-personal:#a855f7;   /* violet */
-  --badge-university:#38bdf8; /* sky */
-  --badge-studio:#f59e0b;     /* amber */
-}
-
-/* Corner badge in modal header */
-.badge{
-  display:inline-flex; align-items:center; gap:.4rem;
-  padding:.35rem .6rem; border-radius:999px;
-  font-weight:700; font-size:.72rem; letter-spacing:.02em; text-transform:uppercase;
-  border:1px solid transparent; position:relative; isolation:isolate;
-}
-.badge-personal{ color:var(--badge-personal); background:color-mix(in oklab, var(--badge-personal) 18%, #141414); border-color:color-mix(in oklab, var(--badge-personal) 45%, #141414); }
-.badge-university{ color:var(--badge-university); background:color-mix(in oklab, var(--badge-university) 18%, #141414); border-color:color-mix(in oklab, var(--badge-university) 45%, #141414); }
-.badge-studio{ color:var(--badge-studio); background:color-mix(in oklab, var(--badge-studio) 18%, #141414); border-color:color-mix(in oklab, var(--badge-studio) 45%, #141414); }
-.badge::after{
-  content:""; position:absolute; inset:-2px; border-radius:inherit; z-index:-1;
-  background:conic-gradient(from 0deg, transparent, currentColor 40%, transparent 80%);
-  filter:blur(8px); opacity:.25; transition:opacity .25s ease;
-}
-.badge:hover::after{ opacity:.45; }
-
-/* Put room for badge + close button */
-.modal-head{ gap:.75rem; }
-
-/* === Hero video banner === */
-.hero{ position:relative; overflow:hidden; }
-.hero-video{
-  position:absolute; inset:0; width:100%; height:100%;
-  object-fit:cover; opacity:.5; filter:saturate(.95) contrast(1.05);
-}
-.hero::before{ /* subtle dark overlay for text legibility */
-  content:""; position:absolute; inset:0;
-  background:linear-gradient(180deg, rgba(18,18,18,.55), rgba(18,18,18,.65));
-}
-.hero > div{ position:relative; z-index:1; }
-
-/* Disable motion-heavy media for reduced motion users */
-@media (prefers-reduced-motion: reduce){
-  .hero-video{ display:none !important; }
-}
-
-/* === Button FX (works on .btn, .contact-btn, .ghost, .chip) === */
-.btn, .contact-btn, .ghost, .chip{
-  position:relative; overflow:hidden;
-  transition:transform .15s ease, box-shadow .25s ease, border-color .2s ease,
-             background .2s ease, color .2s ease;
-  will-change:transform;
-}
-.btn:hover, .contact-btn:hover, .ghost:hover{ transform:translateY(-2px);
-  box-shadow:0 12px 28px rgba(0,0,0,.35), 0 0 0 1px rgba(255,255,255,.06) inset;
-}
-.btn:active, .contact-btn:active, .ghost:active, .chip:active{ transform:translateY(0) scale(.98); }
-
-/* Sheen sweep on solid .btn */
-.btn::after{
-  content:""; position:absolute; inset:auto -160% -160% auto;
-  width:60%; height:320%;
-  background:linear-gradient(120deg, rgba(255,255,255,0) 0%,
-    rgba(255,255,255,.18) 35%, rgba(255,255,255,0) 70%);
-  transform:translateX(-120%) rotate(20deg); transition:transform .55s ease; pointer-events:none;
-}
-.btn:hover::after{ transform:translateX(150%) rotate(20deg); }
-
-/* Contact buttons: soft neon border shimmer */
-.contact-btn{ background:#161616; border:1px solid #2a2a2a; color:var(--ink); }
-.contact-btn::before{
-  content:""; position:absolute; inset:-2px; border-radius:999px; z-index:-1;
-  background:conic-gradient(from 0deg, rgba(255,111,97,.75), rgba(255,111,97,.15), rgba(255,111,97,.75));
-  filter:blur(8px); opacity:0; transition:opacity .25s ease;
-}
-.contact-btn:hover::before{ opacity:.55; }
-
-/* Chips: stronger active look */
-.chip[aria-pressed="true"]{
-  background:#202020; border-color:#454545;
-  box-shadow:0 0 0 2px rgba(255,111,97,.25) inset; color:var(--ink);
-}
-
-/* Click ripple */
-.ripple{
-  position:absolute; border-radius:50%; transform:scale(0);
-  background:rgba(255,255,255,.25); animation:ripple .6s ease-out; pointer-events:none;
-}
-@keyframes ripple{ to{ transform:scale(2.6); opacity:0; } }
-
-@media (prefers-reduced-motion: reduce){
-  .btn::after, .ripple{ display:none !important; }
-}
-.hero{ position:relative; overflow:hidden; }
-.hero-video{
-  position:absolute; inset:0; width:100%; height:100%;
-  object-fit:cover; opacity:.5; filter:saturate(.95) contrast(1.05);
-}
-.hero::before{ /* subtle dark overlay for text legibility */
-  content:""; position:absolute; inset:0;
-  background:linear-gradient(180deg, rgba(18,18,18,.55), rgba(18,18,18,.65));
-}
-.hero > div{ position:relative; z-index:1; }
-
+      .hero-video{ display:none !important; }
+      .btn::after, .ripple{ display:none !important; }
     }
+
+    /* Project badge colors (used in modal header badges) */
+    :root{
+      --badge-personal:#a855f7;   /* violet */
+      --badge-university:#38bdf8; /* sky */
+      --badge-studio:#f59e0b;     /* amber */
+    }
+
+    .badge{
+      display:inline-flex; align-items:center; gap:.4rem;
+      padding:.35rem .6rem; border-radius:999px;
+      font-weight:700; font-size:.72rem; letter-spacing:.02em; text-transform:uppercase;
+      border:1px solid transparent; position:relative; isolation:isolate;
+    }
+    .badge-personal{ color:var(--badge-personal); background:color-mix(in oklab, var(--badge-personal) 18%, #141414); border-color:color-mix(in oklab, var(--badge-personal) 45%, #141414); }
+    .badge-university{ color:var(--badge-university); background:color-mix(in oklab, var(--badge-university) 18%, #141414); border-color:color-mix(in oklab, var(--badge-university) 45%, #141414); }
+    .badge-studio{ color:var(--badge-studio); background:color-mix(in oklab, var(--badge-studio) 18%, #141414); border-color:color-mix(in oklab, var(--badge-studio) 45%, #141414); }
+    .badge::after{ content:""; position:absolute; inset:-2px; border-radius:inherit; z-index:-1; background:conic-gradient(from 0deg, transparent, currentColor 40%, transparent 80%); filter:blur(8px); opacity:.25; transition:opacity .25s ease; }
+    .badge:hover::after{ opacity:.45; }
+
+    /* Hero banner base (defined once) */
+    .hero{ position:relative; overflow:hidden; }
+    .hero-video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center center; opacity:.55; filter:saturate(.95) contrast(1.05); pointer-events:none; }
+    .hero::before{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(18,18,18,.55), rgba(18,18,18,.65)); pointer-events:none; z-index:0 }
+    .hero > div{ position:relative; z-index:1; }
+
+    /* Button/Control FX (clean, single source) */
+    .btn, .contact-btn, .ghost, .chip{
+      position:relative; overflow:hidden;
+      transition:transform .15s ease, box-shadow .25s ease, border-color .2s ease, background .2s ease, color .2s ease;
+      will-change:transform;
+    }
+    .btn:hover, .contact-btn:hover, .ghost:hover{ transform:translateY(-2px); box-shadow:0 12px 28px rgba(0,0,0,.35), 0 0 0 1px rgba(255,255,255,.06) inset; }
+    .btn:active, .contact-btn:active, .ghost:active, .chip:active{ transform:translateY(0) scale(.98); }
+
+    /* Sheen sweep on solid .btn */
+    .btn::after{
+      content:""; position:absolute; inset:auto -160% -160% auto;
+      width:60%; height:320%;
+      background:linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.18) 35%, rgba(255,255,255,0) 70%);
+      transform:translateX(-120%) rotate(20deg); transition:transform .55s ease; pointer-events:none;
+    }
+    .btn:hover::after{ transform:translateX(150%) rotate(20deg); }
+
+    /* Contact buttons: soft neon border shimmer */
+    .contact-btn{ background:#161616; border:1px solid #2a2a2a; color:var(--ink); }
+    .contact-btn::before{
+      content:""; position:absolute; inset:-2px; border-radius:999px; z-index:-1;
+      background:conic-gradient(from 0deg, rgba(255,111,97,.75), rgba(255,111,97,.15), rgba(255,111,97,.75));
+      filter:blur(8px); opacity:0; transition:opacity .25s ease;
+    }
+    .contact-btn:hover::before{ opacity:.55; }
+
+    /* Chips: stronger active look */
+    .chip[aria-pressed="true"]{ background:#202020; border-color:#454545; box-shadow:0 0 0 2px rgba(255,111,97,.25) inset; color:var(--ink); }
+
+    /* Click ripple (optional, triggered via JS if desired) */
+    .ripple{ position:absolute; border-radius:50%; transform:scale(0); background:rgba(255,255,255,.25); animation:ripple .6s ease-out; pointer-events:none; }
+    @keyframes ripple{ to{ transform:scale(2.6); opacity:0; } }
   </style>
 </head>
 <body>
@@ -262,10 +222,8 @@
 
   <main id="top">
     <section class="hero">
+      <img class="hero-video" src="Images and Videos/PortBanner2025.png" alt="Portfolio banner" />
       <div>
-    <img class="hero-video"
-     src="Images and Videos/PortBanner2025.png"
-     alt="Portfolio banner">
         <h1>Mackenzie Burt</h1>
         <p class="subtitle">2D/3D Generalist • Characters • Concept → Model → Texture → Rig → Animate • Art Lead</p>
         <a href="#work" class="btn">View My Work</a>
