@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Million Changes — Case Study | Mackenzie Burt</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23121212'/%3E%3Ctext x='50' y='70' font-family='serif' font-size='45' font-weight='700' text-anchor='middle' fill='%23ff6f61'%3EMB%3C/text%3E%3C/svg%3E" />
+
+  <style>
+    :root { --bg:#121212; --ink:#f5f5f5; --ink-d:#cfcfcf; --accent:#ff6f61; }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,sans-serif;
+      background:var(--bg);
+      color:var(--ink);
+      line-height:1.6;
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{
+      max-width:1160px;
+      margin:0 auto;
+      padding:1.5rem 1.25rem 3.5rem;
+    }
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:10;
+      backdrop-filter: blur(10px);
+      background:rgba(18,18,18,.9);
+      border-bottom:1px solid #222;
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:1rem 1.25rem;
+      max-width:1160px;
+      margin:0 auto;
+    }
+    .logo{
+      font-family:'Playfair Display',serif;
+      font-weight:700;
+      font-size:1.5rem;
+      letter-spacing:.5px;
+    }
+    .nav ul{
+      display:flex;
+      list-style:none;
+      gap:1rem;
+      padding:0;
+      margin:0;
+    }
+    .nav a{
+      position:relative;
+      font-size:.9rem;
+      transition:all 0.25s ease;
+    }
+    .nav a:hover,
+    .nav a:focus{
+      color:var(--accent);
+      transform:translateY(-2px);
+    }
+    .nav a::after{
+      content:'';
+      position:absolute;
+      bottom:-5px;
+      left:0;
+      width:0;
+      height:2px;
+      background:var(--accent);
+      transition:width .25s ease;
+    }
+    .nav a:hover::after{
+      width:100%;
+    }
+
+    .back-link{
+      display:inline-flex;
+      align-items:center;
+      gap:.35rem;
+      font-size:.85rem;
+      margin-bottom:1.5rem;
+      color:var(--ink-d);
+      opacity:.9;
+      cursor:pointer;
+      transition:color .2s ease, transform .2s ease, opacity .2s ease;
+    }
+    .back-link:hover{
+      color:var(--accent);
+      transform:translateY(-1px);
+      opacity:1;
+    }
+
+    .page-hero{
+      margin-bottom:2rem;
+    }
+    .page-hero h1{
+      font-family:'Playfair Display',serif;
+      font-size:clamp(2rem,4vw,3rem);
+      margin:0 0 .5rem;
+    }
+    .page-hero p{
+      margin:0;
+      color:var(--ink-d);
+      font-size:.95rem;
+      max-width:720px;
+    }
+
+    .meta-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.5rem;
+      margin-top:1.3rem;
+      font-size:.8rem;
+    }
+    .pill{
+      border-radius:999px;
+      padding:.25rem .8rem;
+      border:1px solid #2a2a2a;
+      background:#181818;
+      color:var(--ink-d);
+    }
+    .pill-strong{
+      background:var(--accent);
+      color:#000;
+      border-color:var(--accent);
+      font-weight:600;
+    }
+
+    h2{
+      font-family:'Playfair Display',serif;
+      font-size:clamp(1.6rem,3vw,2.1rem);
+      margin:0 0 1rem;
+      color:var(--accent);
+    }
+    .section{
+      margin-top:2.75rem;
+    }
+    .section p{
+      color:var(--ink-d);
+      font-size:.95rem;
+      max-width:780px;
+    }
+
+    .grid{
+      display:grid;
+      gap:1rem;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      margin-top:1.4rem;
+    }
+    .grid img{
+      width:100%;
+      height:100%;
+      display:block;
+      object-fit:cover;
+      border-radius:14px;
+      background:#0c0c0c;
+      border:1px solid #232323;
+      transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease, opacity .2s ease;
+    }
+    .grid img:hover{
+      transform:translateY(-4px) scale(1.02);
+      box-shadow:0 18px 36px rgba(0,0,0,.7);
+      border-color:#333;
+      opacity:.96;
+    }
+
+    .split{
+      display:grid;
+      gap:1.5rem;
+      grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);
+      align-items:flex-start;
+      margin-top:1.4rem;
+    }
+    .split img{
+      width:100%;
+      display:block;
+      border-radius:14px;
+      background:#0c0c0c;
+      border:1px solid #232323;
+    }
+    .label{
+      font-size:.8rem;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      color:var(--ink-d);
+      margin-bottom:.3rem;
+    }
+
+    footer{
+      padding:2rem 1rem;
+      text-align:center;
+      color:#9a9a9a;
+      border-top:1px solid #202020;
+      font-size:.8rem;
+    }
+
+    @media (max-width: 800px){
+      .split{ grid-template-columns:1fr; }
+    }
+    @media (prefers-reduced-motion: reduce){
+      *{scroll-behavior:auto !important; transition:none !important; animation:none !important;}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav" role="navigation" aria-label="Primary">
+      <a class="logo" href="/index.html" aria-label="Home">MB</a>
+      <ul>
+        <li><a href="/index.html#work">Work</a></li>
+        <li><a href="/index.html#about">About</a></li>
+        <li><a href="/index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <a class="back-link" href="/index.html">
+      ← Back to portfolio
+    </a>
+
+    <section class="page-hero">
+      <h1>Million Changes — Mobile App Prototype</h1>
+      <p>
+        A mobile app demo produced at GIMM Works where I was trained into the Art Lead role.
+        I owned the visual direction, reward systems, and much of the game feel while collaborating
+        with 3D artists and developers to build an environment that evolves as the player progresses.
+      </p>
+
+      <div class="meta-row">
+        <span class="pill pill-strong">Role: Art Lead</span>
+        <span class="pill">Art Direction</span>
+        <span class="pill">Concept Art</span>
+        <span class="pill">3D Environment Oversight</span>
+        <span class="pill">Unity Mobile Prototype</span>
+      </div>
+    </section>
+
+    <section class="section" id="overview">
+      <h2>Overview</h2>
+      <p>
+        Million Changes was the project used to train me into the Art Lead position at GIMM Works.
+        The client needed a mobile app experience focused on forming habits and rewarding progress over time.
+        I had significant ownership over the art style, the way rewards are represented, and how the app
+        communicates growth to the player through visuals and small game-like interactions.
+      </p>
+      <p>
+        While I was not focused on UI implementation or the animal content, I directed the overall look,
+        cleared animations, and worked closely with a 3D environment artist whose work became one of the
+        core metaphors for player progress.
+      </p>
+    </section>
+
+    <section class="section" id="responsibilities">
+      <h2>Responsibilities</h2>
+      <p>
+        As Art Lead on this prototype, I:
+      </p>
+      <ul style="color:var(--ink-d); font-size:.95rem; max-width:780px; padding-left:1.1rem;">
+        <li>Defined the overall art direction and tone for the app.</li>
+        <li>Created concept work for badges, rewards, and progression systems.</li>
+        <li>Collaborated with the client to align game functions with their goals and constraints.</li>
+        <li>Guided a 3D artist building an environment that visually upgrades as players level up.</li>
+        <li>Cleared animations and made sure they fit both the style and intended player feeling.</li>
+      </ul>
+    </section>
+
+    <section class="section" id="rewards">
+      <h2>Badges and Reward Concepts</h2>
+      <p>
+        A big part of Million Changes was making progress feel visible and satisfying.
+        I explored different badge and reward systems that could fit within the client’s goals,
+        while staying flexible enough for future scaling as more habits or “changes” were added.
+      </p>
+
+      <div class="grid">
+        <img src="/Images and Videos/MillionChanges/LevelsConcepts.png" alt="Overview of badge concepts for Million Changes">
+        <img src="/Images and Videos/MillionChanges/Badges1.png" alt="Badge concept sketches for Million Changes">
+        <img src="/Images and Videos/MillionChanges/Badges2.png" alt="Badge concept sketches for Million Changes">
+        <img src="/Images and Videos/MillionChanges/Badges3.png" alt="Badge concept sketches for Million Changes">
+        <img src="/Images and Videos/MillionChanges/Badges4.png" alt="Badge concept sketches for Million Changes">
+      </div>
+    </section>
+
+    <section class="section" id="environment">
+      <h2>Progressive 3D Environment</h2>
+      <p>
+        One of the most visible rewards in Million Changes is a 3D house and yard that starts out cluttered
+        and run-down, then gradually transforms into a clean, welcoming space as the user levels up.
+        I provided direction and feedback on this environment while my 3D teammate handled modeling and animation.
+      </p>
+      <p>
+        I reviewed passes of the environment as it evolved, making sure the changes felt meaningful and readable
+        on a mobile screen, and that the “before vs. after” contrast matched the emotional journey we wanted
+        for the player.
+      </p>
+
+      <div class="split">
+        <div>
+          <div class="label">Early state — cluttered and messy</div>
+          <img src="/Images and Videos/mc_env_before.png" alt="Early version of the Million Changes environment with trash and clutter">
+        </div>
+        <div>
+          <div class="label">Later state — cleaned up and upgraded</div>
+          <img src="/Images and Videos/mc_env_after.png" alt="Upgraded version of the Million Changes house and yard after player progression">
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="collab">
+      <h2>Collaboration and Direction</h2>
+      <p>
+        Million Changes was also where I first stepped into balancing client needs, dev constraints,
+        and artist bandwidth. I had to think not just about what looked good on a screen, but what was
+        realistic to build and iterate on in a mobile prototype with limited time.
+      </p>
+      <p>
+        I spent a lot of time translating between what the client wanted, what the devs needed, and what
+        my artists could deliver. That experience carried forward into later projects where I was fully
+        responsible for art pipelines and quality control.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="y"></span> Mackenzie Burt
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

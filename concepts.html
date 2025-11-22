@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Concept Art — Case Study | Mackenzie Burt</title>
+
+  <!-- Same fonts as main portfolio -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet" />
+
+  <!-- Same style favicon approach -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23121212'/%3E%3Ctext x='50' y='70' font-family='serif' font-size='45' font-weight='700' text-anchor='middle' fill='%23ff6f61'%3EMB%3C/text%3E%3C/svg%3E" />
+
+  <style>
+    :root { --bg:#121212; --ink:#f5f5f5; --ink-d:#cfcfcf; --accent:#ff6f61; }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,sans-serif;
+      background:var(--bg);
+      color:var(--ink);
+      line-height:1.6;
+    }
+    a{color:inherit; text-decoration:none}
+
+    .wrap{
+      max-width:1160px;
+      margin:0 auto;
+      padding:1.5rem 1.25rem 3.5rem;
+    }
+
+    /* Header: keep consistent with main site */
+    header{
+      position:sticky;
+      top:0;
+      z-index:10;
+      backdrop-filter: blur(10px);
+      background:rgba(18,18,18,.9);
+      border-bottom:1px solid #222;
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:1rem 1.25rem;
+      max-width:1160px;
+      margin:0 auto;
+    }
+    .logo{
+      font-family:'Playfair Display',serif;
+      font-weight:700;
+      font-size:1.5rem;
+      letter-spacing:.5px;
+    }
+    .nav ul{
+      display:flex;
+      list-style:none;
+      gap:1rem;
+      padding:0;
+      margin:0;
+    }
+    .nav a{
+      position:relative;
+      font-size:.9rem;
+      transition:all 0.25s ease;
+    }
+    .nav a:hover,
+    .nav a:focus{
+      color:var(--accent);
+      transform:translateY(-2px);
+    }
+    .nav a::after{
+      content:'';
+      position:absolute;
+      bottom:-5px;
+      left:0;
+      width:0;
+      height:2px;
+      background:var(--accent);
+      transition:width .25s ease;
+    }
+    .nav a:hover::after{
+      width:100%;
+    }
+
+    /* Back link */
+    .back-link{
+      display:inline-flex;
+      align-items:center;
+      gap:.35rem;
+      font-size:.85rem;
+      margin-bottom:1.5rem;
+      color:var(--ink-d);
+      opacity:.9;
+      cursor:pointer;
+      transition:color .2s ease, transform .2s ease, opacity .2s ease;
+    }
+    .back-link:hover{
+      color:var(--accent);
+      transform:translateY(-1px);
+      opacity:1;
+    }
+
+    /* Hero / header section */
+    .page-hero{
+      margin-bottom:2rem;
+    }
+    .page-hero h1{
+      font-family:'Playfair Display',serif;
+      font-size:clamp(2rem,4vw,3rem);
+      margin:0 0 .5rem;
+    }
+    .page-hero p{
+      margin:0;
+      color:var(--ink-d);
+      font-size:.95rem;
+      max-width:720px;
+    }
+
+    .meta-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.5rem;
+      margin-top:1.3rem;
+      font-size:.8rem;
+    }
+    .pill{
+      border-radius:999px;
+      padding:.25rem .8rem;
+      border:1px solid #2a2a2a;
+      background:#181818;
+      color:var(--ink-d);
+    }
+    .pill-strong{
+      background:var(--accent);
+      color:#000;
+      border-color:var(--accent);
+      font-weight:600;
+    }
+
+    h2{
+      font-family:'Playfair Display',serif;
+      font-size:clamp(1.6rem,3vw,2.1rem);
+      margin:0 0 1rem;
+      color:var(--accent);
+    }
+    .section{
+      margin-top:2.75rem;
+    }
+    .section p{
+      color:var(--ink-d);
+      font-size:.95rem;
+      max-width:780px;
+    }
+
+    /* Image grids */
+    .grid{
+      display:grid;
+      gap:1rem;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      margin-top:1.4rem;
+    }
+    .grid img{
+      width:100%;
+      height:100%;
+      display:block;
+      object-fit:cover;
+      border-radius:14px;
+      background:#0c0c0c;
+      border:1px solid #232323;
+      transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease, opacity .2s ease;
+    }
+    .grid img:hover{
+      transform:translateY(-4px) scale(1.02);
+      box-shadow:0 18px 36px rgba(0,0,0,.7);
+      border-color:#333;
+      opacity:.96;
+    }
+
+    /* Concept to 3D layout */
+    .split{
+      display:grid;
+      gap:1.5rem;
+      grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);
+      align-items:flex-start;
+      margin-top:1.4rem;
+    }
+    .split img{
+      width:100%;
+      display:block;
+      border-radius:14px;
+      background:#0c0c0c;
+      border:1px solid #232323;
+    }
+    .split-text p{
+      max-width:none;
+    }
+    .label{
+      font-size:.8rem;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      color:var(--ink-d);
+      margin-bottom:.25rem;
+    }
+
+    footer{
+      padding:2rem 1rem;
+      text-align:center;
+      color:#9a9a9a;
+      border-top:1px solid #202020;
+      font-size:.8rem;
+    }
+
+    @media (max-width: 800px){
+      .split{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *{scroll-behavior:auto !important; transition:none !important; animation:none !important;}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav" role="navigation" aria-label="Primary">
+      <a class="logo" href="/index.html" aria-label="Home">MB</a>
+      <ul>
+        <li><a href="/index.html#work">Work</a></li>
+        <li><a href="/index.html#about">About</a></li>
+        <li><a href="/index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <a class="back-link" href="/index.html">
+      ← Back to portfolio
+    </a>
+
+    <!-- Page hero -->
+    <section class="page-hero">
+      <h1>Million Changes</h1>
+      <p>
+      We were approached to create an app prototype designed to help users make small, manageable changes in their lifestyle that help shrink their carbon footprint over
+       time. The client's moto is "It took a million small changes to cause climate change, it will take a million small changes to stop it."</p>
+      
+       <p>
+      I was brought on to be trained as the Art Lead during the beginning stages of this project. I conceptualized badges that the users would be awareded as they
+      progressed through the game-like mobile app.
+      </p>
+
+      <div class="meta-row">
+        <span class="pill pill-strong">Concept Artist</span>
+        <span class="pill">Art Lead</span>
+      </div>
+    </section>
+
+    <!-- Overview -->
+    <section class="section" id="overview">
+      <h2>Overview</h2>
+      <p>
+    
+      </p>
+    </section>
+
+    <!-- Character concepts -->
+    <section class="section" id="characters">
+      <h2></h2>
+      <p>
+      </p>
+
+      <div class="grid">
+        <!-- Just replace these with your own files. Add or remove as needed. -->
+        <img src="/Images and Videos/char_concept_01.png" alt="Character concept sheet 01">
+        <img src="/Images and Videos/char_concept_02.png" alt="Character concept sheet 02">
+        <img src="/Images and Videos/char_concept_03.png" alt="Character concept sheet 03">
+        <!--
+        <img src="/Images and Videos/char_concept_04.png" alt="Character concept sheet 04">
+        <img src="/Images and Videos/char_concept_05.png" alt="Character concept sheet 05">
+        -->
+      </div>
+    </section>
+
+    <!-- Environment concepts -->
+    <section class="section" id="environments">
+      <h2>Environment and World Concepts</h2>
+      <p>
+        Quick value studies, color passes, and ideation for spaces these characters could inhabit.
+        Focused on mood, lighting, and clear points of interest rather than final illustration polish.
+      </p>
+
+      <div class="grid">
+        <img src="/Images and Videos/env_concept_01.png" alt="Environment concept thumbnail sheet 01">
+        <img src="/Images and Videos/env_concept_02.png" alt="Environment concept 02">
+        <img src="/Images and Videos/env_concept_03.png" alt="Environment concept 03">
+        <!--
+        <img src="/Images and Videos/env_concept_04.png" alt="Environment concept 04">
+        -->
+      </div>
+    </section>
+
+    <!-- Concept → 3D spotlight -->
+    <section class="section" id="concept-to-3d">
+      <h2>From Concept to 3D</h2>
+      <p>
+        One of these concept sets was taken further into a full 3D model for a game prototype.
+        The design was tightened, broken down into workable forms, and then translated into clean topology and textures while keeping the original attitude.
+      </p>
+
+      <div class="split">
+        <div>
+          <div class="label">Original concept sheet</div>
+          <img src="/Images and Videos/concept_to_3d_2d.png" alt="Concept sheet used as the base for a 3D character">
+        </div>
+        <div class="split-text">
+          <div class="label">Final 3D interpretation</div>
+          <img src="/Images and Videos/concept_to_3d_3d.png" alt="3D model based on the concept sheet">
+          <p>
+            The 3D version keeps the main shapes and proportions from the concept but simplifies detail where needed for animation and in game readability.
+            Posing and lighting were used to echo the mood of the original drawing.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="y"></span> Mackenzie Burt
+  </footer>
+
+  <script>
+    // Auto year
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

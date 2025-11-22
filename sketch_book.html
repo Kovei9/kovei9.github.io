@@ -1,194 +1,405 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Mackenzie Burt | 3D Modeler & Digital Artist</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <style>
-        body {
-            font-family: "Comfortaa", sans-serif;
-            background: linear-gradient(to bottom right, #f0f4f8, #d9e7ff);
-            color: #2c3e50;
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MB | Sketch Book </title>
 
-        header {
-            background: linear-gradient(90deg, #283038, #5b7ca2);
-            color: white;
-            padding: 15px 0;
-            text-align: center;
-            font-size: 2rem;
-            font-weight: 600;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
+  <!-- Same fonts as portfolio -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet" />
 
-        .carousel-container {
-            margin: 50px auto;
-            width: 90%;
-            max-width: 1200px;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-            overflow: hidden;
-            padding: 20px;
-        }
+  <style>
+    :root {
+      --bg:#121212;
+      --ink:#f5f5f5;
+      --ink-d:#cfcfcf;
+      --accent:#ff6f61;
+    }
 
-        .carousel {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 500px;
-        }
+    * { box-sizing:border-box; }
 
-        .carousel img {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0.9);
-            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-            opacity: 0;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            max-height: 90%;
-        }
+    html { scroll-behavior:smooth; }
 
-        .carousel img.active {
-            transform: translate(-50%, -50%) scale(1);
-            opacity: 1;
-            z-index: 2;
-        }
+    body {
+      margin:0;
+      font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,sans-serif;
+      background:var(--bg);
+      color:var(--ink);
+      line-height:1.6;
+    }
 
-        .carousel .arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 2rem;
-            color: white;
-            background: rgba(0, 0, 0, 0.6);
-            border: none;
-            border-radius: 50%;
-            padding: 10px 15px;
-            cursor: pointer;
-            z-index: 10;
-            transition: background 0.3s ease;
-        }
+    a {
+      color:inherit;
+      text-decoration:none;
+    }
 
-        .carousel .arrow:hover {
-            background: rgba(0, 0, 0, 0.8);
-        }
+    /* HEADER (matching portfolio) */
+    header {
+      position:sticky;
+      top:0;
+      z-index:10;
+      backdrop-filter: blur(10px);
+      background:rgba(18,18,18,.9);
+      border-bottom:1px solid #222;
+    }
 
-        .arrow.left {
-            left: 20px;
-        }
+    .wrap {
+      max-width:1160px;
+      margin:0 auto;
+      padding:1rem 1.25rem;
+    }
 
-        .arrow.right {
-            right: 20px;
-        }
+    .nav {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
 
-        .description {
-            margin-top: 15px;
-            font-size: 1.1rem;
-            color: #34495e;
-            text-align: center;
-        }
+    .logo {
+      font-family:'Playfair Display',serif;
+      font-weight:700;
+      font-size:1.5rem;
+      letter-spacing:.5px;
+    }
 
-        .back-button {
-            display: block;
-            margin: 30px auto;
-            padding: 10px 20px;
-            background-color: #3498db;
-            color: white;
-            border: none;
-            font-size: 1.2rem;
-            border-radius: 5px;
-            cursor: pointer;
-            text-align: center;
-            transition: background-color 0.3s ease;
-        }
+    .nav ul {
+      display:flex;
+      list-style:none;
+      gap:1rem;
+      padding:0;
+      margin:0;
+    }
 
-        .back-button:hover {
-            background-color: #2980b9;
-        }
+    .nav a {
+      position:relative;
+      font-size:.95rem;
+      transition: all 0.25s ease;
+    }
 
-        footer {
-            background: linear-gradient(90deg, #3c6187, #313b45);
-            color: white;
-            padding: 15px 0;
-            text-align: center;
-            font-size: 1rem;
-            margin-top: 50px;
-        }
+    .nav a::after {
+      content:'';
+      position:absolute;
+      bottom:-5px;
+      left:0;
+      width:0;
+      height:2px;
+      background:var(--accent);
+      transition:width 0.25s ease;
+    }
 
-        footer a {
-            color: #ffd700;
-            text-decoration: underline;
-            transition: color 0.3s ease;
-        }
+    .nav a:hover,
+    .nav a:focus {
+      color:var(--accent);
+      transform:translateY(-2px);
+    }
 
-        footer a:hover {
-            color: #fff;
-        }
-    </style>
+    .nav a:hover::after {
+      width:100%;
+    }
+
+    /* PAGE TITLE AREA */
+    main {
+      padding:3rem 1.25rem 4rem;
+    }
+
+    .page-head {
+      max-width:1160px;
+      margin:0 auto 2rem;
+    }
+
+    .page-head h1 {
+      font-family:'Playfair Display',serif;
+      font-size:clamp(2rem,4vw,2.8rem);
+      margin:0 0 .4rem;
+    }
+
+    .page-head p {
+      margin:0;
+      color:var(--ink-d);
+      max-width:640px;
+    }
+
+    /* FUN ZONE CAROUSEL CARD */
+    .fun-card {
+      max-width:1160px;
+      margin:0 auto;
+      background:#1a1a1a;
+      border-radius:18px;
+      border:1px solid #242424;
+      box-shadow:0 20px 40px rgba(0,0,0,.6);
+      padding:1.75rem 1.5rem 2rem;
+    }
+
+    @media (max-width: 640px) {
+      .fun-card {
+        padding:1.25rem 1rem 1.75rem;
+      }
+    }
+
+    .carousel-shell {
+      position:relative;
+      height:56vh;
+      min-height:320px;
+      max-height:540px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+      border-radius:14px;
+      background:#0c0c0c;
+    }
+
+    .carousel-shell img {
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%) scale(.9);
+      opacity:0;
+      transition:transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+      max-height:100%;
+      max-width:100%;
+      border-radius:10px;
+      box-shadow:0 10px 30px rgba(0,0,0,.6);
+    }
+
+    .carousel-shell img.active {
+      opacity:1;
+      transform:translate(-50%,-50%) scale(1);
+      z-index:1;
+    }
+
+    .arrow {
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      border:none;
+      border-radius:999px;
+      padding:.55rem .9rem;
+      background:rgba(0,0,0,.65);
+      color:var(--ink);
+      font-size:1.4rem;
+      cursor:pointer;
+      z-index:2;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      transition:background .25s ease, transform .15s ease;
+    }
+
+    .arrow:hover {
+      background:rgba(0,0,0,.9);
+      transform:translateY(-50%) scale(1.05);
+    }
+
+    .arrow.left { left:1.25rem; }
+    .arrow.right { right:1.25rem; }
+
+    /* Descriptions removed for artwork reel */
+
+    /* THUMBNAIL GRID (new) */
+    .thumb-grid {
+      margin-top:1.75rem;
+      display:grid;
+      grid-template-columns:repeat(auto-fill, minmax(140px, 1fr));
+      gap:1rem;
+    }
+
+    .thumb-grid img {
+      width:100%;
+      aspect-ratio:1 / 1;
+      object-fit:cover;
+      border-radius:10px;
+      cursor:pointer;
+      opacity:.8;
+      border:1px solid #2a2a2a;
+      transition:opacity .25s ease, transform .2s ease, border-color .2s ease;
+    }
+
+    .thumb-grid img:hover {
+      opacity:1;
+      transform:scale(1.02);
+      border-color:var(--accent);
+    }
+
+    .thumb-grid img.active-thumb {
+      opacity:1;
+      border-color:var(--accent);
+      box-shadow:0 0 0 1px rgba(255,111,97,.25);
+    }
+
+    /* BUTTON (matching portfolio style) */
+    .btn {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      margin-top:1.75rem;
+      padding:.75rem 1.4rem;
+      border-radius:999px;
+      background:var(--accent);
+      color:#000;
+      font-weight:700;
+      border:none;
+      cursor:pointer;
+      font-size:.95rem;
+      position:relative;
+      overflow:hidden;
+      transition:transform .18s cubic-bezier(.2,.9,.2,1), box-shadow .35s ease;
+    }
+
+    .btn:hover {
+      transform:translateY(-3px) scale(1.02);
+      box-shadow:0 18px 40px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.06) inset;
+    }
+
+    .btn:active {
+      transform:translateY(0) scale(.99);
+      box-shadow:none;
+    }
+
+    .btn::before {
+      content:"";
+      position:absolute;
+      inset:-6px;
+      border-radius:999px;
+      z-index:-2;
+      background:
+        radial-gradient(120% 60% at 10% 10%, rgba(255,111,97,.18), transparent 28%),
+        radial-gradient(80% 40% at 90% 80%, rgba(255,200,160,.08), transparent 30%);
+      filter:blur(10px);
+      opacity:0;
+      transition:opacity .35s ease, transform .35s ease;
+      transform:scale(.96);
+    }
+
+    .btn:hover::before {
+      opacity:1;
+      transform:scale(1);
+    }
+
+    /* FOOTER (simple match) */
+    footer {
+      padding:2rem 1rem;
+      text-align:center;
+      color:#9a9a9a;
+      border-top:1px solid #202020;
+      font-size:.85rem;
+    }
+
+    footer a {
+      color:var(--accent);
+    }
+
+    footer a:hover {
+      text-decoration:underline;
+    }
+
+    .btn-row {
+      display:flex;
+      justify-content:center;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        Mackenzie Burt | 3D Modeler & Digital Artist
-    </header>
+  <header>
+    <div class="wrap nav" role="navigation" aria-label="Primary">
+      <a class="logo" href="index.html" aria-label="Back to portfolio home">MB</a>
+      <ul>
+        <li><a href="index.html#work">Work</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
 
-    <div class="carousel-container">
-        <div class="carousel">
-            <button class="arrow left">&larr;</button>
-            <img src="https://via.placeholder.com/800x600?text=Art+1" alt="Art 1" class="active" data-description="This is a description for Art 1.">
-            <img src="https://via.placeholder.com/800x600?text=Art+2" alt="Art 2" data-description="This is a description for Art 2.">
-            <img src="https://via.placeholder.com/800x600?text=Art+3" alt="Art 3" data-description="This is a description for Art 3.">
-            <img src="https://via.placeholder.com/800x600?text=Art+4" alt="Art 4" data-description="This is a description for Art 4.">
-            <button class="arrow right">&rarr;</button>
-        </div>
-        <div class="description">This is a description for Art 1.</div>
-
-        <!-- Back to Portfolio Button -->
-        <a href="#portfolio">
-            <button class="back-button">Back to Portfolio</button>
-        </a>
+  <main>
+    <div class="page-head">
+      <h1>Sketch Book</h1>
+      <p>Loose sketches, experiments, and just-for-fun pieces. Here, I happily show you my weaknesses and how I've learned from my mistakes.</p>
     </div>
 
-    <footer>
-        <p>Contact me at: <a href="mailto:mackenzie@example.com">mackenzie@example.com</a></p>
-        <p>&copy; 2025 Mackenzie Burt. All Rights Reserved.</p>
-    </footer>
+    <section class="fun-card">
+      <div class="carousel-shell">
+        <button class="arrow left" aria-label="Previous image">&#8592;</button>
 
-    <script>
-        const images = document.querySelectorAll('.carousel img');
-        const leftArrow = document.querySelector('.arrow.left');
-        const rightArrow = document.querySelector('.arrow.right');
-        const description = document.querySelector('.description');
-        let currentIndex = 0;
+        <!-- Swap these src values with your own images -->
+           <img src="https://via.placeholder.com/1000x700?text=Art+1"
+             alt="Art 1"
+             class="active">
+           <img src="https://via.placeholder.com/1000x700?text=Art+2"
+             alt="Art 2">
+           <img src="https://via.placeholder.com/1000x700?text=Art+3"
+             alt="Art 3">
+           <img src="https://via.placeholder.com/1000x700?text=Art+4"
+             alt="Art 4">
 
-        function updateCarousel() {
-            images.forEach((img, index) => {
-                img.classList.toggle('active', index === currentIndex);
-                if (index === currentIndex) {
-                    description.textContent = img.getAttribute('data-description');
-                }
-            });
+        <button class="arrow right" aria-label="Next image">&#8594;</button>
+      </div>
+
+      <!-- Artwork descriptions removed: carousel shows images only -->
+
+      <!-- NEW: thumbnail strip -->
+      <div class="thumb-grid">
+        <img src="https://via.placeholder.com/1000x700?text=Art+1" alt="Art 1 thumbnail" data-index="0" class="active-thumb">
+        <img src="https://via.placeholder.com/1000x700?text=Art+2" alt="Art 2 thumbnail" data-index="1">
+        <img src="https://via.placeholder.com/1000x700?text=Art+3" alt="Art 3 thumbnail" data-index="2">
+        <img src="https://via.placeholder.com/1000x700?text=Art+4" alt="Art 4 thumbnail" data-index="3">
+      </div>
+
+      <div class="btn-row">
+        <!-- Back to main portfolio -->
+        <a href="index.html#work" class="btn">Back to Portfolio</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Mackenzie Burt
+  </footer>
+
+  <script>
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const images = document.querySelectorAll('.carousel-shell img');
+    const leftArrow = document.querySelector('.arrow.left');
+    const rightArrow = document.querySelector('.arrow.right');
+    const description = document.querySelector('.fun-description');
+    const thumbs = document.querySelectorAll('.thumb-grid img');
+    let currentIndex = 0;
+
+    function updateCarousel() {
+      images.forEach((img, index) => {
+        const isActive = index === currentIndex;
+        img.classList.toggle('active', isActive);
+        if (isActive) {
+          description.textContent = img.getAttribute('data-description') || '';
         }
+      });
 
-        leftArrow.addEventListener('click', () => {
-            currentIndex = (currentIndex - 1 + images.length) % images.length;
-            updateCarousel();
-        });
+      thumbs.forEach((thumb, index) => {
+        thumb.classList.toggle('active-thumb', index === currentIndex);
+      });
+    }
 
-        rightArrow.addEventListener('click', () => {
-            currentIndex = (currentIndex + 1) % images.length;
-            updateCarousel();
-        });
-    </script>
+    leftArrow.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      updateCarousel();
+    });
+
+    rightArrow.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % images.length;
+      updateCarousel();
+    });
+
+    thumbs.forEach((thumb, index) => {
+      thumb.addEventListener('click', () => {
+        currentIndex = index;
+        updateCarousel();
+      });
+    });
+
+    // Initialize description and thumbnail state
+    updateCarousel();
+  </script>
 </body>
 </html>

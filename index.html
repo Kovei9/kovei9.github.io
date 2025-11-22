@@ -3,11 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MB | Mackenzie Burt — 2D/3D Artist</title>
-  <meta name="description" content="Portfolio of Mackenzie Burt — concept art, 3D models, animation, and art leadership." />
-  <meta property="og:title" content="Mackenzie Burt — 2D/3D Artist" />
-  <meta property="og:description" content="Concept → Model → Texture → Rig → Animate. Case studies and art leadership." />
-  <meta property="og:type" content="website" />
+  <title>MB | Mackenzie Burt — 2D/3D Generalist</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23121212'/%3E%3Ctext x='50' y='70' font-family='serif' font-size='45' font-weight='700' text-anchor='middle' fill='%23ff6f61'%3EMB%3C/text%3E%3C/svg%3E" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet" />
   <style>
@@ -55,7 +51,7 @@
     /* make the hero's inner container stack above the banner/overlay */
     .hero > div{ position:relative; z-index:1; }
     .hero h1{font-family:'Playfair Display',serif; font-size:clamp(2.2rem,6vw,4rem); margin:.25rem 0; animation: slideUp 1s ease-out 0.5s both;}
-    .hero .subtitle{color:var(--accent); opacity:.95; animation: slideUp 1s ease-out 0.7s both;}
+    .hero .subtitle{color:var(--accent); opacity:.98; animation: slideUp 1s ease-out 0.7s both; font-weight:600; font-size:clamp(1.125rem,2.6vw,1.4rem); line-height:1.2; letter-spacing:0.2px; text-shadow:0 1px 0 rgba(0,0,0,0.35);} 
     .btn{display:inline-block; margin-top:1.25rem; padding:.8rem 1.4rem; border-radius:999px; background:var(--accent); color:#000; font-weight:700; animation: slideUp 1s ease-out 0.9s both;}
     .btn:focus-visible{outline:3px solid #fff; outline-offset:3px}
 
@@ -252,98 +248,77 @@
       <img class="hero-video" src="Images and Videos/PortBanner2025.png" alt="Portfolio banner" />
       <div>
         <h1>Mackenzie Burt</h1>
-        <p class="subtitle">2D/3D Generalist • Characters • Concept → Model → Texture → Rig → Animate • Art Lead</p>
-        <a href="#work" class="btn">View My Work</a>
+        <p class="subtitle">2D/3D Generalist • Characters • Concepts • Animation • Art Lead</p>
+       <a href="sketch_book.html" class="btn">SketchBook</a>
+       <a href="3dexamples.html" class="btn" style="margin-left:1rem;">3D Examples</a> 
+       <a href="2dexamples.html" class="btn" style="margin-left:1rem;">2D Examples</a>
       </div>
     </section>
 
     <section id="work" class="wrap">
-      <h2>Selected Projects</h2>
+      <h2>Projects</h2>
       <div class="filters" role="toolbar" aria-label="Filter projects">
         <button class="chip" aria-pressed="true" data-filter="all" style="--delay: 0s;">All</button>
-        <button class="chip" aria-pressed="false" data-filter="2d" style="--delay: 0.1s;">2D</button>
+        <button class="chip" aria-pressed="false" data-filter="2d" style="--delay: 0.1s;">Concept</button>
         <button class="chip" aria-pressed="false" data-filter="3d" style="--delay: 0.2s;">3D</button>
         <button class="chip" aria-pressed="false" data-filter="lead" style="--delay: 0.3s;">Art Lead</button>
-        <button class="chip" aria-pressed="false" data-filter="animation" style="--delay: 0.4s;">Animation</button>
-        <button class="chip" aria-pressed="false" data-filter="ui" style="--delay: 0.5s;">UI/VFX</button>
-        <button class="chip" aria-pressed="false" data-filter="technical-artist" style="--delay: 0.6s;">Technical Artist/ Dev</button>
+        <button class="chip" aria-pressed="false" data-filter="ani" style="--delay: 0.4s;">Animation</button>
       </div>
       
 
       <div class="grid" id="grid">
-        <!-- CARD 1: Character Pipeline -->
-        <a class="card" href="/projects/characterpipeline.html" data-tags="3d,animation,lead" data-modal
+        <a class="card" href="/projects/characterpipeline.html" data-tags="2d"
+         data-modal
            data-title="Character Pipeline"
            data-role="Generalist Artist"
-           data-tools="Adobe Photoshop, CSP,Blender, Substance 3D, Unreal Engine"
-           data-scope="Concept → Ref Sheet → Model → Texture → Rig → Animations → Splash Art → In-Engine"
+           data-tools="Adobe Photoshop, Clip Studio Paint, Blender, Substance 3D"
+           data-scope="Concepts and Creative"
            data-summary="End-to-end pipeline for 4 characters, including implementation into Multiplayer Unreal Engine Game."
             data-project="University"
            data-hero="/assets/character-pipeline.webp"
            style="--delay: 0s;">
           <img class="thumb" src="/Images and Videos/" alt="CharacterPipeline" loading="lazy" />
           <div class="meta">
-            <h3>Character Pipeline</h3>
-            <p>Concept → Ref Sheet →Model → Texture → Rig → Animate → Splash Art → In-Engine</p>
-            <div class="tags">
-              <span class="tag">3D</span><span class="tag">2D</span><span class="tag">Animation</span><span class="tag">Case Study</span>
+            <h3>Concept Art</h3>
+            <p>Concept Art + Creative Process</p>
+         <div class="tags"><span class="tag">Concept</span></div>
             </div>
           </div>
         </a>
 
-        <!-- CARD EXAMPLE 2: 2D Concept/Illustration -->
-        <a class="card" href="/projects/concepts.html" data-tags="2d"
+        <a class="card" href="/projects/concepts.html" data-tags="lead, ani, 2d"
            data-modal
-           data-title="Environmental/World Concepts — Assorted"
-           data-role="Concept Artist"
+           data-title="Diaper Bank"
+           data-role="Art Lead, Lead 2D Animator"
            data-tools="Photoshop, Clip Studio Paint, After Effects, Blender"
-           data-scope="Exploration → Sheets → Splash"
-           data-summary="Iterative ideation from thumbnails"
-            data-project="Personal, University"
+           data-scope="Storyboards → Final Animation"
+           data-summary="Iterative Ideation, Storyboarding, Lining, Coloring, Compositing"
+            data-project="GIMM Works, Art Lead"
            data-hero="/assets/2d-environmentconcepts.webp"
            style="--delay: 0.2s;">
           <img class="thumb" src="Images and Videos/2D Art Card Thumbnail.png" alt="Assorted character concept sheets" loading="lazy" />
           <div class="meta">
-            <h3>Environmental Concepts — Assorted</h3>
-            <p>Thumbnails → Sheets → Cleanup</p>
-            <div class="tags"><span class="tag">2D</span><span class="tag">Concept</span></div>
+            <h3>Diaper Bank</h3>
+            <p>An animated tutorial teaching parents how to potty train thier kids, funded by the non-profit organization, Idaho Diaper Bank.</p>
+            <div class="tags"><span class="tag">Animation</span></div>
           </div>
         </a>
 
-            <a class="card" href="/projects/concepts.html" data-tags="2d"
-           data-modal
-           data-title="Environmental Concepts — Assorted"
-           data-role="Concept Artist"
-           data-tools="Photoshop, Clip Studio Paint, After Effects"
-           data-scope="Exploration → Sheets → Splash"
-           data-summary="Iterative ideation from thumbnails to polished sheets and a splash-key image."
-            data-project="Personal"
-           data-hero="/assets/2d-concepts.webp"
-           style="--delay: 0.4s;">
-          <img class="thumb" src="/Images and Videos/" alt="Assorted character concept sheets" loading="lazy" />
-          <div class="meta">
-            <h3>Character Concepts — Assorted</h3>
-            <p>Thumbnails → Sheets → Splash</p>
-            <div class="tags"><span class="tag">2D</span><span class="tag">Concept</span></div>
-          </div>
-        </a>
-
-        <!-- CARD EXAMPLE 3: Art Lead -->
-        <a class="card" href="/projects/art-lead.html" data-tags="lead"
+        <a class="card" href="millionchanges.html" data-tags="lead, 2d"
            data-modal
            data-title="Art Lead/Director — GIMM Works"
            data-role="Art Lead"
-           data-tools="Figma, Unity, Github Boards, Trello"
+           data-tools="Figma, Unity, Github Boards, Blender, Photoshop"
            data-scope="Team Management • Reviews • Pipelines"
-           data-summary="Led multi-project art delivery;"
+           data-summary="Led art delivery;"
             data-project="GIMM Works"
            data-hero="/assets/lead.webp"
            style="--delay: 0.6s;">
           <img class="thumb" src="/Images and Videos/" alt="Team board and asset reviews montage" loading="lazy" />
           <div class="meta">
-            <h3>Art Lead — GIMM Works</h3>
-            <p>Pipelines • Delivery • Management</p>
-            <div class="tags"><span class="tag">Leadership</span><span class="tag">Process</span></div>
+            <h3>Million Changes Mobile App Prototype</h3>
+            <p>Pipelines • Art Direction • Concept Art </p>
+            <div class="tags"><span class="tag">Art Lead</span><span class="tag">Concept Art</span></div>
           </div>
           
         </a>
@@ -370,9 +345,10 @@
     <section id="about" class="wrap">
       <h2>About</h2>
       <p style="max-width:760px; margin:0 auto; color:var(--ink-d)">
-        I'm a multidisciplinary artist who enjoys taking characters from napkin sketch to in‑engine. My sweet spot is
-        stylized characters and the whole pipeline: concepting, modeling, texturing, rigging and animation — with a focus on
-        clean topology and game‑ready assets. Recently, I've also led teams as an Art Lead, creating pipelines and reviews that keep quality high and delivery predictable.
+     As a Generalist, I specialize in both 2D and 3D art, with a slight focus in concept art
+     and animation. With experience in leading art teams and managing creative projects, I thrive in collaborative
+      environments where innovation and storytelling are at the forefront. Adding layers to characters and worlds that
+      players and viewers can get excited about is what drives me.
       </p>
     </section>
 
