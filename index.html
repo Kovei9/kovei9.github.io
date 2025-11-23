@@ -12,6 +12,13 @@
     html{scroll-behavior:smooth}
     body{margin:0; font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,sans-serif; background:var(--bg); color:var(--ink); line-height:1.6}
     a{color:inherit; text-decoration:none}
+    /* Make interactive UI appear immediately: reduce animation duration and remove delays */
+    :root{ --ui-anim-speed: 0.04s; }
+    .btn, .contact-btn, .chip, .grid a.card, .media-wrap, dialog, section, header {
+      animation-duration: var(--ui-anim-speed) !important;
+      animation-delay: 0s !important;
+      transition-duration: 0.04s !important;
+    }
     
     /* Header animations */
     header{position:sticky; top:0; z-index:10; backdrop-filter: blur(10px); background:rgba(18,18,18,.9); border-bottom:1px solid #222; animation: slideDown 0.8s ease-out;}
@@ -69,12 +76,47 @@
     .chip[aria-pressed="true"], .chip:hover{background:#1f1f1f; border-color:#3a3a3a; transform:scale(1.05);}
 
     /* GRID */
-    .grid{display:grid; gap:1.5rem; grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-    .card{display:block; background:#1a1a1a; border:1px solid #232323; border-radius:14px; overflow:hidden; transition:transform .3s ease, box-shadow .3s ease; opacity:0; animation: cardSlideUp 0.8s ease-out calc(1s + var(--delay, 0s)) both;}
+    .grid{
+      display:grid;
+      gap:1.25rem;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      align-items:stretch;
+    }
+
+    /* Make each card stretch to the grid cell so all cards have equal height */
+    .grid a.card{
+      height:100%;
+      max-height:340px;
+      display:flex;
+      flex-direction:column;
+      background:#1a1a1a;
+      border:1px solid #232323;
+      border-radius:14px;
+      overflow:hidden;
+      transition:transform .3s ease, box-shadow .3s ease;
+      opacity:0;
+      animation: cardSlideUp 0.8s ease-out calc(1s + var(--delay, 0s)) both;
+    }
     .card:hover, .card:focus-visible{transform:translateY(-8px) scale(1.02); box-shadow:0 20px 40px rgba(0,0,0,.6);}
-    .thumb{aspect-ratio:16/10; width:100%; object-fit:cover; background:#0c0c0c; transition: transform 0.3s ease;}
-    .card:hover .thumb{transform: scale(1.05);}
-    .meta{padding:1rem}
+
+    /* Media container: keeps media inside the card, fixed height, subtle frame */
+    .media-wrap{
+      height:170px;
+      overflow:hidden;
+      box-sizing:border-box;
+      border:6px solid rgba(0,0,0,0.20);
+      border-bottom:0;
+      border-radius:12px 12px 0 0;
+      background:#0c0c0c;
+    }
+    .card:hover .media-wrap{box-shadow:inset 0 -6px 18px rgba(0,0,0,0.12)}
+
+    /* Media itself fills the media-wrap fully */
+    .media-wrap img, .media-wrap video, .thumb, .thumb-fallback{width:100%; height:100%; object-fit:cover; display:block}
+    .card:hover .media-wrap img, .card:hover .media-wrap video{transform:scale(1.03); transition:transform 0.25s ease}
+
+    /* Meta should stretch to fill remaining space so cards are uniform */
+    .meta{padding:0.9rem; flex:1 1 auto; display:flex; flex-direction:column; justify-content:space-between}
     .meta h3{margin:.25rem 0 .5rem; font-family:'Playfair Display',serif; font-size:1.2rem; transition: color 0.3s ease;}
     .card:hover .meta h3{color: var(--accent);}
     .tags{display:flex; flex-wrap:wrap; gap:.4rem; margin-top:.5rem}
@@ -198,12 +240,11 @@
     }
     .btn:hover::after{ opacity:.6; transform:rotate(30deg); }
 
-  /* Sheen sweep (keep, but more contrast and eased) */
-  .btn .sheen, .btn > .sheen{ display:none; }
-  .btn::marker{ display:none }
-  /* Keep previous sheen for compatibility (uses translateX) */
-  .btn ._sheen_helper{ display:none }
-  /* Legacy sheen preserved using a pseudo element on the inner content for consistent movement (no-op placeholder removed) */
+    /* Sheen sweep (keep, but more contrast and eased) */
+    .btn .sheen, .btn > .sheen{ display:none; }
+    .btn::marker{ display:none }
+    /* Keep previous sheen for compatibility (uses translateX) */
+    .btn ._sheen_helper{ display:none }
 
     /* Contact buttons: animated rotating border on hover */
     .contact-btn{ background:#161616; border:1px solid #2a2a2a; color:var(--ink); border-radius:999px; }
@@ -249,14 +290,13 @@
       <div>
         <h1>Mackenzie Burt</h1>
         <p class="subtitle">2D/3D Generalist • Characters • Concepts • Animation • Art Lead</p>
-       <a href="sketch_book.html" class="btn">SketchBook</a>
-       <a href="3dexamples.html" class="btn" style="margin-left:1rem;">3D Examples</a> 
-       <a href="2dexamples.html" class="btn" style="margin-left:1rem;">2D Examples</a>
+        <a href="sketch_book.html" class="btn">SketchBook</a>
+        <a href="3dexamples.html" class="btn" style="margin-left:1rem;">3D Examples</a> 
+        <a href="2dexamples.html" class="btn" style="margin-left:1rem;">2D Examples</a>
       </div>
     </section>
 
-    <section id="work" class="wrap">
-      <h2>Projects</h2>
+     <h2>Projects</h2>
       <div class="filters" role="toolbar" aria-label="Filter projects">
         <button class="chip" aria-pressed="true" data-filter="all" style="--delay: 0s;">All</button>
         <button class="chip" aria-pressed="false" data-filter="2d" style="--delay: 0.1s;">Concept</button>
@@ -264,45 +304,49 @@
         <button class="chip" aria-pressed="false" data-filter="lead" style="--delay: 0.3s;">Art Lead</button>
         <button class="chip" aria-pressed="false" data-filter="ani" style="--delay: 0.4s;">Animation</button>
       </div>
-      
 
+    <section id="work" class="grid-section">
+ 
+      
       <div class="grid" id="grid">
         <a class="card" href="/projects/characterpipeline.html" data-tags="2d"
-         data-modal
+           data-modal
            data-title="Character Pipeline"
            data-role="Generalist Artist"
            data-tools="Adobe Photoshop, Clip Studio Paint, Blender, Substance 3D"
            data-scope="Concepts and Creative"
            data-summary="End-to-end pipeline for 4 characters, including implementation into Multiplayer Unreal Engine Game."
-            data-project="University"
+           data-project="University"
            data-hero="/assets/character-pipeline.webp"
            style="--delay: 0s;">
-          <img class="thumb" src="Images and Videos/Concept Art/Knight.png" alt="CharacterPipeline" loading="lazy" />
+          <div class="media-wrap">
+            <img class="thumb" src="Images and Videos/Concept Art/Knight.png" alt="CharacterPipeline" loading="lazy" />
+          </div>
           <div class="meta">
             <h3>Concept Art</h3>
             <p>Concept Art + Creative Process</p>
-         <div class="tags"><span class="tag">Concept</span></div>
-            </div>
+            <div class="tags"><span class="tag">Concept</span></div>
           </div>
         </a>
-        
+
         <a class="card" href="/projects/concepts.html" data-tags="3d, 2d"
            data-modal
            data-title="Fish and Game"
            data-role="3D, 2D"
            data-tools="Photoshop, Clip Studio Paint, Blender, Substance Painter"
            data-scope="3D Modeling, Uv Unwrap, Texture, Rig, Animate, 2D Posters"
-            data-project="15+ States Fish and Game"
+           data-project="15+ States Fish and Game"
            data-hero="/assets/fishandgame.webp"
            style="--delay: 0.1s;">
-          <img class="thumb" src="Images and Videos/2D Art Card Thumbnail.png" alt="Assorted character concept sheets" loading="lazy" />
+          <div class="media-wrap">
+            <img class="thumb" src="Images and Videos/2D Art Card Thumbnail.png" alt="Assorted character concept sheets" loading="lazy" />
+          </div>
           <div class="meta">
             <h3>Fish and Game</h3>
             <p>Educational VR Hunting Safety Experience, Funded by Fish and Game</p>
             <div class="tags"><span class="tag">3D</span><span class="tag">2D</span></div>
           </div>
         </a>
-
 
         <a class="card" href="/projects/concepts.html" data-tags="lead, ani, 2d"
            data-modal
@@ -311,10 +355,15 @@
            data-tools="Photoshop, Clip Studio Paint, After Effects, Blender"
            data-scope="Storyboards → Final Animation"
            data-summary="Iterative Ideation, Storyboarding, Lining, Coloring, Compositing"
-            data-project="GIMM Works, Art Lead"
+           data-project="GIMM Works, Art Lead"
            data-hero="/assets/diaperbank.webp"
            style="--delay: 0.2s;">
-          <img class="thumb" src="Images and Videos/diaperbankbanner.png" alt="Assorted character concept sheets" loading="lazy" />
+          <div class="media-wrap">
+            <video class="thumb" autoplay muted loop playsinline tabindex="-1" aria-hidden="true">
+              <source src="Images%20and%20Videos/highfive.mp4" type="video/mp4">
+            </video>
+            <img class="thumb-fallback" src="Images and Videos/diaperbankbanner.png" alt="Assorted character concept sheets" loading="lazy" aria-hidden="true" style="display:none" />
+          </div>
           <div class="meta">
             <h3>Diaper Bank</h3>
             <p>An animated tutorial teaching parents how to potty train thier kids, funded by the non-profit organization, Idaho Diaper Bank.</p>
@@ -329,48 +378,31 @@
            data-tools="Figma, Unity, Github Boards, Blender, Photoshop"
            data-scope="Team Management • Reviews • Pipelines"
            data-summary="Led art delivery;"
-            data-project="GIMM Works"
+           data-project="GIMM Works"
            data-hero="/assets/lead.webp"
            style="--delay: 0.6s;">
-          <video class="thumb" autoplay muted loop playsinline tabindex="-1" aria-hidden="true">
-            <source src="Images%20and%20Videos/MillionChanges/2025-08-13_09-47-01.mp4" type="video/mp4">
-            <!-- fallback image -->
-            <img src="Images%20and%20Videos/MillionChanges/millionchangesgridonphone.png" alt="Team board and asset reviews montage" loading="lazy" />
-          </video>
+          <div class="media-wrap">
+            <video class="thumb" autoplay muted loop playsinline tabindex="-1" aria-hidden="true">
+              <source src="Images%20and%20Videos/MillionChanges/2025-08-13_09-47-01.mp4" type="video/mp4">
+            </video>
+            <img class="thumb-fallback" src="Images%20and%20Videos/MillionChanges/millionchangesgridonphone.png" alt="Team board and asset reviews montage" loading="lazy" aria-hidden="true" style="display:none" />
+          </div>
           <div class="meta">
             <h3>Million Changes Mobile App Prototype</h3>
             <p>Pipelines • Art Direction • Concept Art </p>
             <div class="tags"><span class="tag">Art Lead</span><span class="tag">Concept Art</span></div>
           </div>
-          
-        <!-- </a>
-                 <a class="card" href=".html" data-tags=".."
-           data-modal
-           data-title=".."
-           data-role=".."
-           data-tools=".."
-           data-scope=".."
-           data-summary=".."
-          data-project="" 
-           data-hero="/assets/2d-concepts.webp"
-           style="--delay: 0.8s;">
-          <img class="thumb" src="/Images and Videos/" alt=".." loading="lazy" />
-          <div class="meta">
-            <h3>...</h3>
-            <p>...</p>
-            <div class="tags"><span class="tag">..</span><span class="tag">..</span></div>
-          </div>
         </a>
       </div>
-    </section> -->
+    </section>
 
     <section id="about" class="wrap">
       <h2>About</h2>
       <p style="max-width:760px; margin:0 auto; color:var(--ink-d)">
-     As a Generalist, I specialize in both 2D and 3D art, with a slight focus in concept art
-     and animation. With experience in leading art teams and managing creative projects, I thrive in collaborative
-      environments where innovation and storytelling are at the forefront. Adding layers to characters and worlds that
-      players and viewers can get excited about is what drives me.
+        As a Generalist, I specialize in both 2D and 3D art, with a slight focus in concept art
+        and animation. With experience in leading art teams and managing creative projects, I thrive in collaborative
+        environments where innovation and storytelling are at the forefront. Adding layers to characters and worlds that
+        players and viewers can get excited about is what drives me.
       </p>
     </section>
 
@@ -387,7 +419,7 @@
 
   <footer>
     © <span id="y"></span> Mackenzie Burt
-         <p> If you would like a more immediate expansion of my work to scroll through, all of my 3D models can be found in "3D Examples" on the home page banner.
+    <p> If you would like a more immediate expansion of my work to scroll through, all of my 3D models can be found in "3D Examples" on the home page banner.
       Same for '2D Examples', which include Concept art and Animations.
     </p>
   </footer>
@@ -401,8 +433,9 @@
     <div class="modal-grid">
       <img id="m-hero" alt="Project preview" />
       <div>
-        <div class="kv"><div><strong>Role:</strong> <span id="m-role"></span></div>
-        <span id="m-badge" class="badge" aria-label="Project type" hidden></span>
+        <div class="kv">
+          <div><strong>Role:</strong> <span id="m-role"></span></div>
+          <span id="m-badge" class="badge" aria-label="Project type" hidden></span>
           <div><strong>Tools:</strong> <span id="m-tools"></span></div>
           <div><strong>Scope:</strong> <span id="m-scope"></span></div>
         </div>
@@ -420,7 +453,6 @@
     document.getElementById('y').textContent = new Date().getFullYear();
 
     // filters
-    
     const chips = document.querySelectorAll('.chip');
     const grid = document.getElementById('grid');
     chips.forEach(ch => ch.addEventListener('click', () => {
