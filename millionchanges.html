@@ -162,12 +162,30 @@
       background:#0c0c0c;
       border:1px solid #232323;
       transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease, opacity .2s ease;
+      cursor:pointer;
     }
     .grid img:hover{
       transform:translateY(-4px) scale(1.02);
       box-shadow:0 18px 36px rgba(0,0,0,.7);
       border-color:#333;
       opacity:.96;
+    }
+
+    .video-wrap{
+      margin-top:1rem;
+      border-radius:12px;
+      overflow:hidden;
+      border:1px solid #232323;
+      background:#000;
+      aspect-ratio:16/9;
+      max-width:100%;
+    }
+    .video-wrap video{
+      width:100%;
+      height:100%;
+      display:block;
+      object-fit:cover;
+      background:#000;
     }
 
     .split{
@@ -206,6 +224,39 @@
     @media (prefers-reduced-motion: reduce){
       *{scroll-behavior:auto !important; transition:none !important; animation:none !important;}
     }
+    /* Lightbox styles */
+    .lightbox{
+      position:fixed;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:rgba(0,0,0,.92);
+      z-index:9999;
+      padding:2rem;
+      visibility:hidden;
+      opacity:0;
+      transition:opacity .2s ease, visibility .2s;
+    }
+    .lightbox.show{ visibility:visible; opacity:1; }
+    .lightbox .media img{ max-width:calc(100% - 4rem); max-height:calc(100% - 4rem); border-radius:8px; box-shadow:0 20px 40px rgba(0,0,0,.6); }
+    .lightbox .media video{ max-width:calc(100% - 4rem); max-height:calc(100% - 4rem); border-radius:8px; box-shadow:0 20px 40px rgba(0,0,0,.6); }
+    .lightbox .controls{ position:absolute; inset:0; display:flex; align-items:center; justify-content:space-between; pointer-events:none; }
+    .lightbox button{ background:transparent; border:0; color:var(--ink); font-size:2rem; padding:.6rem; pointer-events:auto; cursor:pointer; }
+    .lightbox .close{ position:absolute; right:1.2rem; top:1.2rem; font-size:1.6rem; }
+    .lightbox .caption{ position:absolute; left:50%; transform:translateX(-50%); bottom:1.2rem; color:var(--ink-d); font-size:.95rem; }
+    /* Flower Beds two-column layout */
+    .two-col{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1rem; align-items:center; margin-top:1rem; }
+    .two-col img{ width:100%; height:auto; border-radius:12px; max-width:780px; }
+    .fb-text{ max-width:780px; }
+
+    /* Responsibilities centered two-column lists */
+    .responsibilities-grid{ display:flex; gap:2.5rem; justify-content:flex-start; align-items:flex-start; flex-wrap:wrap; margin-top:1rem; max-width:780px; }
+    .short-list, .detailed-list{ color:var(--ink-d); font-size:.95rem; max-width:380px; padding-left:1.1rem; margin:0; }
+    .short-list li, .detailed-list li{ margin-bottom:.6rem; line-height:1.6; }
+
+    /* Media grid for grouping videos */
+    .media-grid{ display:grid; gap:1rem; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); margin-top:1rem; }
   </style>
 </head>
 <body>
@@ -228,9 +279,6 @@
     <section class="page-hero">
       <h1>Million Changes — Mobile App Prototype</h1>
       <p>
-        A mobile app demo produced at GIMM Works where I was trained into the Art Lead role.
-        I owned the visual direction, reward systems, and much of the game feel while collaborating
-        with 3D artists and developers to build an environment that evolves as the player progresses.
       </p>
 
       <div class="meta-row">
@@ -245,48 +293,101 @@
     <section class="section" id="overview">
       <h2>Overview</h2>
       <p>
-        Million Changes was the project used to train me into the Art Lead position at GIMM Works.
-        The client needed a mobile app experience focused on forming habits and rewarding progress over time.
-        I had significant ownership over the art style, the way rewards are represented, and how the app
+        Our client needed a mobile app experience focused on forming habits and rewarding progress over time.
+        I had a significant hand in the design of the art style, the way rewards are represented, and how the app
         communicates growth to the player through visuals and small game-like interactions.
       </p>
       <p>
-        While I was not focused on UI implementation or the animal content, I directed the overall look,
-        cleared animations, and worked closely with a 3D environment artist whose work became one of the
+        Outside of UI development, I directed the overall look,
+        cleared animations, and worked closely with my 3D artists. Their work became one of the
         core metaphors for player progress.
       </p>
     </section>
 
     <section class="section" id="responsibilities">
       <h2>Responsibilities</h2>
-      <p>
-        As Art Lead on this prototype, I:
-      </p>
-      <ul style="color:var(--ink-d); font-size:.95rem; max-width:780px; padding-left:1.1rem;">
-        <li>Defined the overall art direction and tone for the app.</li>
-        <li>Created concept work for badges, rewards, and progression systems.</li>
-        <li>Collaborated with the client to align game functions with their goals and constraints.</li>
-        <li>Guided a 3D artist building an environment that visually upgrades as players level up.</li>
-        <li>Cleared animations and made sure they fit both the style and intended player feeling.</li>
-      </ul>
+      <div class="responsibilities-grid">
+              <ul class="detailed-list">
+          <li>Led the visual direction and established the art style and tone for the app.</li>
+          <li>Produced concept work for badges, rewards, and progression systems.</li>
+          <li>Collaborated with the client to align features and constraints while keeping scope realistic for a rapid prototype.</li>
+          <li>Directed a 3D art team to create an environment that visually evolves with player progression.</li>
+          <li>Worked with developers to ensure art assets integrated cleanly into the Unity prototype.</li>
+          <li>Helped implement randomized animal appearances to increase player retention.</li>
+          <li>Provided iterative feedback to meet project standards and delivery schedules.</li>
+        </ul>
+        <ul class="short-list">
+          <li>Feedback / Revisions</li>
+          <li>Quality Control</li>
+          <li>Concept Development</li>
+          <li>Task Assignment</li>
+          <li>Dev ⇄ Art Communication</li>
+          <li>Scope Management</li>
+          <li>Project Coordination</li>
+        </ul>
+      </div>
     </section>
 
     <section class="section" id="rewards">
       <h2>Badges and Reward Concepts</h2>
       <p>
         A big part of Million Changes was making progress feel visible and satisfying.
-        I explored different badge and reward systems that could fit within the client’s goals,
-        while staying flexible enough for future scaling as more habits or “changes” were added.
+        I created different badge and reward systems that could fit within the app's aesthetic, 
+        primarily maintaining the idea of future scaling as more habits or “changes” are added.
       </p>
 
-      <div class="grid">
-        <img src="/Images and Videos/MillionChanges/LevelsConcepts.png" alt="Overview of badge concepts for Million Changes">
-        <img src="/Images and Videos/MillionChanges/Badges1.png" alt="Badge concept sketches for Million Changes">
-        <img src="/Images and Videos/MillionChanges/Badges2.png" alt="Badge concept sketches for Million Changes">
-        <img src="/Images and Videos/MillionChanges/Badges3.png" alt="Badge concept sketches for Million Changes">
-        <img src="/Images and Videos/MillionChanges/Badges4.png" alt="Badge concept sketches for Million Changes">
+<div class="grid">
+  <img src="Images and Videos/MillionChanges/LevelsConcepts.png" alt="Level Concepts. Level 100+ would implement level border animations.">
+  <img src="Images and Videos/MillionChanges/Badges1.png" alt="Badge1">
+  <img src="Images and Videos/MillionChanges/Badges2.png" alt="Badge2">
+  <img src="Images and Videos/MillionChanges/Badges3.png" alt="Badge3">
+  <img src="Images and Videos/MillionChanges/Badges4.png" alt="Badge4">
+</div>
+
+
+<div id="lightbox" class="lightbox" aria-hidden="true">
+  <button class="close" aria-label="Close">✕</button>
+  <div class="controls">
+    <button id="prev" aria-label="Previous">◀</button>
+    <button id="next" aria-label="Next">▶</button>
+  </div>
+  <div id="lightbox-media" class="media" aria-live="polite"></div>
+  <div class="caption" id="lightbox-caption"></div>
+</div>
+
+<section class="section" id="art lead changes">
+  <h2>Feedback + Revisions</h2>
+     <p>
+        I reviewed passes of the environment as it evolved, making sure the changes felt meaningful and readable
+        on a mobile screen, and that the “before vs. after” contrast matched the emotional journey we wanted
+        for the player.
+      </p>
+
+      <div>
+        <h2 style="text-align:center; margin-top:0;">Flower Beds</h2>
+        <div class="two-col">
+          <img src="Images%20and%20Videos/MillionChanges/FlowerBed_Preview.png" alt="3D Environment Flower Bed Before">
+          <div class="fb-text">
+            <p>Although I appreciated the Bronze → Gold concept, it wasn't visually noticeable enough to motivate continued progression. I suggested introducing early-stage rot and decay to wood and metal elements so the progression becomes more readable and emotionally satisfying.</p>
+          </div>
+        </div>
       </div>
-    </section>
+
+    <div class="grid">
+      <div class="media-grid">
+        <div class="video-wrap">
+          <video controls preload="metadata" tabindex="0">
+            <source src="Images%20and%20Videos/MillionChanges/2025-07-21_14-45-00.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+        <div class="grid">
+          <img src="Images%20and%20Videos/MillionChanges/SignsChanges.png" alt="Signs">
+        </div>
+
+      </div>
+            <p>Our 3D Artists did a wonderful job!</p>
+</section>
 
     <section class="section" id="environment">
       <h2>Progressive 3D Environment</h2>
@@ -295,21 +396,33 @@
         and run-down, then gradually transforms into a clean, welcoming space as the user levels up.
         I provided direction and feedback on this environment while my 3D teammate handled modeling and animation.
       </p>
-      <p>
-        I reviewed passes of the environment as it evolved, making sure the changes felt meaningful and readable
-        on a mobile screen, and that the “before vs. after” contrast matched the emotional journey we wanted
-        for the player.
-      </p>
 
       <div class="split">
         <div>
-          <div class="label">Early state — cluttered and messy</div>
-          <img src="/Images and Videos/mc_env_before.png" alt="Early version of the Million Changes environment with trash and clutter">
-        </div>
+            <div class="label">Starting state — cluttered and messy</div>
+            <div class="video-wrap">
+              <video controls preload="metadata" tabindex="0">
+                <source src="Images%20and%20Videos/MillionChanges/2025-08-13_12-01-02.mp4" type="video/mp4">
+              </video>
+            </div>
         <div>
-          <div class="label">Later state — cleaned up and upgraded</div>
-          <img src="/Images and Videos/mc_env_after.png" alt="Upgraded version of the Million Changes house and yard after player progression">
-        </div>
+            <div class="label">Later state — clean and sparkly</div>
+            <div class="video-wrap">
+              <video controls preload="metadata" tabindex="0">
+                <source src="Images%20and%20Videos/MillionChanges/2025-08-13_09-47-01.mp4" type="video/mp4">
+              </video>
+            </div>
+
+
+
+<div>
+  <div class="label">Dev Side - Pre Environment</div>
+  <div class="video-wrap">
+  <video controls preload="metadata" tabindex="0">
+    <source src="Images%20and%20Videos/MillionChanges/MobileDemo.mp4" type="video/mp4">
+  </video>
+  </div>
+</div>
       </div>
     </section>
 
@@ -318,7 +431,7 @@
       <p>
         Million Changes was also where I first stepped into balancing client needs, dev constraints,
         and artist bandwidth. I had to think not just about what looked good on a screen, but what was
-        realistic to build and iterate on in a mobile prototype with limited time.
+        realistic to build and iterate in a mobile prototype with limited time.
       </p>
       <p>
         I spent a lot of time translating between what the client wanted, what the devs needed, and what
@@ -326,14 +439,122 @@
         responsible for art pipelines and quality control.
       </p>
     </section>
+    
   </main>
 
   <footer>
     © <span id="y"></span> Mackenzie Burt
+       <p> If you would like a more immediate expansion of my 3D work, all of my 3D models can be found in "3D Examples" on the home page banner.
+      Same for '2D Examples', which include Concept art and Animations.
+    </p>
   </footer>
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
+
+    (function(){
+      // collect gallery items (images and videos) in document order
+      const galleryNodeList = document.querySelectorAll('.grid img, .grid video, .video-wrap video, .split img, .split video');
+      const gallery = Array.from(galleryNodeList);
+      if(!gallery.length) return;
+      const lightbox = document.getElementById('lightbox');
+      const lbMedia = document.getElementById('lightbox-media');
+      const caption = document.getElementById('lightbox-caption');
+      const btnNext = document.getElementById('next');
+      const btnPrev = document.getElementById('prev');
+      const btnClose = lightbox.querySelector('.close');
+      let idx = 0;
+
+      function normalizePath(s){
+        if(!s) return '';
+        return s.replace(/\\/g, '/');
+      }
+
+      function getMediaSource(el){
+        if(!el) return '';
+        if(el.tagName === 'IMG') return el.getAttribute('src');
+        if(el.tagName === 'VIDEO'){
+          const srcAttr = el.getAttribute('src');
+          if(srcAttr) return srcAttr;
+          const source = el.querySelector('source');
+          return source ? source.getAttribute('src') : '';
+        }
+        return '';
+      }
+
+      function show(index){
+        idx = (index + gallery.length) % gallery.length;
+        const el = gallery[idx];
+        const rawSrc = getMediaSource(el) || '';
+        const src = normalizePath(rawSrc);
+        const alt = el.getAttribute('alt') || '';
+
+        // clear previous media
+        lbMedia.innerHTML = '';
+
+        if(el.tagName === 'IMG'){
+          const i = document.createElement('img');
+          i.src = src;
+          i.alt = alt;
+          lbMedia.appendChild(i);
+        } else if(el.tagName === 'VIDEO'){
+          const v = document.createElement('video');
+          v.controls = true;
+          v.autoplay = true;
+          v.playsInline = true;
+          v.preload = 'metadata';
+          const s = document.createElement('source');
+          s.src = src;
+          s.type = 'video/mp4';
+          v.appendChild(s);
+          lbMedia.appendChild(v);
+          // try to play (some browsers block autoplay without interaction)
+          v.addEventListener('loadedmetadata', ()=>{
+            try{ v.play(); }catch(e){}
+          });
+        }
+
+        caption.textContent = alt;
+        lightbox.classList.add('show');
+        lightbox.setAttribute('aria-hidden','false');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function hide(){
+        lightbox.classList.remove('show');
+        lightbox.setAttribute('aria-hidden','true');
+        // pause any playing video inside the lightbox and clear the media container
+        try{
+          const playing = lbMedia.querySelector('video');
+          if(playing){ try{ playing.pause(); playing.currentTime = 0; }catch(e){} }
+        }catch(e){}
+        lbMedia.innerHTML = '';
+        document.body.style.overflow = '';
+      }
+
+      gallery.forEach((node,i)=>{
+        node.style.cursor = 'pointer';
+        node.addEventListener('click', ()=> show(i));
+      });
+
+      btnNext.addEventListener('click', ()=> show(idx+1));
+      btnPrev.addEventListener('click', ()=> show(idx-1));
+      btnClose.addEventListener('click', hide);
+
+      // click outside image to close
+      lightbox.addEventListener('click', (e)=>{
+        if(e.target === lightbox) hide();
+      });
+
+      // keyboard navigation
+      document.addEventListener('keydown', (e)=>{
+        if(lightbox.classList.contains('show')){
+          if(e.key === 'ArrowRight') show(idx+1);
+          if(e.key === 'ArrowLeft') show(idx-1);
+          if(e.key === 'Escape') hide();
+        }
+      });
+    })();
   </script>
 </body>
 </html>

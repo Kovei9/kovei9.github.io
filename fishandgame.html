@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fish and Game - 3D/2D Generalist </title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23121212'/%3E%3Ctext x='50' y='70' font-family='serif' font-size='45' font-weight='700' text-anchor='middle' fill='%23ff6f61'%3EMB%3C/text%3E%3C/svg%3E" />
+
+  <style>
+    :root { --bg:#121212; --ink:#f5f5f5; --ink-d:#cfcfcf; --accent:#ff6f61; }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,sans-serif;
+      background:var(--bg);
+      color:var(--ink);
+      line-height:1.6;
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{
+      max-width:1160px;
+      margin:0 auto;
+      padding:1.5rem 1.25rem 3.5rem;
+    }
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:10;
+      backdrop-filter: blur(10px);
+      background:rgba(18,18,18,.9);
+      border-bottom:1px solid #222;
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:1rem 1.25rem;
+      max-width:1160px;
+      margin:0 auto;
+    }
+    .logo{
+      font-family:'Playfair Display',serif;
+      font-weight:700;
+      font-size:1.5rem;
+      letter-spacing:.5px;
+    }
+    .nav ul{
+      display:flex;
+      list-style:none;
+      gap:1rem;
+      padding:0;
+      margin:0;
+    }
+    .nav a{
+      position:relative;
+      font-size:.9rem;
+      transition:all 0.25s ease;
+    }
+    .nav a:hover,
+    .nav a:focus{
+      color:var(--accent);
+      transform:translateY(-2px);
+    }
+    .nav a::after{
+      content:'';
+      position:absolute;
+      bottom:-5px;
+      left:0;
+      width:0;
+      height:2px;
+      background:var(--accent);
+      transition:width .25s ease;
+    }
+    .nav a:hover::after{
+      width:100%;
+    }
+
+    .back-link{
+      display:inline-flex;
+      align-items:center;
+      gap:.35rem;
+      font-size:.85rem;
+      margin-bottom:1.5rem;
+      color:var(--ink-d);
+      opacity:.9;
+      cursor:pointer;
+      transition:color .2s ease, transform .2s ease, opacity .2s ease;
+    }
+    .back-link:hover{
+      color:var(--accent);
+      transform:translateY(-1px);
+      opacity:1;
+    }
+
+    .page-hero{
+      margin-bottom:2rem;
+    }
+    .page-hero h1{
+      font-family:'Playfair Display',serif;
+      font-size:clamp(2rem,4vw,3rem);
+      margin:0 0 .5rem;
+    }
+    .page-hero p{
+      margin:0;
+      color:var(--ink-d);
+      font-size:.95rem;
+      max-width:720px;
+    }
+
+    .meta-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.5rem;
+      margin-top:1.3rem;
+      font-size:.8rem;
+    }
+    .pill{
+      border-radius:999px;
+      padding:.25rem .8rem;
+      border:1px solid #2a2a2a;
+      background:#181818;
+      color:var(--ink-d);
+    }
+    .pill-strong{
+      background:var(--accent);
+      color:#000;
+      border-color:var(--accent);
+      font-weight:600;
+    }
+
+    h2{
+      font-family:'Playfair Display',serif;
+      font-size:clamp(1.6rem,3vw,2.1rem);
+      margin:0 0 1rem;
+      color:var(--accent);
+    }
+    .section{
+      margin-top:2.75rem;
+    }
+    .section p{
+      color:var(--ink-d);
+      font-size:.95rem;
+      max-width:780px;
+    }
+
+    .grid{
+      display:grid;
+      gap:1rem;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      margin-top:1.4rem;
+    }
+    .grid img{
+      width:100%;
+      height:100%;
+      display:block;
+      object-fit:cover;
+      border-radius:14px;
+      background:#0c0c0c;
+      border:1px solid #232323;
+      transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease, opacity .2s ease;
+    }
+    .grid img:hover{
+      transform:translateY(-4px) scale(1.02);
+      box-shadow:0 18px 36px rgba(0,0,0,.7);
+      border-color:#333;
+      opacity:.96;
+    }
+
+    .video-wrap{
+      margin-top:1.4rem;
+      border-radius:14px;
+      overflow:hidden;
+      border:1px solid #232323;
+      background:#000;
+      aspect-ratio:16/9;
+    }
+    .video-wrap iframe{
+      width:100%;
+      height:100%;
+      border:0;
+      display:block;
+    }
+
+    footer{
+      padding:2rem 1rem;
+      text-align:center;
+      color:#9a9a9a;
+      border-top:1px solid #202020;
+      font-size:.8rem;
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *{scroll-behavior:auto !important; transition:none !important; animation:none !important;}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav" role="navigation" aria-label="Primary">
+      <a class="logo" href="/index.html" aria-label="Home">MB</a>
+      <ul>
+        <li><a href="/index.html#work">Work</a></li>
+        <li><a href="/index.html#about">About</a></li>
+        <li><a href="/index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <a class="back-link" href="/index.html">
+      ← Back to portfolio
+    </a>
+
+    <section class="page-hero">
+      <h1>Fish and Game</h1>
+      <p>
+        Fish and Game is an immersive Educational VR Hunting Safety experience, developed by GIMM Works, funded and published by 15+ States within the USA.
+        The goal of the interactive experience is to aid in the Fish and Game Hunting Safety Education Curriculum by providing a safer learning environment that is also
+        easily accessible.
+      </p>
+
+      <div class="meta-row">
+        <span class="pill pill-strong">Role: 3D / 2D Generalist</span>
+        <span class="pill">Later: Art Lead</span>
+        <span class="pill">3D Models &amp; Props</span>
+        <span class="pill">2D Posters &amp; UI Adjacent Art</span>
+      </div>
+    </section>
+
+    <section class="section" id="overview">
+      <h2>Overview</h2>
+      <p>
+        I was hired for Fish and Game as a 3D/2D Generalist, later promoted to Art Lead towards the end of the project. 
+      </p>
+    </section>
+
+    <section class="section" id="trailer">
+      <h2>Trailer</h2>
+      <p>
+        The project culminated in a trailer showcasing the final experience. This is the best quick look
+        at how all the pieces came together. I 'directed' the trailer conceptually and scripted the shots.
+      </p>
+
+      <div class="video-wrap">
+        <iframe src="https://youtu.be/1kXxH0J6MfA?si=lJ3Jqk3AO860ce3U"
+                title="Fish and Game Trailer"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <section class="section" id="contributions">
+      <h2>My Contributions</h2>
+      <p>
+        My work on Fish and Game was spread across both 3D and 2D tasks. Here are some of the key contributions I made to the project:
+      </p>
+      <ul style="color:var(--ink-d); font-size:.95rem; max-width:780px; padding-left:1.1rem;">
+        <li>Modeled, UV Unwrapped, Textured, Rigged, and Animated multiple models/assets.</li>
+        <li>Designed 2D Elements, such as lethal shot posters and other supporting graphics.</li>
+        <li>2D Art for the environmental elements (Mountains, trees, etc)</li>
+        <li>Concept art for the Gun Safety Icon and other UI.</li>
+        <li>2D Animations for UI icons and other interactive elements.</li>
+      </ul>
+    </section>
+
+    <section class="section" id="gallery">
+      <h2>Selected Assets</h2>
+      <p>
+        A small sampling of the assets I worked on.
+      </p>
+
+      <div class="grid">
+        <img src="/Images and Videos/fg_model_01.png" alt="3D model created for Fish and Game">
+        <img src="/Images and Videos/fg_model_02.png" alt="Additional 3D asset from Fish and Game">
+        <img src="/Images and Videos/fg_poster_01.png" alt="Lethal shot poster design for Fish and Game">
+      </div>
+    </section>
+
+    <h2> Work Environment + PipeLine </h2>
+    <p>
+        The hiring process included a test in which I had 2 weeks to 
+        model, UV-Unwrap, Texture, Rig, and Animate a low-poly White Tail Deer in Blender. I was in the earlier stages of my 3D courses at the time.
+        However, this studio knew that I was a quick and adaptive artist, always determined to expand my skillset.
+    </p>
+
+    <p>
+        I learned on the job, heavily relying on my coworkers for guidance and feedback. Feedback was common and the only reason I was able to grow so 
+        quickly in my 3D skills.
+        3D models were often passed between artists quite often, but none of us necessarily specialized in one area. We were all generalists that could pick 
+        up and work on any task as needed.
+        This allowed me to work on quite a few models, and each one taught me something new. Everything I achieved here
+        is entirely thanks to my team and the previous Art Lead.
+        I did the White Tail Deer entirely on my own, asside from some animations.
+        I ended up working on 2D Lethal Shot Posters, UI concept art, and animation icons to indicate player actions.
+        As we approached the end of the project, I primarily aided in decisions related to marketing and client delivery.
+    </p>
+    <h2> 3 Month Difference</h2>
+    <p>
+      Here is the comparative difference between the test model I created, and the revised White Tail Deer model</p>
+      <img src="/Images and Videos/fg_deer_compare.png" alt="Comparison">
+      <img src="/Images and Videos/fg_deer_test.png" alt="Test Model">
+    </p>
+  </main>
+
+  <footer>
+    © <span id="y"></span> Mackenzie Burt
+       <p> If you would like a more immediate expansion of my work to scroll through, all of my 3D models can be found in "3D Examples" on the home page banner.
+      Same for '2D Examples', which include Concept art and Animations.
+    </p>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
