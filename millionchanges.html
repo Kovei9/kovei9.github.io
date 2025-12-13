@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Million Changes — Case Study | Mackenzie Burt</title>
+  <title>Million Changes | Mackenzie Burt</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23121212'/%3E%3Ctext x='50' y='70' font-family='serif' font-size='45' font-weight='700' text-anchor='middle' fill='%23ff6f61'%3EMB%3C/text%3E%3C/svg%3E" />
@@ -220,6 +220,9 @@
 
     @media (max-width: 800px){
       .split{ grid-template-columns:1fr; }
+      .comparison-chart{ grid-template-columns: 1fr !important; gap: 2rem !important; }
+      .comparison-chart .divider{ display: none !important; }
+      .comparison-chart > div{ padding-left: 0 !important; padding-right: 0 !important; padding: 0 !important; }
     }
     @media (prefers-reduced-motion: reduce){
       *{scroll-behavior:auto !important; transition:none !important; animation:none !important;}
@@ -280,6 +283,145 @@
       <h1>Million Changes — Mobile App Prototype</h1>
       <p>
       </p>
+ <section class="section" id="rewards">
+      <h2>Badges and Reward Concepts</h2>
+      <p>
+        A big part of Million Changes was making progress feel visible and satisfying.
+        I created different badge and reward systems that could fit within the app's aesthetic, 
+        primarily maintaining the idea of future scaling as more habits or “changes” are added.
+      </p>
+
+<div class="grid">
+  <img src="Images and Videos/MillionChanges/LevelsConcepts.png" alt="Level Concepts. Level 100+ would implement level border animations.">
+  <img src="Images and Videos/MillionChanges/Badges1.png" alt="Badge1">
+  <img src="Images and Videos/MillionChanges/Badges2.png" alt="Badge2">
+  <img src="Images and Videos/MillionChanges/Badges3.png" alt="Badge3">
+  <img src="Images and Videos/MillionChanges/Badges4.png" alt="Badge4">
+</div>
+
+<div style="text-align: center;">
+        <h2 style="text-align:center; margin-top:0;">App Icon</h2>
+        <img src="Images and Videos/Logo.png" alt="App-Icon" style="max-width: 300px; height: auto; display: inline-block;">
+      </div>
+
+<hr>
+
+<div id="lightbox" class="lightbox" aria-hidden="true">
+  <button class="close" aria-label="Close">✕</button>
+  <div class="controls">
+    <button id="prev" aria-label="Previous">◀</button>
+    <button id="next" aria-label="Next">▶</button>
+  </div>
+  <div id="lightbox-media" class="media" aria-live="polite"></div>
+  <div class="caption" id="lightbox-caption"></div>
+</div>
+
+
+<section class="section" id="art lead changes">
+  <h2>ART LEAD - Revisions + Feedback</h2>
+     <p>
+        This art below is not mine.
+        
+        I reviewed passes of the environment as it evolved, making sure the changes felt meaningful and readable
+        on a mobile screen, and that the “before vs. after” contrast matched the emotional journey the client wanted
+        for the player.
+      </p>
+
+<hr>
+      <div>
+        <h2 style="text-align:center; margin-top:0;">Flower Bed - Feedback + Revisions</h2>
+        
+        <div class="comparison-chart" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 1.5rem; position: relative;">
+          <!-- Vertical divider line -->
+          <div class="divider" style="position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: #2a2a2a; transform: translateX(-50%);"></div>
+          
+          <!-- BEFORE REVISIONS -->
+          <div style="padding-right: 1rem;">
+            <h3 style="text-align: center; color: var(--accent); font-family: 'Playfair Display', serif; margin-top: 0; margin-bottom: 1rem;">Before Revisions</h3>
+            <img src="Images%20and%20Videos/MillionChanges/FlowerBed_Preview.png" alt="3D Environment Flower Bed Before" style="width: 100%; height: auto; border-radius: 12px; margin-bottom: 1rem; display: block;">
+            <p style="color: var(--ink-d); font-size: 0.95rem; margin: 0;">The Bronze → Gold concept wasn't visually noticeable enough to motivate continued progression. It felt too 'gameified' and lacked nature-based storytelling. I suggested introducing rot / decay / wear on wooden & metallic elements for early-stage progression.</p>
+          </div>
+          
+          <!-- AFTER REVISIONS -->
+          <div style="padding-left: 1rem;">
+            <h3 style="text-align: center; color: var(--accent); font-family: 'Playfair Display', serif; margin-top: 0; margin-bottom: 1rem;">After Revisions</h3>
+            <div style="display: grid; gap: 1rem;">
+              <div class="video-wrap" style="margin-top: 0;">
+                <video controls preload="metadata" tabindex="0">
+                  <source src="Images%20and%20Videos/MillionChanges/2025-07-21_14-45-00.mp4" type="video/mp4">
+                </video>
+              </div>
+              <img src="Images%20and%20Videos/MillionChanges/SignsChanges.png" alt="Signs" style="width: 100%; height: auto; border-radius: 12px; display: block;">
+            </div>
+          </div>
+        </div>
+      </div>
+
+<hr>
+
+      </div>
+            <p>The 3D Artists is Jaden</p>
+</section>
+
+    <section class="section" id="environment">
+      <h2>Progressive 3D Environment</h2>
+      <p>
+        One of the most visible rewards in Million Changes is a 3D house and yard that starts out cluttered
+        and run-down, then gradually transforms into clean natural growth, welcoming space as the user levels up.
+        I provided direction and feedback on this environment while my 3D teammate handled modeling and animation.
+      </p>
+
+      <div class="comparison-chart" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; margin-top: 1.5rem; position: relative;">
+        <!-- Dividers -->
+        <div class="divider" style="position: absolute; left: calc(33.333% - 0.5px); top: 0; bottom: 0; width: 1px; background: #2a2a2a;"></div>
+        <div class="divider" style="position: absolute; left: calc(66.666% - 0.5px); top: 0; bottom: 0; width: 1px; background: #2a2a2a;"></div>
+        
+        <!-- Cluttered and Messy -->
+        <div style="padding-right: 1rem;">
+          <div class="label" style="text-align: center;">Starting state — Cluttered and Messy</div>
+          <div class="video-wrap" style="margin-top: 0.5rem;">
+            <video controls preload="metadata" tabindex="0">
+              <source src="Images%20and%20Videos/MillionChanges/2025-08-13_12-01-02.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+        
+        <!-- Thriving and Sparkly -->
+        <div style="padding: 0 1rem;">
+          <div class="label" style="text-align: center;">Later State — Thriving and Sparkly</div>
+          <div class="video-wrap" style="margin-top: 0.5rem;">
+            <video controls preload="metadata" tabindex="0">
+              <source src="Images%20and%20Videos/MillionChanges/2025-08-13_09-47-01.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+        
+        <!-- Dev Side - Pre Environment -->
+        <div style="padding-left: 1rem;">
+          <div class="label" style="text-align: center;">Dev Side - Pre Environment</div>
+          <div class="video-wrap" style="margin-top: 0.5rem;">
+            <video controls preload="metadata" tabindex="0">
+              <source src="Images%20and%20Videos/MillionChanges/MobileDemo.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="collab">
+      <h2>Collaboration and Direction</h2>
+      <p>
+        Million Changes was also where I first stepped into balancing client needs, dev constraints,
+        and artist bandwidth. I had to think not just about what looked good on a screen, but what was
+        realistic to build and iterate in a mobile prototype with limited time.
+      </p>
+      <p>
+        I spent a lot of time translating between what the client wanted, what the devs needed, and what
+        my artists could deliver. That experience carried forward into later projects where I was fully
+        responsible for art pipelines and quality control.
+      </p>
+
+    </section>
 
       <div class="meta-row">
         <span class="pill pill-strong">Role: Art Lead</span>
@@ -288,6 +430,7 @@
         <span class="pill">3D Environment Oversight</span>
         <span class="pill">Unity Mobile Prototype</span>
       </div>
+
     </section>
 
     <section class="section" id="overview">
@@ -328,117 +471,7 @@
       </div>
     </section>
 
-    <section class="section" id="rewards">
-      <h2>Badges and Reward Concepts</h2>
-      <p>
-        A big part of Million Changes was making progress feel visible and satisfying.
-        I created different badge and reward systems that could fit within the app's aesthetic, 
-        primarily maintaining the idea of future scaling as more habits or “changes” are added.
-      </p>
-
-<div class="grid">
-  <img src="Images and Videos/MillionChanges/LevelsConcepts.png" alt="Level Concepts. Level 100+ would implement level border animations.">
-  <img src="Images and Videos/MillionChanges/Badges1.png" alt="Badge1">
-  <img src="Images and Videos/MillionChanges/Badges2.png" alt="Badge2">
-  <img src="Images and Videos/MillionChanges/Badges3.png" alt="Badge3">
-  <img src="Images and Videos/MillionChanges/Badges4.png" alt="Badge4">
-</div>
-
-
-<div id="lightbox" class="lightbox" aria-hidden="true">
-  <button class="close" aria-label="Close">✕</button>
-  <div class="controls">
-    <button id="prev" aria-label="Previous">◀</button>
-    <button id="next" aria-label="Next">▶</button>
-  </div>
-  <div id="lightbox-media" class="media" aria-live="polite"></div>
-  <div class="caption" id="lightbox-caption"></div>
-</div>
-
-<section class="section" id="art lead changes">
-  <h2>Feedback + Revisions</h2>
-     <p>
-        I reviewed passes of the environment as it evolved, making sure the changes felt meaningful and readable
-        on a mobile screen, and that the “before vs. after” contrast matched the emotional journey we wanted
-        for the player.
-      </p>
-
-      <div>
-        <h2 style="text-align:center; margin-top:0;">Flower Beds</h2>
-        <div class="two-col">
-          <img src="Images%20and%20Videos/MillionChanges/FlowerBed_Preview.png" alt="3D Environment Flower Bed Before">
-          <div class="fb-text">
-            <p>Although I appreciated the Bronze → Gold concept, it wasn't visually noticeable enough to motivate continued progression. I suggested introducing early-stage rot and decay to wood and metal elements so the progression becomes more readable and emotionally satisfying.</p>
-          </div>
-        </div>
-      </div>
-
-    <div class="grid">
-      <div class="media-grid">
-        <div class="video-wrap">
-          <video controls preload="metadata" tabindex="0">
-            <source src="Images%20and%20Videos/MillionChanges/2025-07-21_14-45-00.mp4" type="video/mp4">
-          </video>
-        </div>
-      </div>
-        <div class="grid">
-          <img src="Images%20and%20Videos/MillionChanges/SignsChanges.png" alt="Signs">
-        </div>
-
-      </div>
-            <p>Our 3D Artists did a wonderful job!</p>
-</section>
-
-    <section class="section" id="environment">
-      <h2>Progressive 3D Environment</h2>
-      <p>
-        One of the most visible rewards in Million Changes is a 3D house and yard that starts out cluttered
-        and run-down, then gradually transforms into a clean, welcoming space as the user levels up.
-        I provided direction and feedback on this environment while my 3D teammate handled modeling and animation.
-      </p>
-
-      <div class="split">
-        <div>
-            <div class="label">Starting state — cluttered and messy</div>
-            <div class="video-wrap">
-              <video controls preload="metadata" tabindex="0">
-                <source src="Images%20and%20Videos/MillionChanges/2025-08-13_12-01-02.mp4" type="video/mp4">
-              </video>
-            </div>
-        <div>
-            <div class="label">Later state — clean and sparkly</div>
-            <div class="video-wrap">
-              <video controls preload="metadata" tabindex="0">
-                <source src="Images%20and%20Videos/MillionChanges/2025-08-13_09-47-01.mp4" type="video/mp4">
-              </video>
-            </div>
-
-
-
-<div>
-  <div class="label">Dev Side - Pre Environment</div>
-  <div class="video-wrap">
-  <video controls preload="metadata" tabindex="0">
-    <source src="Images%20and%20Videos/MillionChanges/MobileDemo.mp4" type="video/mp4">
-  </video>
-  </div>
-</div>
-      </div>
-    </section>
-
-    <section class="section" id="collab">
-      <h2>Collaboration and Direction</h2>
-      <p>
-        Million Changes was also where I first stepped into balancing client needs, dev constraints,
-        and artist bandwidth. I had to think not just about what looked good on a screen, but what was
-        realistic to build and iterate in a mobile prototype with limited time.
-      </p>
-      <p>
-        I spent a lot of time translating between what the client wanted, what the devs needed, and what
-        my artists could deliver. That experience carried forward into later projects where I was fully
-        responsible for art pipelines and quality control.
-      </p>
-    </section>
+   
     
   </main>
 

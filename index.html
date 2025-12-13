@@ -79,8 +79,14 @@
     .grid{
       display:grid;
       gap:1.25rem;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      grid-template-columns:repeat(3,1fr);
       align-items:stretch;
+    }
+    @media (max-width:900px){
+      .grid{grid-template-columns:repeat(2,1fr);}
+    }
+    @media (max-width:600px){
+      .grid{grid-template-columns:1fr;}
     }
 
     /* Make each card stretch to the grid cell so all cards have equal height */
@@ -123,18 +129,7 @@
     .tag{font-size:.75rem; padding:.25rem .5rem; border-radius:6px; background:#202020; color:var(--ink-d); border:1px solid #2a2a2a; transition: all 0.3s ease;}
     .card:hover .tag{background: #2a2a2a; border-color: #3a3a3a;}
 
-    /* QUICK-VIEW MODAL */
-    dialog{border:none; border-radius:16px; padding:0; width:min(920px,96vw); color:var(--ink); background:#141414; animation: modalSlideIn 0.3s ease-out;}
-    
-    .modal-head{display:flex; justify-content:space-between; align-items:center; padding:1rem 1.25rem; border-bottom:1px solid #242424}
-    .modal-grid{display:grid; grid-template-columns:1.2fr .9fr; gap:1rem; padding:1rem 1.25rem}
-    .modal-grid img{width:100%; height:auto; border-radius:12px}
-    .kv{display:grid; gap:.4rem; font-size:.95rem}
-    .kv strong{color:var(--ink)}
-    .modal-actions{display:flex; gap:.6rem; padding:0 1.25rem 1.25rem}
-    .ghost{border:1px solid #2c2c2c; border-radius:999px; padding:.65rem 1rem}
-
-    @media (max-width: 800px){ .modal-grid{grid-template-columns:1fr} }
+    /* QUICK-VIEW MODAL (removed) */
 
     /* CONTACT */
     .contact-grid{display:grid; gap:1rem; justify-content:center; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); max-width:760px; margin:0 auto}
@@ -173,10 +168,7 @@
       to { opacity: 1; transform: translateY(0) scale(1); }
     }
 
-    @keyframes modalSlideIn {
-      from { opacity: 0; transform: scale(0.9) translateY(-20px); }
-      to { opacity: 1; transform: scale(1) translateY(0); }
-    }
+    /* modalSlideIn removed */
 
     /* a11y / motion and final UI flourishes */
     @media (prefers-reduced-motion: reduce){
@@ -291,7 +283,7 @@
         <h1>Mackenzie Burt</h1>
         <p class="subtitle">2D/3D Generalist • Characters • Concepts • Animation • Art Lead</p>
         <a href="sketch_book.html" class="btn">SketchBook</a>
-        <a href="3dexamples.html" class="btn" style="margin-left:1rem;">3D Examples</a> 
+        <a href="3d.html" class="btn" style="margin-left:1rem;">3D Examples</a> 
         <a href="2dexamples.html" class="btn" style="margin-left:1rem;">2D Examples</a>
       </div>
     </section>
@@ -329,7 +321,7 @@
           </div>
         </a>
 
-        <a class="card" href="/projects/concepts.html" data-tags="3d, 2d"
+        <a class="card" href="fishandgame.html" data-tags="3d, 2d"
            data-modal
            data-title="Fish and Game"
            data-role="3D, 2D"
@@ -393,7 +385,33 @@
             <div class="tags"><span class="tag">Art Lead</span><span class="tag">Concept Art</span></div>
           </div>
         </a>
+
+        <a class="card" href="kestrel.html" data-tags="lead, 3d"
+           data-title="Kestrel VR — Digital Twinning Training Simulation"
+           data-role="Art Lead, Technical Artist, Rigger"
+           data-tools="Blender, Unity, Photoshop"
+           data-scope="Rigging • Quality Control • VR Pipeline"
+           data-summary="Hand-tracked VR training sim for kestrel banding + measurement."
+           data-project="Wildlife Research Training"
+           style="--delay: 0.7s;">
+          <div class="media-wrap">
+            <img class="thumb"
+                 src="Images and Videos/Kestrel/kestrelbirdunityjaden.png"
+                 alt="Kestrel VR project thumbnail"
+                 loading="lazy" />
+          </div>
+          <div class="meta">
+            <h3>Kestrel VR</h3>
+            <p>Digital twinning VR simulation for kestrel tagging and measurement training</p>
+            <div class="tags">
+              <span class="tag">Art Lead</span>
+              <span class="tag">Rigging</span>
+              <span class="tag">VR</span>
+            </div>
+          </div>
+        </a>
       </div>
+
     </section>
 
     <section id="about" class="wrap">
@@ -424,29 +442,7 @@
     </p>
   </footer>
 
-  <!-- QUICK VIEW MODAL (populates from data- attrs) -->
-  <dialog id="quick">
-    <div class="modal-head">
-      <h3 id="m-title" style="font-family:'Playfair Display',serif; margin:0"></h3>
-      <button id="m-close" class="ghost" aria-label="Close">Close</button>
-    </div>
-    <div class="modal-grid">
-      <img id="m-hero" alt="Project preview" />
-      <div>
-        <div class="kv">
-          <div><strong>Role:</strong> <span id="m-role"></span></div>
-          <span id="m-badge" class="badge" aria-label="Project type" hidden></span>
-          <div><strong>Tools:</strong> <span id="m-tools"></span></div>
-          <div><strong>Scope:</strong> <span id="m-scope"></span></div>
-        </div>
-        <p id="m-summary" style="margin-top:1rem; color:var(--ink-d)"></p>
-      </div>
-    </div>
-    <div class="modal-actions">
-      <a id="m-case" class="btn" href="#">View full case study</a>
-      <button id="m-dismiss" class="ghost">Keep browsing</button>
-    </div>
-  </dialog>
+  
 
   <script>
     // footer year
@@ -465,39 +461,7 @@
       });
     }));
 
-    // quick-view modal
-    const dlg = document.getElementById('quick');
-    const m = {
-      title: document.getElementById('m-title'),
-      role: document.getElementById('m-role'),
-      tools: document.getElementById('m-tools'),
-      scope: document.getElementById('m-scope'),
-      summary: document.getElementById('m-summary'),
-      hero: document.getElementById('m-hero'),
-      case: document.getElementById('m-case')
-    };
-
-    grid.addEventListener('click', (e) => {
-      const a = e.target.closest('a.card');
-      if(!a) return;
-      // Populate from data-* attributes
-      m.title.textContent = a.dataset.title || a.querySelector('h3')?.textContent || '';
-      m.role.textContent = a.dataset.role || '';
-      m.tools.textContent = a.dataset.tools || '';
-      m.scope.textContent = a.dataset.scope || '';
-      m.summary.textContent = a.dataset.summary || '';
-      m.hero.src = a.dataset.hero || a.querySelector('img.thumb')?.src || '';
-      m.case.href = a.href;
-      // Open as quick view (prevent immediate nav)
-      e.preventDefault();
-      dlg.showModal();
-    });
-
-    document.getElementById('m-close').onclick = () => dlg.close();
-    document.getElementById('m-dismiss').onclick = () => dlg.close();
-
-    // ESC to close
-    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && dlg.open) dlg.close(); });
+    // Removed quick-view modal: let anchors navigate normally
 
     /* Ripple effect: create ripple span on click for .btn and .contact-btn */
     function createRipple(e){

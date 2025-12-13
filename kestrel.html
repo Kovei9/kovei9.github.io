@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MB | Kestrel VR</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      --bg:#121212;
+      --panel:#171717;
+      --ink:#f5f5f5;
+      --ink-d:#cfcfcf;
+      --accent:#ff6f61;
+      --stroke:#262626;
+      --r:18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,sans-serif;
+      background:var(--bg);
+      color:var(--ink);
+      line-height:1.6;
+    }
+    a{color:inherit;text-decoration:none}
+    img, video{max-width:100%;display:block}
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:10;
+      background:rgba(18,18,18,.9);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid #222;
+    }
+    .wrap{max-width:1160px;margin:0 auto;padding:1rem 1.25rem}
+    .nav{display:flex;justify-content:space-between;align-items:center}
+    .logo{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700}
+
+    main{padding:2.5rem 1.25rem 4rem}
+
+    /* ===== HERO ===== */
+    .project-hero{
+      max-width:1160px;
+      margin:0 auto 2rem;
+      display:grid;
+      grid-template-columns:1.3fr .7fr;
+      background:var(--panel);
+      border:1px solid var(--stroke);
+      border-radius:var(--r);
+      overflow:hidden;
+    }
+    @media(max-width:900px){
+      .project-hero{grid-template-columns:1fr}
+    }
+
+    .hero-media{
+      background:#0b0b0b;
+      aspect-ratio:16/9;
+    }
+    .hero-media img,
+    .hero-media video{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .hero-meta{
+      padding:1.25rem;
+    }
+    .hero-meta h1{
+      font-family:'Playfair Display',serif;
+      margin:.1rem 0 .3rem;
+    }
+    .hero-meta p{
+      color:var(--ink-d);
+      margin:0 0 1rem;
+    }
+
+    .spec{
+      display:flex;
+      justify-content:space-between;
+      font-size:.9rem;
+      margin:.35rem 0;
+      color:var(--ink-d);
+    }
+    .spec strong{color:var(--ink)}
+
+    /* ===== SECTIONS ===== */
+    section{
+      max-width:1160px;
+      margin:0 auto 2rem;
+      background:#171717;
+      border:1px solid var(--stroke);
+      border-radius:var(--r);
+      padding:1.25rem;
+    }
+    h2{
+      font-family:'Playfair Display',serif;
+      color:var(--accent);
+      margin:.25rem 0 .75rem;
+    }
+
+    /* ===== MEDIA GRID ===== */
+    .media-grid{
+      display:grid;
+      gap:1rem;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      margin-top:.75rem;
+    }
+    .media-box{
+      background:#0b0b0b;
+      border-radius:14px;
+      overflow:hidden;
+      border:1px solid #222;
+    }
+
+    /* ===== T-CHART ===== */
+    .tchart{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:1rem;
+    }
+    @media(max-width:800px){
+      .tchart{grid-template-columns:1fr}
+    }
+    .tcol{
+      background:#101010;
+      border:1px solid #222;
+      border-radius:14px;
+      padding:.75rem;
+    }
+    .tcol h3{
+      margin:.1rem 0 .5rem;
+      font-size:1rem;
+      color:var(--accent);
+    }
+
+    footer{
+      padding:2rem;
+      text-align:center;
+      color:#9a9a9a;
+      border-top:1px solid #202020;
+      font-size:.85rem;
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="index.html">MB</a>
+    <a href="index.html#work">← Back to Portfolio</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <div class="project-hero">
+    <div class="hero-media">
+      <!-- Swap for gameplay or hero render -->
+      <img src="Images and Videos/Kestrel/kestrel_hero.png" alt="Kestrel VR simulation">
+    </div>
+    <div class="hero-meta">
+      <h1>Kestrel VR</h1>
+      <p>Realistic digital-twin VR simulation used to train wildlife professionals how to band and measure kestrels in Boise, Idaho.</p>
+
+      <div class="spec"><strong>Role</strong><span>Art Lead • Technical Artist • Rigger</span></div>
+      <div class="spec"><strong>Engine</strong><span>Unity (Hand Tracking VR)</span></div>
+      <div class="spec"><strong>Focus</strong><span>Realism, Precision Interaction, Training</span></div>
+      <div class="spec"><strong>Team</strong><span>Artists + Developers + Wildlife Researchers</span></div>
+    </div>
+  </div>
+
+  <!-- OVERVIEW -->
+  <section>
+    <h2>Project Overview</h2>
+    <p>
+      Kestrel VR is a realistic VR training simulation funded by wildlife professionals who monitor and tag kestrels in Idaho.
+      The experience teaches proper handling, measurement, and banding techniques using full hand tracking instead of controllers.
+    </p>
+  </section>
+
+  <!-- YOUR ART -->
+  <section>
+    <h2>My Art & Technical Contributions</h2>
+    <ul>
+      <li>Designed and built a highly complex, production-ready kestrel rig</li>
+      <li>Weight painted and optimized deformation for wings, legs, neck, eyelids, and subtle head motion</li>
+      <li>Designed the rig to support multiple simultaneous animations</li>
+      <li>Created animations for blinking, head movement, and handling states</li>
+      <li>Produced UI concept art and the project logo</li>
+    </ul>
+
+    <div class="media-grid">
+      <div class="media-box"><!-- YouTube embed or video --></div>
+      <div class="media-box"><!-- Rig screenshots --></div>
+      <div class="media-box"><!-- Logo / UI concepts --></div>
+    </div>
+  </section>
+
+  <!-- ART LEAD -->
+  <section>
+    <h2>Art Lead & Quality Control</h2>
+    <ul>
+      <li>Established a quality control pipeline for models entering Unity</li>
+      <li>Reviewed anatomical accuracy of wildlife tools and assets</li>
+      <li>Translated developer animation needs into actionable tasks for artists</li>
+      <li>Designed a model review system so artists could self-check in Unity</li>
+      <li>Resolved pipeline issues caused by unclear animation and rig requirements</li>
+    </ul>
+  </section>
+
+  <!-- BEFORE / AFTER -->
+  <section>
+    <h2>Art Direction Decisions</h2>
+    <div class="tchart">
+      <div class="tcol">
+        <h3>Before</h3>
+        <p>Assets lacked anatomical accuracy and real-world specificity.</p>
+        <div class="media-box"></div>
+      </div>
+      <div class="tcol">
+        <h3>After</h3>
+        <p>Updated proportions, feather density, eye scale, tools, and accuracy to match real kestrel handling.</p>
+        <div class="media-box"></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © <span id="y"></span> Mackenzie Burt
+</footer>
+
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

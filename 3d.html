@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MB | 3D Showcase</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --bg:#121212;
+      --panel:#171717;
+      --panel2:#1b1b1b;
+      --ink:#f5f5f5;
+      --ink-d:#cfcfcf;
+      --muted:#9a9a9a;
+      --stroke:#262626;
+      --accent:#ff6f61;
+      --shadow: 0 20px 40px rgba(0,0,0,.55);
+      --r: 18px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,sans-serif;
+      background:var(--bg);
+      color:var(--ink);
+      line-height:1.6;
+    }
+    a{color:inherit;text-decoration:none}
+    img, video{max-width:100%;display:block}
+    .wrap{max-width:1160px;margin:0 auto;padding:1rem 1.25rem;}
+
+    header{
+      position:sticky;top:0;z-index:10;
+      backdrop-filter: blur(10px);
+      background:rgba(18,18,18,.9);
+      border-bottom:1px solid #222;
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;}
+    .logo{font-family:'Playfair Display',serif;font-weight:700;font-size:1.5rem;letter-spacing:.5px;}
+    .nav ul{display:flex;list-style:none;gap:1rem;padding:0;margin:0;}
+    .nav a{position:relative;font-size:.95rem;transition: all .25s ease;}
+    .nav a::after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:2px;background:var(--accent);transition:width .25s ease;}
+    .nav a:hover,.nav a:focus{color:var(--accent);transform:translateY(-2px);}
+    .nav a:hover::after{width:100%;}
+
+    main{padding:2.5rem 1.25rem 4rem;}
+    .page-head{max-width:1160px;margin:0 auto 1.75rem;}
+    .page-head h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,2.8rem);margin:0 0 .35rem;}
+    .page-head p{margin:0;color:var(--ink-d);max-width:760px;}
+    .hint{color:var(--muted);font-size:.9rem;margin-top:.6rem;}
+
+    .jump{
+      max-width:1160px;margin:1.25rem auto 2rem;
+      display:flex;gap:.6rem;flex-wrap:wrap;
+    }
+    .chip{
+      border:1px solid var(--stroke);
+      background:transparent;
+      color:var(--ink);
+      padding:.45rem .75rem;
+      border-radius:999px;
+      font-size:.9rem;
+      cursor:pointer;
+      transition:transform .15s ease, border-color .2s ease, background .2s ease;
+    }
+    .chip:hover{transform:translateY(-2px);border-color:#3a3a3a;background:#151515}
+    .chip[aria-current="true"]{border-color:color-mix(in oklab, var(--accent) 55%, #222); box-shadow:0 0 0 2px rgba(255,111,97,.18) inset;}
+
+    .project{
+      max-width:1160px;margin:0 auto 2.25rem;
+      background:var(--panel);
+      border:1px solid var(--stroke);
+      border-radius:var(--r);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+
+    .project-top{
+      display:grid;
+      grid-template-columns: 1.35fr .85fr;
+      gap:0;
+      border-bottom:1px solid var(--stroke);
+      background:linear-gradient(180deg, #171717, #141414);
+    }
+    @media (max-width: 900px){
+      .project-top{grid-template-columns:1fr;}
+    }
+
+    .hero-media{
+      background:#0b0b0b;
+      min-height:340px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+    }
+    .hero-media img,.hero-media video{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      aspect-ratio: 16/9;
+    }
+
+    .hero-meta{padding:1.25rem 1.25rem 1.35rem;}
+    .hero-meta h2{
+      font-family:'Playfair Display',serif;
+      margin:.15rem 0 .25rem;
+      font-size:clamp(1.4rem,2.2vw,1.9rem);
+    }
+    .subline{color:var(--ink-d);margin:0 0 .9rem;}
+    .specs{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:.55rem;
+      padding:1rem;
+      border-radius:14px;
+      border:1px solid #242424;
+      background: #151515;
+    }
+    .spec{
+      display:flex;
+      justify-content:space-between;
+      gap:1rem;
+      font-size:.92rem;
+      color:var(--ink-d);
+    }
+    .spec strong{color:var(--ink);font-weight:700;}
+    .pillrow{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.85rem;}
+    .pill{
+      font-size:.75rem;
+      padding:.25rem .5rem;
+      border-radius:999px;
+      border:1px solid #2a2a2a;
+      background:#121212;
+      color:var(--ink-d);
+    }
+
+    .project-body{padding:1.25rem;}
+    .tabs{display:flex;flex-wrap:wrap;gap:.55rem;margin-bottom:.9rem;}
+    .tab{
+      border:1px solid #2a2a2a;
+      background:#141414;
+      color:var(--ink);
+      padding:.55rem .85rem;
+      border-radius:999px;
+      cursor:pointer;
+      font-weight:600;
+      font-size:.92rem;
+      transition:transform .15s ease, border-color .2s ease, background .2s ease;
+    }
+    .tab:hover{transform:translateY(-2px);border-color:#3a3a3a;}
+    .tab[aria-selected="true"]{
+      border-color:color-mix(in oklab, var(--accent) 60%, #222);
+      background:color-mix(in oklab, var(--accent) 10%, #141414);
+      box-shadow:0 0 0 2px rgba(255,111,97,.16) inset;
+    }
+
+    .viewer{
+      border:1px solid var(--stroke);
+      border-radius:16px;
+      overflow:hidden;
+      background:#0c0c0c;
+    }
+    .viewer-stage{
+      position:relative;
+      aspect-ratio: 16/9;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#0b0b0b;
+    }
+    .viewer-stage img, .viewer-stage video, .viewer-stage iframe{
+      width:100%;
+      height:100%;
+      background:#0b0b0b;
+      border:0;
+    }
+    .viewer-stage img, .viewer-stage video{ object-fit:contain; }
+    .viewer-stage iframe{ display:block; }
+
+    .viewer-caption{
+      padding:.9rem 1rem;
+      border-top:1px solid var(--stroke);
+      color:var(--ink-d);
+      display:flex;
+      flex-wrap:wrap;
+      gap:.6rem;
+      justify-content:space-between;
+      align-items:center;
+    }
+    .viewer-actions{display:flex;gap:.5rem;align-items:center;}
+    .ghost{
+      border:1px solid #2c2c2c;
+      background:#131313;
+      color:var(--ink);
+      border-radius:999px;
+      padding:.5rem .8rem;
+      cursor:pointer;
+      font-weight:700;
+      font-size:.85rem;
+      transition:transform .15s ease, border-color .2s ease;
+    }
+    .ghost:hover{transform:translateY(-2px);border-color:#3a3a3a;}
+    .accent{
+      border:none;
+      background:var(--accent);
+      color:#000;
+      border-radius:999px;
+      padding:.5rem .85rem;
+      cursor:pointer;
+      font-weight:800;
+      font-size:.85rem;
+      transition:transform .15s ease, box-shadow .25s ease;
+    }
+    .accent:hover{transform:translateY(-2px);box-shadow:0 16px 30px rgba(0,0,0,.5);}
+
+    .thumbs{
+      display:grid;
+      grid-template-columns:repeat(auto-fill, minmax(140px,1fr));
+      gap:.8rem;
+      padding:1rem;
+      border-top:1px solid var(--stroke);
+      background:#101010;
+    }
+    .thumb{
+      border:1px solid #2a2a2a;
+      border-radius:12px;
+      overflow:hidden;
+      cursor:pointer;
+      opacity:.85;
+      transition:transform .15s ease, border-color .2s ease, opacity .2s ease;
+      background:#0b0b0b;
+    }
+    .thumb:hover{transform:translateY(-2px);opacity:1;border-color:var(--accent);}
+    .thumb[aria-current="true"]{opacity:1;border-color:var(--accent);box-shadow:0 0 0 2px rgba(255,111,97,.14) inset;}
+    .thumb img{width:100%;aspect-ratio: 16/10;object-fit:cover;}
+
+    .details{
+      margin-top:1rem;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:1rem;
+    }
+    @media (max-width: 900px){ .details{grid-template-columns:1fr;} }
+    .panel{
+      background:var(--panel2);
+      border:1px solid var(--stroke);
+      border-radius:16px;
+      padding:1rem;
+    }
+    .panel h3{
+      margin:.1rem 0 .6rem;
+      font-family:'Playfair Display',serif;
+      font-size:1.2rem;
+    }
+    .panel p{margin:.4rem 0;color:var(--ink-d);}
+    .list{margin:.4rem 0 0;padding-left:1.1rem;color:var(--ink-d);}
+    .list li{margin:.25rem 0;}
+
+    footer{
+      padding:2rem 1rem;
+      text-align:center;
+      color:#9a9a9a;
+      border-top:1px solid #202020;
+      font-size:.85rem;
+    }
+    footer a{color:var(--accent);}
+    footer a:hover{text-decoration:underline;}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav" role="navigation" aria-label="Primary">
+      <a class="logo" href="index.html" aria-label="Back to portfolio home">MB</a>
+      <ul>
+        <li><a href="index.html#work">Work</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-head">
+      <h1>3D Showcase</h1>
+      <p>Beauty renders, turntables, animation clips, plus in-engine proof (Animator / Animation Tree).</p>
+      <div class="hint">Tip: when you add MP4s later, just replace the .png placeholders inside the “Turntable” and “Animations” tabs.</div>
+    </div>
+
+    <nav class="jump wrap" aria-label="Jump to model">
+      <span id="jumpMount"></span>
+    </nav>
+
+    <div id="projectsMount"></div>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Mackenzie Burt • <a href="index.html#work">Back to Portfolio</a>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const PATH = "Images and Videos/FishAndGame/Deer3D/";
+
+    // YouTube rig demo (embed format)
+    const KESTREL_RIG_EMBED = "https://www.youtube.com/embed/-HSTEJ_j5mI";
+
+    /*
+      Media item types supported:
+        - { type:"img",   src:"...", alt:"...", caption:"..." }
+        - { type:"video", src:"...", poster:"...", alt:"...", caption:"..." }   // MP4 files
+        - { type:"embed", src:"<embed url>", poster:"...", alt:"...", caption:"..." } // YouTube, etc
+    */
+    const PROJECTS = [
+      {
+        id: "deer-whitetail",
+        title: "Whitetail Deer — Game-Ready Creature",
+        subline: "Model + textures + rig proof • (Turntable + animation clips coming soon)",
+        hero: { type:"img", src: PATH + "deerfront.png", alt:"Whitetail deer render (front)" },
+        specs: {
+          role: "3D Generalist (Model • UV • Texture • Rig)",
+          engine: "Unity / VR (Fish and Game)",
+          poly: "TBD",
+          textures: "TBD",
+          tools: "Blender • Substance Painter",
+        },
+        tags: ["3D", "Creature", "Rig", "Game-Ready"],
+        overview: {
+          what: "Low poly whitetail deer built for real-time use. This page shows stills now, with slots ready for turntables, animation demos, and in-engine animator proof.",
+          highlights: [
+            "Stills + orthographic angles for quick review.",
+            "Rig proof included (plus a dedicated Animation Tree tab).",
+            "Turntable/animation clips can drop in without changing layout."
+          ]
+        },
+        tabs: {
+          "Stills": [
+            { type:"img", src: PATH + "deerfront.png", alt:"Deer front render", caption:"Front render" },
+            { type:"img", src: PATH + "deerfront2.png", alt:"Deer front render (alt)", caption:"Front render (alt angle)" },
+            { type:"img", src: PATH + "deerhornstoobig.png", alt:"Deer horns variation", caption:"Horns pass / variation (placeholder)" },
+            { type:"img", src: PATH + "deerside.png", alt:"Deer side render", caption:"Side render" },
+            { type:"img", src: PATH + "privatepropertysign.png", alt:"Private property sign prop", caption:"Related prop: Private Property sign" }
+          ],
+
+          "Turntable": [
+            // Replace this image with an MP4 later (example line included below)
+            { type:"img", src: PATH + "deerside.png", alt:"Turntable placeholder", caption:"Turntable placeholder — replace with MP4 when ready" }
+
+            // Example when you have the file:
+            // { type:"video", src: PATH + "deer_turntable.mp4", poster: PATH + "deerside.png", alt:"Deer turntable", caption:"360° turntable (MP4)" }
+          ],
+
+          "Animations": [
+            // Placeholders until you export MP4 clips
+            { type:"img", src: PATH + "deerfront.png", alt:"Idle placeholder", caption:"Idle (placeholder — replace with MP4)" },
+            { type:"img", src: PATH + "deerside.png", alt:"Walk placeholder", caption:"Walk (placeholder — replace with MP4)" }
+
+            // Examples when you have the files:
+            // { type:"video", src: PATH + "deer_idle.mp4", poster: PATH + "deerfront.png", alt:"Deer idle", caption:"Idle loop" },
+            // { type:"video", src: PATH + "deer_walk.mp4", poster: PATH + "deerside.png", alt:"Deer walk", caption:"Walk cycle" }
+          ],
+
+          "Breakdown": [
+            { type:"img", src: PATH + "deerrig.png", alt:"Rig screenshot", caption:"Rig screenshot / controls (placeholder)" },
+            { type:"img", src: PATH + "deerhornstoobig.png", alt:"Model pass notes", caption:"Model pass notes / iteration (placeholder)" }
+          ],
+
+          "Animation Tree": [
+            /*
+              This tab is what hiring folks LOVE:
+              - Unity Animator / Blend Tree screenshots
+              - short screen recordings of transitions
+              - proof the rig is implemented and working
+
+              For now: uses your deer rig screenshot + your YouTube rig demo embedded.
+              When you have Unity screenshots: drop them in here.
+            */
+            { type:"img", src: PATH + "deerrig.png", alt:"Animator proof placeholder", caption:"Animator / state machine proof (placeholder screenshot for now)" },
+            { type:"embed", src: KESTREL_RIG_EMBED, poster: PATH + "deerrig.png", alt:"Rig demo video (YouTube)", caption:"Rig demo (YouTube) — swap to your Deer rig demo when you have it" }
+
+            // Later you can add:
+            // { type:"img", src:"Images and Videos/FishAndGame/Deer3D/unity_animator.png", alt:"Unity Animator", caption:"Unity Animator: locomotion + transitions" },
+            // { type:"video", src:"Images and Videos/FishAndGame/Deer3D/animator_walkthrough.mp4", poster:"Images and Videos/FishAndGame/Deer3D/unity_animator.png", alt:"Animator walkthrough", caption:"Animator walkthrough screen capture" }
+          ]
+        },
+        notes: {
+          pipeline: [
+            "Model → UVs → texture → rig → export → engine import.",
+            "This layout is built so you can keep adding clips without redesigning the page."
+          ],
+          implementation: [
+            "Add Unity Animator screenshots here (state machine + parameters).",
+            "If you used a Blend Tree for locomotion, include a screenshot of the blend settings."
+          ]
+        }
+      }
+    ];
+
+    const jumpMount = document.getElementById("jumpMount");
+    const projectsMount = document.getElementById("projectsMount");
+
+    function el(tag, attrs={}, children=[]){
+      const n = document.createElement(tag);
+      Object.entries(attrs).forEach(([k,v])=>{
+        if(k === "class") n.className = v;
+        else if(k.startsWith("on") && typeof v === "function") n.addEventListener(k.slice(2), v);
+        else n.setAttribute(k, v);
+      });
+      children.forEach(c => n.appendChild(typeof c === "string" ? document.createTextNode(c) : c));
+      return n;
+    }
+
+    function stopAllVideos(root){
+      root.querySelectorAll("video").forEach(v=>{
+        v.pause();
+        try{ v.currentTime = 0; }catch(e){}
+      });
+    }
+
+    function buildMediaNode(item){
+      if(item.type === "video"){
+        const v = el("video", {
+          controls: "",
+          playsinline: "",
+          preload: "metadata",
+          poster: item.poster || ""
+        });
+        v.appendChild(el("source", { src:item.src, type:"video/mp4" }));
+        return v;
+      }
+
+      if(item.type === "embed"){
+        // Note: YouTube autoplay is intentionally not forced here.
+        return el("iframe", {
+          src: item.src,
+          title: item.alt || "Embedded media",
+          allow:
+            "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",
+          allowfullscreen: ""
+        });
+      }
+
+      return el("img", { src:item.src, alt:item.alt || "" });
+    }
+
+    function mount(){
+      PROJECTS.forEach((p, idx)=>{
+        const chip = el("a", {
+          class:"chip",
+          href:"#"+p.id,
+          "aria-current": idx === 0 ? "true" : "false"
+        }, [p.title]);
+        chip.addEventListener("click", ()=>{
+          document.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-current","false"));
+          chip.setAttribute("aria-current","true");
+        });
+        jumpMount.appendChild(chip);
+
+        const project = el("section", { class:"project", id:p.id, "aria-label": p.title });
+
+        const heroMedia = el("div", { class:"hero-media" }, [
+          (p.hero.type === "video")
+            ? (()=>{ const v = buildMediaNode(p.hero); v.removeAttribute("controls"); v.muted = true; v.loop = true; return v; })()
+            : buildMediaNode(p.hero)
+        ]);
+
+        const specs = el("div", { class:"specs", role:"list" }, [
+          el("div", { class:"spec", role:"listitem" }, [ el("strong", {}, ["Role"]), el("span", {}, [p.specs.role]) ]),
+          el("div", { class:"spec", role:"listitem" }, [ el("strong", {}, ["Engine"]), el("span", {}, [p.specs.engine]) ]),
+          el("div", { class:"spec", role:"listitem" }, [ el("strong", {}, ["Polycount"]), el("span", {}, [p.specs.poly]) ]),
+          el("div", { class:"spec", role:"listitem" }, [ el("strong", {}, ["Textures"]), el("span", {}, [p.specs.textures]) ]),
+          el("div", { class:"spec", role:"listitem" }, [ el("strong", {}, ["Tools"]), el("span", {}, [p.specs.tools]) ]),
+        ]);
+
+        const pillrow = el("div", { class:"pillrow" }, (p.tags||[]).map(t=> el("span",{class:"pill"},[t])));
+
+        const heroMeta = el("div", { class:"hero-meta" }, [
+          el("h2", {}, [p.title]),
+          el("p", { class:"subline" }, [p.subline || ""]),
+          specs,
+          pillrow
+        ]);
+
+        project.appendChild(el("div", { class:"project-top" }, [heroMedia, heroMeta]));
+
+        const body = el("div", { class:"project-body" });
+
+        const tabNames = Object.keys(p.tabs);
+        let activeTab = tabNames[0];
+        let activeIndex = 0;
+
+        const tabs = el("div", { class:"tabs", role:"tablist", "aria-label":"Media sections" });
+        const viewerStage = el("div", { class:"viewer-stage" });
+
+        const viewerCaption = el("div", { class:"viewer-caption" }, [
+          el("div", {}, [
+            el("strong", { id:`${p.id}-capTitle` }, [""]),
+            el("div", { id:`${p.id}-capText` }, [""])
+          ]),
+          el("div", { class:"viewer-actions" }, [
+            el("button", { class:"ghost", type:"button", "aria-label":"Previous item" }, ["Prev"]),
+            el("button", { class:"ghost", type:"button", "aria-label":"Next item" }, ["Next"]),
+            el("button", { class:"accent", type:"button", "aria-label":"Play active video (if any)" }, ["Play"])
+          ])
+        ]);
+
+        const thumbs = el("div", { class:"thumbs", role:"list", "aria-label":"Thumbnails" });
+
+        const viewer = el("div", { class:"viewer" }, [
+          viewerStage,
+          viewerCaption,
+          thumbs
+        ]);
+
+        function render(){
+          tabs.innerHTML = "";
+          tabNames.forEach(name=>{
+            const b = el("button", {
+              class:"tab",
+              type:"button",
+              role:"tab",
+              "aria-selected": (name === activeTab) ? "true" : "false"
+            }, [name]);
+            b.addEventListener("click", ()=>{
+              stopAllVideos(project);
+              activeTab = name;
+              activeIndex = 0;
+              render();
+            });
+            tabs.appendChild(b);
+          });
+
+          viewerStage.innerHTML = "";
+          const items = p.tabs[activeTab] || [];
+          const item = items[activeIndex];
+          const node = buildMediaNode(item);
+          viewerStage.appendChild(node);
+
+          document.getElementById(`${p.id}-capTitle`).textContent =
+            activeTab + " • " + (activeIndex + 1) + "/" + items.length;
+          document.getElementById(`${p.id}-capText`).textContent = item?.caption || "";
+
+          thumbs.innerHTML = "";
+          items.forEach((it,i)=>{
+            const th = el("button", {
+              class:"thumb",
+              type:"button",
+              role:"listitem",
+              "aria-current": i===activeIndex ? "true":"false"
+            });
+
+            const thumbSrc = it.poster || (it.type === "embed" ? it.poster : it.src) || it.src;
+            th.appendChild(el("img", { src: thumbSrc, alt: (it.alt || "Thumbnail") }));
+
+            th.addEventListener("click", ()=>{
+              stopAllVideos(project);
+              activeIndex = i;
+              render();
+            });
+            thumbs.appendChild(th);
+          });
+
+          const [prevBtn, nextBtn, playBtn] = viewerCaption.querySelectorAll("button");
+
+          prevBtn.onclick = ()=>{
+            stopAllVideos(project);
+            activeIndex = (activeIndex - 1 + items.length) % items.length;
+            render();
+          };
+          nextBtn.onclick = ()=>{
+            stopAllVideos(project);
+            activeIndex = (activeIndex + 1) % items.length;
+            render();
+          };
+          playBtn.onclick = ()=>{
+            const v = viewerStage.querySelector("video");
+            if(!v) return;
+            v.play().catch(()=>{});
+          };
+        }
+
+        render();
+
+        const leftPanel = el("div", { class:"panel" }, [
+          el("h3", {}, ["Overview"]),
+          el("p", {}, [p.overview?.what || ""]),
+          el("h3", {}, ["Key Highlights"]),
+          el("ul", { class:"list" }, (p.overview?.highlights || []).map(x=> el("li", {}, [x])))
+        ]);
+
+        const rightPanel = el("div", { class:"panel" }, [
+          el("h3", {}, ["Pipeline Notes"]),
+          el("ul", { class:"list" }, (p.notes?.pipeline || []).map(x=> el("li", {}, [x]))),
+          el("h3", {}, ["Implementation Notes"]),
+          el("ul", { class:"list" }, (p.notes?.implementation || []).map(x=> el("li", {}, [x])))
+        ]);
+
+        body.appendChild(tabs);
+        body.appendChild(viewer);
+        body.appendChild(el("div", { class:"details" }, [leftPanel, rightPanel]));
+
+        project.appendChild(body);
+        projectsMount.appendChild(project);
+      });
+    }
+
+    mount();
+  </script>
+</body>
+</html>
