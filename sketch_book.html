@@ -5,22 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MB | Sketch Book </title>
 
-  <!-- Same fonts as portfolio -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet" />
 
   <style>
-    :root {
+    :root{
       --bg:#121212;
       --ink:#f5f5f5;
       --ink-d:#cfcfcf;
       --accent:#ff6f61;
+      --panel:#1a1a1a;
+      --border:#242424;
     }
 
-    * { box-sizing:border-box; }
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
 
-    html { scroll-behavior:smooth; }
-
-    body {
+    body{
       margin:0;
       font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,sans-serif;
       background:var(--bg);
@@ -28,13 +28,10 @@
       line-height:1.6;
     }
 
-    a {
-      color:inherit;
-      text-decoration:none;
-    }
+    a{ color:inherit; text-decoration:none; }
 
-    /* HEADER (matching portfolio) */
-    header {
+    /* HEADER */
+    header{
       position:sticky;
       top:0;
       z-index:10;
@@ -43,40 +40,44 @@
       border-bottom:1px solid #222;
     }
 
-    .wrap {
+    .wrap{
       max-width:1160px;
       margin:0 auto;
       padding:1rem 1.25rem;
     }
 
-    .nav {
+    .nav{
       display:flex;
       align-items:center;
       justify-content:space-between;
+      gap:1rem;
     }
 
-    .logo {
+    .logo{
       font-family:'Playfair Display',serif;
       font-weight:700;
       font-size:1.5rem;
       letter-spacing:.5px;
+      white-space:nowrap;
     }
 
-    .nav ul {
+    .nav ul{
       display:flex;
       list-style:none;
       gap:1rem;
       padding:0;
       margin:0;
+      flex-wrap:wrap;
+      justify-content:flex-end;
     }
 
-    .nav a {
+    .nav a{
       position:relative;
       font-size:.95rem;
-      transition: all 0.25s ease;
+      transition: color .2s ease, transform .2s ease;
     }
 
-    .nav a::after {
+    .nav a::after{
       content:'';
       position:absolute;
       bottom:-5px;
@@ -84,156 +85,111 @@
       width:0;
       height:2px;
       background:var(--accent);
-      transition:width 0.25s ease;
+      transition:width .2s ease;
     }
 
     .nav a:hover,
-    .nav a:focus {
+    .nav a:focus{
       color:var(--accent);
       transform:translateY(-2px);
     }
 
-    .nav a:hover::after {
-      width:100%;
+    .nav a:hover::after{ width:100%; }
+
+    /* PAGE */
+    main{ padding:2rem 1.25rem 3rem; }
+
+    .back-link{
+      display:inline-flex;
+      align-items:center;
+      gap:.35rem;
+      font-size:.9rem;
+      margin-bottom:2.5rem;
+      color:var(--ink-d);
+      opacity:.9;
+      cursor:pointer;
+      transition:color .2s ease, transform .2s ease, opacity .2s ease;
+    }
+    .back-link:hover{
+      color:var(--accent);
+      transform:translateY(-1px);
+      opacity:1;
     }
 
-    /* PAGE TITLE AREA */
-    main {
-      padding:3rem 1.25rem 4rem;
-    }
-
-    .page-head {
+    .page-head{
       max-width:1160px;
-      margin:0 auto 2rem;
+      margin:0 auto 2.75rem;
     }
 
-    .page-head h1 {
+    .page-head h1{
       font-family:'Playfair Display',serif;
-      font-size:clamp(2rem,4vw,2.8rem);
-      margin:0 0 .4rem;
+      font-size:clamp(2.2rem,5vw,3rem);
+      margin:0 0 .6rem;
+      font-weight:700;
     }
 
-    .page-head p {
+    .page-head p{
       margin:0;
       color:var(--ink-d);
-      max-width:640px;
+      max-width:740px;
+      font-size:.95rem;
+      line-height:1.7;
     }
 
-    /* FUN ZONE CAROUSEL CARD */
-    .fun-card {
+    /* CARD */
+    .fun-card{
       max-width:1160px;
       margin:0 auto;
-      background:#1a1a1a;
+      background:var(--panel);
       border-radius:18px;
-      border:1px solid #242424;
+      border:1px solid var(--border);
       box-shadow:0 20px 40px rgba(0,0,0,.6);
-      padding:1.75rem 1.5rem 2rem;
+      padding:2rem 1.5rem 2.25rem;
     }
 
-    @media (max-width: 640px) {
-      .fun-card {
-        padding:1.25rem 1rem 1.75rem;
-      }
+    @media (max-width:640px){
+      .fun-card{ padding:1.5rem 1.125rem 1.75rem; }
     }
 
-    .carousel-shell {
-      position:relative;
-      height:56vh;
-      min-height:320px;
-      max-height:540px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      overflow:hidden;
-      border-radius:14px;
-      background:#0c0c0c;
-    }
-
-    .carousel-shell img {
-      position:absolute;
-      top:50%;
-      left:50%;
-      transform:translate(-50%,-50%) scale(.9);
-      opacity:0;
-      transition:transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-      max-height:100%;
-      max-width:100%;
-      border-radius:10px;
-      box-shadow:0 10px 30px rgba(0,0,0,.6);
-    }
-
-    .carousel-shell img.active {
-      opacity:1;
-      transform:translate(-50%,-50%) scale(1);
-      z-index:1;
-    }
-
-    .arrow {
-      position:absolute;
-      top:50%;
-      transform:translateY(-50%);
-      border:none;
-      border-radius:999px;
-      padding:.55rem .9rem;
-      background:rgba(0,0,0,.65);
-      color:var(--ink);
-      font-size:1.4rem;
-      cursor:pointer;
-      z-index:2;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      transition:background .25s ease, transform .15s ease;
-    }
-
-    .arrow:hover {
-      background:rgba(0,0,0,.9);
-      transform:translateY(-50%) scale(1.05);
-    }
-
-    .arrow.left { left:1.25rem; }
-    .arrow.right { right:1.25rem; }
-
-    /* Descriptions removed for artwork reel */
-
-    /* THUMBNAIL GRID (new) */
-    .thumb-grid {
-      margin-top:1.75rem;
+    /* THUMBS ONLY (no auto scrolling) */
+    .thumb-grid{
+      margin-top:1.5rem;
       display:grid;
-      grid-template-columns:repeat(auto-fill, minmax(140px, 1fr));
-      gap:1rem;
+      grid-template-columns:repeat(auto-fill,minmax(100px,1fr));
+      gap:.75rem;
     }
 
-    .thumb-grid img {
+    .thumb-grid img{
       width:100%;
-      aspect-ratio:1 / 1;
+      aspect-ratio:1/1;
       object-fit:cover;
       border-radius:10px;
       cursor:pointer;
       opacity:.8;
       border:1px solid #2a2a2a;
-      transition:opacity .25s ease, transform .2s ease, border-color .2s ease;
+      background:#0c0c0c;
+      transition: opacity .18s ease, border-color .18s ease, transform .15s ease, box-shadow .18s ease;
     }
 
-    .thumb-grid img:hover {
+    .thumb-grid img:hover{
       opacity:1;
-      transform:scale(1.02);
+      transform:scale(1.05);
       border-color:var(--accent);
+      box-shadow:0 0 12px rgba(255,111,97,.2);
     }
 
-    .thumb-grid img.active-thumb {
-      opacity:1;
-      border-color:var(--accent);
-      box-shadow:0 0 0 1px rgba(255,111,97,.25);
+    /* BUTTON */
+    .btn-row{ 
+      display:flex; 
+      justify-content:center;
+      margin-top:2rem;
     }
 
-    /* BUTTON (matching portfolio style) */
-    .btn {
+    .btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      margin-top:1.75rem;
-      padding:.75rem 1.4rem;
+      padding:.85rem 1.6rem;
       border-radius:999px;
       background:var(--accent);
       color:#000;
@@ -241,43 +197,49 @@
       border:none;
       cursor:pointer;
       font-size:.95rem;
-      position:relative;
-      overflow:hidden;
-      transition:transform .18s cubic-bezier(.2,.9,.2,1), box-shadow .35s ease;
+      letter-spacing:.3px;
+      transition:transform .18s cubic-bezier(.2,.9,.2,1), box-shadow .25s ease;
     }
 
-    .btn:hover {
+    .btn:hover{
       transform:translateY(-3px) scale(1.02);
       box-shadow:0 18px 40px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.06) inset;
     }
 
-    .btn:active {
+    .btn:active{
       transform:translateY(0) scale(.99);
       box-shadow:none;
     }
 
-    .btn::before {
-      content:"";
-      position:absolute;
-      inset:-6px;
-      border-radius:999px;
-      z-index:-2;
-      background:
-        radial-gradient(120% 60% at 10% 10%, rgba(255,111,97,.18), transparent 28%),
-        radial-gradient(80% 40% at 90% 80%, rgba(255,200,160,.08), transparent 30%);
-      filter:blur(10px);
-      opacity:0;
-      transition:opacity .35s ease, transform .35s ease;
-      transform:scale(.96);
+    /* 30-second studies */
+    .studies{ margin:3rem auto 0; padding:0 1.25rem 3rem; }
+    .studies h2{
+      font-family:'Playfair Display',serif;
+      font-size:clamp(1.4rem,3vw,2rem);
+      margin:0 0 1rem;
+      color:var(--accent);
+    }
+    .studies p{
+      margin:.25rem 0 1.25rem;
+      color:var(--ink-d);
+      max-width:640px;
+    }
+    .study-grid{
+      display:grid;
+      gap:1rem;
+      grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    }
+    .study-grid img{
+      width:100%;
+      aspect-ratio:4/5;
+      object-fit:cover;
+      border-radius:12px;
+      border:1px solid #2a2a2a;
+      background:#0c0c0c;
     }
 
-    .btn:hover::before {
-      opacity:1;
-      transform:scale(1);
-    }
-
-    /* FOOTER (simple match) */
-    footer {
+    /* FOOTER */
+    footer{
       padding:2rem 1rem;
       text-align:center;
       color:#9a9a9a;
@@ -285,20 +247,104 @@
       font-size:.85rem;
     }
 
-    footer a {
-      color:var(--accent);
+    /* LIGHTBOX (takes up the page) */
+    .lightbox{
+      position:fixed;
+      inset:0;
+      z-index:9999;
+      display:none;
+      background:rgba(0,0,0,.92);
+    }
+    .lightbox.open{ display:block; }
+
+    .lb-inner{
+      position:absolute;
+      inset:0;
+      display:grid;
+      grid-template-rows:auto 1fr;
     }
 
-    footer a:hover {
-      text-decoration:underline;
-    }
-
-    .btn-row {
+    .lb-top{
       display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+      padding:.85rem 1rem;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      background:rgba(10,10,10,.55);
+      backdrop-filter: blur(10px);
+    }
+
+    .lb-title{
+      font-weight:600;
+      color:var(--ink-d);
+      font-size:.95rem;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .lb-btn{
+      border:1px solid rgba(255,255,255,.15);
+      background:rgba(255,255,255,.06);
+      color:var(--ink);
+      border-radius:999px;
+      padding:.55rem .9rem;
+      cursor:pointer;
+      transition: background .15s ease, transform .12s ease;
+    }
+    .lb-btn:hover{ background:rgba(255,255,255,.10); transform:scale(1.03); }
+    .lb-btn:active{ transform:scale(.99); }
+
+    .lb-stage{
+      position:relative;
+      display:grid;
+      place-items:center;
+      padding:1rem;
+    }
+
+    .lb-img{
+      max-width:min(1200px, 96vw);
+      max-height:calc(100vh - 110px);
+      width:auto;
+      height:auto;
+      object-fit:contain;
+      border-radius:14px;
+      background:#0c0c0c;
+      box-shadow:0 30px 80px rgba(0,0,0,.75);
+    }
+
+    .lb-arrow{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      width:52px;
+      height:52px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.15);
+      background:rgba(0,0,0,.55);
+      color:var(--ink);
+      font-size:1.5rem;
+      display:flex;
+      align-items:center;
       justify-content:center;
+      cursor:pointer;
+      user-select:none;
+      transition: background .15s ease, transform .12s ease;
+    }
+    .lb-arrow:hover{ background:rgba(0,0,0,.80); transform:translateY(-50%) scale(1.04); }
+    .lb-arrow:active{ transform:translateY(-50%) scale(.99); }
+
+    .lb-arrow.left{ left:14px; }
+    .lb-arrow.right{ right:14px; }
+
+    @media (max-width:640px){
+      .lb-arrow{ width:46px; height:46px; }
+      .lb-img{ max-height:calc(100vh - 120px); }
     }
   </style>
 </head>
+
 <body>
   <header>
     <div class="wrap nav" role="navigation" aria-label="Primary">
@@ -312,94 +358,288 @@
   </header>
 
   <main>
+    <a class="back-link" href="index.html#work">← Back to Portfolio</a>
+    
     <div class="page-head">
       <h1>Sketch Book</h1>
       <p>Loose sketches, experiments, and just-for-fun pieces. Here, I'll happily show you my weaknesses and how I try to learn from my mistakes.</p>
     </div>
 
     <section class="fun-card">
-      <div class="carousel-shell">
-        <button class="arrow left" aria-label="Previous image">&#8592;</button>
-
-        <!-- Swap these src values with your own images -->
-           <img src="https://via.placeholder.com/1000x700?text=Art+1"
-             alt="Art 1"
-             class="active">
-           <img src="https://via.placeholder.com/1000x700?text=Art+2"
-             alt="Art 2">
-           <img src="https://via.placeholder.com/1000x700?text=Art+3"
-             alt="Art 3">
-           <img src="https://via.placeholder.com/1000x700?text=Art+4"
-             alt="Art 4">
-
-        <button class="arrow right" aria-label="Next image">&#8594;</button>
+      <!-- HIDDEN SOURCE LIST (we read these into the lightbox) -->
+      <div id="img-source" style="display:none;">
+        <!-- Keep adding images here. New ones can go at the bottom. Script will show newest first. -->
+        <img src="Images and Videos/Sketchbook/2023/akarasketch2023.png" alt="Art 1">
+        <img src="Images and Videos/Sketchbook/2023/akarasketch-cu1.png" alt="Art 2">
+        <img src="Images and Videos/Sketchbook/2023/akarasketch-cu2.png" alt="Art 3">
+        <img src="Images and Videos/Sketchbook/2023/akararef-p1-2023.png" alt="Art 4">
+        <img src="Images and Videos/Sketchbook/2023/akararef-p2-2023.png" alt="Art 5">
+        <img src="Images and Videos/Sketchbook/2023/cat1.png" alt="Art 6">
+        <img src="Images and Videos/Sketchbook/2023/samfoot.png" alt="Art 7">
+        <img src="Images and Videos/Sketchbook/2023/Screenshot 2024-12-22 210913.png" alt="Art 8">
+        <img src="Images and Videos/Sketchbook/2024/Screenshot 2025-02-04 135110.png" alt="Art 9">
+        <img src="Images and Videos/Sketchbook/2025/akararef2025.png" alt="Art 10">
+        <img src="Images and Videos/Sketchbook/2025/akararef2025-renderish.png" alt="Art 11">
+        <img src="Images and Videos/Sketchbook/2025/katn.jpg" alt="Art 12">
+        <img src="Images and Videos/Sketchbook/2025/pair1.jpg" alt="Art 13">
+        <img src="Images and Videos/Sketchbook/2025/Screenshot 2025-05-06 180605.png" alt="Art 14">
+        <img src="Images and Videos/Sketchbook/2025/Screenshot 2025-05-09 115316.png" alt="Art 15">
+        <img src="Images and Videos/Sketchbook/2025/Screenshot 2025-05-09 115934.png" alt="Art 16">
+        <img src="Images and Videos/Sketchbook/2025/Screenshot 2025-05-09 143851.png" alt="Art 17">
+        <img src="Images and Videos/Sketchbook/2025/Screenshot 2025-05-12 150544.png" alt="Art 18">
+        <img src="Images and Videos/Sketchbook/2025/Screenshot 2025-05-22 105442.png" alt="Art 19">
+        <img src="Images and Videos/Sketchbook/2025/Screenshot 2025-05-27 123741.png" alt="Art 20">
+        <img src="Images and Videos/Sketchbook/2025/Screenshot 2025-05-27 124108.png" alt="Art 21">
+        <img src="Images and Videos/Sketchbook/2025/Screenshot 2025-05-27 124943.png" alt="Art 22">
+        <img src="Images and Videos/Sketchbook/2025/Screenshot 2025-05-27 125001.png" alt="Art 23">
+        <img src="Images and Videos/Sketchbook/2025/Screenshot 2025-05-29 162627.png" alt="Art 24">
+        <img src="Images and Videos/Sketchbook/2025/Screenshot 2025-06-26 134621.png" alt="Art 25">
+        <img src="Images and Videos/Sketchbook/2025/Screenshot 2025-08-05 150805.png" alt="Art 26">
+        <img src="Images and Videos/Sketchbook/2025/Screenshot 2025-12-13 141959.png" alt="Art 27">
+        <img src="Images and Videos/Sketchbook/traditional/1.jpg" alt="Art 28">
+        <img src="Images and Videos/Sketchbook/traditional/2.jpg" alt="Art 29">
+        <img src="Images and Videos/Sketchbook/traditional/3.jpg" alt="Art 30">
+        <img src="Images and Videos/Sketchbook/traditional/4.jpg" alt="Art 31">
+        <img src="Images and Videos/Sketchbook/traditional/5.jpg" alt="Art 32">
+        <img src="Images and Videos/Sketchbook/traditional/6.jpg" alt="Art 33">
+        <img src="Images and Videos/Sketchbook/traditional/7.jpg" alt="Art 34">
+        <img src="Images and Videos/Sketchbook/traditional/8.jpg" alt="Art 35">
+        <img src="Images and Videos/Sketchbook/traditional/9.jpg" alt="Art 36">
+        <img src="Images and Videos/Sketchbook/traditional/10.jpg" alt="Art 37">
+        <img src="Images and Videos/Sketchbook/traditional/11.jpg" alt="Art 38">
+        <img src="Images and Videos/Sketchbook/traditional/12.jpg" alt="Art 39">
+        <img src="Images and Videos/Sketchbook/traditional/13.jpg" alt="Art 40">
+        <img src="Images and Videos/Sketchbook/traditional/14.jpg" alt="Art 41">
+        <img src="Images and Videos/Sketchbook/traditional/15.jpg" alt="Art 42">
+        <img src="Images and Videos/Sketchbook/traditional/16.jpg" alt="Art 43">
+        <img src="Images and Videos/Sketchbook/traditional/17.jpg" alt="Art 44">
+        <img src="Images and Videos/Sketchbook/traditional/18.jpg" alt="Art 45">
+        <img src="Images and Videos/Sketchbook/traditional/19.jpg" alt="Art 46">
+        <img src="Images and Videos/Sketchbook/traditional/20.jpg" alt="Art 47">
+        <img src="Images and Videos/Sketchbook/traditional/21.jpg" alt="Art 48">
+        <img src="Images and Videos/Sketchbook/traditional/22.jpg" alt="Art 49">
+        <img src="Images and Videos/Sketchbook/traditional/23.jpg" alt="Art 50">
+        <img src="Images and Videos/Sketchbook/traditional/24.jpg" alt="Art 51">
+        <img src="Images and Videos/Sketchbook/traditional/25.jpg" alt="Art 52">
+        <img src="Images and Videos/Sketchbook/traditional/conceptthumbnails-tyrantsgambit.jpg" alt="Art 53">
+        <img src="Images and Videos/Sketchbook/traditional/crissie.jpg" alt="Art 54">
+        <img src="Images and Videos/Sketchbook/traditional/dawn.jpg" alt="Art 55">
+        <img src="Images and Videos/Sketchbook/traditional/expressions1.jpg" alt="Art 56">
+        <img src="Images and Videos/Sketchbook/traditional/figuredrawing1.jpg" alt="Art 57">
+        <img src="Images and Videos/Sketchbook/traditional/figuredrawing2.jpg" alt="Art 58">
+        <img src="Images and Videos/Sketchbook/traditional/kovana-concept.jpg" alt="Art 59">
       </div>
- 
-      <div class="thumb-grid">
-        <img src="https://via.placeholder.com/1000x700?text=Art+1" alt="Art 1 thumbnail" data-index="0" class="active-thumb">
-        <img src="https://via.placeholder.com/1000x700?text=Art+2" alt="Art 2 thumbnail" data-index="1">
-        <img src="https://via.placeholder.com/1000x700?text=Art+3" alt="Art 3 thumbnail" data-index="2">
-        <img src="https://via.placeholder.com/1000x700?text=Art+4" alt="Art 4 thumbnail" data-index="3">
+
+      <!-- THUMBNAILS (just click to open full screen) -->
+      <div class="thumb-grid" id="thumb-grid" aria-label="Thumbnail scrubber">
+        <!-- Keep matching thumbs here too. New ones can go at the bottom. Script will show newest first. -->
+        <img src="Images and Videos/Sketchbook/2023/akarasketch2023.png" alt="Art 1 thumbnail" data-index="0">
+        <img src="Images and Videos/Sketchbook/2023/akarasketch-cu1.png" alt="Art 2 thumbnail" data-index="1">
+        <img src="Images and Videos/Sketchbook/2023/akarasketch-cu2.png" alt="Art 3 thumbnail" data-index="2">
+        <img src="Images and Videos/Sketchbook/2023/akararef-p1-2023.png" alt="Art 4 thumbnail" data-index="3">
+        <img src="Images and Videos/Sketchbook/2023/akararef-p2-2023.png" alt="Art 5 thumbnail" data-index="4">
+        <img src="Images and Videos/Sketchbook/2023/cat1.png" alt="Art 6 thumbnail" data-index="5">
+        <img src="Images and Videos/Sketchbook/2023/samfoot.png" alt="Art 7 thumbnail" data-index="6">
+        <img src="Images and Videos/Sketchbook/2023/Screenshot 2024-12-22 210913.png" alt="Art 8 thumbnail" data-index="7">
+        <img src="Images and Videos/Sketchbook/2024/Screenshot 2025-02-04 135110.png" alt="Art 9 thumbnail" data-index="8">
+        <img src="Images and Videos/Sketchbook/2025/akararef2025.png" alt="Art 10 thumbnail" data-index="9">
+        <img src="Images and Videos/Sketchbook/2025/akararef2025-renderish.png" alt="Art 11 thumbnail" data-index="10">
+        <img src="Images and Videos/Sketchbook/2025/katn.jpg" alt="Art 12 thumbnail" data-index="11">
+        <img src="Images and Videos/Sketchbook/2025/pair1.jpg" alt="Art 13 thumbnail" data-index="12">
+        <img src="Images and Videos/Sketchbook/2025/Screenshot 2025-05-06 180605.png" alt="Art 14 thumbnail" data-index="13">
+        <img src="Images and Videos/Sketchbook/2025/Screenshot 2025-05-09 115316.png" alt="Art 15 thumbnail" data-index="14">
+        <img src="Images and Videos/Sketchbook/2025/Screenshot 2025-05-09 115934.png" alt="Art 16 thumbnail" data-index="15">
+        <img src="Images and Videos/Sketchbook/2025/Screenshot 2025-05-09 143851.png" alt="Art 17 thumbnail" data-index="16">
+        <img src="Images and Videos/Sketchbook/2025/Screenshot 2025-05-12 150544.png" alt="Art 18 thumbnail" data-index="17">
+        <img src="Images and Videos/Sketchbook/2025/Screenshot 2025-05-22 105442.png" alt="Art 19 thumbnail" data-index="18">
+        <img src="Images and Videos/Sketchbook/2025/Screenshot 2025-05-27 123741.png" alt="Art 20 thumbnail" data-index="19">
+        <img src="Images and Videos/Sketchbook/2025/Screenshot 2025-05-27 124108.png" alt="Art 21 thumbnail" data-index="20">
+        <img src="Images and Videos/Sketchbook/2025/Screenshot 2025-05-27 124943.png" alt="Art 22 thumbnail" data-index="21">
+        <img src="Images and Videos/Sketchbook/2025/Screenshot 2025-05-27 125001.png" alt="Art 23 thumbnail" data-index="22">
+        <img src="Images and Videos/Sketchbook/2025/Screenshot 2025-05-29 162627.png" alt="Art 24 thumbnail" data-index="23">
+        <img src="Images and Videos/Sketchbook/2025/Screenshot 2025-06-26 134621.png" alt="Art 25 thumbnail" data-index="24">
+        <img src="Images and Videos/Sketchbook/2025/Screenshot 2025-08-05 150805.png" alt="Art 26 thumbnail" data-index="25">
+        <img src="Images and Videos/Sketchbook/2025/Screenshot 2025-12-13 141959.png" alt="Art 27 thumbnail" data-index="26">
+        <img src="Images and Videos/Sketchbook/traditional/1.jpg" alt="Art 28 thumbnail" data-index="27">
+        <img src="Images and Videos/Sketchbook/traditional/2.jpg" alt="Art 29 thumbnail" data-index="28">
+        <img src="Images and Videos/Sketchbook/traditional/3.jpg" alt="Art 30 thumbnail" data-index="29">
+        <img src="Images and Videos/Sketchbook/traditional/4.jpg" alt="Art 31 thumbnail" data-index="30">
+        <img src="Images and Videos/Sketchbook/traditional/5.jpg" alt="Art 32 thumbnail" data-index="31">
+        <img src="Images and Videos/Sketchbook/traditional/6.jpg" alt="Art 33 thumbnail" data-index="32">
+        <img src="Images and Videos/Sketchbook/traditional/7.jpg" alt="Art 34 thumbnail" data-index="33">
+        <img src="Images and Videos/Sketchbook/traditional/8.jpg" alt="Art 35 thumbnail" data-index="34">
+        <img src="Images and Videos/Sketchbook/traditional/9.jpg" alt="Art 36 thumbnail" data-index="35">
+        <img src="Images and Videos/Sketchbook/traditional/10.jpg" alt="Art 37 thumbnail" data-index="36">
+        <img src="Images and Videos/Sketchbook/traditional/11.jpg" alt="Art 38 thumbnail" data-index="37">
+        <img src="Images and Videos/Sketchbook/traditional/12.jpg" alt="Art 39 thumbnail" data-index="38">
+        <img src="Images and Videos/Sketchbook/traditional/13.jpg" alt="Art 40 thumbnail" data-index="39">
+        <img src="Images and Videos/Sketchbook/traditional/14.jpg" alt="Art 41 thumbnail" data-index="40">
+        <img src="Images and Videos/Sketchbook/traditional/15.jpg" alt="Art 42 thumbnail" data-index="41">
+        <img src="Images and Videos/Sketchbook/traditional/16.jpg" alt="Art 43 thumbnail" data-index="42">
+        <img src="Images and Videos/Sketchbook/traditional/17.jpg" alt="Art 44 thumbnail" data-index="43">
+        <img src="Images and Videos/Sketchbook/traditional/18.jpg" alt="Art 45 thumbnail" data-index="44">
+        <img src="Images and Videos/Sketchbook/traditional/19.jpg" alt="Art 46 thumbnail" data-index="45">
+        <img src="Images and Videos/Sketchbook/traditional/20.jpg" alt="Art 47 thumbnail" data-index="46">
+        <img src="Images and Videos/Sketchbook/traditional/21.jpg" alt="Art 48 thumbnail" data-index="47">
+        <img src="Images and Videos/Sketchbook/traditional/22.jpg" alt="Art 49 thumbnail" data-index="48">
+        <img src="Images and Videos/Sketchbook/traditional/23.jpg" alt="Art 50 thumbnail" data-index="49">
+        <img src="Images and Videos/Sketchbook/traditional/24.jpg" alt="Art 51 thumbnail" data-index="50">
+        <img src="Images and Videos/Sketchbook/traditional/25.jpg" alt="Art 52 thumbnail" data-index="51">
+        <img src="Images and Videos/Sketchbook/traditional/conceptthumbnails-tyrantsgambit.jpg" alt="Art 53 thumbnail" data-index="52">
+        <img src="Images and Videos/Sketchbook/traditional/crissie.jpg" alt="Art 54 thumbnail" data-index="53">
+        <img src="Images and Videos/Sketchbook/traditional/dawn.jpg" alt="Art 55 thumbnail" data-index="54">
+        <img src="Images and Videos/Sketchbook/traditional/kovana-concept.jpg" alt="Art 56 thumbnail" data-index="55">
+        <img src="Images and Videos/Sketchbook/traditional/figuredrawing1.jpg" alt="Art 57 thumbnail" data-index="56">
+        <img src="Images and Videos/Sketchbook/traditional/figuredrawing2.jpg" alt="Art 58 thumbnail" data-index="57">
+        <img src="Images and Videos/Sketchbook/traditional/expressions1.jpg" alt="Art 59 thumbnail" data-index="58">
       </div>
 
       <div class="btn-row">
-        <!-- Back to main portfolio -->
         <a href="index.html#work" class="btn">Back to Portfolio</a>
+      </div>
+    </section>
+
+    <section class="studies wrap" aria-label="30-second studies">
+      <h2>30-Second Studies</h2>
+      <p>Rapid gesture sketches</p>
+      <div class="study-grid">
+        <img src="Images and Videos/Sketchbook/traditional/30second/1.jpg" alt="30-second study 1">
+        <img src="Images and Videos/Sketchbook/traditional/30second/2.jpg" alt="30-second study 2">
+        <img src="Images and Videos/Sketchbook/traditional/30second/3.jpg" alt="30-second study 3">
+        <img src="Images and Videos/Sketchbook/traditional/30second/Screenshot 2025-12-13 141119.png" alt="30-second study 4">
+        <img src="Images and Videos/Sketchbook/traditional/30second/Screenshot 2025-12-13 141132.png" alt="30-second study 5">
+        <img src="Images and Videos/Sketchbook/traditional/30second/Screenshot 2025-12-13 141229.png" alt="30-second study 6">
+        <img src="Images and Videos/Sketchbook/traditional/30second/Screenshot 2025-12-13 141246.png" alt="30-second study 7">
       </div>
     </section>
   </main>
 
   <footer>
     © <span id="year"></span> Mackenzie Burt
-         <p> If you would like a more immediate expansion of my work to scroll through, all of my 3D models can be found in "3D Examples" on the home page banner.
-      Same for '2D Examples', which include Concept art and Animations.
-    </p>
+    <p>If you would like a more immediate expansion of my work to scroll through, all of my 3D models can be found in "3D Examples" on the home page banner.
+      Same for '2D Examples', which include Concept art and Animations.</p>
   </footer>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lb-inner">
+      <div class="lb-top">
+        <div class="lb-title" id="lb-title">Image</div>
+        <div style="display:flex; gap:.5rem; align-items:center;">
+          <button class="lb-btn" id="lb-close" type="button" aria-label="Close">Close</button>
+        </div>
+      </div>
+
+      <div class="lb-stage" id="lb-stage">
+        <button class="lb-arrow left" id="lb-prev" type="button" aria-label="Previous">&#8592;</button>
+        <img class="lb-img" id="lb-img" alt="Sketchbook image" />
+        <button class="lb-arrow right" id="lb-next" type="button" aria-label="Next">&#8594;</button>
+      </div>
+    </div>
+  </div>
 
   <script>
     // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    const images = document.querySelectorAll('.carousel-shell img');
-    const leftArrow = document.querySelector('.arrow.left');
-    const rightArrow = document.querySelector('.arrow.right');
-    const description = document.querySelector('.fun-description');
-    const thumbs = document.querySelectorAll('.thumb-grid img');
-    let currentIndex = 0;
+    // Build image list from source, then reverse so newest appears first
+    const sourceWrap = document.getElementById('img-source');
+    const sourceImgs = Array.from(sourceWrap.querySelectorAll('img'));
 
-    function updateCarousel() {
-      images.forEach((img, index) => {
-        const isActive = index === currentIndex;
-        img.classList.toggle('active', isActive);
-        if (isActive) {
-          description.textContent = img.getAttribute('data-description') || '';
-        }
-      });
+    // This makes the *last added* image become index 0 (newest first)
+    const images = sourceImgs.slice().reverse().map(img => ({
+      src: img.getAttribute('src'),
+      alt: img.getAttribute('alt') || 'Sketchbook image'
+    }));
 
-      thumbs.forEach((thumb, index) => {
-        thumb.classList.toggle('active-thumb', index === currentIndex);
-      });
+    // Rebuild thumbnails in newest-first order without scrolling anything
+    const thumbGrid = document.getElementById('thumb-grid');
+    const oldThumbs = Array.from(thumbGrid.querySelectorAll('img')).slice().reverse();
+
+    thumbGrid.innerHTML = '';
+    oldThumbs.forEach((t, i) => {
+      const thumb = document.createElement('img');
+      thumb.src = t.getAttribute('src');
+      thumb.alt = t.getAttribute('alt') || ('Thumbnail ' + (i+1));
+      thumb.dataset.index = String(i);
+      thumbGrid.appendChild(thumb);
+    });
+
+    // Lightbox controls
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lb-img');
+    const lbTitle = document.getElementById('lb-title');
+    const btnClose = document.getElementById('lb-close');
+    const btnPrev = document.getElementById('lb-prev');
+    const btnNext = document.getElementById('lb-next');
+    const lbStage = document.getElementById('lb-stage');
+
+    let current = 0;
+
+    function show(index){
+      if(!images.length) return;
+      current = (index + images.length) % images.length;
+      lbImg.src = images[current].src;
+      lbImg.alt = images[current].alt;
+      lbTitle.textContent = images[current].alt + "  (" + (current+1) + " / " + images.length + ")";
     }
 
-    leftArrow.addEventListener('click', () => {
-      currentIndex = (currentIndex - 1 + images.length) % images.length;
-      updateCarousel();
+    function openLightbox(index){
+      show(index);
+      lb.classList.add('open');
+      lb.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox(){
+      lb.classList.remove('open');
+      lb.setAttribute('aria-hidden','true');
+      document.body.style.overflow = '';
+    }
+
+    function prev(){ show(current - 1); }
+    function next(){ show(current + 1); }
+
+    // Click thumb opens fullscreen
+    thumbGrid.addEventListener('click', (e) => {
+      const t = e.target.closest('img');
+      if(!t) return;
+      openLightbox(parseInt(t.dataset.index, 10) || 0);
     });
 
-    rightArrow.addEventListener('click', () => {
-      currentIndex = (currentIndex + 1) % images.length;
-      updateCarousel();
+    // Buttons
+    btnClose.addEventListener('click', closeLightbox);
+    btnPrev.addEventListener('click', prev);
+    btnNext.addEventListener('click', next);
+
+    // Click outside image closes (but clicking arrows won’t)
+    lb.addEventListener('click', (e) => {
+      const clickedImage = e.target === lbImg;
+      const clickedStage = e.target === lbStage;
+      const clickedInside = clickedImage || clickedStage || e.target.closest('.lb-top') || e.target.closest('.lb-arrow');
+      if(!clickedInside) closeLightbox();
     });
 
-    thumbs.forEach((thumb, index) => {
-      thumb.addEventListener('click', () => {
-        currentIndex = index;
-        updateCarousel();
-      });
+    // Keyboard navigation when open
+    document.addEventListener('keydown', (e) => {
+      if(!lb.classList.contains('open')) return;
+      if(e.key === 'Escape') closeLightbox();
+      if(e.key === 'ArrowLeft') prev();
+      if(e.key === 'ArrowRight') next();
     });
 
-    // Initialize description and thumbnail state
-    updateCarousel();
+    // Swipe support
+    let startX = 0;
+    lbStage.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+    }, {passive:true});
+
+    lbStage.addEventListener('touchend', (e) => {
+      const endX = e.changedTouches[0].clientX;
+      const dx = endX - startX;
+      if(Math.abs(dx) < 50) return;
+      if(dx > 0) prev(); else next();
+    }, {passive:true});
   </script>
 </body>
 </html>
