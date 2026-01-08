@@ -65,134 +65,33 @@
     }
     .page-head p{margin:0; color:var(--ink-d); max-width:900px}
 
-    /* PROJECT SELECTOR */
-    .projects{
+    /* GALLERY */
+    .gallery{
       max-width:1160px;
       margin:0 auto;
       display:grid;
-      grid-template-columns: 320px 1fr;
-      gap:1rem;
-      align-items:start;
+      grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+      gap:1.5rem;
     }
-    @media (max-width: 920px){
-      .projects{grid-template-columns:1fr}
+    @media (max-width:768px){
+      .gallery{grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:1rem}
     }
 
-    .card{
-      background:var(--panel);
+    .gallery-item{
       border:1px solid var(--border);
-      border-radius:18px;
-      box-shadow:0 20px 40px rgba(0,0,0,.55);
-      overflow:hidden;
-    }
-    .card-pad{padding:1.1rem 1.1rem 1.2rem}
-
-    h2{
-      margin:0 0 .75rem;
-      font-family:'Playfair Display',serif;
-      font-size:clamp(1.35rem,2.6vw,1.8rem);
-      color:var(--accent);
-    }
-
-    .project-list{
-      display:flex;
-      flex-direction:column;
-      gap:.6rem;
-    }
-    .proj-btn{
-      width:100%;
-      text-align:left;
-      border:1px solid #2a2a2a;
-      background:#141414;
-      color:var(--ink);
-      border-radius:14px;
-      padding:.75rem .85rem;
-      cursor:pointer;
-      transition:transform .12s ease, border-color .2s ease, background .2s ease;
-    }
-    .proj-btn:hover{transform:translateY(-2px); border-color:#3a3a3a}
-    .proj-btn[aria-pressed="true"]{
-      border-color:color-mix(in oklab, var(--accent) 45%, #2a2a2a);
-      box-shadow:0 0 0 2px rgba(255,111,97,.18) inset;
-      background:#161616;
-    }
-    .proj-title{font-weight:700}
-    .proj-sub{font-size:.85rem; color:var(--ink-d); margin-top:.15rem}
-
-    /* GALLERY */
-    .gallery{
-      display:grid;
-      gap:1rem;
-    }
-
-    .hero-media{
-      border:1px solid #2a2a2a;
       border-radius:14px;
       overflow:hidden;
       background:#0c0c0c;
-    }
-    .hero-media img{
-      width:100%;
-      height:min(55vh,520px);
-      object-fit:contain;
-      display:block;
-      background:#0c0c0c;
-    }
-    .hero-cap{
-      padding:.7rem .9rem;
-      border-top:1px solid #232323;
-      background:#131313;
-      color:var(--ink-d);
-      font-size:.92rem;
-    }
-
-    .thumbs{
-      display:grid;
-      grid-template-columns:repeat(auto-fill,minmax(140px,1fr));
-      gap:.9rem;
-    }
-    .thumb{
-      border:1px solid #2a2a2a;
-      border-radius:12px;
-      overflow:hidden;
-      background:#0c0c0c;
       cursor:pointer;
-      opacity:.9;
-      transition:transform .12s ease, border-color .2s ease, opacity .2s ease;
+      transition:transform .2s ease, box-shadow .2s ease;
     }
-    .thumb:hover{transform:translateY(-2px); border-color:#3a3a3a; opacity:1}
-    .thumb[aria-current="true"]{
-      border-color:var(--accent);
-      box-shadow:0 0 0 2px rgba(255,111,97,.16) inset;
-      opacity:1;
-    }
-    .thumb img{
+    .gallery-item:hover{transform:translateY(-4px); box-shadow:0 20px 40px rgba(255,111,97,.15)}
+    .gallery-item img{
       width:100%;
-      aspect-ratio:4/5;
+      aspect-ratio:3/4;
       object-fit:cover;
       display:block;
     }
-
-    /* OPTIONAL: quick notes panel */
-    .notes{
-      color:var(--ink-d);
-      margin-top:.2rem;
-      font-size:.95rem;
-    }
-    .notes .row{
-      display:flex; flex-wrap:wrap; gap:.5rem;
-      margin-top:.75rem;
-    }
-    .pill{
-      display:inline-flex; align-items:center; gap:.35rem;
-      padding:.35rem .65rem;
-      border-radius:999px;
-      border:1px solid #2a2a2a;
-      background:#141414;
-      color:var(--ink-d);
-      font-size:.82rem;
-    }
-    .pill strong{color:var(--ink); font-weight:700}
 
     .btn-row{
       max-width:1160px;
@@ -240,69 +139,67 @@
   <main>
     <section class="page-head">
       <h1>Concept Art</h1>
-      <p>Selected concept work across multiple projects. Click a project on the left, then scrub through images quickly with thumbnails.</p>
+      <p>A selection of my best concept art across characters, environments, and design exploration.</p>
     </section>
 
-    <section class="projects" aria-label="Concept art projects">
-      <!-- LEFT: project picker -->
-      <aside class="card">
-        <div class="card-pad">
-          <h2>Projects</h2>
+    <section class="gallery" aria-label="Concept art gallery">
+      <!-- Add your concept art images here -->
+      <div class="gallery-item">
+        <img src="Images and Videos/Concept Art/Knight.png" alt="Concept art" />
+      </div>
+      <div class="gallery-item">
+        <img src="Images and Videos/Concept Art/Knight.png" alt="Concept art" />
+      </div>
+      <div class="gallery-item">
+        <img src="Images and Videos/Concept Art/Knight.png" alt="Concept art" />
+      </div>
+      <div class="gallery-item">
+        <img src="Images and Videos/Concept Art/Knight.png" alt="Concept art" />
+      </div>
+      <div class="gallery-item">
+        <img src="Images and Videos/Concept Art/Knight.png" alt="Concept art" />
+      </div>
+      <div class="gallery-item">
+        <img src="Images and Videos/Concept Art/Knight.png" alt="Concept art" />
+      </div>
+    </section>
 
-          <div class="project-list" id="projectList">
-            <!-- Project 1 -->
-            <button class="proj-btn" type="button"
-              aria-pressed="true"
-              data-project="p1">
-              <div class="proj-title">Project One (Placeholder)</div>
-              <div class="proj-sub">Short descriptor goes here</div>
-            </button>
+    <section class="page-head" style="margin-top:3rem">
+      <h1>Research & References</h1>
+      <p>References, mood boards, and process work that inform my design decisions.</p>
+    </section>
 
-            <!-- Project 2 -->
-            <button class="proj-btn" type="button"
-              aria-pressed="false"
-              data-project="p2">
-              <div class="proj-title">Project Two (Placeholder)</div>
-              <div class="proj-sub">Short descriptor goes here</div>
-            </button>
+    <section class="gallery" aria-label="Research and references gallery">
+      <!-- Add your research and reference images here -->
+      <div class="gallery-item">
+        <img src="Images and Videos/Concept Art/Knight.png" alt="Research reference" />
+      </div>
+      <div class="gallery-item">
+        <img src="Images and Videos/Concept Art/Knight.png" alt="Research reference" />
+      </div>
+      <div class="gallery-item">
+        <img src="Images and Videos/Concept Art/Knight.png" alt="Research reference" />
+      </div>
+      <div class="gallery-item">
+        <img src="Images and Videos/Concept Art/Knight.png" alt="Research reference" />
+      </div>
+    </section>
 
-            <!-- Project 3 -->
-            <button class="proj-btn" type="button"
-              aria-pressed="false"
-              data-project="p3">
-              <div class="proj-title">Project Three (Placeholder)</div>
-              <div class="proj-sub">Short descriptor goes here</div>
-            </button>
-          </div>
+    <section class="page-head" style="margin-top:3rem">
+      <h1>Character Sheets</h1>
+      <p>Production-ready character sheets designed for 3D modeling and animation.</p>
+    </section>
 
-          <div class="notes" id="projectNotes" aria-label="Selected project notes">
-            <div class="row" id="pillRow">
-              <span class="pill"><strong>Focus:</strong> Characters / UI / Environments</span>
-              <span class="pill"><strong>Tools:</strong> Photoshop / CSP</span>
-            </div>
-            <p id="projectDesc" style="margin:.8rem 0 0;">
-              Replace this with a 1–2 sentence summary for the selected project.
-            </p>
-          </div>
-        </div>
-      </aside>
-
-      <!-- RIGHT: gallery -->
-      <div class="card">
-        <div class="card-pad">
-          <h2 id="galleryTitle">Project One (Placeholder)</h2>
-
-          <div class="gallery">
-            <div class="hero-media" aria-label="Selected concept image">
-              <img id="heroImg" src="Images and Videos/Concept Art/Knight.png" alt="Selected concept art" />
-              <div class="hero-cap" id="heroCap">Click any thumbnail to view larger.</div>
-            </div>
-
-            <div class="thumbs" id="thumbs" aria-label="Concept thumbnails">
-              <!-- Thumbs injected by JS -->
-            </div>
-          </div>
-        </div>
+    <section class="gallery" aria-label="Character sheets gallery">
+      <!-- Add your character sheet images here -->
+      <div class="gallery-item">
+        <img src="Images and Videos/Concept Art/Knight.png" alt="Character sheet" />
+      </div>
+      <div class="gallery-item">
+        <img src="Images and Videos/Concept Art/Knight.png" alt="Character sheet" />
+      </div>
+      <div class="gallery-item">
+        <img src="Images and Videos/Concept Art/Knight.png" alt="Character sheet" />
       </div>
     </section>
 
@@ -317,127 +214,6 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // === EDIT THESE 3 PROJECTS ONLY ===
-    // Put NEW images at the TOP of each array so they appear first (your request).
-    const DATA = {
-      p1: {
-        title: "Project One (Placeholder)",
-        subtitle: "Short descriptor goes here",
-        focus: "Characters / UI / Environments",
-        tools: "Photoshop / CSP",
-        desc: "Replace this with a 1–2 sentence summary for the selected project.",
-        images: [
-          // Newest first:
-          { src: "Images and Videos/Concept Art/Knight.png", cap: "Caption for this piece (optional)." },
-          { src: "Images and Videos/Concept Art/Knight.png", cap: "Add more images here." }
-        ]
-      },
-      p2: {
-        title: "Project Two (Placeholder)",
-        subtitle: "Short descriptor goes here",
-        focus: "Style exploration / Iteration",
-        tools: "Photoshop / CSP",
-        desc: "Replace this with a 1–2 sentence summary for the selected project.",
-        images: [
-          { src: "Images and Videos/Concept Art/Knight.png", cap: "Replace with your p2 images." }
-        ]
-      },
-      p3: {
-        title: "Project Three (Placeholder)",
-        subtitle: "Short descriptor goes here",
-        focus: "Production-ready sheets",
-        tools: "Photoshop / CSP",
-        desc: "Replace this with a 1–2 sentence summary for the selected project.",
-        images: [
-          { src: "Images and Videos/Concept Art/Knight.png", cap: "Replace with your p3 images." }
-        ]
-      }
-    };
-
-    // Wire up the left buttons
-    const list = document.getElementById('projectList');
-    const galleryTitle = document.getElementById('galleryTitle');
-    const heroImg = document.getElementById('heroImg');
-    const heroCap = document.getElementById('heroCap');
-
-    const projectDesc = document.getElementById('projectDesc');
-    const pillRow = document.getElementById('pillRow');
-
-    const thumbsWrap = document.getElementById('thumbs');
-
-    let activeProjectKey = "p1";
-    let activeIndex = 0;
-
-    // Fill button labels from DATA (so you only edit DATA)
-    [...list.querySelectorAll('.proj-btn')].forEach(btn => {
-      const key = btn.dataset.project;
-      if(!DATA[key]) return;
-      btn.querySelector('.proj-title').textContent = DATA[key].title;
-      btn.querySelector('.proj-sub').textContent = DATA[key].subtitle;
-    });
-
-    function setProject(key){
-      activeProjectKey = key;
-      activeIndex = 0;
-
-      // Toggle pressed state
-      [...list.querySelectorAll('.proj-btn')].forEach(b=>{
-        b.setAttribute('aria-pressed', b.dataset.project === key ? 'true' : 'false');
-      });
-
-      // Update text
-      const p = DATA[key];
-      galleryTitle.textContent = p.title;
-
-      // Pills + description
-      pillRow.innerHTML = `
-        <span class="pill"><strong>Focus:</strong> ${p.focus}</span>
-        <span class="pill"><strong>Tools:</strong> ${p.tools}</span>
-      `;
-      projectDesc.textContent = p.desc;
-
-      // Build thumbs
-      thumbsWrap.innerHTML = "";
-      p.images.forEach((img, idx) => {
-        const b = document.createElement('button');
-        b.type = "button";
-        b.className = "thumb";
-        b.setAttribute('aria-label', `Open image ${idx + 1}`);
-        b.setAttribute('aria-current', idx === 0 ? 'true' : 'false');
-        b.innerHTML = `<img src="${img.src}" alt="${p.title} thumbnail ${idx + 1}">`;
-        b.addEventListener('click', ()=> setImage(idx));
-        thumbsWrap.appendChild(b);
-      });
-
-      // Set first image
-      setImage(0);
-    }
-
-    function setImage(idx){
-      const p = DATA[activeProjectKey];
-      const item = p.images[idx];
-      if(!item) return;
-
-      activeIndex = idx;
-      heroImg.src = item.src;
-      heroImg.alt = `${p.title} concept art ${idx + 1}`;
-      heroCap.textContent = item.cap || " ";
-
-      // Update thumb selection
-      [...thumbsWrap.querySelectorAll('.thumb')].forEach((t, i)=>{
-        t.setAttribute('aria-current', i === idx ? 'true' : 'false');
-      });
-    }
-
-    list.addEventListener('click', (e)=>{
-      const btn = e.target.closest('.proj-btn');
-      if(!btn) return;
-      setProject(btn.dataset.project);
-    });
-
-    // Init
-    setProject("p1");
   </script>
 </body>
 </html>
