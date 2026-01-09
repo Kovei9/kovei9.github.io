@@ -12,10 +12,14 @@
     :root{
       --bg:#121212;
       --panel:#171717;
+      --panel2:#101010;
       --ink:#f5f5f5;
       --ink-d:#cfcfcf;
+      --muted:#9a9a9a;
       --accent:#ff6f61;
-      --border:#242424;
+      --stroke:#262626;
+      --r:18px;
+      --shadow:0 18px 40px rgba(0,0,0,.55);
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
@@ -27,8 +31,9 @@
       line-height:1.6;
     }
     a{color:inherit;text-decoration:none}
+    img, video{max-width:100%; display:block}
 
-    /* HEADER (matches your portfolio) */
+    /* Header */
     header{
       position:sticky; top:0; z-index:10;
       backdrop-filter: blur(10px);
@@ -48,51 +53,171 @@
     .nav a:hover,.nav a:focus{color:var(--accent); transform:translateY(-2px)}
     .nav a:hover::after{width:100%}
 
-    main{padding:2.75rem 1.25rem 4rem}
+    main{padding:2.5rem 1.25rem 4rem}
 
-    .page-head{
-      max-width:1160px; margin:0 auto 1.25rem;
-      background:linear-gradient(135deg,#1e1e1e,#2b2b2b);
-      border:1px solid var(--border);
-      border-radius:18px;
-      padding:1.25rem 1.25rem 1.35rem;
+    /* Page hero */
+    .page-hero{
+      max-width:1160px;
+      margin:0 auto 1.5rem;
+      border:1px solid var(--stroke);
+      border-radius:var(--r);
+      background:linear-gradient(135deg,#1a1a1a,#121212);
+      box-shadow:var(--shadow);
       overflow:hidden;
+      padding:1.35rem 1.35rem 1.45rem;
     }
-    .page-head h1{
+    .page-hero h1{
       margin:0 0 .25rem;
       font-family:'Playfair Display',serif;
-      font-size:clamp(2rem,4.2vw,2.8rem);
+      font-size:clamp(2.1rem,4.2vw,3rem);
+      line-height:1.1;
     }
-    .page-head p{margin:0; color:var(--ink-d); max-width:900px}
+    .page-hero p{
+      margin:0;
+      color:var(--ink-d);
+      max-width:920px;
+      font-size:1rem;
+    }
 
-    /* GALLERY */
-    .gallery{
+    /* Section cards */
+    .section{
       max-width:1160px;
-      margin:0 auto;
-      display:grid;
-      grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
-      gap:1.5rem;
+      margin:0 auto 1.75rem;
+      border:1px solid var(--stroke);
+      border-radius:var(--r);
+      background:var(--panel);
+      box-shadow:0 10px 26px rgba(0,0,0,.35);
+      overflow:hidden;
     }
-    @media (max-width:768px){
-      .gallery{grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:1rem}
+    .section-head{
+      padding:1.1rem 1.25rem;
+      border-bottom:1px solid var(--stroke);
+      background:linear-gradient(180deg, #171717, #141414);
+    }
+    .section-head h2{
+      margin:0 0 .25rem;
+      font-family:'Playfair Display',serif;
+      color:var(--accent);
+      font-size:clamp(1.6rem, 3vw, 2.1rem);
+    }
+    .section-head p{
+      margin:0;
+      color:var(--ink-d);
+      max-width:980px;
+      font-size:.95rem;
+    }
+    .section-body{
+      padding:1.15rem 1.25rem 1.35rem;
+      background:var(--panel2);
     }
 
-    .gallery-item{
-      border:1px solid var(--border);
-      border-radius:14px;
+    /* Subgroup (Witch/Merchant/Skrunkly) */
+    .group{
+      margin-top:1rem;
+      border:1px solid #2a2a2a;
+      border-radius:16px;
       overflow:hidden;
-      background:#0c0c0c;
-      cursor:pointer;
-      transition:transform .2s ease, box-shadow .2s ease;
+      background:#0f0f0f;
     }
-    .gallery-item:hover{transform:translateY(-4px); box-shadow:0 20px 40px rgba(255,111,97,.15)}
-    .gallery-item img{
+    .group:first-child{margin-top:0}
+    .group-head{
+      padding:.85rem 1rem;
+      border-bottom:1px solid #2a2a2a;
+      display:flex;
+      justify-content:space-between;
+      align-items:baseline;
+      gap:1rem;
+      background:#121212;
+    }
+    .group-head strong{
+      font-size:1rem;
+      color:var(--ink);
+      letter-spacing:.2px;
+    }
+    .group-head span{
+      color:var(--muted);
+      font-size:.85rem;
+      text-align:right;
+    }
+    .group-body{padding:1rem}
+
+    /* Grid */
+    .grid{
+      display:grid;
+      gap:1rem;
+      grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+      align-items:start;
+    }
+
+    /* Tile: show FULL images immediately */
+    .tile{
+      border:1px solid #2a2a2a;
+      border-radius:16px;
+      overflow:hidden;
+      background:#0b0b0b;
+      transition:transform .18s ease, box-shadow .2s ease, border-color .2s ease, opacity .15s ease;
+    }
+    .tile:hover{
+      transform:translateY(-4px);
+      border-color:#3a3a3a;
+      box-shadow:0 18px 36px rgba(0,0,0,.55);
+      opacity:.99;
+    }
+    .img-mat{
+      background:#0b0b0b;
+      padding:.6rem;
+    }
+    .img-mat img{
       width:100%;
-      aspect-ratio:3/4;
+      height:auto;
+      object-fit:contain;
+      border-radius:10px;
+      background:#0b0b0b;
+    }
+
+    /* Captions: off by default (only keep on reference/inspiration) */
+    .tile .cap{ display:none; }
+    .tile.cap-keep .cap{
+      display:block;
+      padding:.65rem .85rem;
+      border-top:1px solid #222;
+      color:var(--ink-d);
+      font-size:.88rem;
+      background:#101010;
+    }
+
+    /* Video tile */
+    .video-mat{background:#0b0b0b; padding:.6rem}
+    .video-wrap{
+      aspect-ratio:16/9;
+      background:#000;
+      border-radius:10px;
+      overflow:hidden;
+    }
+    .video-wrap video{
+      width:100%;
+      height:100%;
       object-fit:cover;
+      background:#000;
       display:block;
     }
 
+    /* ===== WITCH: controlled layout so tall images don’t create weird gaps ===== */
+    .witch-layout{
+      display:grid;
+      gap:1rem;
+      grid-template-columns: 1fr 1fr 1fr;
+      align-items:start;
+    }
+    @media (max-width: 980px){
+      .witch-layout{ grid-template-columns: 1fr; }
+    }
+    .witch-stack{
+      display:grid;
+      gap:1rem;
+    }
+
+    /* Buttons */
     .btn-row{
       max-width:1160px;
       margin:1.25rem auto 0;
@@ -108,18 +233,100 @@
       border:1px solid #2a2a2a;
       background:#161616;
       color:var(--ink);
-      font-weight:700;
+      font-weight:800;
       cursor:pointer;
       transition:transform .15s ease, box-shadow .25s ease, border-color .2s ease;
     }
     .btn:hover{transform:translateY(-3px); box-shadow:0 18px 40px rgba(0,0,0,.45); border-color:#3a3a3a}
 
+    /* Footer */
     footer{
       padding:2rem 1rem;
       text-align:center;
       color:#9a9a9a;
       border-top:1px solid #202020;
       font-size:.85rem;
+    }
+
+    .btn-row{
+      max-width:1160px;
+      margin:1.25rem auto 0;
+      display:flex;
+      flex-wrap:wrap;
+      gap:.6rem;
+      justify-content:center;
+    }
+
+    /* Lightbox (optional bonus) */
+    .lightbox{
+      position:fixed;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:rgba(0,0,0,.92);
+      z-index:9999;
+      padding:1.25rem;
+      visibility:hidden;
+      opacity:0;
+      transition:opacity .2s ease, visibility .2s;
+    }
+    .lightbox.show{visibility:visible; opacity:1}
+    .lightbox .media{
+      width:min(1180px, 96vw);
+      height:min(760px, 88vh);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .lightbox .media img,
+    .lightbox .media video{
+      max-width:100%;
+      max-height:100%;
+      border-radius:12px;
+      box-shadow:0 20px 50px rgba(0,0,0,.65);
+      background:#000;
+    }
+    .lightbox .controls{
+      position:absolute;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      pointer-events:none;
+    }
+    .lightbox button{
+      background:transparent;
+      border:0;
+      color:var(--ink);
+      font-size:2.2rem;
+      padding:.6rem .9rem;
+      pointer-events:auto;
+      cursor:pointer;
+      opacity:.9;
+      transition:opacity .15s ease, transform .15s ease;
+    }
+    .lightbox button:hover{opacity:1; transform:scale(1.08)}
+    .lightbox .close{
+      position:absolute;
+      right:1.15rem;
+      top:1rem;
+      font-size:1.7rem;
+    }
+    .lightbox .caption{
+      position:absolute;
+      left:50%;
+      transform:translateX(-50%);
+      bottom:1.05rem;
+      color:var(--ink-d);
+      font-size:.95rem;
+      text-align:center;
+      max-width:min(920px, 92vw);
+      padding:0 .75rem;
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *{scroll-behavior:auto !important; transition:none !important; animation:none !important;}
     }
   </style>
 </head>
@@ -137,76 +344,250 @@
   </header>
 
   <main>
-    <section class="page-head">
+    <section class="page-hero">
       <h1>Concept Art</h1>
-      <p>A selection of my best concept art across characters, environments, and design exploration.</p>
     </section>
 
-    <section class="gallery" aria-label="Concept art gallery">
-      <!-- Add your concept art images here -->
-      <div class="gallery-item">
-        <img src="Images and Videos/Concept Art/Knight.png" alt="Concept art" />
+    <!-- Selected Work -->
+    <section class="section">
+      <div class="section-head">
+        <h2>Indie Game Studio - Contract</h2>
+        <p>
+          WaveWeaver — waterbending-inspired VR concept exploration. I studied real water motion and took visual inspiration from
+          <em>Elemental</em> (Pixar). I also referenced waterbenders in <em>Avatar: The Last Airbender</em>, since the client’s
+          “bending” moves were heavily based on that style.
+        </p>
       </div>
-      <div class="gallery-item">
-        <img src="Images and Videos/Concept Art/Knight.png" alt="Concept art" />
-      </div>
-      <div class="gallery-item">
-        <img src="Images and Videos/Concept Art/Knight.png" alt="Concept art" />
-      </div>
-      <div class="gallery-item">
-        <img src="Images and Videos/Concept Art/Knight.png" alt="Concept art" />
-      </div>
-      <div class="gallery-item">
-        <img src="Images and Videos/Concept Art/Knight.png" alt="Concept art" />
-      </div>
-      <div class="gallery-item">
-        <img src="Images and Videos/Concept Art/Knight.png" alt="Concept art" />
-      </div>
-    </section>
-
-    <section class="page-head" style="margin-top:3rem">
-      <h1>Research & References</h1>
-      <p>References, mood boards, and process work that inform my design decisions.</p>
-    </section>
-
-    <section class="gallery" aria-label="Research and references gallery">
-      <!-- Add your research and reference images here -->
-      <div class="gallery-item">
-        <img src="Images and Videos/Concept Art/Knight.png" alt="Research reference" />
-      </div>
-      <div class="gallery-item">
-        <img src="Images and Videos/Concept Art/Knight.png" alt="Research reference" />
-      </div>
-      <div class="gallery-item">
-        <img src="Images and Videos/Concept Art/Knight.png" alt="Research reference" />
-      </div>
-      <div class="gallery-item">
-        <img src="Images and Videos/Concept Art/Knight.png" alt="Research reference" />
+      <div class="section-body">
+        <div class="grid" aria-label="Selected concept art gallery">
+          <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/Concept Art/waveweaver.png" data-caption="WaveWeaver — waterbending-inspired VR concept">
+            <div class="img-mat">
+              <img src="Images and Videos/Concept Art/waveweaver.png" alt="WaveWeaver waterbending VR concept" />
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="page-head" style="margin-top:3rem">
-      <h1>Character Sheets</h1>
-      <p>Production-ready character sheets designed for 3D modeling and animation.</p>
+    <!-- Game piece character concepts -->
+    <section class="section">
+      <div class="section-head">
+        <h2>Game Piece Character Concepts - University (Unity Multiplayer Game)</h2>
+        <p>Chess-inspired game pieces explored as stylized characters.</p>
+      </div>
+      <div class="section-body">
+        <div class="grid" aria-label="Game piece character concepts">
+          <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/Concept Art/game piece concepts.png" data-caption="Game piece characters — thumbnail exploration">
+            <div class="img-mat">
+              <img src="Images and Videos/Concept Art/game piece concepts.png" alt="Game piece character thumbnails" />
+            </div>
+          </div>
+
+          <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/Concept Art/Queen.png" data-caption="Queen — chess piece character concept">
+            <div class="img-mat">
+              <img src="Images and Videos/Concept Art/Queen.png" alt="Queen chess-piece character concept" />
+            </div>
+          </div>
+
+          <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/Concept Art/Knight.png" data-caption="Knight — chess piece character concept">
+            <div class="img-mat">
+              <img src="Images and Videos/Concept Art/Knight.png" alt="Knight chess-piece character concept" />
+            </div>
+          </div>
+
+          <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/Concept Art/Centaur.png" data-caption="Centaur — character concept">
+            <div class="img-mat">
+              <img src="Images and Videos/Concept Art/Centaur.png" alt="Centaur concept" />
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section class="gallery" aria-label="Character sheets gallery">
-      <!-- Add your character sheet images here -->
-      <div class="gallery-item">
-        <img src="Images and Videos/Concept Art/Knight.png" alt="Character sheet" />
+    <!-- Unreal puzzle project -->
+    <section class="section">
+      <div class="section-head">
+        <h2>Legend of Skrunkly - University (Unreal Engine Multiplayer Game)</h2>
+        <p>
+          Concepts built around three characters: a Merchant (bribe mechanics, rides AI around, AI does everything for him), a Witch (spells and broom flight),
+          and the AI character <strong>Skrunkly</strong>.
+        </p>
       </div>
-      <div class="gallery-item">
-        <img src="Images and Videos/Concept Art/Knight.png" alt="Character sheet" />
+
+      <div class="section-body">
+        <!-- Witch -->
+        <div class="group">
+          <div class="group-head">
+            <strong>Witch</strong>
+            <span>Thumbnail sheets + Exploration of Character </span>
+          </div>
+
+          <div class="group-body">
+            <div class="witch-layout" aria-label="Witch concepts">
+              <!-- LEFT: stacked (Concept sheet 1 + Turnaround) -->
+              <div class="witch-stack">
+                <div class="tile" data-lightbox-item data-type="img"
+                     data-src="Images and Videos/Concept Art/Screenshot 2025-09-07 150142.png"
+                     data-caption="Witch — concept sheet 1">
+                  <div class="img-mat">
+                    <img src="Images and Videos/Concept Art/Screenshot 2025-09-07 150142.png" alt="Witch concept sheet 1" />
+                  </div>
+                </div>
+
+                <div class="tile" data-lightbox-item data-type="img"
+                     data-src="Images and Videos/Concept Art/Screenshot 2026-01-08 161038.png"
+                     data-caption="Witch — turnaround">
+                  <div class="img-mat">
+                    <img src="Images and Videos/Concept Art/Screenshot 2026-01-08 161038.png" alt="Witch turnaround" />
+                  </div>
+                </div>
+              </div>
+
+              <!-- MIDDLE: tall concept sheet 2 -->
+              <div class="tile" data-lightbox-item data-type="img"
+                   data-src="Images and Videos/Concept Art/Screenshot 2025-09-07 150056.png"
+                   data-caption="Witch — concept sheet 2">
+                <div class="img-mat">
+                  <img src="Images and Videos/Concept Art/Screenshot 2025-09-07 150056.png" alt="Witch concept sheet 2" />
+                </div>
+              </div>
+
+              <!-- RIGHT: concept sheet 3 -->
+              <div class="tile" data-lightbox-item data-type="img"
+                   data-src="Images and Videos/Concept Art/Screenshot 2025-10-30 201832.png"
+                   data-caption="Witch — concept sheet 3">
+                <div class="img-mat">
+                  <img src="Images and Videos/Concept Art/Screenshot 2025-10-30 201832.png" alt="Witch concept sheet 3" />
+                </div>
+              </div>
+
+              <!-- Next row: pose -->
+              <div class="tile" data-lightbox-item data-type="img"
+                   data-src="Images and Videos/Concept Art/witch3.png"
+                   data-caption="Witch — pose concept">
+                <div class="img-mat">
+                  <img src="Images and Videos/Concept Art/witch3.png" alt="Witch concept pose" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Merchant -->
+        <div class="group">
+          <div class="group-head">
+            <strong>Merchant</strong>
+            <span>Concept Final</span>
+          </div>
+          <div class="group-body">
+            <div class="grid" aria-label="Merchant concepts">
+              <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/Concept Art/Screenshot 2025-09-15 115820.png" data-caption="Merchant — concept sheet 1">
+                <div class="img-mat">
+                  <img src="Images and Videos/Concept Art/Screenshot 2025-09-15 115820.png" alt="Merchant concept sheet 1" />
+                  <p>I wanted to make him older, more pompous. But deadlines didn't allow me to fully explore that direction.</p>
+                </div>
+              </div>
+
+              <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/Concept Art/Screenshot 2025-09-15 115710.png" data-caption="Merchant — concept sheet 2">
+                <div class="img-mat">
+                  <img src="Images and Videos/Concept Art/Screenshot 2025-09-15 115710.png" alt="Merchant concept sheet 2" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skrunkly -->
+        <div class="group">
+          <div class="group-head">
+            <strong>Skrunkly - Merchant's Assistant</strong>
+           </span>
+          </div>
+          <div class="group-body">
+            <div class="grid" aria-label="Skrunkly concepts">
+              <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/Gobby-Skrunkly/thumbnails.jpg" data-caption="Skrunkly — thumbnail exploration">
+                <div class="img-mat">
+                  <img src="Images and Videos/Gobby-Skrunkly/thumbnails.jpg" alt="Skrunkly thumbnails" />
+                </div>
+              </div>
+
+              <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/Gobby-Skrunkly/gobby.png" data-caption="Skrunkly — final concept">
+                <div class="img-mat">
+                  <img src="Images and Videos/Gobby-Skrunkly/gobby.png" alt="Skrunkly final concept" />
+                </div>
+              </div>
+
+              <div class="tile" data-lightbox-item data-type="video" data-src="Images and Videos/Gobby-Skrunkly/Skrunkly_Animation.mp4" data-caption="Skrunkly — animation test (MP4)">
+                <div class="video-mat">
+                  <div class="video-wrap">
+                    <video controls preload="metadata">
+                      <source src="Images and Videos/Gobby-Skrunkly/Skrunkly_Animation.mp4" type="video/mp4" />
+                  
+                    </video>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Only this one keeps a label -->
+              <div class="tile cap-keep" data-lightbox-item data-type="img" data-src="Images and Videos/Concept Art/goblin-traders-1-17.png" data-caption="Inspiration — Minecraft goblin trader">
+                <div class="img-mat">
+                  <img src="Images and Videos/Concept Art/goblin-traders-1-17.png" alt="Goblin trader inspiration" />
+                </div>
+                <div class="cap">Inspiration reference</div>
+              </div>
+            </div>
+
+            <p style="margin:.9rem 0 0; color:var(--muted); font-size:.9rem;">
+              Skrunkly was inspired by a Minecraft goblin trader mod - He grunts, is immortal, and a merchant.
+            </p>
+          </div>
+        </div>
       </div>
-      <div class="gallery-item">
-        <img src="Images and Videos/Concept Art/Knight.png" alt="Character sheet" />
+    </section>
+
+    <!-- Personal characters -->
+    <section class="section">
+      <div class="section-head">
+        <h2>Personal Characters</h2>
+        <p>Personal IP explorations and character development.</p>
+      </div>
+
+      <div class="section-body">
+        <div class="grid" aria-label="Personal character concepts">
+          <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/Concept Art/Akara 2025 Ref.png" data-caption="Akara — personal reference sheet (2025)">
+            <div class="img-mat">
+              <img src="Images and Videos/Concept Art/Akara 2025 Ref.png" alt="Akara 2025 ref" />
+            </div>
+          </div>
+
+          <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/Concept Art/Kiko Concept Ref 2025 Sketch1.png" data-caption="Kiko — personal concept (2025)">
+            <div class="img-mat">
+              <img src="Images and Videos/Concept Art/Kiko Concept Ref 2025 Sketch1.png" alt="Kiko 2025 sketch" />
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
     <div class="btn-row">
       <a class="btn" href="index.html#work">Back to Portfolio</a>
     </div>
+
+    <!-- Lightbox (optional) -->
+    <div id="lightbox" class="lightbox" aria-hidden="true">
+      <button class="close" aria-label="Close">✕</button>
+      <div class="controls">
+        <button id="prev" aria-label="Previous">◀</button>
+        <button id="next" aria-label="Next">▶</button>
+      </div>
+      <div id="lightbox-media" class="media" aria-live="polite"></div>
+      <div class="caption" id="lightbox-caption"></div>
+    </div>
   </main>
+
+  <div class="btn-row">
+    <a class="btn" href="index.html#work">Back to Portfolio</a>
+  </div>
 
   <footer>
     © <span id="year"></span> Mackenzie Burt
@@ -214,6 +595,84 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    (function(){
+      const items = Array.from(document.querySelectorAll('[data-lightbox-item]'));
+      if(!items.length) return;
+
+      const lightbox = document.getElementById('lightbox');
+      const lbMedia = document.getElementById('lightbox-media');
+      const caption = document.getElementById('lightbox-caption');
+      const btnNext = document.getElementById('next');
+      const btnPrev = document.getElementById('prev');
+      const btnClose = lightbox.querySelector('.close');
+
+      let idx = 0;
+
+      function show(i){
+        idx = (i + items.length) % items.length;
+        const el = items[idx];
+        const type = el.getAttribute('data-type');
+        const src  = el.getAttribute('data-src') || '';
+        const cap  = el.getAttribute('data-caption') || '';
+
+        lbMedia.innerHTML = '';
+
+        if(type === 'video'){
+          const v = document.createElement('video');
+          v.controls = true;
+          v.autoplay = true;
+          v.playsInline = true;
+          v.preload = 'metadata';
+
+          const s = document.createElement('source');
+          s.src = src;
+          s.type = 'video/mp4';
+          v.appendChild(s);
+
+          lbMedia.appendChild(v);
+          v.addEventListener('loadedmetadata', ()=>{ try{ v.play(); }catch(e){} });
+        } else {
+          const im = document.createElement('img');
+          im.src = src;
+          im.alt = cap;
+          lbMedia.appendChild(im);
+        }
+
+        caption.textContent = cap;
+        lightbox.classList.add('show');
+        lightbox.setAttribute('aria-hidden','false');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function hide(){
+        lightbox.classList.remove('show');
+        lightbox.setAttribute('aria-hidden','true');
+        try{
+          const v = lbMedia.querySelector('video');
+          if(v){ try{ v.pause(); v.currentTime = 0; }catch(e){} }
+        }catch(e){}
+        lbMedia.innerHTML = '';
+        document.body.style.overflow = '';
+      }
+
+      items.forEach((node, i)=>{
+        node.style.cursor = 'zoom-in';
+        node.addEventListener('click', ()=> show(i));
+      });
+
+      btnNext.addEventListener('click', ()=> show(idx + 1));
+      btnPrev.addEventListener('click', ()=> show(idx - 1));
+      btnClose.addEventListener('click', hide);
+      lightbox.addEventListener('click', (e)=>{ if(e.target === lightbox) hide(); });
+
+      document.addEventListener('keydown', (e)=>{
+        if(!lightbox.classList.contains('show')) return;
+        if(e.key === 'ArrowRight') show(idx + 1);
+        if(e.key === 'ArrowLeft') show(idx - 1);
+        if(e.key === 'Escape') hide();
+      });
+    })();
   </script>
 </body>
 </html>

@@ -3,13 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Fish and Game - 3D/2D Generalist </title>
+  <title>Fish and Game — 3D/2D Generalist</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23121212'/%3E%3Ctext x='50' y='70' font-family='serif' font-size='45' font-weight='700' text-anchor='middle' fill='%23ff6f61'%3EMB%3C/text%3E%3C/svg%3E" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet" />
 
   <style>
-    :root { --bg:#121212; --ink:#f5f5f5; --ink-d:#cfcfcf; --accent:#ff6f61; }
+    :root{
+      --bg:#121212;
+      --panel:#171717;
+      --panel2:#1b1b1b;
+      --ink:#f5f5f5;
+      --ink-d:#cfcfcf;
+      --muted:#9a9a9a;
+      --stroke:#262626;
+      --accent:#ff6f61;
+      --shadow:0 20px 40px rgba(0,0,0,.55);
+      --r:18px;
+    }
+
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
@@ -19,28 +31,19 @@
       color:var(--ink);
       line-height:1.6;
     }
-    a{color:inherit; text-decoration:none}
-    .wrap{
-      max-width:1160px;
-      margin:0 auto;
-      padding:1.5rem 1.25rem 3.5rem;
-    }
+    a{color:inherit;text-decoration:none}
+    img, video{max-width:100%;display:block}
 
     header{
-      position:sticky;
-      top:0;
-      z-index:10;
+      position:sticky; top:0; z-index:20;
       backdrop-filter: blur(10px);
       background:rgba(18,18,18,.9);
       border-bottom:1px solid #222;
     }
     .nav{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
+      display:flex; align-items:center; justify-content:space-between;
       padding:1rem 1.25rem;
-      max-width:1160px;
-      margin:0 auto;
+      max-width:1160px; margin:0 auto;
     }
     .logo{
       font-family:'Playfair Display',serif;
@@ -48,141 +51,311 @@
       font-size:1.5rem;
       letter-spacing:.5px;
     }
-    .nav ul{
-      display:flex;
-      list-style:none;
-      gap:1rem;
-      padding:0;
-      margin:0;
-    }
+    .nav ul{display:flex; list-style:none; gap:1rem; padding:0; margin:0}
     .nav a{
       position:relative;
-      font-size:.9rem;
-      transition:all 0.25s ease;
+      font-size:.95rem;
+      transition:all .25s ease;
     }
-    .nav a:hover,
-    .nav a:focus{
-      color:var(--accent);
-      transform:translateY(-2px);
-    }
+    .nav a:hover,.nav a:focus{color:var(--accent); transform:translateY(-2px)}
     .nav a::after{
       content:'';
-      position:absolute;
-      bottom:-5px;
-      left:0;
-      width:0;
-      height:2px;
+      position:absolute; bottom:-5px; left:0;
+      width:0; height:2px;
       background:var(--accent);
       transition:width .25s ease;
     }
-    .nav a:hover::after{
-      width:100%;
+    .nav a:hover::after{width:100%}
+
+    .wrap{
+      max-width:1160px;
+      margin:0 auto;
+      padding:1.25rem 1.25rem 3.5rem;
     }
 
     .back-link{
       display:inline-flex;
       align-items:center;
       gap:.35rem;
-      font-size:.85rem;
-      margin-bottom:1.5rem;
+      font-size:.9rem;
+      margin:.75rem 0 1rem;
       color:var(--ink-d);
       opacity:.9;
-      cursor:pointer;
       transition:color .2s ease, transform .2s ease, opacity .2s ease;
     }
-    .back-link:hover{
-      color:var(--accent);
-      transform:translateY(-1px);
-      opacity:1;
-    }
+    .back-link:hover{color:var(--accent); transform:translateY(-1px); opacity:1}
 
-    .page-hero{
-      margin-bottom:2rem;
+    /* HERO (art first) */
+    .hero{
+      border:1px solid var(--stroke);
+      border-radius:var(--r);
+      overflow:hidden;
+      background:linear-gradient(180deg, #171717, #141414);
+      box-shadow:var(--shadow);
+      margin-bottom:1.35rem;
     }
-    .page-hero h1{
+    .hero-top{
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap:0;
+      border-bottom:1px solid var(--stroke);
+      min-height:360px;
+    }
+    @media (max-width: 900px){
+      .hero-top{grid-template-columns:1fr}
+    }
+    .hero-media{
+      background:#0b0b0b;
+      position:relative;
+      min-height:360px;
+    }
+    .hero-media img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      opacity:.92;
+      filter:saturate(.95) contrast(1.05);
+    }
+    .hero-media::after{
+      content:"";
+      position:absolute; inset:0;
+      background:linear-gradient(90deg, rgba(0,0,0,.25), rgba(0,0,0,.55));
+      pointer-events:none;
+    }
+    .hero-meta{
+      padding:1.25rem 1.25rem 1.35rem;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      gap:.75rem;
+    }
+    .hero-meta h1{
       font-family:'Playfair Display',serif;
-      font-size:clamp(2rem,4vw,3rem);
-      margin:0 0 .5rem;
+      margin:0;
+      font-size:clamp(2rem, 3.8vw, 3rem);
+      line-height:1.1;
     }
-    .page-hero p{
+    .hero-meta p{
       margin:0;
       color:var(--ink-d);
       font-size:.95rem;
-      max-width:720px;
     }
 
-    .meta-row{
-      display:flex;
-      flex-wrap:wrap;
-      gap:.5rem;
-      margin-top:1.3rem;
-      font-size:.8rem;
-    }
+    .meta-row{display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.25rem}
     .pill{
       border-radius:999px;
-      padding:.25rem .8rem;
+      padding:.28rem .8rem;
       border:1px solid #2a2a2a;
-      background:#181818;
+      background:#141414;
       color:var(--ink-d);
+      font-size:.8rem;
     }
     .pill-strong{
       background:var(--accent);
       color:#000;
       border-color:var(--accent);
-      font-weight:600;
+      font-weight:800;
     }
 
-    h2{
+    /* Jump chips */
+    .jump{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.55rem;
+      padding:1rem 1.1rem;
+      border-top:1px solid var(--stroke);
+      background:#101010;
+    }
+    .chip{
+      border:1px solid #2a2a2a;
+      background:#141414;
+      color:var(--ink);
+      padding:.5rem .85rem;
+      border-radius:999px;
+      cursor:pointer;
+      font-weight:700;
+      font-size:.9rem;
+      transition:transform .15s ease, border-color .2s ease, background .2s ease;
+    }
+    .chip:hover{transform:translateY(-2px); border-color:#3a3a3a}
+    .chip:focus-visible{outline:3px solid #fff; outline-offset:3px}
+
+    /* Sections */
+    .section{margin-top:2.25rem}
+    .section h2{
       font-family:'Playfair Display',serif;
-      font-size:clamp(1.6rem,3vw,2.1rem);
-      margin:0 0 1rem;
+      font-size:clamp(1.6rem, 3vw, 2.1rem);
+      margin:0 0 .75rem;
       color:var(--accent);
     }
-    .section{
-      margin-top:2.75rem;
-    }
     .section p{
+      margin:.25rem 0 0;
       color:var(--ink-d);
       font-size:.95rem;
-      max-width:780px;
+      max-width:860px;
+    }
+
+    /* “Key assets” gallery cards */
+    .keygrid{
+      margin-top:1.15rem;
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+      gap:1rem;
+    }
+    .kcard{
+      background:var(--panel);
+      border:1px solid var(--stroke);
+      border-radius:16px;
+      overflow:hidden;
+      box-shadow:0 10px 24px rgba(0,0,0,.35);
+      transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+      display:flex;
+      flex-direction:column;
+      min-height:240px;
+    }
+    .kcard:hover{transform:translateY(-6px); border-color:#3a3a3a; box-shadow:0 18px 36px rgba(0,0,0,.55)}
+    .kmedia{
+      height:150px;
+      background:#0b0b0b;
+      border-bottom:1px solid var(--stroke);
+      overflow:hidden;
+    }
+    .kmedia img, .kmedia video{
+      width:100%; height:100%;
+      object-fit:cover;
+    }
+    .kmeta{padding:.85rem .95rem}
+    .kmeta strong{display:block; font-size:.98rem}
+    .kmeta span{display:block; color:var(--ink-d); font-size:.88rem; margin-top:.25rem}
+
+    /* Media wrappers */
+    .video-wrap{
+      margin-top:1rem;
+      border-radius:16px;
+      overflow:hidden;
+      border:1px solid var(--stroke);
+      background:#000;
+      aspect-ratio:16/9;
+      box-shadow:0 10px 26px rgba(0,0,0,.45);
+    }
+    .video-wrap iframe, .video-wrap video{
+      width:100%;
+      height:100%;
+      border:0;
+      display:block;
+      background:#000;
+      object-fit:cover;
     }
 
     .grid{
       display:grid;
       gap:1rem;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-      margin-top:1.4rem;
-    }
-    .grid img{
-      width:100%;
-      height:100%;
-      display:block;
-      object-fit:cover;
-      border-radius:14px;
-      background:#0c0c0c;
-      border:1px solid #232323;
-      transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease, opacity .2s ease;
-    }
-    .grid img:hover{
-      transform:translateY(-4px) scale(1.02);
-      box-shadow:0 18px 36px rgba(0,0,0,.7);
-      border-color:#333;
-      opacity:.96;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      margin-top:1rem;
     }
 
-    .video-wrap{
-      margin-top:1.4rem;
-      border-radius:14px;
+    .media-tile{
+      border:1px solid var(--stroke);
+      border-radius:16px;
       overflow:hidden;
-      border:1px solid #232323;
-      background:#000;
-      aspect-ratio:16/9;
+      background:#0b0b0b;
+      cursor:pointer;
+      transition:transform .2s ease, border-color .2s ease, box-shadow .2s ease, opacity .15s ease;
     }
-    .video-wrap iframe{
+    .media-tile:hover{
+      transform:translateY(-5px);
+      border-color:#3a3a3a;
+      box-shadow:0 16px 34px rgba(0,0,0,.55);
+      opacity:.98;
+    }
+    .media-tile img{
       width:100%;
-      height:100%;
+      height:220px;
+      object-fit:cover;
+      background:#0b0b0b;
+    }
+    .media-tile .cap{
+      padding:.7rem .85rem;
+      border-top:1px solid var(--stroke);
+      color:var(--ink-d);
+      font-size:.88rem;
+      background:#101010;
+    }
+
+    /* “subhead” inside sections */
+    .subhead{
+      font-family:'Playfair Display',serif;
+      color:var(--ink);
+      font-size:1.25rem;
+      margin:1.5rem 0 .6rem;
+    }
+
+    /* Lightbox */
+    .lightbox{
+      position:fixed;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:rgba(0,0,0,.92);
+      z-index:9999;
+      padding:1.25rem;
+      visibility:hidden;
+      opacity:0;
+      transition:opacity .2s ease, visibility .2s;
+    }
+    .lightbox.show{visibility:visible; opacity:1}
+    .lightbox .media{
+      width:min(1180px, 96vw);
+      height:min(720px, 86vh);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .lightbox .media img,
+    .lightbox .media video{
+      max-width:100%;
+      max-height:100%;
+      border-radius:12px;
+      box-shadow:0 20px 50px rgba(0,0,0,.65);
+      background:#000;
+    }
+    .lightbox .controls{
+      position:absolute;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      pointer-events:none;
+    }
+    .lightbox button{
+      background:transparent;
       border:0;
-      display:block;
+      color:var(--ink);
+      font-size:2.2rem;
+      padding:.6rem .9rem;
+      pointer-events:auto;
+      cursor:pointer;
+      opacity:.9;
+      transition:opacity .15s ease, transform .15s ease;
+    }
+    .lightbox button:hover{opacity:1; transform:scale(1.08)}
+    .lightbox .close{
+      position:absolute;
+      right:1.15rem;
+      top:1rem;
+      font-size:1.7rem;
+    }
+    .lightbox .caption{
+      position:absolute;
+      left:50%;
+      transform:translateX(-50%);
+      bottom:1.05rem;
+      color:var(--ink-d);
+      font-size:.95rem;
+      text-align:center;
+      max-width:min(920px, 92vw);
+      padding:0 .75rem;
     }
 
     footer{
@@ -190,14 +363,45 @@
       text-align:center;
       color:#9a9a9a;
       border-top:1px solid #202020;
-      font-size:.8rem;
+      font-size:.85rem;
     }
+    footer p{margin:.6rem auto 0; max-width:860px; color:#9a9a9a}
+
+      .btn-row{
+        max-width:1160px;
+        margin:1.25rem auto 0;
+        display:flex;
+        flex-wrap:wrap;
+        gap:.6rem;
+        justify-content:center;
+      }
+
+      .btn{
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
+        padding:.75rem 1.1rem;
+        border-radius:999px;
+        border:1px solid #2a2a2a;
+        background:#161616;
+        color:var(--ink);
+        font-weight:800;
+        cursor:pointer;
+        transition:transform .15s ease, box-shadow .25s ease, border-color .2s ease;
+      }
+
+      .btn:hover{
+        transform:translateY(-3px);
+        box-shadow:0 18px 40px rgba(0,0,0,.45);
+        border-color:#3a3a3a;
+      }
 
     @media (prefers-reduced-motion: reduce){
       *{scroll-behavior:auto !important; transition:none !important; animation:none !important;}
     }
   </style>
 </head>
+
 <body>
   <header>
     <nav class="nav" role="navigation" aria-label="Primary">
@@ -211,110 +415,432 @@
   </header>
 
   <main class="wrap">
-    <a class="back-link" href="/index.html">
-      ← Back to portfolio
-    </a>
+    <a class="back-link" href="/index.html">← Back to portfolio</a>
 
-    <section class="page-hero">
-      <h1>Fish and Game</h1>
-      <p>
-        Fish and Game is an immersive Educational VR Hunting Safety experience, developed by GIMM Works, funded and published by 15+ States within the USA.
-        The goal of the interactive experience is to aid in the Fish and Game Hunting Safety Education Curriculum by providing a safer learning environment that is also
-        easily accessible.
-      </p>
+    <!-- HERO (art first) -->
+    <section class="hero" aria-label="Fish and Game hero">
+      <div class="hero-top">
+        <div class="hero-media">
+          <img src="Images and Videos/FishAndGame/Fish_Game_Banner.png" alt="Fish and Game marketing banner" />
+        </div>
 
-      <div class="meta-row">
-        <span class="pill pill-strong">Role: 3D / 2D Generalist</span>
-        <span class="pill">Later: Art Lead</span>
-        <span class="pill">3D Models &amp; Props</span>
-        <span class="pill">2D Posters &amp; UI Adjacent Art</span>
+        <div class="hero-meta">
+          <h1>Fish and Game</h1>
+          <p>
+            Educational VR hunting safety experience (GIMM Works) used by 15+ U.S. states.
+            I contributed as a <strong>3D/2D Generalist</strong> and was later promoted to <strong>Art Lead</strong>.
+          </p>
+
+          <div class="meta-row">
+            <span class="pill pill-strong">Role: 3D / 2D Generalist</span>
+            <span class="pill">Later: Art Lead</span>
+            <span class="pill">Modeling • UVs • Texturing</span>
+            <span class="pill">Rigging • Animation</span>
+            <span class="pill">2D Posters • UI Icons</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Jump chips -->
+      <div class="jump" aria-label="Jump to section">
+        <a class="chip" href="#trailer">Trailer</a>
+        <a class="chip" href="#whitetail">White Tail Deer</a>
+        <a class="chip" href="#lethalposters">Lethal Shot Posters</a>
+        <a class="chip" href="#bear">Bear Rig</a>
+        <a class="chip" href="#uiconcept">UI & Concept Art</a>
+        <a class="chip" href="#props">Props</a>
+        <a class="chip" href="#marketing">Marketing Asset</a>
+        <a class="chip" href="#pipeline">Pipeline</a>
       </div>
     </section>
 
-    <section class="section" id="overview">
-      <h2>Overview</h2>
-      <p>
-        I was hired for Fish and Game as a 3D/2D Generalist, later promoted to Art Lead towards the end of the project. 
-      </p>
+    <!-- Key assets (fast recruiter skim) -->
+    <section class="section" aria-label="Key assets">
+      <h2>Key Assets</h2>
+      <p>Click any tile to jump. Click any media on this page to enlarge.</p>
+
+      <div class="keygrid">
+        <a class="kcard" href="#whitetail" aria-label="Jump to White Tail Deer">
+          <div class="kmedia">
+            <img src="Images and Videos/FishAndGame/Deer3D/deerfront2.png" alt="White Tail Deer hero still" />
+          </div>
+          <div class="kmeta">
+            <strong>White Tail Deer (3D)</strong>
+            <span>Model • UV • Texture • Rig • Animation</span>
+          </div>
+        </a>
+
+        <a class="kcard" href="#lethalposters" aria-label="Jump to Lethal Shot Posters">
+          <div class="kmedia">
+            <img src="Images and Videos/FishAndGame/LethalPosters/deer4.png" alt="Lethal shot poster (deer)" />
+          </div>
+          <div class="kmeta">
+            <strong>Lethal Shot Posters (2D)</strong>
+            <span>Illustration + graphic clarity for education</span>
+          </div>
+        </a>
+
+        <a class="kcard" href="#bear" aria-label="Jump to Bear Rig">
+          <div class="kmedia">
+            <video muted playsinline preload="metadata">
+              <source src="Images and Videos/FishAndGame/Bear Rig/Bear_Rig.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div class="kmeta">
+            <strong>Bear Rig (3D)</strong>
+            <span>Rig walkthrough / proof</span>
+          </div>
+        </a>
+
+        <a class="kcard" href="#uiconcept" aria-label="Jump to UI & Concept Art">
+          <div class="kmedia">
+            <img src="Images and Videos/FishAndGame/UI_Indicators/Chosen_Safety_Indicator_Concept.png" alt="Safety indicator concept art" />
+          </div>
+          <div class="kmeta">
+            <strong>UI & Concept</strong>
+            <span>Indicator concept + animated icon</span>
+          </div>
+        </a>
+      </div>
     </section>
 
+    <!-- Trailer -->
     <section class="section" id="trailer">
       <h2>Trailer</h2>
       <p>
-        The project culminated in a trailer showcasing the final experience. This is the best quick look
-        at how all the pieces came together. I 'directed' the trailer conceptually and scripted the shots.
+        Quick overview of the full experience. I conceptually directed and scripted the trailer shots.
       </p>
 
       <div class="video-wrap">
-        <iframe src="https://www.youtube.com/embed/1kXxH0J6MfA"
-                title="Fish and Game Trailer"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen></iframe>
+        <!-- Correct embed format -->
+        <iframe
+          src="https://www.youtube.com/embed/1kXxH0J6MfA"
+          title="Fish and Game Trailer"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
       </div>
     </section>
 
-    <section class="section" id="contributions">
-      <h2>My Contributions</h2>
+    <!-- Deer -->
+    <section class="section" id="whitetail">
+      <h2>White Tail Deer</h2>
       <p>
-        My work on Fish and Game was spread across both 3D and 2D tasks. Here are some of the key contributions I made to the project:
+        This was the centerpiece of my work: a complete White Tail Deer built from scratch
+        (modeling, UVs, texturing, rigging, and animation).
       </p>
-      <ul style="color:var(--ink-d); font-size:.95rem; max-width:780px; padding-left:1.1rem;">
-        <li>Modeled, UV Unwrapped, Textured, Rigged, and Animated multiple models/assets.</li>
-        <li>Designed 2D Elements, such as lethal shot posters and other supporting graphics.</li>
-        <li>2D Art for the environmental elements (Mountains, trees, etc)</li>
-        <li>Concept art for the Gun Safety Icon and other UI.</li>
-        <li>2D Animations for UI icons and other interactive elements.</li>
-      </ul>
+
+      <div class="subhead">Animation</div>
+      <div class="video-wrap" data-lightbox-item data-type="video" data-src="Images and Videos/FishAndGame/Deer3D/Deer3D-Animation.mp4" data-caption="White Tail Deer — animation demo (MP4)">
+        <video controls preload="metadata">
+          <source src="Images and Videos/FishAndGame/Deer3D/Deer3D-Animation.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <div class="subhead">Model Reference & Rig</div>
+      <div class="grid">
+        <div class="media-tile" data-lightbox-item data-type="img" data-src="Images and Videos/FishAndGame/Deer3D/deerfront2.png" data-caption="White Tail Deer — front view">
+          <img src="Images and Videos/FishAndGame/Deer3D/deerfront2.png" alt="White Tail Deer front view" />
+          <div class="cap">Front view</div>
+        </div>
+
+        <div class="media-tile" data-lightbox-item data-type="img" data-src="Images and Videos/FishAndGame/Deer3D/deerside.png" data-caption="White Tail Deer — side view">
+          <img src="Images and Videos/FishAndGame/Deer3D/deerside.png" alt="White Tail Deer side view" />
+          <div class="cap">Side view</div>
+        </div>
+
+        <div class="media-tile" data-lightbox-item data-type="img" data-src="Images and Videos/FishAndGame/Deer3D/deerfront.png" data-caption="White Tail Deer — close-up front">
+          <img src="Images and Videos/FishAndGame/Deer3D/deerfront.png" alt="White Tail Deer close-up front" />
+          <div class="cap">Close-up</div>
+        </div>
+
+        <div class="media-tile" data-lightbox-item data-type="img" data-src="Images and Videos/FishAndGame/Deer3D/deerrig.png" data-caption="White Tail Deer — rig">
+          <img src="Images and Videos/FishAndGame/Deer3D/deerrig.png" alt="White Tail Deer rig" />
+          <div class="cap">Rig</div>
+        </div>
+      </div>
+
+      <div class="subhead">Rig Breakdown</div>
+      <div class="video-wrap" data-lightbox-item data-type="video" data-src="Images and Videos/FishAndGame/Deer3D/2025-02-14 16-23-34.mp4" data-caption="White Tail Deer — rig breakdown (screen capture)">
+        <video controls preload="metadata">
+          <source src="Images and Videos/FishAndGame/Deer3D/2025-02-14 16-23-34.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
     </section>
 
-    <section class="section" id="gallery">
-      <h2>Selected Assets</h2>
+    <!-- Posters -->
+    <section class="section" id="lethalposters">
+      <h2>Lethal Shot Posters</h2>
       <p>
-        A small sampling of the assets I worked on.
+        Educational posters designed for hunter safety curriculum. Includes thumbnails and iteration passes.
       </p>
 
       <div class="grid">
-        <img src="/Images and Videos/fg_model_01.png" alt="3D model created for Fish and Game">
-        <img src="/Images and Videos/fg_model_02.png" alt="Additional 3D asset from Fish and Game">
-        <img src="/Images and Videos/fg_poster_01.png" alt="Lethal shot poster design for Fish and Game">
+        <div class="media-tile" data-lightbox-item data-type="img" data-src="Images and Videos/FishAndGame/LethalPosters/hog4.png" data-caption="Hog — lethal shot poster">
+          <img src="Images and Videos/FishAndGame/LethalPosters/hog4.png" alt="Hog lethal shot poster" />
+          <div class="cap">Hog — final</div>
+        </div>
+
+        <div class="media-tile" data-lightbox-item data-type="img" data-src="Images and Videos/FishAndGame/LethalPosters/javalina.5.png" data-caption="Javalina — thumbnail">
+          <img src="Images and Videos/FishAndGame/LethalPosters/javalina.5.png" alt="Javalina thumbnail" />
+          <div class="cap">Javalina — thumbnail</div>
+        </div>
+
+        <div class="media-tile" data-lightbox-item data-type="img" data-src="Images and Videos/FishAndGame/LethalPosters/javalina1.png" data-caption="Javalina — background / phase 2">
+          <img src="Images and Videos/FishAndGame/LethalPosters/javalina1.png" alt="Javalina phase 2 background" />
+          <div class="cap">Javalina — phase 2</div>
+        </div>
+
+        <div class="media-tile" data-lightbox-item data-type="img" data-src="Images and Videos/FishAndGame/LethalPosters/javalina4.png" data-caption="Javalina — completed poster">
+          <img src="Images and Videos/FishAndGame/LethalPosters/javalina4.png" alt="Javalina lethal shot poster completed" />
+          <div class="cap">Javalina — final</div>
+        </div>
+
+        <div class="media-tile" data-lightbox-item data-type="img" data-src="Images and Videos/FishAndGame/LethalPosters/pheasant1.png" data-caption="Pheasant — thumbnail">
+          <img src="Images and Videos/FishAndGame/LethalPosters/pheasant1.png" alt="Pheasant thumbnail" />
+          <div class="cap">Pheasant — thumbnail</div>
+        </div>
+
+        <div class="media-tile" data-lightbox-item data-type="img" data-src="Images and Videos/FishAndGame/LethalPosters/pheasant3.png" data-caption="Pheasant — second phase">
+          <img src="Images and Videos/FishAndGame/LethalPosters/pheasant3.png" alt="Pheasant second phase" />
+          <div class="cap">Pheasant — phase 2</div>
+        </div>
+
+        <div class="media-tile" data-lightbox-item data-type="img" data-src="Images and Videos/FishAndGame/LethalPosters/pheasant4.png" data-caption="Pheasant — completed poster">
+          <img src="Images and Videos/FishAndGame/LethalPosters/pheasant4.png" alt="Pheasant lethal shot poster completed" />
+          <div class="cap">Pheasant — final</div>
+        </div>
+
+        <div class="media-tile" data-lightbox-item data-type="img" data-src="Images and Videos/FishAndGame/LethalPosters/deer1.5.png" data-caption="White Tail Deer — early pass (too cute / too stylized)">
+          <img src="Images and Videos/FishAndGame/LethalPosters/deer1.5.png" alt="White Tail Deer early concept - too cute and stylized" />
+          <div class="cap">Deer — early (too cute)</div>
+        </div>
+
+        <div class="media-tile" data-lightbox-item data-type="img" data-src="Images and Videos/FishAndGame/LethalPosters/deer4.png" data-caption="White Tail Deer — lethal shot poster">
+          <img src="Images and Videos/FishAndGame/LethalPosters/deer4.png" alt="White Tail Deer lethal shot poster" />
+          <div class="cap">Deer — final</div>
+        </div>
+
+        <div class="media-tile" data-lightbox-item data-type="img" data-src="Images and Videos/FishAndGame/LethalPosters/moose concept.png" data-caption="Moose — thumbnail concept (my pass)">
+          <img src="Images and Videos/FishAndGame/LethalPosters/moose concept.png" alt="Moose poster thumbnail concept" />
+          <div class="cap">Moose — my thumbnail</div>
+        </div>
+
+        <div class="media-tile" data-lightbox-item data-type="img" data-src="Images and Videos/FishAndGame/LethalPosters/TatumPondMoose.png" data-caption="Moose — completed poster by Tatum Pond (based on my thumbnail)">
+          <img src="Images and Videos/FishAndGame/LethalPosters/TatumPondMoose.png" alt="Moose poster completed by Tatum Pond" />
+          <div class="cap">Moose — final (Tatum Pond)</div>
+        </div>
+      </div>
+
+      <p style="margin-top:1rem; color:var(--muted); font-size:.9rem;">
+        Note: The Moose poster was completed by fellow artist <strong>Tatum Pond</strong> using my initial thumbnail concept.
+      </p>
+    </section>
+
+    <!-- Bear -->
+    <section class="section" id="bear">
+      <h2>Bear Rig</h2>
+      <p>Rig proof / walkthrough used for the VR experience.</p>
+
+      <div class="video-wrap" data-lightbox-item data-type="video" data-src="Images and Videos/FishAndGame/Bear Rig/Bear_Rig.mp4" data-caption="Bear rig — walkthrough (MP4)">
+        <video controls preload="metadata">
+          <source src="Images and Videos/FishAndGame/Bear Rig/Bear_Rig.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
       </div>
     </section>
 
-    <h2> Work Environment + PipeLine </h2>
-    <p>
-        The hiring process included a test in which I had 2 weeks to 
-        model, UV-Unwrap, Texture, Rig, and Animate a low-poly White Tail Deer in Blender. I was in the earlier stages of my 3D courses at the time.
-        However, this studio knew that I was a quick and adaptive artist, always determined to expand my skillset.
-    </p>
+    <!-- UI -->
+    <section class="section" id="uiconcept">
+      <h2>UI & Concept Art</h2>
+      <p>Concept art for UI indicators and animated icons for player actions.</p>
 
-    <p>
-        I learned on the job, heavily relying on my coworkers for guidance and feedback. Feedback was common and the only reason I was able to grow so 
-        quickly in my 3D skills.
-        3D models were often passed between artists quite often, but none of us necessarily specialized in one area. We were all generalists that could pick 
-        up and work on any task as needed.
-        This allowed me to work on quite a few models, and each one taught me something new. Everything I achieved here
-        is entirely thanks to my team and the previous Art Lead.
-        I did the White Tail Deer entirely on my own, asside from some animations.
-        I ended up working on 2D Lethal Shot Posters, UI concept art, and animation icons to indicate player actions.
-        As we approached the end of the project, I primarily aided in decisions related to marketing and client delivery.
-    </p>
-    <h2> 3 Month Difference</h2>
-    <p>
-      Here is the comparative difference between the test model I created, and the revised White Tail Deer model</p>
-      <img src="/Images and Videos/fg_deer_compare.png" alt="Comparison">
-      <img src="/Images and Videos/fg_deer_test.png" alt="Test Model">
-    </p>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:1.5rem; margin-top:1.25rem;">
+        <div>
+          <div class="subhead">Safety Indicator Concept</div>
+          <div class="grid" style="margin-top:.75rem;">
+            <div class="media-tile" data-lightbox-item data-type="img" data-src="Images and Videos/FishAndGame/UI_Indicators/Chosen_Safety_Indicator_Concept.png" data-caption="Gun safety indicator — concept art">
+              <img src="Images and Videos/FishAndGame/UI_Indicators/Chosen_Safety_Indicator_Concept.png" alt="Gun safety indicator concept art" />
+              <div class="cap">Indicator concept</div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="subhead">Animated UI Icon (How to Put Gun Away)</div>
+          <div class="video-wrap" data-lightbox-item data-type="video" data-src="Images and Videos/FishAndGame/UI_Indicators/GunAnimationOverShoulderOne.mp4" data-caption="UI icon animation — put gun away (MP4)" style="margin-top:.75rem;">
+            <video controls preload="metadata">
+              <source src="Images and Videos/FishAndGame/UI_Indicators/GunAnimationOverShoulderOne.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Props -->
+    <section class="section" id="props">
+      <h2>Props & Static Assets</h2>
+      <p>Environmental props and set dressing elements created for the VR experience.</p>
+
+      <div class="subhead">Fence Post</div>
+      <div class="grid">
+        <div class="media-tile" data-lightbox-item data-type="img" data-src="Images and Videos/FishAndGame/Props/fencepostsubstancepainter.png" data-caption="Fence post — Substance Painter texture view">
+          <img src="Images and Videos/FishAndGame/Props/fencepostsubstancepainter.png" alt="Fence post texture in Substance Painter" />
+          <div class="cap">Texture (Substance Painter)</div>
+        </div>
+
+        <div class="media-tile" data-lightbox-item data-type="img" data-src="Images and Videos/FishAndGame/Props/fencepostfront2.png" data-caption="Fence post — collapsed fence side/front view">
+          <img src="Images and Videos/FishAndGame/Props/fencepostfront2.png" alt="Collapsed fence side front view" />
+          <div class="cap">Model view</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Marketing -->
+    <section class="section" id="marketing">
+      <h2>Marketing Asset</h2>
+      <p>Thumbnail and promotional imagery created for the project.</p>
+
+      <div class="grid">
+        <div class="media-tile" data-lightbox-item data-type="img" data-src="Images and Videos/FishAndGame/Fish_Game_Banner.png" data-caption="Fish and Game — banner / thumbnail">
+          <img src="Images and Videos/FishAndGame/Fish_Game_Banner.png" alt="Fish and Game thumbnail banner" />
+          <div class="cap">Banner / thumbnail</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pipeline -->
+    <section class="section" id="pipeline">
+      <h2>Work Environment + Pipeline</h2>
+      <p>
+        The hiring process included a test: I had <strong>2 weeks</strong> to model, UV unwrap, texture, rig, and animate
+        a low poly White Tail Deer in Blender. I was early in my 3D coursework at the time.
+      </p>
+      <p>
+        I learned heavily through iteration and feedback. Artists passed models between each other often and worked as generalists.
+        Toward the end of the project, I shifted toward art leadership tasks including marketing decisions and client delivery support.
+      </p>
+      <p style="color:var(--muted); font-size:.9rem; margin-top:.75rem;">
+        Credit note: This project’s growth was possible because of strong team feedback and guidance (including the previous Art Lead, Tatum Pond).
+      </p>
+    </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" aria-hidden="true">
+      <button class="close" aria-label="Close">✕</button>
+      <div class="controls">
+        <button id="prev" aria-label="Previous">◀</button>
+        <button id="next" aria-label="Next">▶</button>
+      </div>
+      <div id="lightbox-media" class="media" aria-live="polite"></div>
+      <div class="caption" id="lightbox-caption"></div>
+    </div>
   </main>
+
+  <div class="btn-row">
+    <a class="btn" href="index.html#work">Back to Portfolio</a>
+  </div>
 
   <footer>
     © <span id="y"></span> Mackenzie Burt
-       <p> If you would like a more immediate expansion of my work to scroll through, all of my 3D models can be found in "3D Examples" on the home page banner.
-      Same for '2D Examples', which include Concept art and Animations.
+    <p>
+      Want more fast browsing? Use the home banner for <strong>3D Examples</strong> and <strong>2D Examples</strong>.
     </p>
   </footer>
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
+
+    (function(){
+      // Make the small preview videos in Key Assets not auto-play loud
+      document.querySelectorAll('.kmedia video').forEach(v=>{
+        v.muted = true;
+        v.loop = true;
+        v.playsInline = true;
+        v.addEventListener('canplay', ()=>{ v.play().catch(()=>{}); }, { once:true });
+      });
+
+      // LIGHTBOX: collects any element with [data-lightbox-item]
+      const items = Array.from(document.querySelectorAll('[data-lightbox-item]'));
+      if(!items.length) return;
+
+      const lightbox = document.getElementById('lightbox');
+      const lbMedia = document.getElementById('lightbox-media');
+      const caption = document.getElementById('lightbox-caption');
+      const btnNext = document.getElementById('next');
+      const btnPrev = document.getElementById('prev');
+      const btnClose = lightbox.querySelector('.close');
+      let idx = 0;
+
+      function show(i){
+        idx = (i + items.length) % items.length;
+        const el = items[idx];
+
+        const type = el.getAttribute('data-type'); // img | video
+        const src = el.getAttribute('data-src') || '';
+        const cap = el.getAttribute('data-caption') || '';
+
+        lbMedia.innerHTML = '';
+
+        if(type === 'video'){
+          const v = document.createElement('video');
+          v.controls = true;
+          v.autoplay = true;
+          v.playsInline = true;
+          v.preload = 'metadata';
+          const s = document.createElement('source');
+          s.src = src;
+          s.type = 'video/mp4';
+          v.appendChild(s);
+          lbMedia.appendChild(v);
+          v.addEventListener('loadedmetadata', ()=>{ try{ v.play(); }catch(e){} });
+        } else {
+          const im = document.createElement('img');
+          im.src = src;
+          im.alt = cap;
+          lbMedia.appendChild(im);
+        }
+
+        caption.textContent = cap;
+        lightbox.classList.add('show');
+        lightbox.setAttribute('aria-hidden','false');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function hide(){
+        lightbox.classList.remove('show');
+        lightbox.setAttribute('aria-hidden','true');
+        try{
+          const v = lbMedia.querySelector('video');
+          if(v){ try{ v.pause(); v.currentTime = 0; }catch(e){} }
+        }catch(e){}
+        lbMedia.innerHTML = '';
+        document.body.style.overflow = '';
+      }
+
+      items.forEach((node, i)=>{
+        node.style.cursor = 'pointer';
+        node.addEventListener('click', ()=> show(i));
+      });
+
+      btnNext.addEventListener('click', ()=> show(idx + 1));
+      btnPrev.addEventListener('click', ()=> show(idx - 1));
+      btnClose.addEventListener('click', hide);
+
+      lightbox.addEventListener('click', (e)=>{
+        if(e.target === lightbox) hide();
+      });
+
+      document.addEventListener('keydown', (e)=>{
+        if(!lightbox.classList.contains('show')) return;
+        if(e.key === 'ArrowRight') show(idx + 1);
+        if(e.key === 'ArrowLeft') show(idx - 1);
+        if(e.key === 'Escape') hide();
+      });
+    })();
   </script>
 </body>
 </html>
