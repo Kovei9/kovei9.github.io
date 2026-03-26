@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MB | Diaper Bank</title>
+  <title>MB | Animations </title>
 
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23121212'/%3E%3Ctext x='50' y='70' font-family='serif' font-size='45' font-weight='700' text-anchor='middle' fill='%23ff6f61'%3EMB%3C/text%3E%3C/svg%3E" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet" />
@@ -177,6 +177,19 @@
       background:#131313;
     }
 
+    /* NEW: simple placeholder styling */
+    .placeholder{
+      border:2px dashed #333;
+      background:linear-gradient(180deg,#0b0b0b,#090909);
+    }
+    .placeholder-note{
+      padding:.7rem .9rem;
+      color:var(--ink-d);
+      font-size:.92rem;
+      border-top:1px solid #232323;
+      background:#131313;
+    }
+
     .btn-row{
       max-width:1160px;
       margin:1.25rem auto 0;
@@ -222,9 +235,9 @@
   </header>
 
   <main>
+    <!-- ===================== DIAPER BANK ===================== -->
     <section class="hero" aria-label="Diaper Bank overview">
       <div class="hero-media">
-        <!-- Looping video banner -->
         <video autoplay loop muted playsinline style="width:100%; height:100%; object-fit:contain; object-position:center; display:block; opacity:.85; filter:saturate(.95) contrast(1.05);">
           <source src="Images and Videos/Diaper Bank/Main_ENGLISH (1).mp4" type="video/mp4" />
         </video>
@@ -244,63 +257,53 @@
     </section>
 
     <section class="content" aria-label="Diaper Bank content">
-      <!-- LEFT: MEDIA FIRST (recruiter sees proof fast) -->
       <div class="card">
         <div class="card-pad">
           <h2>Media</h2>
 
           <div class="media-grid">
-            <!-- STORYBOARDS -->
             <div class="media-block">
               <div class="media-head">
                 <h3>Storyboards</h3>
                 <span>Images</span>
               </div>
 
-      
               <img class="img-frame" src="Images and Videos/Diaper Bank/StoryBoard/sb1.png" alt="Diaper Bank storyboard" />
               <div class="media-foot">Planning and shot breakdown for the animation sequence.</div>
             </div>
 
-            <!-- STORYBOARD / ANIMATIC -->
             <div class="media-block">
               <div class="media-head">
                 <h3>Storyboard / Animatic</h3>
                 <span>Video</span>
               </div>
 
-              <!-- Option A: YouTube embed (replace VIDEO_ID) -->
               <iframe
                 class="frame"
                 src="https://www.youtube.com/embed/Ss9FHgrslbk"
                 title="Diaper Bank Animatic"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-            </iframe>
+                allowfullscreen></iframe>
 
               <div class="media-foot">Shows timing, staging, and story beats before final animation.</div>
             </div>
 
-            <!-- FINAL RENDER -->
             <div class="media-block">
               <div class="media-head">
                 <h3>Final Render</h3>
                 <span>Video</span>
               </div>
 
-              <!-- Option A: YouTube embed (replace VIDEO_ID) -->
               <iframe
                 class="frame"
                 src="https://www.youtube.com/embed/AmShun9yM4k"
                 title="Diaper Bank Final Render"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-              </iframe>
+                allowfullscreen></iframe>
 
               <div class="media-foot">Fully rendered animation with final pacing, polish, and delivery.</div>
             </div>
 
-            <!-- CHARACTER SHEET -->
             <div class="media-block">
               <div class="media-head">
                 <h3>Character Sheet</h3>
@@ -308,14 +311,12 @@
               </div>
 
               <img class="img-frame" src="Images and Videos/Diaper Bank/charactersheet.png" alt="Diaper Bank character sheet" />
-
               <div class="media-foot">Model sheets and style consistency used during production. Also for client feedback to communicate difficulty levels for animation.</div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- RIGHT: QUICK INFO -->
       <aside class="card" aria-label="Diaper Bank details">
         <div class="card-pad">
           <h2>Quick Details</h2>
@@ -336,6 +337,110 @@
             <li>Creating engaging and clear visuals for a unique topic</li>
             <li>Coordinating feedback and adjustments with time constraints</li>
             <li>Short deadline forced budget cuts regarding compositing and last minute edits</li>
+          </ul>
+        </div>
+      </aside>
+    </section>
+
+    <!-- ===================== NEW PROJECT (VIDEO + PLACEHOLDERS) ===================== -->
+    <section class="hero" aria-label="Second animation overview" style="margin-top:2rem;">
+      <div class="hero-media">
+        <!-- YouTube hero -->
+        <iframe
+          class="frame"
+          src="https://www.youtube.com/embed/RXSmIyxw4vY"
+          title="Animation Showcase Video"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          style="width:100%; height:100%;"></iframe>
+      </div>
+
+      <div class="hero-inner">
+        <h1>Animation Project Title</h1>
+        <p class="subtitle">Short description goes here. Replace this when you’re ready.</p>
+
+        <div class="meta-row" aria-label="Project quick facts">
+          <span class="pill"><strong>Role:</strong> TBD</span>
+          <span class="pill"><strong>Format:</strong> TBD</span>
+          <span class="pill"><strong>Tools:</strong> TBD</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="content" aria-label="Second animation content">
+      <div class="card">
+        <div class="card-pad">
+          <h2>Media</h2>
+
+          <div class="media-grid">
+            <div class="media-block">
+              <div class="media-head">
+                <h3>Main Video</h3>
+                <span>Video</span>
+              </div>
+
+              <iframe
+                class="frame"
+                src="https://www.youtube.com/embed/RXSmIyxw4vY"
+                title="Main Animation Video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+
+              <div class="media-foot">Main video embed. Replace caption if you want.</div>
+            </div>
+
+            <div class="media-block">
+              <div class="media-head">
+                <h3>Character Sheet</h3>
+                <span>Image</span>
+              </div>
+
+              <!-- Replace src with your real file path when ready -->
+              <img class="img-frame placeholder" src="https://via.placeholder.com/1600x900?text=Character+Sheet+Placeholder" alt="Character sheet placeholder" />
+              <div class="placeholder-note">Drop your character sheet image here.</div>
+            </div>
+
+            <div class="media-block">
+              <div class="media-head">
+                <h3>Stills / Frames</h3>
+                <span>Images</span>
+              </div>
+
+              <img class="img-frame placeholder" src="https://via.placeholder.com/1600x900?text=Image+Placeholder+1" alt="Image placeholder 1" />
+              <div class="placeholder-note">Add a key frame / still.</div>
+            </div>
+
+            <div class="media-block">
+              <div class="media-head">
+                <h3>More Process / Extra Image</h3>
+                <span>Image</span>
+              </div>
+
+              <img class="img-frame placeholder" src="https://via.placeholder.com/1600x900?text=Image+Placeholder+2" alt="Image placeholder 2" />
+              <div class="placeholder-note">Add another sheet, WIP, storyboard panel, etc.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="card" aria-label="Second animation details">
+        <div class="card-pad">
+          <h2>Quick Details</h2>
+
+          <p><strong style="color:var(--ink)">Client / Context:</strong> <span style="color:var(--ink-d)">TBD</span></p>
+          <p><strong style="color:var(--ink)">Project Type:</strong> <span style="color:var(--ink-d)">Animation</span></p>
+
+          <h2 style="margin-top:1.25rem;">My Work</h2>
+          <ul class="list">
+            <li>TBD</li>
+            <li>TBD</li>
+            <li>TBD</li>
+          </ul>
+
+          <h2 style="margin-top:1.25rem;">Notes</h2>
+          <ul class="list">
+            <li>Add any quick bullet context you want recruiters to see.</li>
+          </ul>
         </div>
       </aside>
     </section>

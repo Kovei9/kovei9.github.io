@@ -12,6 +12,7 @@
     html{scroll-behavior:smooth}
     body{margin:0; font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,sans-serif; background:var(--bg); color:var(--ink); line-height:1.6}
     a{color:inherit; text-decoration:none}
+
     /* Make interactive UI appear immediately: reduce animation duration and remove delays */
     :root{ --ui-anim-speed: 0.04s; }
     .btn, .contact-btn, .chip, .grid a.card, .media-wrap, dialog, section, header {
@@ -19,7 +20,7 @@
       animation-delay: 0s !important;
       transition-duration: 0.04s !important;
     }
-    
+
     /* Header animations */
     header{position:sticky; top:0; z-index:10; backdrop-filter: blur(10px); background:rgba(18,18,18,.9); border-bottom:1px solid #222; animation: slideDown 0.8s ease-out;}
     .wrap{max-width:1160px; margin:0 auto; padding:1rem 1.25rem}
@@ -38,14 +39,14 @@
     /* Hero background banner (image/video) — fill the hero and sit behind content */
     .hero-video{
       position:absolute;
-      inset:0; /* top:0; right:0; bottom:0; left:0 */
+      inset:0;
       width:100%;
       height:100%;
       object-fit:cover;
       object-position:center center;
       opacity:0.55;
       filter:saturate(.95) contrast(1.05);
-      pointer-events:none; /* allow clicks through to hero content */
+      pointer-events:none;
     }
 
     /* subtle dark overlay for text legibility and ensure content sits above the banner */
@@ -58,7 +59,7 @@
     /* make the hero's inner container stack above the banner/overlay */
     .hero > div{ position:relative; z-index:1; }
     .hero h1{font-family:'Playfair Display',serif; font-size:clamp(2.2rem,6vw,4rem); margin:.25rem 0; animation: slideUp 1s ease-out 0.5s both;}
-    .hero .subtitle{color:var(--accent); opacity:.98; animation: slideUp 1s ease-out 0.7s both; font-weight:600; font-size:clamp(1.125rem,2.6vw,1.4rem); line-height:1.2; letter-spacing:0.2px; text-shadow:0 1px 0 rgba(0,0,0,0.35);} 
+    .hero .subtitle{color:var(--accent); opacity:.98; animation: slideUp 1s ease-out 0.7s both; font-weight:600; font-size:clamp(1.125rem,2.6vw,1.4rem); line-height:1.2; letter-spacing:0.2px; text-shadow:0 1px 0 rgba(0,0,0,0.35);}
     .btn{display:inline-block; margin-top:1.25rem; padding:.8rem 1.4rem; border-radius:999px; background:var(--accent); color:#000; font-weight:700; animation: slideUp 1s ease-out 0.9s both;}
     .btn:focus-visible{outline:3px solid #fff; outline-offset:3px}
 
@@ -67,7 +68,7 @@
     section:nth-child(2){animation-delay: 0.2s;}
     section:nth-child(3){animation-delay: 0.4s;}
     section:nth-child(4){animation-delay: 0.6s;}
-    
+
     h2{font-family:'Playfair Display',serif; font-size:clamp(1.6rem,3.5vw,2.4rem); margin:0 0 1.25rem; color:var(--accent); text-align:center; animation: slideIn 0.8s ease-out 0.3s both;}
 
     /* FILTERS */
@@ -79,14 +80,8 @@
     .grid{
       display:grid;
       gap:1.25rem;
-      grid-template-columns:repeat(3,1fr);
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
       align-items:stretch;
-    }
-    @media (max-width:900px){
-      .grid{grid-template-columns:repeat(2,1fr);}
-    }
-    @media (max-width:600px){
-      .grid{grid-template-columns:1fr;}
     }
 
     /* Make each card stretch to the grid cell so all cards have equal height */
@@ -129,8 +124,6 @@
     .tag{font-size:.75rem; padding:.25rem .5rem; border-radius:6px; background:#202020; color:var(--ink-d); border:1px solid #2a2a2a; transition: all 0.3s ease;}
     .card:hover .tag{background: #2a2a2a; border-color: #3a3a3a;}
 
-    /* QUICK-VIEW MODAL (removed) */
-
     /* CONTACT */
     .contact-grid{display:grid; gap:1rem; justify-content:center; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); max-width:760px; margin:0 auto}
     .contact-btn{display:block; text-align:center; border:1px solid #2a2a2a; padding:.9rem 1rem; border-radius:999px; opacity:0; animation: fadeIn 0.6s ease-out calc(1.2s + var(--delay, 0s)) both;}
@@ -138,72 +131,28 @@
     footer{padding:2rem 1rem; text-align:center; color:#9a9a9a; border-top:1px solid #202020; animation: fadeIn 1s ease-out 1.5s both;}
 
     /* === KEYFRAME ANIMATIONS === */
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes slideDown { from { opacity: 0; transform: translateY(-50px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes slideIn { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
+    @keyframes cardSlideUp { from { opacity: 0; transform: translateY(40px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
 
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(50px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes slideDown {
-      from { opacity: 0; transform: translateY(-50px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateX(-30px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-
-    @keyframes cardSlideUp {
-      from { opacity: 0; transform: translateY(40px) scale(0.95); }
-      to { opacity: 1; transform: translateY(0) scale(1); }
-    }
-
-    /* modalSlideIn removed */
-
-    /* a11y / motion and final UI flourishes */
+    /* a11y / motion */
     @media (prefers-reduced-motion: reduce){
-      /* Respect users who opt out of animation */
       *{animation:none!important; transition:none!important}
       .hero-video{ display:none !important; }
       .btn::after, .ripple{ display:none !important; }
     }
 
-    /* Project badge colors (used in modal header badges) */
+    /* Project badge colors (kept) */
     :root{
-      --badge-personal:#a855f7;   /* violet */
-      --badge-university:#38bdf8; /* sky */
-      --badge-studio:#f59e0b;     /* amber */
+      --badge-personal:#a855f7;
+      --badge-university:#38bdf8;
+      --badge-studio:#f59e0b;
     }
 
-    .badge{
-      display:inline-flex; align-items:center; gap:.4rem;
-      padding:.35rem .6rem; border-radius:999px;
-      font-weight:700; font-size:.72rem; letter-spacing:.02em; text-transform:uppercase;
-      border:1px solid transparent; position:relative; isolation:isolate;
-    }
-    .badge-personal{ color:var(--badge-personal); background:color-mix(in oklab, var(--badge-personal) 18%, #141414); border-color:color-mix(in oklab, var(--badge-personal) 45%, #141414); }
-    .badge-university{ color:var(--badge-university); background:color-mix(in oklab, var(--badge-university) 18%, #141414); border-color:color-mix(in oklab, var(--badge-university) 45%, #141414); }
-    .badge-studio{ color:var(--badge-studio); background:color-mix(in oklab, var(--badge-studio) 18%, #141414); border-color:color-mix(in oklab, var(--badge-studio) 45%, #141414); }
-    .badge::after{ content:""; position:absolute; inset:-2px; border-radius:inherit; z-index:-1; background:conic-gradient(from 0deg, transparent, currentColor 40%, transparent 80%); filter:blur(8px); opacity:.25; transition:opacity .25s ease; }
-    .badge:hover::after{ opacity:.45; }
-
-    /* Hero banner base (defined once) */
-    .hero{ position:relative; overflow:hidden; }
-    .hero-video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center center; opacity:.55; filter:saturate(.95) contrast(1.05); pointer-events:none; }
-    .hero::before{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(18,18,18,.55), rgba(18,18,18,.65)); pointer-events:none; z-index:0 }
-    .hero > div{ position:relative; z-index:1; }
-
-    /* Button/Control FX (enhanced) */
+    /* Button/Control FX (kept) */
     .btn, .contact-btn, .ghost, .chip{
       position:relative; overflow:hidden; display:inline-flex; align-items:center; justify-content:center;
       transition:transform .18s cubic-bezier(.2,.9,.2,1), box-shadow .35s ease, border-color .25s ease, background .25s ease, color .2s ease;
@@ -213,7 +162,6 @@
     .btn:hover, .contact-btn:hover, .ghost:hover{ transform:translateY(-4px) scale(1.02); box-shadow:0 18px 40px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.04) inset; }
     .btn:active, .contact-btn:active, .ghost:active, .chip:active{ transform:translateY(0) scale(.99); }
 
-    /* Soft glow behind primary buttons */
     .btn::before{
       content:""; position:absolute; inset:-6px; border-radius:999px; z-index:-2;
       background:radial-gradient(120% 60% at 10% 10%, rgba(255,111,97,.14), transparent 25%), radial-gradient(80% 40% at 90% 80%, rgba(255,200,160,.06), transparent 30%);
@@ -222,7 +170,6 @@
     }
     .btn:hover::before{ opacity:1; transform:scale(1); }
 
-    /* Dynamic rotating halo for important buttons (subtle) */
     .btn::after{
       content:""; position:absolute; inset:-3px; border-radius:999px; z-index:-1; pointer-events:none;
       background:conic-gradient(from 120deg, rgba(255,111,97,.12), rgba(255,200,160,.06), rgba(255,111,97,.12));
@@ -232,13 +179,6 @@
     }
     .btn:hover::after{ opacity:.6; transform:rotate(30deg); }
 
-    /* Sheen sweep (keep, but more contrast and eased) */
-    .btn .sheen, .btn > .sheen{ display:none; }
-    .btn::marker{ display:none }
-    /* Keep previous sheen for compatibility (uses translateX) */
-    .btn ._sheen_helper{ display:none }
-
-    /* Contact buttons: animated rotating border on hover */
     .contact-btn{ background:#161616; border:1px solid #2a2a2a; color:var(--ink); border-radius:999px; }
     .contact-btn::after{
       content:""; position:absolute; inset:-3px; border-radius:999px; z-index:-1;
@@ -249,21 +189,18 @@
     }
     .contact-btn:hover::after{ opacity:.55; transform:rotate(70deg); }
 
-    /* Chips: stronger active look */
-    .chip{ transition: transform .18s cubic-bezier(.2,.9,.3,1), background .18s ease, border-color .18s ease; }
     .chip[aria-pressed="true"]{ background:#202020; border-color:#454545; box-shadow:0 0 0 2px rgba(255,111,97,.25) inset; color:var(--ink); transform:translateY(-2px) scale(1.02); }
 
-    /* Click ripple (created with JS) */
     .ripple{ position:absolute; border-radius:50%; transform:scale(0); background:rgba(255,255,255,.16); animation:ripple .6s ease-out; pointer-events:none; }
     @keyframes ripple{ to{ transform:scale(2.6); opacity:0; } }
 
-    /* Reduce motion override */
     @media (prefers-reduced-motion: reduce){
       .btn:hover, .contact-btn:hover, .ghost:hover{ transform:none; box-shadow:none; }
       .btn::before, .btn::after, .contact-btn::after{ transition:none; animation:none; }
     }
   </style>
 </head>
+
 <body>
   <header>
     <div class="wrap nav" role="navigation" aria-label="Primary">
@@ -283,53 +220,64 @@
         <h1>Mackenzie Burt</h1>
         <p class="subtitle">2D/3D Generalist • Characters • Concepts • Animation • Art Lead</p>
         <a href="sketch_book.html" class="btn">SketchBook</a>
+        <a href="3d.html" class="btn" style="margin-left:1rem;">3D Examples</a>
+        <a href="2dexamples.html" class="btn" style="margin-left:1rem;">2D Examples</a>
       </div>
     </section>
 
-     <h2>Projects</h2>
-      <div class="filters" role="toolbar" aria-label="Filter projects">
-        <button class="chip" aria-pressed="true" data-filter="all" style="--delay: 0s;">All</button>
-        <button class="chip" aria-pressed="false" data-filter="2d" style="--delay: 0.1s;">Concept</button>
-        <button class="chip" aria-pressed="false" data-filter="3d" style="--delay: 0.2s;">3D</button>
-        <button class="chip" aria-pressed="false" data-filter="lead" style="--delay: 0.3s;">Art Lead</button>
-        <button class="chip" aria-pressed="false" data-filter="ani" style="--delay: 0.4s;">Animation</button>
-      </div>
+    <h2>Projects</h2>
+
+    <!-- UPDATED FILTERS (added 2D + Illustration, and separated Concept) -->
+    <div class="filters" role="toolbar" aria-label="Filter projects">
+      <button class="chip" aria-pressed="true" data-filter="all" style="--delay: 0s;">All</button>
+      <button class="chip" aria-pressed="false" data-filter="2d" style="--delay: 0.1s;">2D</button>
+      <button class="chip" aria-pressed="false" data-filter="concept" style="--delay: 0.2s;">Concept</button>
+      <button class="chip" aria-pressed="false" data-filter="ill" style="--delay: 0.3s;">Illustration</button>
+      <button class="chip" aria-pressed="false" data-filter="3d" style="--delay: 0.4s;">3D</button>
+      <button class="chip" aria-pressed="false" data-filter="lead" style="--delay: 0.5s;">Art Lead</button>
+      <button class="chip" aria-pressed="false" data-filter="ani" style="--delay: 0.6s;">Animation</button>
+    </div>
 
     <section id="work" class="grid-section">
- 
-      
       <div class="grid" id="grid">
-        <a class="card" href="conceptart.html" data-tags="2d"
-           data-modal
-           data-title="Character Pipeline"
-           data-role="Generalist Artist"
-           data-tools="Adobe Photoshop, Clip Studio Paint, Blender, Substance 3D"
-           data-scope="Concepts and Creative"
-           data-summary="End-to-end pipeline for 4 characters, including implementation into Multiplayer Unreal Engine Game."
-           data-project="University"
-           data-hero="/assets/character-pipeline.webp"
+
+        <!-- UPDATED TAGS: now uses 2d + concept -->
+        <a class="card" href="conceptart.html" data-tags="2d,concept"
            style="--delay: 0s;">
           <div class="media-wrap">
-            <img class="thumb" src="Images and Videos/Concept Art/Knight.png" alt="CharacterPipeline" loading="lazy" />
+            <img class="thumb" src="Images and Videos/Concept Art/Knight.png" alt="Concept Art" loading="lazy" />
           </div>
           <div class="meta">
             <h3>Concept Art</h3>
             <p>Concept Art + Creative Process</p>
-            <div class="tags"><span class="tag">Concept</span></div>
+            <div class="tags">
+              <span class="tag">2D</span>
+              <span class="tag">Concept</span>
+            </div>
           </div>
         </a>
 
-        <a class="card" href="fishandgame.html" data-tags="3d, 2d"
-           data-modal
-           data-title="Fish and Game"
-           data-role="3D, 2D"
-           data-tools="Photoshop, Clip Studio Paint, Blender, Substance Painter"
-           data-scope="3D Modeling, Uv Unwrap, Texture, Rig, Animate, 2D Posters"
-           data-project="15+ States Fish and Game"
-           data-hero="/assets/fishandgame.webp"
+        <!-- NEW: ILLUSTRATION PAGE CARD -->
+        <a class="card" href="2dexamples.html#illustrations" data-tags="2d,ill"
            style="--delay: 0.1s;">
           <div class="media-wrap">
-            <img class="thumb" src="Images and Videos/2D Art Card Thumbnail.png" alt="Assorted character concept sheets" loading="lazy" />
+            <!-- Swap this thumbnail any time -->
+            <img class="thumb" src="Images and Videos\coverillustration.png" alt="Illustrations thumbnail" loading="lazy" />
+          </div>
+          <div class="meta">
+            <h3>Illustrations</h3>
+            <p>Fully rendered pieces + paintovers + process</p>
+            <div class="tags">
+              <span class="tag">2D</span>
+              <span class="tag">Illustration</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="card" href="fishandgame.html" data-tags="3d,2d"
+           style="--delay: 0.2s;">
+          <div class="media-wrap">
+            <img class="thumb" src="Images and Videos/2D Art Card Thumbnail.png" alt="Fish and Game thumbnail" loading="lazy" />
           </div>
           <div class="meta">
             <h3>Fish and Game</h3>
@@ -338,60 +286,47 @@
           </div>
         </a>
 
-        <a class="card" href="diaperbank.html" data-tags="lead, ani, 2d"
-           data-modal
-           data-title="Diaper Bank"
-           data-role="Art Lead, Lead 2D Animator"
-           data-tools="Photoshop, Clip Studio Paint, After Effects, Blender"
-           data-scope="Storyboards → Final Animation"
-           data-summary="Iterative Ideation, Storyboarding, Lining, Coloring, Compositing"
-           data-project="GIMM Works, Art Lead"
-           data-hero="/assets/diaperbank.webp"
-           style="--delay: 0.2s;">
+        <a class="card" href="diaperbank.html" data-tags="lead,ani,2d"
+           style="--delay: 0.3s;">
           <div class="media-wrap">
             <video class="thumb" autoplay muted loop playsinline tabindex="-1" aria-hidden="true">
               <source src="Images%20and%20Videos/highfive.mp4" type="video/mp4">
             </video>
-            <img class="thumb-fallback" src="Images and Videos/diaperbankbanner.png" alt="Assorted character concept sheets" loading="lazy" aria-hidden="true" style="display:none" />
+            <img class="thumb-fallback" src="Images and Videos/diaperbankbanner.png" alt="Diaper Bank thumbnail fallback" loading="lazy" aria-hidden="true" style="display:none" />
           </div>
           <div class="meta">
             <h3>Diaper Bank</h3>
-            <p>An animated tutorial teaching parents how to potty train thier kids, funded by the non-profit organization, Idaho Diaper Bank.</p>
-            <div class="tags"><span class="tag">Animation</span></div>
+            <p>An animated tutorial teaching parents how to potty train their kids, funded by Idaho Diaper Bank.</p>
+            <div class="tags">
+              <span class="tag">2D</span>
+              <span class="tag">Animation</span>
+              <span class="tag">Art Lead</span>
+            </div>
           </div>
         </a>
 
-        <a class="card" href="millionchanges.html" data-tags="lead, 2d"
-           data-modal
-           data-title="Art Lead/Director — GIMM Works"
-           data-role="Art Lead"
-           data-tools="Figma, Unity, Github Boards, Blender, Photoshop"
-           data-scope="Team Management • Reviews • Pipelines"
-           data-summary="Led art delivery;"
-           data-project="GIMM Works"
-           data-hero="/assets/lead.webp"
-           style="--delay: 0.6s;">
+        <!-- UPDATED TAGS: 2d + concept + lead -->
+        <a class="card" href="millionchanges.html" data-tags="lead,2d,concept"
+           style="--delay: 0.4s;">
           <div class="media-wrap">
             <video class="thumb" autoplay muted loop playsinline tabindex="-1" aria-hidden="true">
               <source src="Images%20and%20Videos/MillionChanges/2025-08-13_09-47-01.mp4" type="video/mp4">
             </video>
-            <img class="thumb-fallback" src="Images%20and%20Videos/MillionChanges/millionchangesgridonphone.png" alt="Team board and asset reviews montage" loading="lazy" aria-hidden="true" style="display:none" />
+            <img class="thumb-fallback" src="Images%20and%20Videos/MillionChanges/millionchangesgridonphone.png" alt="Million Changes fallback" loading="lazy" aria-hidden="true" style="display:none" />
           </div>
           <div class="meta">
             <h3>Million Changes Mobile App Prototype</h3>
-            <p>Pipelines • Art Direction • Concept Art </p>
-            <div class="tags"><span class="tag">Art Lead</span><span class="tag">Concept Art</span></div>
+            <p>Pipelines • Art Direction • Concept Art</p>
+            <div class="tags">
+              <span class="tag">2D</span>
+              <span class="tag">Concept</span>
+              <span class="tag">Art Lead</span>
+            </div>
           </div>
         </a>
 
-        <a class="card" href="kestrel.html" data-tags="lead, 3d"
-           data-title="Kestrel VR — Digital Twinning Training Simulation"
-           data-role="Art Lead, Technical Artist, Rigger"
-           data-tools="Blender, Unity, Photoshop"
-           data-scope="Rigging • Quality Control • VR Pipeline"
-           data-summary="Hand-tracked VR training sim for kestrel banding + measurement."
-           data-project="Wildlife Research Training"
-           style="--delay: 0.7s;">
+        <a class="card" href="kestrel.html" data-tags="lead,3d"
+           style="--delay: 0.5s;">
           <div class="media-wrap">
             <img class="thumb"
                  src="Images and Videos/Kestrel/kestrelbirdunityjaden.png"
@@ -402,14 +337,15 @@
             <h3>Kestrel VR</h3>
             <p>Digital twinning VR simulation for kestrel tagging and measurement training</p>
             <div class="tags">
+              <span class="tag">3D</span>
               <span class="tag">Art Lead</span>
               <span class="tag">Rigging</span>
               <span class="tag">VR</span>
             </div>
           </div>
         </a>
-      </div>
 
+      </div>
     </section>
 
     <section id="about" class="wrap">
@@ -440,8 +376,6 @@
     </p>
   </footer>
 
-  
-
   <script>
     // footer year
     document.getElementById('y').textContent = new Date().getFullYear();
@@ -449,17 +383,18 @@
     // filters
     const chips = document.querySelectorAll('.chip');
     const grid = document.getElementById('grid');
+
     chips.forEach(ch => ch.addEventListener('click', () => {
       chips.forEach(c=>c.setAttribute('aria-pressed','false'));
       ch.setAttribute('aria-pressed','true');
+
       const f = ch.dataset.filter;
+
       [...grid.children].forEach(card => {
-        const tags = card.dataset.tags || '';
-        card.style.display = (f==='all' || tags.includes(f)) ? '' : 'none';
+        const tags = (card.dataset.tags || '').toLowerCase();
+        card.style.display = (f === 'all' || tags.includes(f)) ? '' : 'none';
       });
     }));
-
-    // Removed quick-view modal: let anchors navigate normally
 
     /* Ripple effect: create ripple span on click for .btn and .contact-btn */
     function createRipple(e){
