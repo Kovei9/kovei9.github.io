@@ -4,415 +4,701 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MB | Mackenzie Burt — 2D/3D Generalist</title>
+
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23121212'/%3E%3Ctext x='50' y='70' font-family='serif' font-size='45' font-weight='700' text-anchor='middle' fill='%23ff6f61'%3EMB%3C/text%3E%3C/svg%3E" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet" />
+
   <style>
-    :root { --bg:#121212; --ink:#f5f5f5; --ink-d:#cfcfcf; --accent:#ff6f61; }
+    :root{
+      --bg:#121212;
+      --panel:#181818;
+      --panel-2:#1d1d1d;
+      --ink:#f5f5f5;
+      --ink-d:#cfcfcf;
+      --muted:#9a9a9a;
+      --accent:#ff6f61;
+      --line:#262626;
+      --shadow:0 20px 40px rgba(0,0,0,.4);
+      --sidebar-w:340px;
+      --radius:20px;
+    }
+
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{margin:0; font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,sans-serif; background:var(--bg); color:var(--ink); line-height:1.6}
-    a{color:inherit; text-decoration:none}
-
-    /* Make interactive UI appear immediately: reduce animation duration and remove delays */
-    :root{ --ui-anim-speed: 0.04s; }
-    .btn, .contact-btn, .chip, .grid a.card, .media-wrap, dialog, section, header {
-      animation-duration: var(--ui-anim-speed) !important;
-      animation-delay: 0s !important;
-      transition-duration: 0.04s !important;
+    body{
+      margin:0;
+      font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,sans-serif;
+      background:var(--bg);
+      color:var(--ink);
+      line-height:1.6;
     }
 
-    /* Header animations */
-    header{position:sticky; top:0; z-index:10; backdrop-filter: blur(10px); background:rgba(18,18,18,.9); border-bottom:1px solid #222; animation: slideDown 0.8s ease-out;}
-    .wrap{max-width:1160px; margin:0 auto; padding:1rem 1.25rem}
-    .nav{display:flex; align-items:center; justify-content:space-between}
-    .logo{font-family:'Playfair Display',serif; font-weight:700; font-size:1.5rem; letter-spacing:.5px; animation: fadeIn 1s ease-out 0.2s both;}
-    .nav ul{display:flex; list-style:none; gap:1rem; padding:0; margin:0}
-    .nav li{animation: fadeIn 0.8s ease-out calc(0.4s + var(--delay, 0s)) both;}
-    .nav a{transition: all 0.3s ease; position: relative;}
-    .nav a:hover,.nav a:focus{color:var(--accent); transform: translateY(-2px);}
-    .nav a::after{content:''; position:absolute; bottom:-5px; left:0; width:0; height:2px; background:var(--accent); transition:width 0.3s ease;}
-    .nav a:hover::after{width:100%;}
+    a{color:inherit;text-decoration:none}
+    img,video{display:block;max-width:100%}
+    button{font:inherit}
 
-    /* Hero animations */
-    .hero{min-height:70vh; display:grid; place-items:center; text-align:center; padding:5rem 1.25rem; background:linear-gradient(135deg,#1e1e1e,#2b2b2b); position:relative; overflow:hidden;}
-
-    /* Hero background banner (image/video) — fill the hero and sit behind content */
-    .hero-video{
-      position:absolute;
+    body::before{
+      content:"";
+      position:fixed;
       inset:0;
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      object-position:center center;
-      opacity:0.55;
-      filter:saturate(.95) contrast(1.05);
       pointer-events:none;
+      background:
+        radial-gradient(circle at top left, rgba(255,111,97,.06), transparent 22%),
+        radial-gradient(circle at bottom right, rgba(255,111,97,.04), transparent 20%);
+      z-index:-1;
     }
 
-    /* subtle dark overlay for text legibility and ensure content sits above the banner */
-    .hero::before{
-      content:""; position:absolute; inset:0; z-index:0;
-      background:linear-gradient(180deg, rgba(18,18,18,.25), rgba(18,18,18,.45));
-      pointer-events:none;
-    }
-
-    /* make the hero's inner container stack above the banner/overlay */
-    .hero > div{ position:relative; z-index:1; }
-    .hero h1{font-family:'Playfair Display',serif; font-size:clamp(2.2rem,6vw,4rem); margin:.25rem 0; animation: slideUp 1s ease-out 0.5s both;}
-    .hero .subtitle{color:var(--accent); opacity:.98; animation: slideUp 1s ease-out 0.7s both; font-weight:600; font-size:clamp(1.125rem,2.6vw,1.4rem); line-height:1.2; letter-spacing:0.2px; text-shadow:0 1px 0 rgba(0,0,0,0.35);}
-    .btn{display:inline-block; margin-top:1.25rem; padding:.8rem 1.4rem; border-radius:999px; background:var(--accent); color:#000; font-weight:700; animation: slideUp 1s ease-out 0.9s both;}
-    .btn:focus-visible{outline:3px solid #fff; outline-offset:3px}
-
-    /* Section animations */
-    section{padding:4rem 1.25rem; opacity:0; animation: fadeInUp 0.8s ease-out forwards;}
-    section:nth-child(2){animation-delay: 0.2s;}
-    section:nth-child(3){animation-delay: 0.4s;}
-    section:nth-child(4){animation-delay: 0.6s;}
-
-    h2{font-family:'Playfair Display',serif; font-size:clamp(1.6rem,3.5vw,2.4rem); margin:0 0 1.25rem; color:var(--accent); text-align:center; animation: slideIn 0.8s ease-out 0.3s both;}
-
-    /* FILTERS */
-    .filters{display:flex; gap:.5rem; flex-wrap:wrap; justify-content:center; margin:1rem 0 2rem}
-    .chip{border:1px solid #2a2a2a; padding:.35rem .75rem; border-radius:999px; font-size:.9rem; cursor:pointer; user-select:none; opacity:0; animation: fadeIn 0.6s ease-out calc(0.8s + var(--delay, 0s)) both;}
-    .chip[aria-pressed="true"], .chip:hover{background:#1f1f1f; border-color:#3a3a3a; transform:scale(1.05);}
-
-    /* GRID */
-    .grid{
+    .site{
       display:grid;
-      gap:1.25rem;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-      align-items:stretch;
+      grid-template-columns:var(--sidebar-w) 1fr;
+      min-height:100vh;
     }
 
-    /* Make each card stretch to the grid cell so all cards have equal height */
-    .grid a.card{
-      height:100%;
-      max-height:340px;
+    /* LEFT SIDE = OLD INDEX PAGE COMPRESSED */
+    .sidebar{
+      position:sticky;
+      top:0;
+      height:100vh;
+      overflow:auto;
+      padding:1rem;
+      border-right:1px solid var(--line);
+      background:rgba(14,14,14,.96);
+      backdrop-filter:blur(10px);
+    }
+
+    .sidebar::-webkit-scrollbar{width:10px}
+    .sidebar::-webkit-scrollbar-thumb{
+      background:#2a2a2a;
+      border-radius:999px;
+    }
+
+    .brand{
       display:flex;
-      flex-direction:column;
-      background:#1a1a1a;
-      border:1px solid #232323;
-      border-radius:14px;
-      overflow:hidden;
-      transition:transform .3s ease, box-shadow .3s ease;
-      opacity:0;
-      animation: cardSlideUp 0.8s ease-out calc(1s + var(--delay, 0s)) both;
+      align-items:center;
+      gap:.8rem;
+      margin-bottom:1rem;
+      padding:.2rem;
     }
-    .card:hover, .card:focus-visible{transform:translateY(-8px) scale(1.02); box-shadow:0 20px 40px rgba(0,0,0,.6);}
 
-    /* Media container: keeps media inside the card, fixed height, subtle frame */
-    .media-wrap{
-      height:170px;
+    .brand-mark{
+      width:46px;
+      height:46px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      background:#1d1d1d;
+      border:1px solid #2b2b2b;
+      color:var(--accent);
+      font-family:'Playfair Display',serif;
+      font-size:1.25rem;
+      box-shadow:var(--shadow);
+      flex:0 0 auto;
+    }
+
+    .brand-copy h1{
+      margin:0;
+      font-family:'Playfair Display',serif;
+      font-size:1.15rem;
+      line-height:1.05;
+    }
+
+    .brand-copy p{
+      margin:.15rem 0 0;
+      font-size:.84rem;
+      color:var(--muted);
+      line-height:1.35;
+    }
+
+    .sidebar-section{
+      margin-top:1rem;
+    }
+
+    .sidebar-label{
+      margin:0 0 .7rem;
+      padding:0 .15rem;
+      font-size:.72rem;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color:#8e8e8e;
+    }
+
+    .side-links{
+      display:grid;
+      gap:.6rem;
+    }
+
+    .side-link{
+      display:block;
+      padding:.82rem .95rem;
+      border-radius:14px;
+      background:#1a1a1a;
+      border:1px solid #262626;
+      color:var(--ink);
+      font-weight:600;
+      transition:transform .18s ease, background .18s ease, border-color .18s ease;
+    }
+
+    .side-link:hover{
+      transform:translateX(4px);
+      background:#202020;
+      border-color:#3a3a3a;
+    }
+
+    .project-stack{
+      display:grid;
+      gap:.8rem;
+    }
+
+    .project-card{
+      display:block;
+      background:#191919;
+      border:1px solid #252525;
+      border-radius:18px;
       overflow:hidden;
-      box-sizing:border-box;
-      border:6px solid rgba(0,0,0,0.20);
-      border-bottom:0;
-      border-radius:12px 12px 0 0;
+      transition:transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+      box-shadow:0 8px 24px rgba(0,0,0,.18);
+    }
+
+    .project-card:hover{
+      transform:translateY(-3px);
+      border-color:#383838;
+      box-shadow:0 18px 36px rgba(0,0,0,.34);
+    }
+
+    .project-card img,
+    .project-card video{
+      width:100%;
+      height:128px;
+      object-fit:cover;
+      background:#0e0e0e;
+      border-bottom:1px solid #252525;
+    }
+
+    .project-card-body{
+      padding:.8rem .9rem .9rem;
+    }
+
+    .project-card-body h3{
+      margin:0 0 .2rem;
+      font-family:'Playfair Display',serif;
+      font-size:1rem;
+      line-height:1.1;
+    }
+
+    .project-card-body p{
+      margin:0;
+      color:var(--ink-d);
+      font-size:.82rem;
+      line-height:1.4;
+    }
+
+    .about-box{
+      margin-top:1rem;
+      padding:1rem;
+      border-radius:18px;
+      background:#191919;
+      border:1px solid #262626;
+    }
+
+    .about-box h2{
+      margin:0 0 .5rem;
+      font-family:'Playfair Display',serif;
+      font-size:1.1rem;
+      color:var(--accent);
+    }
+
+    .about-box p{
+      margin:0;
+      color:var(--ink-d);
+      font-size:.89rem;
+      line-height:1.56;
+    }
+
+    .contact-grid{
+      display:grid;
+      gap:.6rem;
+      margin-top:1rem;
+    }
+
+    .contact-btn{
+      display:block;
+      text-align:center;
+      border:1px solid #2a2a2a;
+      padding:.82rem .95rem;
+      border-radius:999px;
+      background:#181818;
+      color:var(--ink);
+      font-weight:600;
+      transition:transform .18s ease, border-color .18s ease, background .18s ease;
+    }
+
+    .contact-btn:hover{
+      transform:translateY(-2px);
+      background:#202020;
+      border-color:#3a3a3a;
+    }
+
+    .sidebar-footer{
+      margin-top:1rem;
+      display:grid;
+      gap:.55rem;
+    }
+
+    .small-link{
+      color:var(--ink-d);
+      font-size:.87rem;
+    }
+
+    .small-link:hover{
+      color:var(--accent);
+    }
+
+    /* RIGHT SIDE = 2D EXAMPLES PAGE */
+    .main{
+      min-width:0;
+    }
+
+    .hero{
+      position:relative;
+      min-height:300px;
+      border-bottom:1px solid #222;
+      overflow:hidden;
       background:#0c0c0c;
     }
-    .card:hover .media-wrap{box-shadow:inset 0 -6px 18px rgba(0,0,0,0.12)}
 
-    /* Media itself fills the media-wrap fully */
-    .media-wrap img, .media-wrap video, .thumb, .thumb-fallback{width:100%; height:100%; object-fit:cover; display:block}
-    .card:hover .media-wrap img, .card:hover .media-wrap video{transform:scale(1.03); transition:transform 0.25s ease}
+    .hero-slide{
+      position:absolute;
+      inset:0;
+      opacity:0;
+      transition:opacity .8s ease;
+      background-size:cover;
+      background-position:center center;
+      transform:scale(1.02);
+    }
 
-    /* Meta should stretch to fill remaining space so cards are uniform */
-    .meta{padding:0.9rem; flex:1 1 auto; display:flex; flex-direction:column; justify-content:space-between}
-    .meta h3{margin:.25rem 0 .5rem; font-family:'Playfair Display',serif; font-size:1.2rem; transition: color 0.3s ease;}
-    .card:hover .meta h3{color: var(--accent);}
-    .tags{display:flex; flex-wrap:wrap; gap:.4rem; margin-top:.5rem}
-    .tag{font-size:.75rem; padding:.25rem .5rem; border-radius:6px; background:#202020; color:var(--ink-d); border:1px solid #2a2a2a; transition: all 0.3s ease;}
-    .card:hover .tag{background: #2a2a2a; border-color: #3a3a3a;}
+    .hero-slide.active{
+      opacity:1;
+    }
 
-    /* CONTACT */
-    .contact-grid{display:grid; gap:1rem; justify-content:center; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); max-width:760px; margin:0 auto}
-    .contact-btn{display:block; text-align:center; border:1px solid #2a2a2a; padding:.9rem 1rem; border-radius:999px; opacity:0; animation: fadeIn 0.6s ease-out calc(1.2s + var(--delay, 0s)) both;}
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg, rgba(18,18,18,.22), rgba(18,18,18,.68));
+      z-index:1;
+    }
 
-    footer{padding:2rem 1rem; text-align:center; color:#9a9a9a; border-top:1px solid #202020; animation: fadeIn 1s ease-out 1.5s both;}
+    .hero-inner{
+      position:relative;
+      z-index:2;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      min-height:300px;
+      padding:1.6rem 1.5rem 1.3rem;
+    }
 
-    /* === KEYFRAME ANIMATIONS === */
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes slideUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes slideDown { from { opacity: 0; transform: translateY(-50px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes slideIn { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
-    @keyframes cardSlideUp { from { opacity: 0; transform: translateY(40px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
+    .hero-inner h2{
+      margin:0;
+      font-family:'Playfair Display',serif;
+      font-size:clamp(2rem,4vw,2.9rem);
+      line-height:1.02;
+    }
 
-    /* a11y / motion */
+    .hero-inner .subtitle{
+      margin:.35rem 0 0;
+      color:var(--ink-d);
+      max-width:780px;
+      font-weight:600;
+    }
+
+    .hero-inner .page-copy{
+      margin:.3rem 0 0;
+      color:var(--ink-d);
+      max-width:780px;
+    }
+
+    .main-content{
+      padding:1.25rem;
+    }
+
+    .art-section{
+      background:linear-gradient(180deg,#181818,#151515);
+      border:1px solid #252525;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+
+    .art-section-inner{
+      padding:1.15rem;
+    }
+
+    .art-grid{
+      display:grid;
+      gap:1rem;
+      grid-template-columns:repeat(3, 1fr);
+    }
+
+    @media (max-width:1100px){
+      .art-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+    }
+
+    .art-grid img{
+      width:100%;
+      height:auto;
+      display:block;
+      border-radius:12px;
+      border:1px solid #232323;
+      background:#0c0c0c;
+      cursor:pointer;
+      transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+    }
+
+    .art-grid img:hover{
+      transform:translateY(-4px);
+      box-shadow:0 18px 34px rgba(0,0,0,.38);
+      border-color:#343434;
+    }
+
+    footer{
+      padding:1.15rem 1.25rem 2rem;
+      color:#8e8e8e;
+      font-size:.88rem;
+      text-align:center;
+    }
+
+    /* Lightbox */
+    .lightbox{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.88);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:999;
+      padding:2rem 1.25rem;
+    }
+
+    .lightbox.open{
+      display:flex;
+    }
+
+    .lightbox img{
+      max-width:min(1100px, 96vw);
+      max-height:86vh;
+      width:auto;
+      height:auto;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.08);
+      background:#0c0c0c;
+    }
+
+    .lb-btn{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      border:none;
+      background:rgba(0,0,0,.55);
+      color:#fff;
+      font-size:1.4rem;
+      padding:.6rem .9rem;
+      border-radius:999px;
+      cursor:pointer;
+      user-select:none;
+    }
+
+    .lb-btn:hover{
+      background:rgba(0,0,0,.85);
+    }
+
+    .lb-prev{ left:1rem; }
+    .lb-next{ right:1rem; }
+
+    .lb-close{
+      position:absolute;
+      top:1rem;
+      right:1rem;
+      border:none;
+      background:rgba(0,0,0,.55);
+      color:#fff;
+      font-size:1.2rem;
+      padding:.55rem .8rem;
+      border-radius:999px;
+      cursor:pointer;
+    }
+
+    .lb-close:hover{
+      background:rgba(0,0,0,.85);
+    }
+
+    @media (max-width:900px){
+      .site{
+        grid-template-columns:1fr;
+      }
+
+      .sidebar{
+        position:relative;
+        height:auto;
+        border-right:0;
+        border-bottom:1px solid var(--line);
+      }
+    }
+
+    @media (max-width:600px){
+      .art-grid{
+        grid-template-columns:1fr;
+      }
+
+      .hero{
+        min-height:260px;
+      }
+
+      .hero-inner{
+        min-height:260px;
+      }
+    }
+
     @media (prefers-reduced-motion: reduce){
-      *{animation:none!important; transition:none!important}
-      .hero-video{ display:none !important; }
-      .btn::after, .ripple{ display:none !important; }
-    }
-
-    /* Project badge colors (kept) */
-    :root{
-      --badge-personal:#a855f7;
-      --badge-university:#38bdf8;
-      --badge-studio:#f59e0b;
-    }
-
-    /* Button/Control FX (kept) */
-    .btn, .contact-btn, .ghost, .chip{
-      position:relative; overflow:hidden; display:inline-flex; align-items:center; justify-content:center;
-      transition:transform .18s cubic-bezier(.2,.9,.2,1), box-shadow .35s ease, border-color .25s ease, background .25s ease, color .2s ease;
-      will-change:transform;
-    }
-    .btn{ transform:translateZ(0); }
-    .btn:hover, .contact-btn:hover, .ghost:hover{ transform:translateY(-4px) scale(1.02); box-shadow:0 18px 40px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.04) inset; }
-    .btn:active, .contact-btn:active, .ghost:active, .chip:active{ transform:translateY(0) scale(.99); }
-
-    .btn::before{
-      content:""; position:absolute; inset:-6px; border-radius:999px; z-index:-2;
-      background:radial-gradient(120% 60% at 10% 10%, rgba(255,111,97,.14), transparent 25%), radial-gradient(80% 40% at 90% 80%, rgba(255,200,160,.06), transparent 30%);
-      filter:blur(10px); opacity:0; transition:opacity .35s ease, transform .35s ease;
-      transform:scale(.96);
-    }
-    .btn:hover::before{ opacity:1; transform:scale(1); }
-
-    .btn::after{
-      content:""; position:absolute; inset:-3px; border-radius:999px; z-index:-1; pointer-events:none;
-      background:conic-gradient(from 120deg, rgba(255,111,97,.12), rgba(255,200,160,.06), rgba(255,111,97,.12));
-      filter:blur(10px) saturate(.9);
-      opacity:0; transform:rotate(0deg);
-      transition:opacity .35s ease, transform 6s linear;
-    }
-    .btn:hover::after{ opacity:.6; transform:rotate(30deg); }
-
-    .contact-btn{ background:#161616; border:1px solid #2a2a2a; color:var(--ink); border-radius:999px; }
-    .contact-btn::after{
-      content:""; position:absolute; inset:-3px; border-radius:999px; z-index:-1;
-      background:conic-gradient(from 0deg, rgba(255,111,97,.55), rgba(255,111,97,.08), rgba(255,111,97,.55));
-      filter:blur(10px);
-      opacity:0; transform:rotate(0deg);
-      transition:opacity .3s ease, transform 8s linear;
-    }
-    .contact-btn:hover::after{ opacity:.55; transform:rotate(70deg); }
-
-    .chip[aria-pressed="true"]{ background:#202020; border-color:#454545; box-shadow:0 0 0 2px rgba(255,111,97,.25) inset; color:var(--ink); transform:translateY(-2px) scale(1.02); }
-
-    .ripple{ position:absolute; border-radius:50%; transform:scale(0); background:rgba(255,255,255,.16); animation:ripple .6s ease-out; pointer-events:none; }
-    @keyframes ripple{ to{ transform:scale(2.6); opacity:0; } }
-
-    @media (prefers-reduced-motion: reduce){
-      .btn:hover, .contact-btn:hover, .ghost:hover{ transform:none; box-shadow:none; }
-      .btn::before, .btn::after, .contact-btn::after{ transition:none; animation:none; }
+      *{
+        scroll-behavior:auto !important;
+        transition:none !important;
+        animation:none !important;
+      }
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <div class="wrap nav" role="navigation" aria-label="Primary">
-      <a class="logo" href="#top" aria-label="Home">MB</a>
-      <ul>
-        <li style="--delay: 0s;"><a href="#work">Work</a></li>
-        <li style="--delay: 0.1s;"><a href="#about">About</a></li>
-        <li style="--delay: 0.2s;"><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </header>
+  <div class="site">
 
-  <main id="top">
-    <section class="hero">
-      <img class="hero-video" src="Images and Videos/PortBanner2025.png" alt="Portfolio banner" />
-      <div>
-        <h1>Mackenzie Burt</h1>
-        <p class="subtitle">2D/3D Generalist • Characters • Concepts • Animation • Art Lead</p>
-        <a href="sketch_book.html" class="btn">SketchBook</a>
-        <a href="3d.html" class="btn" style="margin-left:1rem;">3D Examples</a>
-        <a href="2dexamples.html" class="btn" style="margin-left:1rem;">2D Examples</a>
+    <!-- LEFT SIDE: OLD INDEX PAGE CONTENT -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">MB</div>
+        <div class="brand-copy">
+          <h1>Mackenzie Burt</h1>
+          <p>2D/3D Generalist • Characters • Concepts • Animation • Art Lead</p>
+        </div>
       </div>
-    </section>
 
-    <h2>Projects</h2>
+      <div class="sidebar-section">
+   
+      </div>
 
-    <!-- UPDATED FILTERS (added 2D + Illustration, and separated Concept) -->
-    <div class="filters" role="toolbar" aria-label="Filter projects">
-      <button class="chip" aria-pressed="true" data-filter="all" style="--delay: 0s;">All</button>
-      <button class="chip" aria-pressed="false" data-filter="2d" style="--delay: 0.1s;">2D</button>
-      <button class="chip" aria-pressed="false" data-filter="concept" style="--delay: 0.2s;">Concept</button>
-      <button class="chip" aria-pressed="false" data-filter="ill" style="--delay: 0.3s;">Illustration</button>
-      <button class="chip" aria-pressed="false" data-filter="3d" style="--delay: 0.4s;">3D</button>
-      <button class="chip" aria-pressed="false" data-filter="lead" style="--delay: 0.5s;">Art Lead</button>
-      <button class="chip" aria-pressed="false" data-filter="ani" style="--delay: 0.6s;">Animation</button>
-    </div>
+      <div class="sidebar-section">
+        <p class="sidebar-label">Projects</p>
+        <div class="project-stack">
 
-    <section id="work" class="grid-section">
-      <div class="grid" id="grid">
+           
 
-        <!-- UPDATED TAGS: now uses 2d + concept -->
-        <a class="card" href="conceptart.html" data-tags="2d,concept"
-           style="--delay: 0s;">
-          <div class="media-wrap">
-            <img class="thumb" src="Images and Videos/Concept Art/Knight.png" alt="Concept Art" loading="lazy" />
-          </div>
-          <div class="meta">
-            <h3>Concept Art</h3>
-            <p>Concept Art + Creative Process</p>
-            <div class="tags">
-              <span class="tag">2D</span>
-              <span class="tag">Concept</span>
+          <a class="project-card" href="fishandgame.html">
+            <img src="Images and Videos/2D Art Card Thumbnail.png" alt="Fish and Game thumbnail" loading="lazy">
+            <div class="project-card-body">
+              <h3>Fish and Game</h3>
+              <p>Educational VR Hunting Safety Experience</p>
             </div>
-          </div>
-        </a>
+          </a>
 
-        <!-- NEW: ILLUSTRATION PAGE CARD -->
-        <a class="card" href="2dexamples.html#illustrations" data-tags="2d,ill"
-           style="--delay: 0.1s;">
-          <div class="media-wrap">
-            <!-- Swap this thumbnail any time -->
-            <img class="thumb" src="Images and Videos\coverillustration.png" alt="Illustrations thumbnail" loading="lazy" />
-          </div>
-          <div class="meta">
-            <h3>Illustrations</h3>
-            <p>Fully rendered pieces + paintovers + process</p>
-            <div class="tags">
-              <span class="tag">2D</span>
-              <span class="tag">Illustration</span>
+
+          <a class="project-card" href="conceptart.html">
+            <img src="Images and Videos/Concept Art/Knight.png" alt="Concept Art thumbnail" loading="lazy">
+            <div class="project-card-body">
+              <h3>Concept Art</h3>
+              <p>Concept Art + Creative Process</p>
             </div>
-          </div>
-        </a>
+          </a>
 
-        <a class="card" href="fishandgame.html" data-tags="3d,2d"
-           style="--delay: 0.2s;">
-          <div class="media-wrap">
-            <img class="thumb" src="Images and Videos/2D Art Card Thumbnail.png" alt="Fish and Game thumbnail" loading="lazy" />
-          </div>
-          <div class="meta">
-            <h3>Fish and Game</h3>
-            <p>Educational VR Hunting Safety Experience, Funded by Fish and Game</p>
-            <div class="tags"><span class="tag">3D</span><span class="tag">2D</span></div>
-          </div>
-        </a>
-
-        <a class="card" href="diaperbank.html" data-tags="lead,ani,2d"
-           style="--delay: 0.3s;">
-          <div class="media-wrap">
-            <video class="thumb" autoplay muted loop playsinline tabindex="-1" aria-hidden="true">
+      
+          <a class="project-card" href="diaperbank.html">
+            <video autoplay muted loop playsinline aria-hidden="true">
               <source src="Images%20and%20Videos/highfive.mp4" type="video/mp4">
             </video>
-            <img class="thumb-fallback" src="Images and Videos/diaperbankbanner.png" alt="Diaper Bank thumbnail fallback" loading="lazy" aria-hidden="true" style="display:none" />
-          </div>
-          <div class="meta">
-            <h3>Diaper Bank</h3>
-            <p>An animated tutorial teaching parents how to potty train their kids, funded by Idaho Diaper Bank.</p>
-            <div class="tags">
-              <span class="tag">2D</span>
-              <span class="tag">Animation</span>
-              <span class="tag">Art Lead</span>
+            <div class="project-card-body">
+              <h3>Diaper Bank</h3>
+              <p>2D animated tutorial project</p>
             </div>
-          </div>
-        </a>
+          </a>
 
-        <!-- UPDATED TAGS: 2d + concept + lead -->
-        <a class="card" href="millionchanges.html" data-tags="lead,2d,concept"
-           style="--delay: 0.4s;">
-          <div class="media-wrap">
-            <video class="thumb" autoplay muted loop playsinline tabindex="-1" aria-hidden="true">
+          <a class="project-card" href="millionchanges.html">
+            <video autoplay muted loop playsinline aria-hidden="true">
               <source src="Images%20and%20Videos/MillionChanges/2025-08-13_09-47-01.mp4" type="video/mp4">
             </video>
-            <img class="thumb-fallback" src="Images%20and%20Videos/MillionChanges/millionchangesgridonphone.png" alt="Million Changes fallback" loading="lazy" aria-hidden="true" style="display:none" />
-          </div>
-          <div class="meta">
-            <h3>Million Changes Mobile App Prototype</h3>
-            <p>Pipelines • Art Direction • Concept Art</p>
-            <div class="tags">
-              <span class="tag">2D</span>
-              <span class="tag">Concept</span>
-              <span class="tag">Art Lead</span>
+            <div class="project-card-body">
+              <h3>Million Changes</h3>
+              <p>Pipelines • Art Direction • Concept Art</p>
+            </div>
+          </a>
+
+          <a class="project-card" href="kestrel.html">
+            <img src="Images and Videos/Kestrel/kestrelbirdunityjaden.png" alt="Kestrel VR thumbnail" loading="lazy">
+            <div class="project-card-body">
+              <h3>Kestrel VR</h3>
+              <p>Digital twinning VR simulation</p>
+            </div>
+          </a>
+
+        </div>
+      </div>
+
+      <div class="about-box">
+        <h2>About Me</h2>
+        <p>
+          As a Generalist, I specialize in both 2D and 3D art, with a slight focus in concept art and animation.
+          With experience in leading art teams and managing creative projects, I thrive in collaborative environments
+          where innovation and storytelling are at the forefront. Adding layers to characters and worlds that players
+          and viewers can get excited about is what drives me.
+        </p>
+
+        <div class="contact-grid">
+          <a class="contact-btn" href="mailto:dawniemacart@gmail.com">Email</a>
+          <a class="contact-btn" href="https://www.linkedin.com/in/mackenzieburt/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="contact-btn" href="https://www.youtube.com/channel/UCrYfWHWdTGSg1qRS6irV3Tg" target="_blank" rel="noopener">YouTube</a>
+          <a class="contact-btn" href="https://x.com/Kovarina23" target="_blank" rel="noopener">X / Twitter</a>
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <a class="small-link" href="sketch_book.html">SketchBook</a>
+        <a class="small-link" href="3d.html">3D Examples</a>
+      </div>
+    </aside>
+
+    <!-- RIGHT SIDE: 2D EXAMPLES PAGE -->
+    <main class="main" id="top">
+      <section class="hero">
+        <div class="hero-slide active" style="background-image:url('Images and Videos/2D/EmberCommission.png');"></div>
+        <div class="hero-slide" style="background-image:url('Images and Videos/2D/Spark2.png');"></div>
+        <div class="hero-slide" style="background-image:url('Images and Videos/2D/Kove2.png');"></div>
+        <div class="hero-slide" style="background-image:url('Images and Videos/2D/ElariaCommission.png');"></div>
+        <div class="hero-slide" style="background-image:url('Images and Videos/coverillustration.png');"></div>
+
+        <div class="hero-inner">
+          <h2>Mackenzie Burt</h2>
+          <p class="subtitle">2D/3D Generalist • Concept Art • Illustration • Animation</p>
+          <p class="page-copy">Illustrations and 2D Art</p>
+        </div>
+      </section>
+
+      <div class="main-content">
+        <section class="art-section">
+          <div class="art-section-inner">
+            <div class="art-grid" id="artGrid">
+              <img src="Images and Videos/2D/EmberCommission.png" alt="Illustration 01" loading="lazy">
+              <img src="Images and Videos/2D/Spark2.png" alt="Illustration 02" loading="lazy">
+              <img src="Images and Videos/2D/Kove2.png" alt="Illustration 03" loading="lazy">
+              <img src="Images and Videos/2D/winterwonderland2.jpg" alt="Illustration 04" loading="lazy">
+              <img src="Images and Videos/2D/biggest_fan.png" alt="Illustration 05" loading="lazy">
+              <img src="Images and Videos/coverillustration.png" alt="Illustration 06" loading="lazy">
+              <img src="Images and Videos/2D/javalina4.png" alt="Illustration 07" loading="lazy">
+              <img src="Images and Videos/2D/pheasant4.png" alt="Illustration 08" loading="lazy">
+              <img src="Images and Videos/2D/ElariaCommission.png" alt="Illustration 09" loading="lazy">
             </div>
           </div>
-        </a>
-
-        <a class="card" href="kestrel.html" data-tags="lead,3d"
-           style="--delay: 0.5s;">
-          <div class="media-wrap">
-            <img class="thumb"
-                 src="Images and Videos/Kestrel/kestrelbirdunityjaden.png"
-                 alt="Kestrel VR project thumbnail"
-                 loading="lazy" />
-          </div>
-          <div class="meta">
-            <h3>Kestrel VR</h3>
-            <p>Digital twinning VR simulation for kestrel tagging and measurement training</p>
-            <div class="tags">
-              <span class="tag">3D</span>
-              <span class="tag">Art Lead</span>
-              <span class="tag">Rigging</span>
-              <span class="tag">VR</span>
-            </div>
-          </div>
-        </a>
-
+        </section>
       </div>
-    </section>
 
-    <section id="about" class="wrap">
-      <h2>About</h2>
-      <p style="max-width:760px; margin:0 auto; color:var(--ink-d)">
-        As a Generalist, I specialize in both 2D and 3D art, with a slight focus in concept art
-        and animation. With experience in leading art teams and managing creative projects, I thrive in collaborative
-        environments where innovation and storytelling are at the forefront. Adding layers to characters and worlds that
-        players and viewers can get excited about is what drives me.
-      </p>
-    </section>
+      <footer>
+        © <span id="year"></span> Mackenzie Burt
+      </footer>
+    </main>
+  </div>
 
-    <section id="contact" class="wrap">
-      <h2>Contact</h2>
-      <div class="contact-grid">
-        <a class="contact-btn" href="mailto:dawniemacart@gmail.com" style="--delay: 0s;">Email</a>
-        <a class="contact-btn" href="https://www.linkedin.com/in/mackenzieburt/" target="_blank" rel="noopener" style="--delay: 0.1s;">LinkedIn</a>
-        <a class="contact-btn" href="https://www.youtube.com/channel/UCrYfWHWdTGSg1qRS6irV3Tg" target="_blank" rel="noopener" style="--delay: 0.2s;">YouTube</a>
-        <a class="contact-btn" href="https://x.com/Kovarina23" target="_blank" rel="noopener" style="--delay: 0.3s;">X / Twitter</a>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    © <span id="y"></span> Mackenzie Burt
-    <p> If you would like a more immediate expansion of my work to scroll through, all of my 3D models can be found in "3D Examples" on the home page banner.
-      Same for '2D Examples', which include Concept art and Animations.
-    </p>
-  </footer>
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lb-close" id="lbClose" aria-label="Close">✕</button>
+    <button class="lb-btn lb-prev" id="lbPrev" aria-label="Previous">←</button>
+    <img id="lbImage" alt="">
+    <button class="lb-btn lb-next" id="lbNext" aria-label="Next">→</button>
+  </div>
 
   <script>
-    // footer year
-    document.getElementById('y').textContent = new Date().getFullYear();
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-    // filters
-    const chips = document.querySelectorAll('.chip');
-    const grid = document.getElementById('grid');
+    /* Lightbox from 2D page */
+    const imgs = Array.from(document.querySelectorAll('#artGrid img'));
+    const lightbox = document.getElementById('lightbox');
+    const lbImage = document.getElementById('lbImage');
+    const lbPrev = document.getElementById('lbPrev');
+    const lbNext = document.getElementById('lbNext');
+    const lbClose = document.getElementById('lbClose');
 
-    chips.forEach(ch => ch.addEventListener('click', () => {
-      chips.forEach(c=>c.setAttribute('aria-pressed','false'));
-      ch.setAttribute('aria-pressed','true');
+    let current = 0;
 
-      const f = ch.dataset.filter;
-
-      [...grid.children].forEach(card => {
-        const tags = (card.dataset.tags || '').toLowerCase();
-        card.style.display = (f === 'all' || tags.includes(f)) ? '' : 'none';
-      });
-    }));
-
-    /* Ripple effect: create ripple span on click for .btn and .contact-btn */
-    function createRipple(e){
-      const btn = e.currentTarget;
-      const rect = btn.getBoundingClientRect();
-      const r = document.createElement('span');
-      r.className = 'ripple';
-      const size = Math.max(rect.width, rect.height) * 1.2;
-      r.style.width = r.style.height = size + 'px';
-      r.style.left = (e.clientX - rect.left - size/2) + 'px';
-      r.style.top = (e.clientY - rect.top - size/2) + 'px';
-      btn.appendChild(r);
-      r.addEventListener('animationend', ()=> r.remove());
+    function openLB(index){
+      current = index;
+      const img = imgs[current];
+      lbImage.src = img.src;
+      lbImage.alt = img.alt || 'Artwork';
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
     }
 
-    document.querySelectorAll('.btn, .contact-btn').forEach(b=>{
-      b.addEventListener('click', createRipple);
+    function closeLB(){
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function prev(){
+      current = (current - 1 + imgs.length) % imgs.length;
+      openLB(current);
+    }
+
+    function next(){
+      current = (current + 1) % imgs.length;
+      openLB(current);
+    }
+
+    imgs.forEach((img, i) => {
+      img.addEventListener('click', () => openLB(i));
     });
+
+    lbPrev.addEventListener('click', (e) => {
+      e.stopPropagation();
+      prev();
+    });
+
+    lbNext.addEventListener('click', (e) => {
+      e.stopPropagation();
+      next();
+    });
+
+    lbClose.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeLB();
+    });
+
+    lightbox.addEventListener('click', (e) => {
+      if(e.target === lightbox) closeLB();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if(!lightbox.classList.contains('open')) return;
+      if(e.key === 'Escape') closeLB();
+      if(e.key === 'ArrowLeft') prev();
+      if(e.key === 'ArrowRight') next();
+    });
+
+    /* Rotating banner */
+    (function initHeroRotation(){
+      const slides = Array.from(document.querySelectorAll('.hero-slide'));
+      if(!slides.length) return;
+
+      let currentSlide = 0;
+
+      function show(index){
+        slides.forEach((slide, i) => {
+          slide.classList.toggle('active', i === index);
+        });
+      }
+
+      setInterval(() => {
+        currentSlide = (currentSlide + 1) % slides.length;
+        show(currentSlide);
+      }, 4200);
+    })();
   </script>
 </body>
 </html>
