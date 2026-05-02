@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MB | Concept Art</title>
+  <title>MB | Concept to 3D</title>
 
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23121212'/%3E%3Ctext x='50' y='70' font-family='serif' font-size='45' font-weight='700' text-anchor='middle' fill='%23ff6f61'%3EMB%3C/text%3E%3C/svg%3E" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet" />
 
   <style>
     :root{
@@ -19,7 +19,7 @@
       --accent:#ff6f61;
       --stroke:#262626;
       --r:18px;
-      --shadow:0 18px 40px rgba(0,0,0,.55);
+      --shadow:0 18px 42px rgba(0,0,0,.58);
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
@@ -28,206 +28,209 @@
       font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,sans-serif;
       background:var(--bg);
       color:var(--ink);
-      line-height:1.6;
+      line-height:1.55;
     }
     a{color:inherit;text-decoration:none}
-    img, video{max-width:100%; display:block}
+    img,video{max-width:100%;display:block}
 
-    /* Header */
     header{
-      position:sticky; top:0; z-index:10;
-      backdrop-filter: blur(10px);
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter:blur(10px);
       background:rgba(18,18,18,.9);
       border-bottom:1px solid #222;
     }
-    .wrap{max-width:1160px; margin:0 auto; padding:1rem 1.25rem}
-    .nav{display:flex; align-items:center; justify-content:space-between; gap:1rem}
-    .logo{
-      font-family:'Playfair Display',serif;
-      font-weight:700; font-size:1.5rem; letter-spacing:.5px;
-      white-space:nowrap;
-    }
-    .nav ul{display:flex; list-style:none; gap:1rem; padding:0; margin:0; flex-wrap:wrap; justify-content:flex-end}
-    .nav a{position:relative; transition:color .2s ease, transform .2s ease}
-    .nav a::after{content:""; position:absolute; bottom:-5px; left:0; width:0; height:2px; background:var(--accent); transition:width .2s ease}
-    .nav a:hover,.nav a:focus{color:var(--accent); transform:translateY(-2px)}
+    .wrap{max-width:1240px;margin:0 auto;padding:1rem 1.25rem}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .logo{font-family:'Playfair Display',serif;font-weight:700;font-size:1.5rem;letter-spacing:.5px;white-space:nowrap}
+    .nav ul{display:flex;list-style:none;gap:1rem;padding:0;margin:0;flex-wrap:wrap;justify-content:flex-end}
+    .nav a{position:relative;transition:color .2s ease,transform .2s ease}
+    .nav a::after{content:"";position:absolute;bottom:-5px;left:0;width:0;height:2px;background:var(--accent);transition:width .2s ease}
+    .nav a:hover,.nav a:focus{color:var(--accent);transform:translateY(-2px)}
     .nav a:hover::after{width:100%}
 
-    main{padding:2.5rem 1.25rem 4rem}
-
-    /* Page hero */
+    main{padding:2.25rem 1.25rem 4rem}
     .page-hero{
-      max-width:1160px;
-      margin:0 auto 1.5rem;
+      max-width:1240px;
+      margin:0 auto 1.35rem;
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:1.25rem;
       border:1px solid var(--stroke);
       border-radius:var(--r);
-      background:linear-gradient(135deg,#1a1a1a,#121212);
+      background:linear-gradient(135deg,#1a1a1a,#101010);
       box-shadow:var(--shadow);
-      overflow:hidden;
-      padding:1.35rem 1.35rem 1.45rem;
+      padding:1.35rem;
     }
     .page-hero h1{
-      margin:0 0 .25rem;
+      margin:0;
       font-family:'Playfair Display',serif;
-      font-size:clamp(2.1rem,4.2vw,3rem);
-      line-height:1.1;
+      font-size:clamp(2.25rem,5vw,3.7rem);
+      line-height:1;
     }
     .page-hero p{
-      margin:0;
+      margin:.45rem 0 0;
       color:var(--ink-d);
-      max-width:920px;
-      font-size:1rem;
+      max-width:740px;
+      font-size:.96rem;
     }
+    .quick-links{display:flex;gap:.55rem;flex-wrap:wrap;justify-content:flex-end}
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border:1px solid #2d2d2d;
+      border-radius:999px;
+      background:#151515;
+      padding:.48rem .8rem;
+      color:var(--ink-d);
+      font-size:.83rem;
+      font-weight:700;
+      transition:transform .15s ease,border-color .2s ease,color .2s ease;
+    }
+    .chip:hover{transform:translateY(-2px);border-color:#454545;color:var(--ink)}
 
-    /* Section cards */
-    .section{
-      max-width:1160px;
+    .project{
+      max-width:1240px;
       margin:0 auto 1.75rem;
       border:1px solid var(--stroke);
       border-radius:var(--r);
       background:var(--panel);
-      box-shadow:0 10px 26px rgba(0,0,0,.35);
+      box-shadow:0 12px 28px rgba(0,0,0,.36);
       overflow:hidden;
     }
-    .section-head{
-      padding:1.1rem 1.25rem;
-      border-bottom:1px solid var(--stroke);
-      background:linear-gradient(180deg, #171717, #141414);
-    }
-    .section-head h2{
-      margin:0 0 .25rem;
-      font-family:'Playfair Display',serif;
-      color:var(--accent);
-      font-size:clamp(1.6rem, 3vw, 2.1rem);
-    }
-    .section-head p{
-      margin:0;
-      color:var(--ink-d);
-      max-width:980px;
-      font-size:.95rem;
-    }
-    .section-body{
-      padding:1.15rem 1.25rem 1.35rem;
-      background:var(--panel2);
-    }
-
-    /* Subgroup (Witch/Merchant/Skrunkly) */
-    .group{
-      margin-top:1rem;
-      border:1px solid #2a2a2a;
-      border-radius:16px;
-      overflow:hidden;
-      background:#0f0f0f;
-    }
-    .group:first-child{margin-top:0}
-    .group-head{
-      padding:.85rem 1rem;
-      border-bottom:1px solid #2a2a2a;
+    .project-head{
       display:flex;
       justify-content:space-between;
-      align-items:baseline;
+      align-items:flex-end;
       gap:1rem;
-      background:#121212;
+      padding:1rem 1.15rem;
+      border-bottom:1px solid var(--stroke);
+      background:linear-gradient(180deg,#181818,#141414);
     }
-    .group-head strong{
-      font-size:1rem;
-      color:var(--ink);
-      letter-spacing:.2px;
+    .project-head h2{
+      margin:0;
+      font-family:'Playfair Display',serif;
+      color:var(--accent);
+      font-size:clamp(1.55rem,3vw,2.15rem);
+      line-height:1.08;
     }
-    .group-head span{
-      color:var(--muted);
-      font-size:.85rem;
-      text-align:right;
-    }
-    .group-body{padding:1rem}
+    .project-head p{margin:.35rem 0 0;color:var(--ink-d);max-width:850px;font-size:.92rem}
+    .role-line{color:var(--muted);font-size:.82rem;text-align:right;white-space:nowrap}
+    .project-body{padding:1rem;background:var(--panel2)}
 
-    /* Grid */
-    .grid{
+    .concept-3d{
       display:grid;
+      grid-template-columns:minmax(0,.95fr) minmax(0,1.35fr);
       gap:1rem;
-      grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
-      align-items:start;
+      align-items:stretch;
     }
-
-    /* Tile: show FULL images immediately */
-    .tile{
-      border:1px solid #2a2a2a;
+    .media-block{
+      border:1px solid #282828;
       border-radius:16px;
+      background:#0b0b0b;
       overflow:hidden;
-      background:#0b0b0b;
-      transition:transform .18s ease, box-shadow .2s ease, border-color .2s ease, opacity .15s ease;
+      min-width:0;
     }
-    .tile:hover{
-      transform:translateY(-4px);
-      border-color:#3a3a3a;
-      box-shadow:0 18px 36px rgba(0,0,0,.55);
-      opacity:.99;
+    .block-title{
+      display:flex;
+      justify-content:space-between;
+      gap:1rem;
+      align-items:center;
+      padding:.75rem .85rem;
+      border-bottom:1px solid #252525;
+      background:#121212;
+      color:var(--ink);
+      font-weight:800;
+      font-size:.9rem;
+      letter-spacing:.02em;
     }
-    .img-mat{
-      background:#0b0b0b;
-      padding:.6rem;
-    }
-    .img-mat img{
-      width:100%;
-      height:auto;
-      object-fit:contain;
-      border-radius:10px;
-      background:#0b0b0b;
-    }
+    .block-title span:last-child{color:var(--muted);font-weight:600;font-size:.78rem;text-align:right}
 
-    /* Captions: off by default (only keep on reference/inspiration) */
-    .tile .cap{ display:none; }
-    .tile.cap-keep .cap{
-      display:block;
-      padding:.65rem .85rem;
-      border-top:1px solid #222;
-      color:var(--ink-d);
-      font-size:.88rem;
-      background:#101010;
+    .focus-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:.75rem;
+      padding:.75rem;
     }
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      grid-auto-flow:dense;
+      gap:.75rem;
+      padding:.75rem;
+    }
+    .gallery-grid.four{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .gallery-grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
 
-    /* Video tile */
-    .video-mat{background:#0b0b0b; padding:.6rem}
-    .video-wrap{
-      aspect-ratio:16/9;
-      background:#000;
-      border-radius:10px;
+    .tile{
+      position:relative;
+      border:1px solid #2a2a2a;
+      border-radius:13px;
       overflow:hidden;
+      background:#070707;
+      min-height:180px;
+      cursor:zoom-in;
+      transition:transform .18s ease,border-color .2s ease,box-shadow .2s ease;
     }
-    .video-wrap video{
+    .tile:hover{transform:translateY(-4px);border-color:#404040;box-shadow:0 18px 36px rgba(0,0,0,.56)}
+    .tile img,.tile video{
       width:100%;
       height:100%;
-      object-fit:cover;
-      background:#000;
-      display:block;
+      object-fit:contain;
+      background:#070707;
+      padding:.5rem;
+    }
+    .tile.cover img,.tile.cover video{object-fit:cover;padding:0}
+    .tile.big{min-height:440px}
+    .tile.medium{min-height:300px}
+    .tile.short{min-height:160px}
+    .tile.wide{grid-column:span 2}
+    .tile.full{grid-column:1 / -1}
+    .tile.tall{grid-row:span 2;min-height:375px}
+    .tile .label{
+      position:absolute;
+      left:.55rem;
+      bottom:.55rem;
+      background:rgba(0,0,0,.72);
+      border:1px solid rgba(255,255,255,.08);
+      backdrop-filter:blur(8px);
+      color:var(--ink-d);
+      padding:.32rem .5rem;
+      border-radius:999px;
+      font-size:.72rem;
+      font-weight:800;
+      opacity:.95;
     }
 
-    /* ===== WITCH: controlled layout so tall images don’t create weird gaps ===== */
-    .witch-layout{
+    .skrunkly-layout{
       display:grid;
+      grid-template-columns:minmax(0,1.05fr) minmax(280px,.75fr);
       gap:1rem;
-      grid-template-columns: 1fr 1fr 1fr;
       align-items:start;
     }
-    @media (max-width: 980px){
-      .witch-layout{ grid-template-columns: 1fr; }
+    .info-card{
+      border:1px solid #2a2a2a;
+      border-radius:16px;
+      background:#111;
+      padding:1rem;
+      color:var(--ink-d);
+      font-size:.9rem;
     }
-    .witch-stack{
-      display:grid;
-      gap:1rem;
-    }
+    .info-card strong{color:var(--ink);display:block;margin-bottom:.4rem}
+    .info-card ul{margin:.55rem 0 0;padding-left:1.05rem}
+    .info-card li{margin:.18rem 0}
+    .compact-note{margin:.75rem 0 0;color:var(--ink-d);font-size:.88rem;max-width:880px}
+    .ref-tile{opacity:.78;min-height:160px}
+    .ref-tile img{filter:saturate(.85) brightness(.9)}
 
-    /* Buttons */
-    .btn-row{
-      max-width:1160px;
-      margin:1.25rem auto 0;
-      display:flex;
-      flex-wrap:wrap;
-      gap:.6rem;
-      justify-content:center;
-    }
+    .btn-row{max-width:1240px;margin:1.25rem auto 0;display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center}
     .btn{
-      display:inline-flex; align-items:center; justify-content:center;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
       padding:.75rem 1.1rem;
       border-radius:999px;
       border:1px solid #2a2a2a;
@@ -235,20 +238,12 @@
       color:var(--ink);
       font-weight:800;
       cursor:pointer;
-      transition:transform .15s ease, box-shadow .25s ease, border-color .2s ease;
+      transition:transform .15s ease,box-shadow .25s ease,border-color .2s ease;
     }
-    .btn:hover{transform:translateY(-3px); box-shadow:0 18px 40px rgba(0,0,0,.45); border-color:#3a3a3a}
+    .btn:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(0,0,0,.45);border-color:#3a3a3a}
 
-    /* Footer */
-    footer{
-      padding:2rem 1rem;
-      text-align:center;
-      color:#9a9a9a;
-      border-top:1px solid #202020;
-      font-size:.85rem;
-    }
+    footer{padding:2rem 1rem;text-align:center;color:#9a9a9a;border-top:1px solid #202020;font-size:.85rem}
 
-    /* Lightbox (optional bonus) */
     .lightbox{
       position:fixed;
       inset:0;
@@ -260,65 +255,38 @@
       padding:1.25rem;
       visibility:hidden;
       opacity:0;
-      transition:opacity .2s ease, visibility .2s;
+      transition:opacity .2s ease,visibility .2s;
     }
-    .lightbox.show{visibility:visible; opacity:1}
-    .lightbox .media{
-      width:min(1180px, 96vw);
-      height:min(760px, 88vh);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-    }
-    .lightbox .media img,
-    .lightbox .media video{
-      max-width:100%;
-      max-height:100%;
-      border-radius:12px;
-      box-shadow:0 20px 50px rgba(0,0,0,.65);
-      background:#000;
-    }
-    .lightbox .controls{
-      position:absolute;
-      inset:0;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      pointer-events:none;
-    }
-    .lightbox button{
-      background:transparent;
-      border:0;
-      color:var(--ink);
-      font-size:2.2rem;
-      padding:.6rem .9rem;
-      pointer-events:auto;
-      cursor:pointer;
-      opacity:.9;
-      transition:opacity .15s ease, transform .15s ease;
-    }
-    .lightbox button:hover{opacity:1; transform:scale(1.08)}
-    .lightbox .close{
-      position:absolute;
-      right:1.15rem;
-      top:1rem;
-      font-size:1.7rem;
-    }
-    .lightbox .caption{
-      position:absolute;
-      left:50%;
-      transform:translateX(-50%);
-      bottom:1.05rem;
-      color:var(--ink-d);
-      font-size:.95rem;
-      text-align:center;
-      max-width:min(920px, 92vw);
-      padding:0 .75rem;
-    }
+    .lightbox.show{visibility:visible;opacity:1}
+    .lightbox .media{width:min(1180px,96vw);height:min(780px,88vh);display:flex;align-items:center;justify-content:center}
+    .lightbox .media img,.lightbox .media video{max-width:100%;max-height:100%;border-radius:12px;box-shadow:0 20px 50px rgba(0,0,0,.65);background:#000}
+    .lightbox .controls{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;pointer-events:none}
+    .lightbox button{background:transparent;border:0;color:var(--ink);font-size:2.2rem;padding:.6rem .9rem;pointer-events:auto;cursor:pointer;opacity:.9;transition:opacity .15s ease,transform .15s ease}
+    .lightbox button:hover{opacity:1;transform:scale(1.08)}
+    .lightbox .close{position:absolute;right:1.15rem;top:1rem;font-size:1.7rem}
+    .lightbox .caption{position:absolute;left:50%;transform:translateX(-50%);bottom:1.05rem;color:var(--ink-d);font-size:.95rem;text-align:center;max-width:min(920px,92vw);padding:0 .75rem}
 
-    @media (prefers-reduced-motion: reduce){
-      *{scroll-behavior:auto !important; transition:none !important; animation:none !important;}
+    @media (max-width:1050px){
+      .concept-3d,.skrunkly-layout{grid-template-columns:1fr}
+      .tile.big{min-height:360px}
     }
+    @media (max-width:760px){
+      main{padding:1.25rem .85rem 3rem}
+      .wrap{padding:.85rem 1rem}
+      .page-hero{display:block}
+      .quick-links{justify-content:flex-start;margin-top:1rem}
+      .project-head{display:block}
+      .role-line{text-align:left;white-space:normal;margin-top:.5rem}
+      .gallery-grid,.gallery-grid.four,.gallery-grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .tile.wide,.tile.full{grid-column:1 / -1}
+      .tile.tall{grid-row:span 1;min-height:220px}
+    }
+    @media (max-width:500px){
+      .gallery-grid,.gallery-grid.four,.gallery-grid.two{grid-template-columns:1fr}
+      .tile,.tile.big,.tile.medium,.tile.short,.tile.tall{min-height:auto}
+      .tile img,.tile video{height:auto}
+    }
+    @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
   </style>
 </head>
 
@@ -336,247 +304,205 @@
 
   <main>
     <section class="page-hero">
-      <h1>Concept Art</h1>
-    </section>
-
-    <!-- Selected Work -->
-    <section class="section">
-      <div class="section-head">
-        <h2>Indie Game Studio - Contract</h2>
-        <p>
-          WaveWeaver — waterbending-inspired VR concept exploration. I studied real water motion and took visual inspiration from
-          <em>Elemental</em> (Pixar). I also referenced waterbenders in <em>Avatar: The Last Airbender</em>, since the client’s
-          “bending” moves were heavily based on that style.
-        </p>
+      <div>
+        <h1>Concept to 3D</h1>
+        <p>Character concepts, illustrations, 3D models, and implementation proof shown together so the pipeline is easy to understand at a glance.</p>
       </div>
-      <div class="section-body">
-        <div class="grid" aria-label="Selected concept art gallery">
-          <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/Concept Art/waveweaver.png" data-caption="WaveWeaver — waterbending-inspired VR concept">
-            <div class="img-mat">
-              <img src="Images and Videos/Concept Art/waveweaver.png" alt="WaveWeaver waterbending VR concept" />
-            </div>
-          </div>
-
-          <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/Concept Art/WaveWeaver Higher Fidelity - blue.jpg" data-caption="WaveWeaver — higher-fidelity study, cool palette">
-            <div class="img-mat">
-              <img src="Images and Videos/Concept Art/WaveWeaver Higher Fidelity - blue.jpg" alt="WaveWeaver higher-fidelity concept in cool palette" />
-            </div>
-          </div>
-
-          <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/Concept Art/WaveWeaver Higher Fidelity - orange.jpg" data-caption="WaveWeaver — higher-fidelity study, warm palette">
-            <div class="img-mat">
-              <img src="Images and Videos/Concept Art/WaveWeaver Higher Fidelity - orange.jpg" alt="WaveWeaver higher-fidelity concept in warm palette" />
-            </div>
-          </div>
-        </div>
+      <div class="quick-links" aria-label="Jump links">
+        <a class="chip" href="#queen">Queen</a>
+        <a class="chip" href="#knight">Knight</a>
+        <a class="chip" href="#skrunkly">Skrunkly</a>
+        <a class="chip" href="#personal">Personal</a>
       </div>
     </section>
 
-    <!-- Game piece character concepts -->
-    <section class="section">
-      <div class="section-head">
-        <h2>Game Piece Character Concepts - University (Unity Multiplayer Game)</h2>
-        <p>Chess-inspired game pieces explored as stylized characters.</p>
-      </div>
-      <div class="section-body">
-        <div class="grid" aria-label="Game piece character concepts">
-          <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/Concept Art/game piece concepts.png" data-caption="Game piece characters — thumbnail exploration">
-            <div class="img-mat">
-              <img src="Images and Videos/Concept Art/game piece concepts.png" alt="Game piece character thumbnails" />
-            </div>
-          </div>
+    <section class="project" id="skrunkly">
+  <div class="project-head">
+    <div>
+      <h2>Skrunkly</h2>
+      <p>Goblin character concept, model, animation, and Unreal Engine implementation.</p>
+    </div>
+    <div class="role-line">Goblin character • Unreal Engine animation trees</div>
+  </div>
 
-          <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/Concept Art/Queen.png" data-caption="Queen — chess piece character concept">
-            <div class="img-mat">
-              <img src="Images and Videos/Concept Art/Queen.png" alt="Queen chess-piece character concept" />
-            </div>
-          </div>
-
-          <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/Concept Art/Knight.png" data-caption="Knight — chess piece character concept">
-            <div class="img-mat">
-              <img src="Images and Videos/Concept Art/Knight.png" alt="Knight chess-piece character concept" />
-            </div>
-          </div>
-
-          <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/Concept Art/Centaur.png" data-caption="Centaur — character concept">
-            <div class="img-mat">
-              <img src="Images and Videos/Concept Art/Centaur.png" alt="Centaur concept" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Unreal puzzle project -->
-    <section class="section">
-      <div class="section-head">
-        <h2>Legend of Skrunkly - University (Unreal Engine Multiplayer Game)</h2>
-        <p>
-          Concepts built around three characters: a Merchant (bribe mechanics, rides AI around, AI does everything for him), a Witch (spells and broom flight),
-          and the AI character <strong>Skrunkly</strong>.
-        </p>
+  <div class="project-body">
+    <div class="skrunkly-feature">
+      <div class="tile video-feature" data-lightbox-item data-type="video" data-src="Images and Videos/Gobby-Skrunkly/Skrunkly_Animation.mp4" data-caption="Skrunkly — animation and Unreal Engine implementation">
+        <video controls preload="metadata" playsinline>
+          <source src="Images and Videos/Gobby-Skrunkly/Skrunkly_Animation.mp4" type="video/mp4" />
+        </video>
       </div>
 
-      <div class="section-body">
-        <!-- Witch -->
-        <div class="group">
-          <div class="group-head">
-            <strong>Witch</strong>
-            <span>Thumbnail sheets + Exploration of Character </span>
-          </div>
+      <div class="info-card">
+        <!-- <strong>Skrunkly, the Perfect Example of my Strength in Generalization</strong> -->
+        <ul>
+          <li>Concept Art</li>
+          <li>Color Exploration Chart</li>
+          <li>Sculpted in Z-Brush</li>
+          <li>Modeled/ Re-topologized in Blender</li>
+          <li>Rigged in Blender and Maya for practice</li>
+          <li>Textured in Substance Painter and Photoshop</li>
+          <li>Animated Walk Cycle, Idle, and Carry Merchant</li>
+          <li>Imported into Unreal Engine</li>
+          <li>Set Up Animation Trees in Engine</li>
+          <li>Imported Textures</li>
+        </ul>
+      </div>
+    </div>
 
-          <div class="group-body">
-            <div class="witch-layout" aria-label="Witch concepts">
-              <!-- LEFT: stacked (Concept sheet 1 + Turnaround) -->
-              <div class="witch-stack">
-                <div class="tile" data-lightbox-item data-type="img"
-                     data-src="Images and Videos/Concept Art/Screenshot 2025-09-07 150142.png"
-                     data-caption="Witch — concept sheet 1">
-                  <div class="img-mat">
-                    <img src="Images and Videos/Concept Art/Screenshot 2025-09-07 150142.png" alt="Witch concept sheet 1" />
-                  </div>
-                </div>
-
-                <div class="tile" data-lightbox-item data-type="img"
-                     data-src="Images and Videos/Concept Art/Screenshot 2026-01-08 161038.png"
-                     data-caption="Witch — turnaround">
-                  <div class="img-mat">
-                    <img src="Images and Videos/Concept Art/Screenshot 2026-01-08 161038.png" alt="Witch turnaround" />
-                  </div>
-                </div>
-              </div>
-
-              <!-- MIDDLE: tall concept sheet 2 -->
-              <div class="tile" data-lightbox-item data-type="img"
-                   data-src="Images and Videos/Concept Art/Screenshot 2025-09-07 150056.png"
-                   data-caption="Witch — concept sheet 2">
-                <div class="img-mat">
-                  <img src="Images and Videos/Concept Art/Screenshot 2025-09-07 150056.png" alt="Witch concept sheet 2" />
-                </div>
-              </div>
-
-              <!-- RIGHT: concept sheet 3 -->
-              <div class="tile" data-lightbox-item data-type="img"
-                   data-src="Images and Videos/Concept Art/Screenshot 2025-10-30 201832.png"
-                   data-caption="Witch — concept sheet 3">
-                <div class="img-mat">
-                  <img src="Images and Videos/Concept Art/Screenshot 2025-10-30 201832.png" alt="Witch concept sheet 3" />
-                </div>
-              </div>
-
-              <!-- Next row: pose -->
-              <div class="tile" data-lightbox-item data-type="img"
-                   data-src="Images and Videos/Concept Art/witch3.png"
-                   data-caption="Witch — pose concept">
-                <div class="img-mat">
-                  <img src="Images and Videos/Concept Art/witch3.png" alt="Witch concept pose" />
-                </div>
-              </div>
-            </div>
-          </div>
+    <div class="media-block">
+      <div class="block-title"><span>Concept Art</span></div>
+      <div class="gallery-grid three" aria-label="Skrunkly concept art">
+        <div class="tile wide" data-lightbox-item data-type="img" data-src="Images and Videos/Gobby-Skrunkly/thumbnails.jpg" data-caption="Skrunkly thumbnails">
+          <img src="Images and Videos/Gobby-Skrunkly/thumbnails.jpg" alt="Skrunkly thumbnails" />
         </div>
 
-        <!-- Merchant -->
-        <div class="group">
-          <div class="group-head">
-            <strong>Merchant</strong>
-            <span>Concept Final</span>
-          </div>
-          <div class="group-body">
-            <div class="grid" aria-label="Merchant concepts">
-              <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/Concept Art/Screenshot 2025-09-15 115820.png" data-caption="Merchant — concept sheet 1">
-                <div class="img-mat">
-                  <img src="Images and Videos/Concept Art/Screenshot 2025-09-15 115820.png" alt="Merchant concept sheet 1" />
-                  <p>I wanted to make him older, more pompous. But deadlines didn't allow me to fully explore that direction.</p>
-                </div>
-              </div>
-
-              <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/Concept Art/Screenshot 2025-09-15 115710.png" data-caption="Merchant — concept sheet 2">
-                <div class="img-mat">
-                  <img src="Images and Videos/Concept Art/Screenshot 2025-09-15 115710.png" alt="Merchant concept sheet 2" />
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/Gobby-Skrunkly/gobby.png" data-caption="Skrunkly color sheet">
+          <img src="Images and Videos/Gobby-Skrunkly/gobby.png" alt="Skrunkly color sheet" />
         </div>
 
-        <!-- Skrunkly -->
-        <div class="group">
-          <div class="group-head">
-            <strong>Skrunkly - Merchant's Assistant</strong>
-           </span>
-          </div>
-          <div class="group-body">
-            <div class="grid" aria-label="Skrunkly concepts">
-              <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/Gobby-Skrunkly/thumbnails.jpg" data-caption="Skrunkly — thumbnail exploration">
-                <div class="img-mat">
-                  <img src="Images and Videos/Gobby-Skrunkly/thumbnails.jpg" alt="Skrunkly thumbnails" />
-                </div>
-              </div>
+        <div class="tile ref-tile" data-lightbox-item data-type="img" data-src="Images and Videos/Concept Art/goblin-traders-1-17.png" data-caption="Inspiration for Skrunkly">
+          <img src="Images and Videos/Concept Art/goblin-traders-1-17.png" alt="Goblin trader inspiration" />
+        </div>
+      </div>
+      <p class="compact-note">Skrunkly was inspired by a Minecraft goblin trader mod.</p>
+    </div>
 
-              <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/Gobby-Skrunkly/gobby.png" data-caption="Skrunkly — final concept">
-                <div class="img-mat">
-                  <img src="Images and Videos/Gobby-Skrunkly/gobby.png" alt="Skrunkly final concept" />
-                </div>
-              </div>
+    <div class="media-block">
+      <div class="block-title"><span>3D Model</span></div>
+      <div class="gallery-grid four clean-gallery" aria-label="Skrunkly 3D model views">
+         <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/3D/Skrunkly/Screenshot 2025-12-01 142408.png" data-caption="Skrunkly model"><img src="Images and Videos/3D/Skrunkly/Screenshot 2025-12-01 142408.png" alt="Skrunkly model screenshot" /></div>
+            <div class="tile tall" data-lightbox-item data-type="img" data-src="Images and Videos/3D/Skrunkly/Screenshot 2025-12-01 142526.png" data-caption="Skrunkly model side"><img src="Images and Videos/3D/Skrunkly/Screenshot 2025-12-01 142526.png" alt="Skrunkly model side screenshot" /></div>
+            <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/3D/Skrunkly/Screenshot 2025-12-01 142641.png" data-caption="Skrunkly model"><img src="Images and Videos/3D/Skrunkly/Screenshot 2025-12-01 142641.png" alt="Skrunkly model screenshot" /></div>
+            <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/3D/Skrunkly/Screenshot 2025-12-01 142700.png" data-caption="Skrunkly model"><img src="Images and Videos/3D/Skrunkly/Screenshot 2025-12-01 142700.png" alt="Skrunkly model screenshot" /></div>
+            <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/3D/Skrunkly/Screenshot 2025-12-01 142748.png" data-caption="Skrunkly model close-up"><img src="Images and Videos/3D/Skrunkly/Screenshot 2025-12-01 142748.png" alt="Skrunkly model close-up" /></div>
+            <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/3D/Skrunkly/Screenshot 2025-12-01 142847.png" data-caption="Skrunkly model detail"><img src="Images and Videos/3D/Skrunkly/Screenshot 2025-12-01 142847.png" alt="Skrunkly model detail" /></div>
+            <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/3D/Skrunkly/Screenshot 2025-12-01 143005.png" data-caption="Skrunkly texture detail"><img src="Images and Videos/3D/Skrunkly/Screenshot 2025-12-01 143005.png" alt="Skrunkly texture detail" /></div>
+            <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/3D/Skrunkly/Screenshot 2025-12-01 153019.png" data-caption="Skrunkly wireframe"><img src="Images and Videos/3D/Skrunkly/Screenshot 2025-12-01 153019.png" alt="Skrunkly wireframe" /></div>
+            <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/3D/Skrunkly/Screenshot 2025-12-01 153535.png" data-caption="Skrunkly textured model"><img src="Images and Videos/3D/Skrunkly/Screenshot 2025-12-01 153535.png" alt="Skrunkly textured model" /></div>
+            <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/3D/Skrunkly/Screenshot 2025-12-01 153600.png" data-caption="Skrunkly model"><img src="Images and Videos/3D/Skrunkly/Screenshot 2025-12-01 153600.png" alt="Skrunkly model screenshot" /></div>
+            <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/3D/Skrunkly/Screenshot 2025-12-01 153830.png" data-caption="Skrunkly rig / model proof"><img src="Images and Videos/3D/Skrunkly/Screenshot 2025-12-01 153830.png" alt="Skrunkly rig model proof" /></div>
+            <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/3D/Skrunkly/Screenshot 2025-12-01 153902.png" data-caption="Skrunkly rig / model proof"><img src="Images and Videos/3D/Skrunkly/Screenshot 2025-12-01 153902.png" alt="Skrunkly rig model proof" /></div>
+            <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/3D/Skrunkly/Screenshot 2025-12-01 154017.png" data-caption="Skrunkly model"><img src="Images and Videos/3D/Skrunkly/Screenshot 2025-12-01 154017.png" alt="Skrunkly model screenshot" /></div>
+            <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/3D/Skrunkly/Screenshot 2025-12-01 154334.png" data-caption="Skrunkly sculpt"><img src="Images and Videos/3D/Skrunkly/Screenshot 2025-12-01 154334.png" alt="Skrunkly sculpt screenshot" /></div>
+            <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/3D/Skrunkly/Screenshot 2025-12-01 154620.png" data-caption="Skrunkly sculpt"><img src="Images and Videos/3D/Skrunkly/Screenshot 2025-12-01 154620.png" alt="Skrunkly sculpt screenshot" /></div>
+            <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/3D/Skrunkly/Screenshot 2025-12-01 154706.png" data-caption="Skrunkly hand sculpt"><img src="Images and Videos/3D/Skrunkly/Screenshot 2025-12-01 154706.png" alt="Skrunkly hand sculpt screenshot" /></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="project" id="queen">
+  <div class="project-head">
+    <div>
+      <h2>Queen</h2>
+      <p>2D character concept translated into a 3D game piece model.</p>
+    </div>
+    <div class="role-line">Concept Art • 3D Model • Animation</div>
+  </div>
 
-              <div class="tile" data-lightbox-item data-type="video" data-src="Images and Videos/Gobby-Skrunkly/Skrunkly_Animation.mp4" data-caption="Skrunkly — animation test (MP4)">
-                <div class="video-mat">
-                  <div class="video-wrap">
-                    <video controls preload="metadata">
-                      <source src="Images and Videos/Gobby-Skrunkly/Skrunkly_Animation.mp4" type="video/mp4" />
-                  
-                    </video>
-                  </div>
-                </div>
-              </div>
+  <div class="project-body">
+    <div class="queen-feature">
+      <div class="tile big" data-lightbox-item data-type="img" data-src="Images and Videos/Concept Art/Queen.png" data-caption="Queen — 2D character concept">
+        <img src="Images and Videos/Concept Art/Queen.png" alt="Queen 2D concept art" />
+      </div>
 
-              <!-- Only this one keeps a label -->
-              <div class="tile cap-keep" data-lightbox-item data-type="img" data-src="Images and Videos/Concept Art/goblin-traders-1-17.png" data-caption="Inspiration — Minecraft goblin trader">
-                <div class="img-mat">
-                  <img src="Images and Videos/Concept Art/goblin-traders-1-17.png" alt="Goblin trader inspiration" />
-                </div>
-                <div class="cap">Inspiration reference</div>
+      <div class="tile video-feature"
+           data-lightbox-item
+           data-type="video"
+           data-src="Images and Videos/3D/2025-11-17 16-28-56.mp4"
+           data-caption="Queen — animation / implementation clip">
+        <video controls preload="metadata" playsinline>
+          <source src="Images and Videos/3D/2025-11-17 16-28-56.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </div>
+
+    <div class="media-block">
+      <div class="block-title"><span>3D Model</span></div>
+      <div class="gallery-grid four clean-gallery" aria-label="Queen 3D model views">
+                 <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/3D\Queen\Queen Model Back Down View.png" data-caption="Queen model — back down view"><img src="Images and Videos/3D\Queen\Queen Model Back Down View.png" alt="Queen model back down view" /></div>
+              <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/3D\Queen\Queen Model Back.png" data-caption="Queen model — back"><img src="Images and Videos/3D\Queen\Queen Model Back.png" alt="Queen model back view" /></div>
+              <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/3D\Queen\Queen Model Front Down View.png" data-caption="Queen model — front down view"><img src="Images and Videos/3D\Queen\Queen Model Front Down View.png" alt="Queen model front down view" /></div>
+              <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/3D\Queen\Queen Model Front View.png" data-caption="Queen model — front"><img src="Images and Videos\3D\Queen\Queen Model Front.png" alt="Queen model front view" /></div>
+              <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/3D\Queen\Queen Model Side.png" data-caption="Queen model — side"><img src="Images and Videos/3D\Queen\Queen Model Side.png" alt="Queen model side view" /></div>
+              <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/3D\Queen\Screenshot 2025-12-08 151249.png" data-caption="Queen model detail"><img src="Images and Videos/3D\Queen\Screenshot 2025-12-08 151249.png" alt="Queen model screenshot" /></div>
+              <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/3D\Queen\Screenshot 2025-12-08 151303.png" data-caption="Queen model detail"><img src="Images and Videos/3D\Queen\Screenshot 2025-12-08 151303.png" alt="Queen model screenshot" /></div>
+              <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/3D\Queen\Screenshot 2025-12-08 151318.png" data-caption="Queen model detail"><img src="Images and Videos/3D\Queen\Screenshot 2025-12-08 151318.png" alt="Queen model screenshot" /></div>
+              <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/3D\Queen\Screenshot 2025-12-08 151330.png" data-caption="Queen model detail"><img src="Images and Videos/3D\Queen\Screenshot 2025-12-08 151330.png" alt="Queen model screenshot" /></div>
+              <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/3D\Queen\Screenshot 2025-12-08 151359.png" data-caption="Queen model detail"><img src="Images and Videos/3D\Queen\Screenshot 2025-12-08 151359.png" alt="Queen model screenshot" /></div>
+      </div>
+    </div>
+
+    <p class="compact-note">
+      I adjusted the 3D model after I received the layout of the game to better suit an isometric view. The back of the model was prioritized because the player would mostly see the chess-like piece from a top-down rear angle.
+    </p>
+  </div>
+</section>
+
+
+   
+
+    <section class="project" id="knight">
+      <div class="project-head">
+        <div>
+          <h2>Knight</h2>
+          <p>Chess-inspired character concept and 3D version.</p>
+        </div>
+        <div class="role-line">Concept Art • 3D Model</div>
+      </div>
+      <div class="project-body">
+        <div class="concept-3d">
+          <div class="media-block">
+            <div class="block-title"><span>2D Concept</span><span>Character sheet</span></div>
+            <div class="focus-grid">
+              <div class="tile big" data-lightbox-item data-type="img" data-src="Images and Videos/Concept Art/Knight.png" data-caption="Knight — 2D character concept">
+                <img src="Images and Videos/Concept Art/Knight.png" alt="Knight 2D concept art" />
+              </div>
+              <div class="tile medium" data-lightbox-item data-type="img" data-src="Images and Videos/Concept Art/game piece concepts.png" data-caption="Game piece character exploration">
+                <img src="Images and Videos/Concept Art/game piece concepts.png" alt="Game piece character exploration" />
               </div>
             </div>
-
-            <p style="margin:.9rem 0 0; color:var(--muted); font-size:.9rem;">
-              Skrunkly was inspired by a Minecraft goblin trader mod - He grunts, is immortal, and a merchant.
-            </p>
+          </div>
+          <div class="media-block">
+            <div class="block-title"><span>3D Model</span><span>Views / pose tests </span></div>
+            <div class="gallery-grid four" aria-label="Knight 3D model views">
+              <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/3D/Knight/Screenshot 2025-12-08 150316.png" data-caption="Knight model"><img src="Images and Videos/3D/Knight/Screenshot 2025-12-08 150316.png" alt="Knight model screenshot" /></div>
+              <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/3D/Knight/Screenshot 2025-12-08 150323.png" data-caption="Knight model"><img src="Images and Videos/3D/Knight/Screenshot 2025-12-08 150323.png" alt="Knight model screenshot" /></div>
+              <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/3D/Knight/Screenshot 2025-12-08 150336.png" data-caption="Knight model"><img src="Images and Videos/3D/Knight/Screenshot 2025-12-08 150336.png" alt="Knight model screenshot" /></div>
+              <div class="tile wide" data-lightbox-item data-type="img" data-src="Images and Videos/3D/Knight/Screenshot 2025-12-08 150418.png" data-caption="Knight model pose"><img src="Images and Videos/3D/Knight/Screenshot 2025-12-08 150418.png" alt="Knight model pose screenshot" /></div>
+              <div class="tile wide" data-lightbox-item data-type="img" data-src="Images and Videos/3D/Knight/Screenshot 2025-12-08 150429.png" data-caption="Knight model pose"><img src="Images and Videos/3D/Knight/Screenshot 2025-12-08 150429.png" alt="Knight model pose screenshot" /></div>
+              <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/3D/Knight/Screenshot 2025-12-08 150506.png" data-caption="Knight model pose"><img src="Images and Videos/3D/Knight/Screenshot 2025-12-08 150506.png" alt="Knight model pose screenshot" /></div>
+              <div class="tile wide" data-lightbox-item data-type="img" data-src="Images and Videos/3D/Knight/Screenshot 2025-12-08 150549.png" data-caption="Knight model pose"><img src="Images and Videos/3D/Knight/Screenshot 2025-12-08 150549.png" alt="Knight model pose screenshot" /></div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Personal characters -->
-    <section class="section">
-      <div class="section-head">
-        <h2>Personal Characters</h2>
-        <p>Personal IP explorations and character development.</p>
+    <!-- <section class="project" id="personal">
+      <div class="project-head">
+        <div>
+          <h2>Personal Characters</h2>
+        </div>
       </div>
-
-      <div class="section-body">
-        <div class="grid" aria-label="Personal character concepts">
-          <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/Concept Art/Akara 2025 Ref.png" data-caption="Akara — personal reference sheet (2025)">
-            <div class="img-mat">
-              <img src="Images and Videos/Concept Art/Akara 2025 Ref.png" alt="Akara 2025 ref" />
-            </div>
+      <div class="project-body">
+        <div class="gallery-grid two" aria-label="Personal character concepts">
+          <div class="tile wide medium" data-lightbox-item data-type="img" data-src="Images and Videos/Concept Art/Akara 2025 Ref.png" data-caption="Akara — personal reference sheet, 2025">
+            <img src="Images and Videos/Concept Art/Akara 2025 Ref.png" alt="Akara 2025 reference sheet" />
+            <span class="label">Akara</span>
           </div>
-
-          <div class="tile" data-lightbox-item data-type="img" data-src="Images and Videos/Concept Art/Kiko Concept Ref 2025 Sketch1.png" data-caption="Kiko — personal concept (2025)">
-            <div class="img-mat">
-              <img src="Images and Videos/Concept Art/Kiko Concept Ref 2025 Sketch1.png" alt="Kiko 2025 sketch" />
-            </div>
+          <div class="tile medium" data-lightbox-item data-type="img" data-src="Images and Videos/Concept Art/Kiko Concept Ref 2025 Sketch1.png" data-caption="Kiko — personal concept, 2025">
+            <img src="Images and Videos/Concept Art/Kiko Concept Ref 2025 Sketch1.png" alt="Kiko 2025 sketch" />
+            <span class="label">Kiko</span>
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <div class="btn-row">
       <a class="btn" href="index.html#work">Back to Portfolio</a>
     </div>
 
-    <!-- Lightbox (optional) -->
     <div id="lightbox" class="lightbox" aria-hidden="true">
       <button class="close" aria-label="Close">✕</button>
       <div class="controls">
@@ -605,16 +531,14 @@
       const btnNext = document.getElementById('next');
       const btnPrev = document.getElementById('prev');
       const btnClose = lightbox.querySelector('.close');
-
       let idx = 0;
 
       function show(i){
         idx = (i + items.length) % items.length;
         const el = items[idx];
         const type = el.getAttribute('data-type');
-        const src  = el.getAttribute('data-src') || '';
-        const cap  = el.getAttribute('data-caption') || '';
-
+        const src = el.getAttribute('data-src') || '';
+        const cap = el.getAttribute('data-caption') || '';
         lbMedia.innerHTML = '';
 
         if(type === 'video'){
@@ -623,14 +547,12 @@
           v.autoplay = true;
           v.playsInline = true;
           v.preload = 'metadata';
-
           const s = document.createElement('source');
           s.src = src;
           s.type = 'video/mp4';
           v.appendChild(s);
-
           lbMedia.appendChild(v);
-          v.addEventListener('loadedmetadata', ()=>{ try{ v.play(); }catch(e){} });
+          v.addEventListener('loadedmetadata', function(){ try{ v.play(); }catch(e){} });
         } else {
           const im = document.createElement('img');
           im.src = src;
@@ -647,25 +569,23 @@
       function hide(){
         lightbox.classList.remove('show');
         lightbox.setAttribute('aria-hidden','true');
-        try{
-          const v = lbMedia.querySelector('video');
-          if(v){ try{ v.pause(); v.currentTime = 0; }catch(e){} }
-        }catch(e){}
+        const v = lbMedia.querySelector('video');
+        if(v){ try{ v.pause(); v.currentTime = 0; }catch(e){} }
         lbMedia.innerHTML = '';
         document.body.style.overflow = '';
       }
 
-      items.forEach((node, i)=>{
-        node.style.cursor = 'zoom-in';
-        node.addEventListener('click', ()=> show(i));
+      items.forEach(function(node, i){
+        node.addEventListener('click', function(e){
+          if(e.target && e.target.tagName === 'VIDEO') return;
+          show(i);
+        });
       });
-
-      btnNext.addEventListener('click', ()=> show(idx + 1));
-      btnPrev.addEventListener('click', ()=> show(idx - 1));
+      btnNext.addEventListener('click', function(){ show(idx + 1); });
+      btnPrev.addEventListener('click', function(){ show(idx - 1); });
       btnClose.addEventListener('click', hide);
-      lightbox.addEventListener('click', (e)=>{ if(e.target === lightbox) hide(); });
-
-      document.addEventListener('keydown', (e)=>{
+      lightbox.addEventListener('click', function(e){ if(e.target === lightbox) hide(); });
+      document.addEventListener('keydown', function(e){
         if(!lightbox.classList.contains('show')) return;
         if(e.key === 'ArrowRight') show(idx + 1);
         if(e.key === 'ArrowLeft') show(idx - 1);
