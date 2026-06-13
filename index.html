@@ -80,7 +80,7 @@
 
         <a class="project-card" data-type="studio" href="diaperbank.html" aria-label="Diaper Bank">
           <video autoplay muted loop playsinline aria-hidden="true">
-            <source src="Images and Videos/Diaper Bank/Animation_Examples/highfive.mp4" type="video/mp4">
+            <source src="Images and Videos/highfive.mp4" type="video/mp4">
           </video>
           <div class="project-card-body">
             <h3>Diaper Bank</h3>
@@ -183,23 +183,8 @@
           </div>
         </div>
 
-        <!-- ROW 2: Kove Turnaround — full row -->
-        <div class="feat-item feat-span-6"
-             data-lightbox-item data-type="img"
-             data-src="Images and Videos/Kove TurnAround Sheet2.png"
-             data-caption="Kove — Character Turnaround Sheet">
-          <div class="feat-media">
-            <img src="Images and Videos/Kove TurnAround Sheet2.png"
-                 alt="Kove character turnaround sheet" loading="lazy">
-            <div class="feat-label">
-              <strong>Kove — Turnaround</strong>
-              <span>Character Design · 2D</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- ROW 3: Gojo + Kove Illustration + Ember -->
-        <div class="feat-item feat-span-2"
+        <!-- ROW 2: Gojo + Kove Illustration + Ember — tall portrait images, full natural height -->
+        <div class="feat-item feat-span-2 feat-tall"
              data-lightbox-item data-type="img"
              data-src="Images and Videos/2D/Gojo3.png"
              data-caption="Gojo — 2D Digital Fan Art">
@@ -213,7 +198,7 @@
           </div>
         </div>
 
-        <div class="feat-item feat-span-2"
+        <div class="feat-item feat-span-2 feat-tall"
              data-lightbox-item data-type="img"
              data-src="Images and Videos/2D/KoveTheCreator.png"
              data-caption="Kove — 2D Digital Illustration">
@@ -227,7 +212,7 @@
           </div>
         </div>
 
-        <div class="feat-item feat-span-2"
+        <div class="feat-item feat-span-2 feat-tall"
              data-lightbox-item data-type="img"
              data-src="Images and Videos/2D/EmberCommission.png"
              data-caption="Ember — 2D Commission">
@@ -237,6 +222,21 @@
             <div class="feat-label">
               <strong>Ember — Commission</strong>
               <span>2D Digital Illustration</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ROW 3: Kove Turnaround — full row (below the tall portraits) -->
+        <div class="feat-item feat-span-6"
+             data-lightbox-item data-type="img"
+             data-src="Images and Videos/Kove TurnAround Sheet2.png"
+             data-caption="Kove — Character Turnaround Sheet">
+          <div class="feat-media">
+            <img src="Images and Videos/Kove TurnAround Sheet2.png"
+                 alt="Kove character turnaround sheet" loading="lazy">
+            <div class="feat-label">
+              <strong>Kove — Turnaround</strong>
+              <span>Character Design · 2D</span>
             </div>
           </div>
         </div>
@@ -441,7 +441,13 @@
       btnPrev.addEventListener('click', function(e){ e.stopPropagation(); show(idx - 1); });
       btnNext.addEventListener('click', function(e){ e.stopPropagation(); show(idx + 1); });
       btnClose.addEventListener('click', hide);
-      lightbox.addEventListener('click', function(e){ if(e.target === lightbox) hide(); });
+      lightbox.addEventListener('click', function(e){
+        if(e.target === lightbox) hide();
+        /* click image to zoom in/out */
+        if(e.target.tagName === 'IMG' && e.target.closest('.media')){
+          e.target.classList.toggle('lb-zoomed');
+        }
+      });
       document.addEventListener('keydown', function(e){
         if(!lightbox.classList.contains('show')) return;
         if(e.key === 'Escape') hide();
