@@ -127,7 +127,7 @@ header{
 /* ---------- Hero (rotating image / banner) ---------- */
 .hero{
   position:relative;
-  min-height:390px;
+  min-height:clamp(480px, 75vh, 720px);
   overflow:hidden;
   background:#0c0c0c;
   border-bottom:1px solid #222;
@@ -139,7 +139,7 @@ header{
   opacity:0;
   transition:opacity .8s ease;
   background-size:cover;
-  background-position:center center;
+  background-position:center 20%;
   transform:scale(1.02);
 }
 .hero-slide.active{opacity:1}
@@ -155,7 +155,7 @@ header{
 .hero-inner{
   position:relative;
   z-index:2;
-  min-height:390px;
+  min-height:clamp(480px, 75vh, 720px);
   display:flex;
   flex-direction:column;
   justify-content:flex-end;
@@ -1180,8 +1180,8 @@ video.frame{object-fit:cover}
 }
 
 @media (max-width:600px){
-  .hero{min-height:300px}
-  .hero-inner{min-height:300px}
+  .hero{min-height:420px}
+  .hero-inner{min-height:420px}
   .art-grid{grid-template-columns:1fr}
   .contact-grid{grid-template-columns:1fr}
   .project-card{width:148px}
