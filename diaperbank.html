@@ -7,7 +7,8 @@
 
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23121212'/%3E%3Ctext x='50' y='70' font-family='serif' font-size='45' font-weight='700' text-anchor='middle' fill='%23ff6f61'%3EMB%3C/text%3E%3C/svg%3E" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet" />
-
+  <link rel="stylesheet" href="shared.css" />
+<!-- 
   <style>
     :root{
       --bg:#121212;
@@ -219,7 +220,32 @@
       border-top:1px solid #202020;
       font-size:.85rem;
     }
-  </style>
+    .meta-list{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:.5rem;
+  margin:1rem 0 0;
+  padding:0;
+}
+.meta-list li{
+  position:relative;
+  padding-left:1.2rem;
+  color:var(--ink-d);
+  font-size:.92rem;
+}
+.meta-list li::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:.15em;
+  bottom:.15em;
+  width:4px;
+  border-radius:2px;
+  background:var(--accent);
+}
+.meta-list strong{color:var(--ink); font-weight:700}
+  </style> -->
 </head>
 
 <body>
@@ -227,7 +253,7 @@
     <div class="wrap nav" role="navigation" aria-label="Primary">
       <a class="logo" href="index.html" aria-label="Back to portfolio home">MB</a>
       <ul>
-        <li><a href="index.html#work">Work</a></li>
+        <li><a href="index.html#work">Portfolio Home</a></li>
         <li><a href="index.html#about">About</a></li>
         <li><a href="index.html#contact">Contact</a></li>
       </ul>
@@ -236,23 +262,23 @@
 
   <main>
     <!-- ===================== DIAPER BANK ===================== -->
-    <section class="hero" aria-label="Diaper Bank overview">
+    <!-- <section class="hero" aria-label="Diaper Bank overview">
       <div class="hero-media">
         <video autoplay loop muted playsinline style="width:100%; height:100%; object-fit:contain; object-position:center; display:block; opacity:.85; filter:saturate(.95) contrast(1.05);">
           <source src="Images and Videos/Diaper Bank/Main_ENGLISH (1).mp4" type="video/mp4" />
         </video>
-      </div>
+      </div> -->
 
       <div class="hero-inner">
         <a href="index.html#work" class="btn" style="margin-bottom:1rem; width:auto;">Back to Portfolio</a>
         <h1>Diaper Bank</h1>
-        <p class="subtitle">Animated tutorial funded by the Idaho Diaper Bank, focused on teaching parents how to potty train their kids.</p>
+        <p class="subtitle">Animated tutorial funded by the Non-Profit Idaho Treasure Valley Diaper Bank Association, focused on teaching parents how to potty train their kids.</p>
 
-        <div class="meta-row" aria-label="Project quick facts">
-          <span class="pill"><strong>Role:</strong> Art Lead, Lead 2D Animator</span>
-          <span class="pill"><strong>Format:</strong> Storyboards → Animatic → Final Render</span>
-          <span class="pill"><strong>Tools:</strong> Photoshop, Clip Studio Paint, After Effects, Blender</span>
-        </div>
+   <ul class="meta-list" aria-label="Project quick facts">
+  <li><strong>Role:</strong> Art Lead, Lead 2D Animator</li>
+  <li><strong>Pipeline:</strong> Storyboards/thumbnails → Animatic → Cleanup → Compositing → Final Render</li>
+  <li><strong>Programs:</strong> Photoshop, Clip Studio Paint, After Effects, Blender</li>
+</ul>
       </div>
     </section>
 
@@ -319,17 +345,18 @@
 
       <aside class="card" aria-label="Diaper Bank details">
         <div class="card-pad">
-          <h2>Quick Details</h2>
-
-          <p><strong style="color:var(--ink)">Client / Funding:</strong> <span style="color:var(--ink-d)">Idaho Diaper Bank</span></p>
-          <p><strong style="color:var(--ink)">Project Type:</strong> <span style="color:var(--ink-d)">Educational animation</span></p>
-
+    
           <h2 style="margin-top:1.25rem;">My Work</h2>
           <ul class="list">
-            <li>Art leadership across the production pipeline</li>
-            <li>Storyboards and animatic planning</li>
-            <li>Lead 2D animation work and polish</li>
-            <li>Visual communication with client</li>
+            <li>Art leadership and direction across the production pipeline.</li>
+            <li>Storyboards and animatic planning.</li>
+            <li>Storyboard/animatic deliverables to client for early project direction approval (Visual communication with client).</li>
+            <li>Majority of 2D animation work and polish.</li>
+            <li>Communication of needs to 3D artist.</li>
+            <li>Planning for implementation of animation trainees during finilization of product.</li>
+            <li>Training of new animation hires and SFX specialist / Editor.</li>
+            <li>Product compositing and polish.</li>
+            <li>Final Production deliverables to client.</li>
           </ul>
 
           <h2 style="margin-top:1.25rem;">Challenges</h2>

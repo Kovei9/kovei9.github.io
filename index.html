@@ -3,521 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MB | Mackenzie Burt — 2D/3D Generalist</title>
+  <title>Mackenzie Burt — 2D/3D Generalist & Animator</title>
 
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23121212'/%3E%3Ctext x='50' y='70' font-family='serif' font-size='45' font-weight='700' text-anchor='middle' fill='%23ff6f61'%3EMB%3C/text%3E%3C/svg%3E" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet" />
-
-  <style>
-    :root{
-      --bg:#121212;
-      --panel:#181818;
-      --panel-2:#1d1d1d;
-      --ink:#f5f5f5;
-      --ink-d:#cfcfcf;
-      --muted:#9a9a9a;
-      --accent:#ff6f61;
-      --line:#262626;
-      --shadow:0 20px 40px rgba(0,0,0,.42);
-      --radius:20px;
-    }
-
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,sans-serif;
-      background:var(--bg);
-      color:var(--ink);
-      line-height:1.6;
-    }
-
-    a{color:inherit;text-decoration:none}
-    img,video{display:block;max-width:100%}
-    button{font:inherit}
-
-    body::before{
-      content:"";
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      background:
-        radial-gradient(circle at top left, rgba(255,111,97,.06), transparent 22%),
-        radial-gradient(circle at bottom right, rgba(255,111,97,.04), transparent 20%);
-      z-index:-1;
-    }
-
-    header{
-      position:sticky;
-      top:0;
-      z-index:100;
-      backdrop-filter:blur(10px);
-      background:rgba(18,18,18,.9);
-      border-bottom:1px solid #222;
-    }
-
-    .wrap{
-      max-width:1220px;
-      margin:0 auto;
-      padding:1rem 1.25rem;
-    }
-
-    .nav{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:1rem;
-    }
-
-    .logo{
-      font-family:'Playfair Display',serif;
-      font-weight:700;
-      font-size:1.5rem;
-      letter-spacing:.5px;
-      white-space:nowrap;
-    }
-
-    .nav ul{
-      display:flex;
-      list-style:none;
-      gap:1rem;
-      padding:0;
-      margin:0;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-    }
-
-    .nav a{
-      position:relative;
-      font-size:.95rem;
-      transition:color .2s ease, transform .2s ease;
-    }
-
-    .nav a::after{
-      content:"";
-      position:absolute;
-      bottom:-5px;
-      left:0;
-      width:0;
-      height:2px;
-      background:var(--accent);
-      transition:width .2s ease;
-    }
-
-    .nav a:hover,
-    .nav a:focus{
-      color:var(--accent);
-      transform:translateY(-2px);
-    }
-
-    .nav a:hover::after{width:100%}
-
-    .hero{
-      position:relative;
-      min-height:390px;
-      overflow:hidden;
-      background:#0c0c0c;
-      border-bottom:1px solid #222;
-    }
-
-    .hero-slide{
-      position:absolute;
-      inset:0;
-      opacity:0;
-      transition:opacity .8s ease;
-      background-size:cover;
-      background-position:center center;
-      transform:scale(1.02);
-    }
-
-    .hero-slide.active{opacity:1}
-
-    .hero::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(180deg, rgba(18,18,18,.18), rgba(18,18,18,.75));
-      z-index:1;
-    }
-
-    .hero-inner{
-      position:relative;
-      z-index:2;
-      min-height:390px;
-      display:flex;
-      flex-direction:column;
-      justify-content:flex-end;
-      max-width:1220px;
-      margin:0 auto;
-      padding:2rem 1.25rem 1.6rem;
-    }
-
-    .hero-inner h1{
-      margin:0;
-      font-family:'Playfair Display',serif;
-      font-size:clamp(2.5rem,6vw,4.6rem);
-      line-height:1;
-    }
-
-    .subtitle{
-      margin:.45rem 0 0;
-      color:var(--accent);
-      max-width:850px;
-      font-weight:700;
-      font-size:clamp(1rem,2vw,1.25rem);
-      text-shadow:0 1px 2px rgba(0,0,0,.45);
-    }
-
-    .page-copy{
-      margin:.35rem 0 0;
-      color:var(--ink-d);
-      max-width:820px;
-    }
-
-    main{
-      max-width:1220px;
-      margin:0 auto;
-      padding:1.25rem;
-    }
-
-    .project-strip{
-      margin:0 0 1.25rem;
-      padding:1rem;
-      border:1px solid #252525;
-      border-radius:var(--radius);
-      background:linear-gradient(180deg,#181818,#151515);
-      box-shadow:var(--shadow);
-    }
-
-    .project-strip-top{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:1rem;
-      margin-bottom:.75rem;
-    }
-
-    .project-strip-title{
-      margin:0;
-      font-family:'Playfair Display',serif;
-      font-size:1.35rem;
-      color:var(--ink);
-      line-height:1.1;
-    }
-
-    .project-filters{
-      display:flex;
-      flex-wrap:wrap;
-      gap:.5rem;
-      justify-content:flex-end;
-    }
-
-    .filter{
-      border:1px solid #2a2a2a;
-      background:#181818;
-      color:#cfcfcf;
-      padding:.38rem .78rem;
-      border-radius:999px;
-      cursor:pointer;
-      font-size:.8rem;
-      font-weight:700;
-      transition:background .18s ease, border-color .18s ease, color .18s ease, transform .18s ease;
-    }
-
-    .filter.active,
-    .filter:hover{
-      background:#242424;
-      border-color:#444;
-      color:#fff;
-      transform:translateY(-1px);
-    }
-
-    .project-row{
-      display:flex;
-      gap:.65rem;
-      overflow-x:auto;
-      padding-bottom:.45rem;
-      scrollbar-width:thin;
-      scrollbar-color:#333 transparent;
-    }
-
-    .project-row::-webkit-scrollbar{height:6px}
-    .project-row::-webkit-scrollbar-thumb{background:#333;border-radius:999px}
-
-    .project-card{
-      flex:0 0 auto;
-      width:128px;
-      border-radius:12px;
-      overflow:hidden;
-      border:1px solid #252525;
-      background:#0c0c0c;
-      transition:transform .18s ease, border-color .18s ease, opacity .18s ease;
-    }
-
-    .project-card:hover{
-      transform:translateY(-3px);
-      border-color:#444;
-    }
-
-    .project-card img,
-    .project-card video{
-      width:100%;
-      height:88px;
-      object-fit:cover;
-      background:#0c0c0c;
-    }
-
-    .project-card-body{
-      padding:.52rem .55rem .58rem;
-      min-height:58px;
-    }
-
-    .project-card-body h3{
-      margin:0;
-      font-family:'Playfair Display',serif;
-      font-size:.88rem;
-      line-height:1.05;
-    }
-
-    .project-card-body p{
-      margin:.2rem 0 0;
-      color:var(--muted);
-      font-size:.68rem;
-      line-height:1.25;
-    }
-
-    .section-title{
-      display:flex;
-      align-items:end;
-      justify-content:space-between;
-      gap:1rem;
-      margin:1.75rem 0 .85rem;
-    }
-
-    .section-title h2{
-      margin:0;
-      font-family:'Playfair Display',serif;
-      font-size:clamp(1.6rem,3vw,2.3rem);
-      color:var(--accent);
-      line-height:1.05;
-    }
-
-    .section-title p{
-      margin:0;
-      color:var(--muted);
-      font-size:.9rem;
-      text-align:right;
-    }
-
-    .art-section{
-      background:linear-gradient(180deg,#181818,#151515);
-      border:1px solid #252525;
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      overflow:hidden;
-    }
-
-    .art-section-inner{padding:1.15rem}
-
-    .art-grid{
-      display:grid;
-      gap:1rem;
-      grid-template-columns:repeat(3, 1fr);
-      align-items:start;
-    }
-
-    .art-grid img{
-      width:100%;
-      height:auto;
-      display:block;
-      border-radius:12px;
-      border:1px solid #232323;
-      background:#0c0c0c;
-      cursor:pointer;
-      transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
-    }
-
-    .art-grid img:hover{
-      transform:translateY(-4px);
-      box-shadow:0 18px 34px rgba(0,0,0,.38);
-      border-color:#343434;
-    }
-
-    .single-art img{
-      width:100%;
-      max-width:980px;
-      margin:0 auto;
-      border-radius:12px;
-      border:1px solid #232323;
-      background:#0c0c0c;
-      cursor:pointer;
-    }
-
-    .about-contact{
-      display:grid;
-      grid-template-columns:minmax(0,1.35fr) minmax(260px,.65fr);
-      gap:1rem;
-      margin-top:1.25rem;
-    }
-
-    .about-box,
-    .contact-box{
-      padding:1.15rem;
-      border-radius:var(--radius);
-      background:linear-gradient(180deg,#181818,#151515);
-      border:1px solid #252525;
-      box-shadow:var(--shadow);
-    }
-
-    .about-box h2,
-    .contact-box h2{
-      margin:0 0 .55rem;
-      font-family:'Playfair Display',serif;
-      font-size:1.45rem;
-      color:var(--accent);
-    }
-
-    .about-box p{
-      margin:0;
-      color:var(--ink-d);
-      font-size:.95rem;
-      line-height:1.6;
-    }
-
-    .contact-grid{
-      display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:.65rem;
-    }
-
-    .contact-btn{
-      display:block;
-      text-align:center;
-      border:1px solid #2a2a2a;
-      padding:.82rem .95rem;
-      border-radius:999px;
-      background:#181818;
-      color:var(--ink);
-      font-weight:700;
-      transition:transform .18s ease, border-color .18s ease, background .18s ease;
-    }
-
-    .contact-btn:hover{
-      transform:translateY(-2px);
-      background:#202020;
-      border-color:#3a3a3a;
-    }
-
-    .extra-links{
-      display:flex;
-      flex-wrap:wrap;
-      gap:.65rem;
-      margin-top:.85rem;
-    }
-
-    .small-link{
-      color:var(--ink-d);
-      font-size:.9rem;
-      border:1px solid #2a2a2a;
-      border-radius:999px;
-      padding:.45rem .8rem;
-      background:#181818;
-    }
-
-    .small-link:hover{color:var(--accent);border-color:#3a3a3a}
-
-    footer{
-      padding:1.15rem 1.25rem 2rem;
-      color:#8e8e8e;
-      font-size:.88rem;
-      text-align:center;
-    }
-
-    .lightbox{
-      position:fixed;
-      inset:0;
-      background:rgba(0,0,0,.9);
-      display:none;
-      align-items:center;
-      justify-content:center;
-      z-index:999;
-      padding:2rem 1.25rem;
-    }
-
-    .lightbox.open{display:flex}
-
-    .lightbox img{
-      max-width:min(1100px, 96vw);
-      max-height:86vh;
-      width:auto;
-      height:auto;
-      border-radius:12px;
-      border:1px solid rgba(255,255,255,.08);
-      background:#0c0c0c;
-    }
-
-    .lb-btn,
-    .lb-close{
-      position:absolute;
-      border:none;
-      background:rgba(0,0,0,.58);
-      color:#fff;
-      cursor:pointer;
-      user-select:none;
-      transition:background .18s ease, transform .18s ease;
-    }
-
-    .lb-btn{
-      top:50%;
-      transform:translateY(-50%);
-      font-size:1.4rem;
-      padding:.6rem .9rem;
-      border-radius:999px;
-    }
-
-    .lb-btn:hover,
-    .lb-close:hover{background:rgba(0,0,0,.88)}
-
-    .lb-prev{left:1rem}
-    .lb-next{right:1rem}
-
-    .lb-close{
-      top:1rem;
-      right:1rem;
-      font-size:1.2rem;
-      padding:.55rem .8rem;
-      border-radius:999px;
-    }
-
-    @media (max-width:1100px){
-      .art-grid{grid-template-columns:repeat(2,1fr)}
-    }
-
-    @media (max-width:800px){
-      .project-strip-top,
-      .section-title,
-      .about-contact{
-        display:block;
-      }
-
-      .project-filters{justify-content:flex-start;margin-top:.7rem}
-      .section-title p{text-align:left;margin-top:.3rem}
-      .contact-box{margin-top:1rem}
-    }
-
-    @media (max-width:600px){
-      .hero{min-height:300px}
-      .hero-inner{min-height:300px}
-      .art-grid{grid-template-columns:1fr}
-      .contact-grid{grid-template-columns:1fr}
-      .project-card{width:118px}
-      .project-card img,.project-card video{height:82px}
-    }
-
-    @media (prefers-reduced-motion:reduce){
-      *{scroll-behavior:auto!important;transition:none!important;animation:none!important}
-    }
-  </style>
+  <link rel="stylesheet" href="shared.css" />
 </head>
 
 <body>
@@ -525,14 +15,14 @@
     <div class="wrap nav" role="navigation" aria-label="Primary">
       <a class="logo" href="#top" aria-label="Home">MB</a>
       <ul>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#artwork">2D Art</a></li>
+        <li><a href="#work">Work</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
   </header>
 
+  <!-- Hero — rotating image banner -->
   <section class="hero" id="top">
     <div class="hero-slide active" style="background-image:url('Images and Videos/2D/EmberCommission.png');"></div>
     <div class="hero-slide" style="background-image:url('Images and Videos/2D/Spark2.png');"></div>
@@ -542,19 +32,21 @@
 
     <div class="hero-inner">
       <h1>Mackenzie Burt</h1>
-      <p class="subtitle">2D/3D Generalist • Concept Art • Illustration • Animation • Art Lead</p>
-      <p class="page-copy">Illustrations, character work, concept art, animation, and game-ready 3D development.</p>
+      <p class="subtitle">2D &amp; 3D Generalist &nbsp;·&nbsp; Animation &nbsp;·&nbsp; Art Lead</p>
+      <p class="page-copy">Rigging &nbsp;·&nbsp; Technical Art &nbsp;·&nbsp; Game Dev (Unreal / Unity) &nbsp;·&nbsp; VFX &nbsp;·&nbsp; Web</p>
     </div>
   </section>
 
   <main>
-    <section class="project-strip" id="projects" aria-label="Project navigation">
+
+    <!-- ── Project navigation strip ── -->
+    <section class="project-strip" id="work" aria-label="Project navigation">
       <div class="project-strip-top">
         <h2 class="project-strip-title">Projects</h2>
         <div class="project-filters" role="toolbar" aria-label="Filter projects">
           <button class="filter active" type="button" data-filter="all">All</button>
-          <button class="filter" type="button" data-filter="group">Group Projects</button>
           <button class="filter" type="button" data-filter="studio">Studio Work</button>
+          <button class="filter" type="button" data-filter="group">Group Projects</button>
           <button class="filter" type="button" data-filter="solo">Individual Projects</button>
         </div>
       </div>
@@ -578,7 +70,7 @@
 
         <a class="project-card" data-type="studio" href="diaperbank.html" aria-label="Diaper Bank">
           <video autoplay muted loop playsinline aria-hidden="true">
-            <source src="Images and Videos/highfive.mp4" type="video/mp4">
+            <source src="Images and Videos/Diaper Bank/Animation_Examples/highfive.mp4" type="video/mp4">
           </video>
           <div class="project-card-body">
             <h3>Diaper Bank</h3>
@@ -597,7 +89,7 @@
         </a>
 
         <a class="project-card" data-type="studio" href="kestrel.html" aria-label="Kestrel VR">
-          <img src="Images and Videos/Kestrel/kestrelbirdunityjaden.png" alt="Kestrel VR thumbnail" loading="lazy">
+          <img src="Images and Videos/Kestrel/Kestrel Rig.png" alt="Kestrel VR thumbnail" loading="lazy">
           <div class="project-card-body">
             <h3>Kestrel VR</h3>
             <p>VR simulation</p>
@@ -622,96 +114,194 @@
       </div>
     </section>
 
-    <div class="section-title" id="artwork">
-      <h2>Illustrations and 2D Art</h2>
-      <p>Click any image to view larger.</p>
+    <!-- ── Featured Works ── -->
+    <div class="section-title" id="featured">
+      <h2>Featured Work</h2>
+      <p>Click any piece to view full size.</p>
     </div>
 
-    <section class="art-section">
+    <section class="art-section" aria-label="Featured work gallery">
       <div class="art-section-inner">
-        <div class="art-grid" id="artGrid">
-          <img src="Images and Videos/2D/KoveTheCreator_sketch.png" alt="Illustration 01" loading="lazy">
-          <img src="Images and Videos/2D/KoveTheCreator3.png" alt="Illustration 02" loading="lazy">
-          <img src="Images and Videos/2D/KoveTheCreator.png" alt="Illustration 03" loading="lazy">
-          <img src="Images and Videos/2D/EmberCommission.png" alt="Illustration 04" loading="lazy">
-          <img src="Images and Videos/2D/Rudy2port.png" alt="Illustration 05" loading="lazy">
-          <img src="Images and Videos/2D/Gojo3.png" alt="Illustration 06" loading="lazy">
-        </div>
+        <div class="featured-masonry" id="featuredGrid">
+
+          <!-- 1. Deer animation -->
+          <div class="feat-item"
+               data-lightbox-item
+               data-type="video"
+               data-src="Images and Videos/FishAndGame/Deer3D/Deer3D-Animation.mp4"
+               data-caption="White Tail Deer — 3D Rig &amp; Animation · Fish and Game">
+            <video autoplay muted loop playsinline preload="metadata">
+              <source src="Images and Videos/FishAndGame/Deer3D/Deer3D-Animation.mp4" type="video/mp4">
+            </video>
+            <div class="feat-play" aria-hidden="true"></div>
+            <div class="feat-label">
+              <strong>White Tail Deer</strong>
+              <span>3D Rig &amp; Animation · Fish and Game</span>
+            </div>
+          </div>
+
+          <!-- 2. Bear Rig GIF -->
+          <div class="feat-item"
+               data-lightbox-item
+               data-type="img"
+               data-src="Images and Videos/FishAndGame/Bear Rig/Bear_Rig_Extended_SpedUP.gif"
+               data-caption="Bear Rig — 3D Rig walkthrough · Fish and Game">
+            <img src="Images and Videos/FishAndGame/Bear Rig/Bear_Rig_Extended_SpedUP.gif"
+                 alt="Bear rig walkthrough animation" loading="lazy">
+            <div class="feat-label">
+              <strong>Bear Rig</strong>
+              <span>3D Rig · Fish and Game</span>
+            </div>
+          </div>
+
+          <!-- 3. Queen concept art -->
+          <div class="feat-item"
+               data-lightbox-item
+               data-type="img"
+               data-src="Images and Videos/Concept Art/Queen.png"
+               data-caption="Queen — Character Design &amp; Concept Art">
+            <img src="Images and Videos/Concept Art/Queen.png"
+                 alt="Queen character design concept art" loading="lazy">
+            <div class="feat-label">
+              <strong>Queen</strong>
+              <span>Character Design · Concept Art</span>
+            </div>
+          </div>
+
+          <!-- 4. Gobby concept sheet -->
+          <div class="feat-item"
+               data-lightbox-item
+               data-type="img"
+               data-src="Images and Videos/Gobby-Skrunkly/gobby.png"
+               data-caption="Gobby — Character Design concept sheet">
+            <img src="Images and Videos/Gobby-Skrunkly/gobby.png"
+                 alt="Gobby character design concept sheet" loading="lazy">
+            <div class="feat-label">
+              <strong>Gobby</strong>
+              <span>Character Design</span>
+            </div>
+          </div>
+
+          <!-- 5. Kove turnaround -->
+          <div class="feat-item"
+               data-lightbox-item
+               data-type="img"
+               data-src="Images and Videos/Kove TurnAround Sheet2.png"
+               data-caption="Kove — Character Turnaround Sheet">
+            <img src="Images and Videos/Kove TurnAround Sheet2.png"
+                 alt="Kove character turnaround sheet" loading="lazy">
+            <div class="feat-label">
+              <strong>Kove — Turnaround</strong>
+              <span>Character Design · 2D</span>
+            </div>
+          </div>
+
+          <!-- 6. WaveWeaver blue -->
+          <div class="feat-item"
+               data-lightbox-item
+               data-type="img"
+               data-src="Images and Videos/Concept Art/WaveWeaver Higher Fidelity - blue.jpg"
+               data-caption="WaveWeaver (Blue) — Character Design">
+            <img src="Images and Videos/Concept Art/WaveWeaver Higher Fidelity - blue.jpg"
+                 alt="WaveWeaver blue character design" loading="lazy">
+            <div class="feat-label">
+              <strong>WaveWeaver (Blue)</strong>
+              <span>Character Design · Concept Art</span>
+            </div>
+          </div>
+
+          <!-- 7. WaveWeaver orange -->
+          <div class="feat-item"
+               data-lightbox-item
+               data-type="img"
+               data-src="Images and Videos/Concept Art/WaveWeaver Higher Fidelity - orange.jpg"
+               data-caption="WaveWeaver (Orange) — Character Design">
+            <img src="Images and Videos/Concept Art/WaveWeaver Higher Fidelity - orange.jpg"
+                 alt="WaveWeaver orange character design" loading="lazy">
+            <div class="feat-label">
+              <strong>WaveWeaver (Orange)</strong>
+              <span>Character Design · Concept Art</span>
+            </div>
+          </div>
+
+          <!-- 8. KoveTheCreator illustration -->
+          <div class="feat-item"
+               data-lightbox-item
+               data-type="img"
+               data-src="Images and Videos/2D/KoveTheCreator.png"
+               data-caption="Kove — 2D Digital Illustration">
+            <img src="Images and Videos/2D/KoveTheCreator.png"
+                 alt="Kove digital illustration" loading="lazy">
+            <div class="feat-label">
+              <strong>Kove — Illustration</strong>
+              <span>2D Digital Art</span>
+            </div>
+          </div>
+
+          <!-- 9. Gojo fan art -->
+          <div class="feat-item"
+               data-lightbox-item
+               data-type="img"
+               data-src="Images and Videos/2D/Gojo3.png"
+               data-caption="Gojo — 2D Digital Fan Art">
+            <img src="Images and Videos/2D/Gojo3.png"
+                 alt="Gojo fan art digital illustration" loading="lazy">
+            <div class="feat-label">
+              <strong>Gojo — Fan Art</strong>
+              <span>2D Digital Illustration</span>
+            </div>
+          </div>
+
+          <!-- 10. Ember commission -->
+          <div class="feat-item"
+               data-lightbox-item
+               data-type="img"
+               data-src="Images and Videos/2D/EmberCommission.png"
+               data-caption="Ember — 2D Commission">
+            <img src="Images and Videos/2D/EmberCommission.png"
+                 alt="Ember commission illustration" loading="lazy">
+            <div class="feat-label">
+              <strong>Ember — Commission</strong>
+              <span>2D Digital Illustration</span>
+            </div>
+          </div>
+
+          <!-- 11. Goblin Traders — placeholder (add goblintraders117.png when ready) -->
+          <div class="feat-item" style="cursor:default">
+            <div class="feat-placeholder">
+              <span class="ph-icon">＋</span>
+              <span>Goblin Traders</span>
+              <span style="font-size:.7rem;opacity:.5">Image coming soon</span>
+            </div>
+            <div class="feat-label">
+              <strong>Goblin Traders</strong>
+              <span>— · —</span>
+            </div>
+          </div>
+
+        </div><!-- /featured-masonry -->
       </div>
     </section>
 
-    <div class="section-title">
-      <h2>Fan Art</h2>
-    </div>
-
-    <section class="art-section single-art">
-      <div class="art-section-inner">
-        <img src="Images and Videos/2D/biggest_fan.png" alt="Fan art illustration" loading="lazy" data-lightbox-extra>
-      </div>
-    </section>
-
+    <!-- ── About + Contact ── -->
     <section class="about-contact" id="about">
       <div class="about-box">
         <h2>About Me</h2>
-    
-
-
-    <p>
-  Hello there! I'm Kenzie. I'm a 2D/3D Generalist, and I think my greatest strength is my adaptability.
-</p>
-<br>
-
-<p>
-  I started as a 2D animator, until I went to BSU and studied under the GIMM (Games, Interactive Media, Mobile Technologies) program.
-</p>
-
-<br>
-
-<p>
-  Throughout all of this, I was working 2-3 jobs while a full time student. My sophmore year alone, I was bartending at 20, working as a 2D animator for GIMM Works, selling furniture at a consignment store, and balancing everything as a full-time student.
-</p>
-
-<p>
-  By my senior year, I was definitely exhausted, but my peers and coworkers helped me push through to the end. We built a lot of really great things together, and I can't thank them enough.
-</p>
-
-<br>
-
-<p>
-During my time in University, I’ve worked for two studios (technically three), gaining about two years of in-industry experience as both a 2D/3D Generalist and an art lead on multiple client-funded projects.
-</p>
-
-<p>
-  I’ve been told I work best in roles where I can wear multiple hats, moving between 2D, 3D, or even implementing animation trees, VFX, or shader graphs in Unity and Unreal.
-</p>
-
-<p>
-  I’m very used to jumping between departments and stepping in wherever I’m needed.
-</p>
-
-<br>
-
-<p>
-  I still think my technical skills can improve across any medium, but I don’t see that ever stopping. I’m confident in my ability to learn quickly while I work, and I try to stay around people who push me to be the best artist (and person!) I can be.
-</p>
-
-<p>
-  I think I’d be a strong fit in an indie environment, but I’m also open to being trained into a more specialized role.
-</p>
-
-<p>
-  That said, animation is what I enjoy the most. I really love bringing characters to life.
-</p>
-
-<br>
-
-<p>
-  I also genuinely enjoy working with people. While remote work is appealing, I do my best work in environments where I can collaborate and stay connected with a team.
-</p>
-  </div>
-</section>
+        <p>
+          I'm Kenzie — a 2D/3D Generalist specializing in animation. I work best wearing multiple hats:
+          2D, 3D, rigging, VFX, shader graphs, and implementation in Unity and Unreal.
+        </p>
+        <p style="margin-top:.75rem">
+          During university I worked for two studios (GIMM Works), gaining ~2 years of in-industry experience
+          as a generalist and art lead on client-funded projects. I'm used to jumping between departments and
+          stepping in wherever I'm needed.
+        </p>
+        <p style="margin-top:.75rem">
+          Animation is what I love most — bringing characters to life. I'm looking for roles where I can
+          grow into a more specialized animation position, ideally in a collaborative environment.
+        </p>
         <div class="extra-links">
-          <a class="small-link" href="sketch_book.html">SketchBook</a>
+          <a class="small-link" href="sketch_book.html">Sketchbook</a>
           <a class="small-link" href="3d.html">3D Examples</a>
         </div>
       </div>
@@ -726,30 +316,34 @@ During my time in University, I’ve worked for two studios (technically three),
         </div>
       </div>
     </section>
+
   </main>
 
   <footer>
     © <span id="year"></span> Mackenzie Burt
   </footer>
 
-  <div class="lightbox" id="lightbox" aria-hidden="true">
-    <button class="lb-close" id="lbClose" aria-label="Close">✕</button>
-    <button class="lb-btn lb-prev" id="lbPrev" aria-label="Previous">←</button>
-    <img id="lbImage" alt="">
-    <button class="lb-btn lb-next" id="lbNext" aria-label="Next">→</button>
+  <!-- Lightbox — supports img, gif, and video -->
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <button class="close" aria-label="Close lightbox">✕</button>
+    <div class="controls">
+      <button id="lbPrev" aria-label="Previous">◀</button>
+      <button id="lbNext" aria-label="Next">▶</button>
+    </div>
+    <div id="lbMedia" class="media" aria-live="polite"></div>
+    <div class="caption" id="lbCaption"></div>
   </div>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    /* ── Project filter ── */
     const filters = document.querySelectorAll('.filter');
     const projectCards = document.querySelectorAll('#projectRow .project-card');
-
     filters.forEach(function(btn){
       btn.addEventListener('click', function(){
         filters.forEach(function(b){ b.classList.remove('active'); });
         btn.classList.add('active');
-
         const type = btn.dataset.filter;
         projectCards.forEach(function(card){
           card.style.display = (type === 'all' || card.dataset.type === type) ? '' : 'none';
@@ -757,71 +351,87 @@ During my time in University, I’ve worked for two studios (technically three),
       });
     });
 
-    const imgs = Array.from(document.querySelectorAll('#artGrid img, [data-lightbox-extra]'));
-    const lightbox = document.getElementById('lightbox');
-    const lbImage = document.getElementById('lbImage');
-    const lbPrev = document.getElementById('lbPrev');
-    const lbNext = document.getElementById('lbNext');
-    const lbClose = document.getElementById('lbClose');
-    let current = 0;
-
-    function openLB(index){
-      current = index;
-      const img = imgs[current];
-      lbImage.src = img.src;
-      lbImage.alt = img.alt || 'Artwork';
-      lightbox.classList.add('open');
-      lightbox.setAttribute('aria-hidden','false');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeLB(){
-      lightbox.classList.remove('open');
-      lightbox.setAttribute('aria-hidden','true');
-      document.body.style.overflow = '';
-    }
-
-    function prev(){
-      current = (current - 1 + imgs.length) % imgs.length;
-      openLB(current);
-    }
-
-    function next(){
-      current = (current + 1) % imgs.length;
-      openLB(current);
-    }
-
-    imgs.forEach(function(img, i){
-      img.addEventListener('click', function(){ openLB(i); });
-    });
-
-    lbPrev.addEventListener('click', function(e){ e.stopPropagation(); prev(); });
-    lbNext.addEventListener('click', function(e){ e.stopPropagation(); next(); });
-    lbClose.addEventListener('click', function(e){ e.stopPropagation(); closeLB(); });
-    lightbox.addEventListener('click', function(e){ if(e.target === lightbox) closeLB(); });
-
-    document.addEventListener('keydown', function(e){
-      if(!lightbox.classList.contains('open')) return;
-      if(e.key === 'Escape') closeLB();
-      if(e.key === 'ArrowLeft') prev();
-      if(e.key === 'ArrowRight') next();
-    });
-
-    (function initHeroRotation(){
+    /* ── Hero rotation ── */
+    (function(){
       const slides = Array.from(document.querySelectorAll('.hero-slide'));
       if(!slides.length) return;
-      let currentSlide = 0;
+      let cur = 0;
+      setInterval(function(){
+        slides[cur].classList.remove('active');
+        cur = (cur + 1) % slides.length;
+        slides[cur].classList.add('active');
+      }, 4200);
+    })();
 
-      function show(index){
-        slides.forEach(function(slide, i){
-          slide.classList.toggle('active', i === index);
-        });
+    /* ── Lightbox ── */
+    (function(){
+      const items = Array.from(document.querySelectorAll('[data-lightbox-item]'));
+      if(!items.length) return;
+
+      const lightbox  = document.getElementById('lightbox');
+      const lbMedia   = document.getElementById('lbMedia');
+      const lbCaption = document.getElementById('lbCaption');
+      const btnPrev   = document.getElementById('lbPrev');
+      const btnNext   = document.getElementById('lbNext');
+      const btnClose  = lightbox.querySelector('.close');
+      let idx = 0;
+
+      function show(i){
+        idx = (i + items.length) % items.length;
+        const el   = items[idx];
+        const type = el.getAttribute('data-type');
+        const src  = el.getAttribute('data-src') || '';
+        const cap  = el.getAttribute('data-caption') || '';
+
+        lbMedia.innerHTML = '';
+
+        if(type === 'video'){
+          const v = document.createElement('video');
+          v.controls = true;
+          v.autoplay = true;
+          v.playsInline = true;
+          v.preload = 'metadata';
+          const s = document.createElement('source');
+          s.src = src; s.type = 'video/mp4';
+          v.appendChild(s);
+          lbMedia.appendChild(v);
+        } else {
+          const im = document.createElement('img');
+          im.src = src;
+          im.alt = cap;
+          lbMedia.appendChild(im);
+        }
+
+        lbCaption.textContent = cap;
+        lightbox.classList.add('show');
+        lightbox.setAttribute('aria-hidden','false');
+        document.body.style.overflow = 'hidden';
       }
 
-      setInterval(function(){
-        currentSlide = (currentSlide + 1) % slides.length;
-        show(currentSlide);
-      }, 4200);
+      function hide(){
+        lightbox.classList.remove('show');
+        lightbox.setAttribute('aria-hidden','true');
+        const v = lbMedia.querySelector('video');
+        if(v){ try{ v.pause(); v.currentTime = 0; }catch(e){} }
+        lbMedia.innerHTML = '';
+        document.body.style.overflow = '';
+      }
+
+      items.forEach(function(node, i){
+        node.addEventListener('click', function(){ show(i); });
+      });
+
+      btnPrev.addEventListener('click', function(e){ e.stopPropagation(); show(idx - 1); });
+      btnNext.addEventListener('click', function(e){ e.stopPropagation(); show(idx + 1); });
+      btnClose.addEventListener('click', hide);
+      lightbox.addEventListener('click', function(e){ if(e.target === lightbox) hide(); });
+
+      document.addEventListener('keydown', function(e){
+        if(!lightbox.classList.contains('show')) return;
+        if(e.key === 'Escape') hide();
+        if(e.key === 'ArrowLeft') show(idx - 1);
+        if(e.key === 'ArrowRight') show(idx + 1);
+      });
     })();
   </script>
 </body>
