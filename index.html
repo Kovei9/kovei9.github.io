@@ -22,13 +22,26 @@
     </div>
   </header>
 
-  <!-- Hero — rotating image banner -->
+  <!-- ── Hero — slideshow of work across the whole site ── -->
   <section class="hero" id="top">
+    <!-- 2D illustration -->
     <div class="hero-slide active" style="background-image:url('Images and Videos/2D/EmberCommission.png');"></div>
+    <div class="hero-slide" style="background-image:url('Images and Videos/2D/Gojo3.png');"></div>
     <div class="hero-slide" style="background-image:url('Images and Videos/2D/Spark2.png');"></div>
     <div class="hero-slide" style="background-image:url('Images and Videos/2D/Kove2.png');"></div>
     <div class="hero-slide" style="background-image:url('Images and Videos/2D/ElariaCommission.png');"></div>
-    <div class="hero-slide" style="background-image:url('Images and Videos/coverillustration.png');"></div>
+    <div class="hero-slide" style="background-image:url('Images and Videos/2D/KoveTheCreator.png');"></div>
+    <!-- Character design / concept art -->
+    <div class="hero-slide" style="background-image:url('Images and Videos/Concept Art/Queen.png');"></div>
+    <div class="hero-slide" style="background-image:url('Images and Videos/Concept Art/WaveWeaver Higher Fidelity - blue.jpg');"></div>
+    <div class="hero-slide" style="background-image:url('Images and Videos/Gobby-Skrunkly/gobby.png');"></div>
+    <div class="hero-slide" style="background-image:url('Images and Videos/Concept Art/Centaur.png');"></div>
+    <!-- 3D -->
+    <div class="hero-slide" style="background-image:url('Images and Videos/3D/Queen/Queen Model Front.png');"></div>
+    <div class="hero-slide" style="background-image:url('Images and Videos/Gobby-Skrunkly/GobbyFront.png');"></div>
+    <!-- Studio work -->
+    <div class="hero-slide" style="background-image:url('Images and Videos/FishAndGame/Fish_Game_Banner.png');"></div>
+    <div class="hero-slide" style="background-image:url('Images and Videos/FishAndGame/LethalPosters/deer4.png');"></div>
 
     <div class="hero-inner">
       <h1>Mackenzie Burt</h1>
@@ -70,7 +83,7 @@
 
         <a class="project-card" data-type="studio" href="diaperbank.html" aria-label="Diaper Bank">
           <video autoplay muted loop playsinline aria-hidden="true">
-            <source src="Images and Videos/Diaper Bank/Animation_Examples/highfive.mp4" type="video/mp4">
+            <source src="Images and Videos/Diaper Bank/Animation_Examples/toddler walk cycle red head.mp4" type="video/mp4">
           </video>
           <div class="project-card-body">
             <h3>Diaper Bank</h3>
@@ -122,17 +135,18 @@
 
     <section class="art-section" aria-label="Featured work gallery">
       <div class="art-section-inner">
-        <div class="featured-masonry" id="featuredGrid">
+        <div class="featured-grid" id="featuredGrid">
 
-          <!-- 1. Deer animation -->
-          <div class="feat-item"
-               data-lightbox-item
-               data-type="video"
+          <!-- ROW 1: Deer + Bear side by side -->
+          <div class="feat-item feat-span-3"
+               data-lightbox-item data-type="video"
                data-src="Images and Videos/FishAndGame/Deer3D/Deer3D-Animation.mp4"
                data-caption="White Tail Deer — 3D Rig &amp; Animation · Fish and Game">
-            <video autoplay muted loop playsinline preload="metadata">
-              <source src="Images and Videos/FishAndGame/Deer3D/Deer3D-Animation.mp4" type="video/mp4">
-            </video>
+            <div class="feat-media">
+              <video autoplay muted loop playsinline preload="metadata">
+                <source src="Images and Videos/FishAndGame/Deer3D/Deer3D-Animation.mp4" type="video/mp4">
+              </video>
+            </div>
             <div class="feat-play" aria-hidden="true"></div>
             <div class="feat-label">
               <strong>White Tail Deer</strong>
@@ -140,138 +154,142 @@
             </div>
           </div>
 
-          <!-- 2. Bear Rig GIF -->
-          <div class="feat-item"
-               data-lightbox-item
-               data-type="img"
+          <div class="feat-item feat-span-3"
+               data-lightbox-item data-type="img"
                data-src="Images and Videos/FishAndGame/Bear Rig/Bear_Rig_Extended_SpedUP.gif"
                data-caption="Bear Rig — 3D Rig walkthrough · Fish and Game">
-            <img src="Images and Videos/FishAndGame/Bear Rig/Bear_Rig_Extended_SpedUP.gif"
-                 alt="Bear rig walkthrough animation" loading="lazy">
+            <div class="feat-media">
+              <img src="Images and Videos/FishAndGame/Bear Rig/Bear_Rig_Extended_SpedUP.gif"
+                   alt="Bear rig walkthrough" loading="lazy">
+            </div>
             <div class="feat-label">
               <strong>Bear Rig</strong>
               <span>3D Rig · Fish and Game</span>
             </div>
           </div>
 
-          <!-- 3. Queen concept art -->
-          <div class="feat-item"
-               data-lightbox-item
-               data-type="img"
-               data-src="Images and Videos/Concept Art/Queen.png"
-               data-caption="Queen — Character Design &amp; Concept Art">
-            <img src="Images and Videos/Concept Art/Queen.png"
-                 alt="Queen character design concept art" loading="lazy">
-            <div class="feat-label">
-              <strong>Queen</strong>
-              <span>Character Design · Concept Art</span>
-            </div>
-          </div>
-
-          <!-- 4. Gobby concept sheet -->
-          <div class="feat-item"
-               data-lightbox-item
-               data-type="img"
-               data-src="Images and Videos/Gobby-Skrunkly/gobby.png"
-               data-caption="Gobby — Character Design concept sheet">
-            <img src="Images and Videos/Gobby-Skrunkly/gobby.png"
-                 alt="Gobby character design concept sheet" loading="lazy">
-            <div class="feat-label">
-              <strong>Gobby</strong>
-              <span>Character Design</span>
-            </div>
-          </div>
-
-          <!-- 5. Kove turnaround -->
-          <div class="feat-item"
-               data-lightbox-item
-               data-type="img"
+          <!-- ROW 2: Kove Turnaround — full row -->
+          <div class="feat-item feat-span-6"
+               data-lightbox-item data-type="img"
                data-src="Images and Videos/Kove TurnAround Sheet2.png"
                data-caption="Kove — Character Turnaround Sheet">
-            <img src="Images and Videos/Kove TurnAround Sheet2.png"
-                 alt="Kove character turnaround sheet" loading="lazy">
+            <div class="feat-media">
+              <img src="Images and Videos/Kove TurnAround Sheet2.png"
+                   alt="Kove character turnaround sheet" loading="lazy">
+            </div>
             <div class="feat-label">
               <strong>Kove — Turnaround</strong>
               <span>Character Design · 2D</span>
             </div>
           </div>
 
-          <!-- 6. WaveWeaver blue -->
-          <div class="feat-item"
-               data-lightbox-item
-               data-type="img"
-               data-src="Images and Videos/Concept Art/WaveWeaver Higher Fidelity - blue.jpg"
-               data-caption="WaveWeaver (Blue) — Character Design">
-            <img src="Images and Videos/Concept Art/WaveWeaver Higher Fidelity - blue.jpg"
-                 alt="WaveWeaver blue character design" loading="lazy">
-            <div class="feat-label">
-              <strong>WaveWeaver (Blue)</strong>
-              <span>Character Design · Concept Art</span>
-            </div>
-          </div>
-
-          <!-- 7. WaveWeaver orange -->
-          <div class="feat-item"
-               data-lightbox-item
-               data-type="img"
-               data-src="Images and Videos/Concept Art/WaveWeaver Higher Fidelity - orange.jpg"
-               data-caption="WaveWeaver (Orange) — Character Design">
-            <img src="Images and Videos/Concept Art/WaveWeaver Higher Fidelity - orange.jpg"
-                 alt="WaveWeaver orange character design" loading="lazy">
-            <div class="feat-label">
-              <strong>WaveWeaver (Orange)</strong>
-              <span>Character Design · Concept Art</span>
-            </div>
-          </div>
-
-          <!-- 8. KoveTheCreator illustration -->
-          <div class="feat-item"
-               data-lightbox-item
-               data-type="img"
-               data-src="Images and Videos/2D/KoveTheCreator.png"
-               data-caption="Kove — 2D Digital Illustration">
-            <img src="Images and Videos/2D/KoveTheCreator.png"
-                 alt="Kove digital illustration" loading="lazy">
-            <div class="feat-label">
-              <strong>Kove — Illustration</strong>
-              <span>2D Digital Art</span>
-            </div>
-          </div>
-
-          <!-- 9. Gojo fan art -->
-          <div class="feat-item"
-               data-lightbox-item
-               data-type="img"
+          <!-- ROW 3: Gojo + Kove Illustration + Ember side by side -->
+          <div class="feat-item feat-span-2"
+               data-lightbox-item data-type="img"
                data-src="Images and Videos/2D/Gojo3.png"
                data-caption="Gojo — 2D Digital Fan Art">
-            <img src="Images and Videos/2D/Gojo3.png"
-                 alt="Gojo fan art digital illustration" loading="lazy">
+            <div class="feat-media">
+              <img src="Images and Videos/2D/Gojo3.png"
+                   alt="Gojo fan art" loading="lazy">
+            </div>
             <div class="feat-label">
               <strong>Gojo — Fan Art</strong>
               <span>2D Digital Illustration</span>
             </div>
           </div>
 
-          <!-- 10. Ember commission -->
-          <div class="feat-item"
-               data-lightbox-item
-               data-type="img"
+          <div class="feat-item feat-span-2"
+               data-lightbox-item data-type="img"
+               data-src="Images and Videos/2D/KoveTheCreator.png"
+               data-caption="Kove — 2D Digital Illustration">
+            <div class="feat-media">
+              <img src="Images and Videos/2D/KoveTheCreator.png"
+                   alt="Kove illustration" loading="lazy">
+            </div>
+            <div class="feat-label">
+              <strong>Kove — Illustration</strong>
+              <span>2D Digital Art</span>
+            </div>
+          </div>
+
+          <div class="feat-item feat-span-2"
+               data-lightbox-item data-type="img"
                data-src="Images and Videos/2D/EmberCommission.png"
                data-caption="Ember — 2D Commission">
-            <img src="Images and Videos/2D/EmberCommission.png"
-                 alt="Ember commission illustration" loading="lazy">
+            <div class="feat-media">
+              <img src="Images and Videos/2D/EmberCommission.png"
+                   alt="Ember commission" loading="lazy">
+            </div>
             <div class="feat-label">
               <strong>Ember — Commission</strong>
               <span>2D Digital Illustration</span>
             </div>
           </div>
 
-          <!-- 11. Goblin Traders — placeholder (add goblintraders117.png when ready) -->
-          <div class="feat-item" style="cursor:default">
+          <!-- ROW 4: WaveWeaver blue + orange + Queen concept -->
+          <div class="feat-item feat-span-2"
+               data-lightbox-item data-type="img"
+               data-src="Images and Videos/Concept Art/WaveWeaver Higher Fidelity - blue.jpg"
+               data-caption="WaveWeaver (Blue) — Character Design">
+            <div class="feat-media">
+              <img src="Images and Videos/Concept Art/WaveWeaver Higher Fidelity - blue.jpg"
+                   alt="WaveWeaver blue" loading="lazy">
+            </div>
+            <div class="feat-label">
+              <strong>WaveWeaver (Blue)</strong>
+              <span>Character Design · Concept Art</span>
+            </div>
+          </div>
+
+          <div class="feat-item feat-span-2"
+               data-lightbox-item data-type="img"
+               data-src="Images and Videos/Concept Art/WaveWeaver Higher Fidelity - orange.jpg"
+               data-caption="WaveWeaver (Orange) — Character Design">
+            <div class="feat-media">
+              <img src="Images and Videos/Concept Art/WaveWeaver Higher Fidelity - orange.jpg"
+                   alt="WaveWeaver orange" loading="lazy">
+            </div>
+            <div class="feat-label">
+              <strong>WaveWeaver (Orange)</strong>
+              <span>Character Design · Concept Art</span>
+            </div>
+          </div>
+
+          <div class="feat-item feat-span-2"
+               data-lightbox-item data-type="img"
+               data-src="Images and Videos/Concept Art/Queen.png"
+               data-caption="Queen — Character Design &amp; Concept Art">
+            <div class="feat-media">
+              <img src="Images and Videos/Concept Art/Queen.png"
+                   alt="Queen concept art" loading="lazy">
+            </div>
+            <div class="feat-label">
+              <strong>Queen</strong>
+              <span>Character Design · Concept Art</span>
+            </div>
+          </div>
+
+          <!-- ROW 5: Gobby + Goblin Traders placeholder -->
+          <div class="feat-item feat-span-3"
+               data-lightbox-item data-type="img"
+               data-src="Images and Videos/Gobby-Skrunkly/gobby.png"
+               data-caption="Gobby — Character Design concept sheet">
+            <div class="feat-media">
+              <img src="Images and Videos/Gobby-Skrunkly/gobby.png"
+                   alt="Gobby concept sheet" loading="lazy">
+            </div>
+            <div class="feat-label">
+              <strong>Gobby</strong>
+              <span>Character Design</span>
+            </div>
+          </div>
+
+          <!-- Placeholder — replace with goblintraders117.png when ready -->
+          <div class="feat-item feat-span-3" style="cursor:default">
             <div class="feat-placeholder">
               <span class="ph-icon">＋</span>
               <span>Goblin Traders</span>
-              <span style="font-size:.7rem;opacity:.5">Image coming soon</span>
+              <span style="font-size:.7rem;opacity:.5">Coming soon</span>
             </div>
             <div class="feat-label">
               <strong>Goblin Traders</strong>
@@ -279,7 +297,7 @@
             </div>
           </div>
 
-        </div><!-- /featured-masonry -->
+        </div><!-- /featured-grid -->
       </div>
     </section>
 
@@ -319,11 +337,9 @@
 
   </main>
 
-  <footer>
-    © <span id="year"></span> Mackenzie Burt
-  </footer>
+  <footer>© <span id="year"></span> Mackenzie Burt</footer>
 
-  <!-- Lightbox — supports img, gif, and video -->
+  <!-- Lightbox — handles img, gif, video -->
   <div id="lightbox" class="lightbox" aria-hidden="true">
     <button class="close" aria-label="Close lightbox">✕</button>
     <div class="controls">
@@ -360,7 +376,7 @@
         slides[cur].classList.remove('active');
         cur = (cur + 1) % slides.length;
         slides[cur].classList.add('active');
-      }, 4200);
+      }, 3800);
     })();
 
     /* ── Lightbox ── */
@@ -382,26 +398,16 @@
         const type = el.getAttribute('data-type');
         const src  = el.getAttribute('data-src') || '';
         const cap  = el.getAttribute('data-caption') || '';
-
         lbMedia.innerHTML = '';
-
         if(type === 'video'){
           const v = document.createElement('video');
-          v.controls = true;
-          v.autoplay = true;
-          v.playsInline = true;
-          v.preload = 'metadata';
-          const s = document.createElement('source');
-          s.src = src; s.type = 'video/mp4';
-          v.appendChild(s);
-          lbMedia.appendChild(v);
+          v.controls = true; v.autoplay = true; v.playsInline = true; v.preload = 'metadata';
+          const s = document.createElement('source'); s.src = src; s.type = 'video/mp4';
+          v.appendChild(s); lbMedia.appendChild(v);
         } else {
-          const im = document.createElement('img');
-          im.src = src;
-          im.alt = cap;
+          const im = document.createElement('img'); im.src = src; im.alt = cap;
           lbMedia.appendChild(im);
         }
-
         lbCaption.textContent = cap;
         lightbox.classList.add('show');
         lightbox.setAttribute('aria-hidden','false');
@@ -420,12 +426,10 @@
       items.forEach(function(node, i){
         node.addEventListener('click', function(){ show(i); });
       });
-
       btnPrev.addEventListener('click', function(e){ e.stopPropagation(); show(idx - 1); });
       btnNext.addEventListener('click', function(e){ e.stopPropagation(); show(idx + 1); });
       btnClose.addEventListener('click', hide);
       lightbox.addEventListener('click', function(e){ if(e.target === lightbox) hide(); });
-
       document.addEventListener('keydown', function(e){
         if(!lightbox.classList.contains('show')) return;
         if(e.key === 'Escape') hide();
