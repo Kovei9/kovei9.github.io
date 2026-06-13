@@ -853,23 +853,27 @@ footer a:hover{text-decoration:underline}
 }
 /* fixed heights per span so rows look intentional */
 .feat-span-3 .feat-media,
-.feat-span-2 .feat-media{ height:260px }
-.feat-span-6 .feat-media{ height:320px }
+.feat-span-2 .feat-media{ height:320px }
+.feat-span-6 .feat-media{ height:460px }
 
 .feat-media{
   width:100%;
   overflow:hidden;
   background:#0c0c0c;
+  position:relative;
 }
+/* label overlays the image — gradient fade for readability */
 .feat-label{
-  padding:.55rem .75rem;
-  border-top:1px solid #1e1e1e;
-  background:#101010;
+  position:absolute;
+  bottom:0; left:0; right:0;
+  padding:.7rem .85rem .75rem;
+  background:linear-gradient(0deg, rgba(0,0,0,.88) 0%, rgba(0,0,0,.0) 100%);
+  pointer-events:none;
 }
-.feat-label strong{display:block;font-size:.85rem;color:var(--ink)}
-.feat-label span{display:block;font-size:.75rem;color:var(--muted);margin-top:.1rem}
+.feat-label strong{display:block;font-size:.88rem;color:#fff}
+.feat-label span{display:block;font-size:.76rem;color:rgba(255,255,255,.65);margin-top:.1rem}
 .feat-placeholder{
-  height:260px;
+  height:320px;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -1162,8 +1166,8 @@ video.frame{object-fit:cover}
   .featured-grid{grid-template-columns:1fr 1fr}
   .feat-span-6,.feat-span-3{grid-column:span 2}
   .feat-span-2{grid-column:span 1}
-  .feat-span-3 .feat-media,.feat-span-2 .feat-media,.feat-span-6 .feat-media{height:180px}
-  .feat-placeholder{height:180px}
+  .feat-span-3 .feat-media,.feat-span-2 .feat-media,.feat-span-6 .feat-media{height:200px}
+  .feat-placeholder{height:200px}
 }
 
 @media (prefers-reduced-motion:reduce){
